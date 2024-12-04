@@ -1,2 +1,5 @@
-# mlipx-hub
-The home of mlipx recipes and result data that can be updated by community members with new models and testing protocols. This repo cna then be used with remote zndraw portal for quick visualization and analysis.
+# Example Repository
+
+This repository provides a working example and is the source for building parts of the documentation.
+As this repository is using DVC, some files are not showing up correctly.
+If you want access to the full list of files, please contact us.
