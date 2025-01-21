@@ -2,4 +2,5 @@
     remote = origin
 ['remote "origin"']
     url = s3://public/dvc/mlipx
+    endpointurl = https://minio.icp.uni-stuttgart.de
     allow_anonymous_login = true
