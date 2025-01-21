@@ -5,6 +5,11 @@ from mlipx.nodes.generic_ase import Device
 
 MODELS = {}
 
+MODELS["orca"] = mlipx.OrcaSinglePoint(
+    orcasimpleinput= "PBE def2-TZVP TightSCF EnGrad",
+    orcablocks ="%pal nprocs 8 end",
+    orca_shell="/data/fzills/tools/orca_5_0_4/orca",
+)
 
 # https://github.com/ACEsuit/mace
 MODELS["mace_mp"] = mlipx.GenericASECalculator(

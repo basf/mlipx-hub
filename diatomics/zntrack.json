@@ -9,6 +9,40 @@
             "value": "$nwd$/frames.xyz"
         }
     },
+    "orca_HomonuclearDiatomics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orca/HomonuclearDiatomics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.orca",
+                "cls": "OrcaSinglePoint"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_Smiles2Conformers",
+                        "cls": "Smiles2Conformers",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
+        }
+    },
     "mace_mp_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -37,6 +71,10 @@
                 "attribute": "frames",
                 "item": null
             }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
         }
     },
     "sevennet_HomonuclearDiatomics": {
@@ -67,6 +105,10 @@
                 "attribute": "frames",
                 "item": null
             }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
         }
     },
     "orb_v2_HomonuclearDiatomics": {
@@ -97,6 +139,10 @@
                 "attribute": "frames",
                 "item": null
             }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
         }
     },
     "mattersim_HomonuclearDiatomics": {
@@ -127,6 +173,10 @@
                 "attribute": "frames",
                 "item": null
             }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
         }
     }
 }

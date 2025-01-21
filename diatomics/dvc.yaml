@@ -17,6 +17,7 @@ stages:
         cache: false
     outs:
     - nodes/mace_mp/HomonuclearDiatomics/frames.json
+    - nodes/mace_mp/HomonuclearDiatomics/model_outs
     - nodes/mace_mp/HomonuclearDiatomics/results.csv
     params:
     - mace_mp_HomonuclearDiatomics
@@ -29,6 +30,7 @@ stages:
         cache: false
     outs:
     - nodes/mattersim/HomonuclearDiatomics/frames.json
+    - nodes/mattersim/HomonuclearDiatomics/model_outs
     - nodes/mattersim/HomonuclearDiatomics/results.csv
     params:
     - mattersim_HomonuclearDiatomics
@@ -41,9 +43,23 @@ stages:
         cache: false
     outs:
     - nodes/orb_v2/HomonuclearDiatomics/frames.json
+    - nodes/orb_v2/HomonuclearDiatomics/model_outs
     - nodes/orb_v2/HomonuclearDiatomics/results.csv
     params:
     - orb_v2_HomonuclearDiatomics
+  orca_HomonuclearDiatomics:
+    cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name orca_HomonuclearDiatomics
+    deps:
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/orca/HomonuclearDiatomics/node-meta.json:
+        cache: false
+    outs:
+    - nodes/orca/HomonuclearDiatomics/frames.json
+    - nodes/orca/HomonuclearDiatomics/model_outs
+    - nodes/orca/HomonuclearDiatomics/results.csv
+    params:
+    - orca_HomonuclearDiatomics
   sevennet_HomonuclearDiatomics:
     cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name sevennet_HomonuclearDiatomics
     deps:
@@ -53,6 +69,7 @@ stages:
         cache: false
     outs:
     - nodes/sevennet/HomonuclearDiatomics/frames.json
+    - nodes/sevennet/HomonuclearDiatomics/model_outs
     - nodes/sevennet/HomonuclearDiatomics/results.csv
     params:
     - sevennet_HomonuclearDiatomics

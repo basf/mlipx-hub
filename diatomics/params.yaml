@@ -38,6 +38,17 @@ orb_v2_HomonuclearDiatomics:
     device: auto
     name: orb_v2
   n_points: 100
+orca_HomonuclearDiatomics:
+  elements: []
+  eq_distance: covalent-radiuis
+  max_distance: 2.0
+  min_distance: 0.5
+  model:
+    _cls: mlipx.nodes.orca.OrcaSinglePoint
+    orca_shell: /data/fzills/tools/orca_5_0_4/orca
+    orcablocks: '%pal nprocs 8 end'
+    orcasimpleinput: PBE def2-TZVP TightSCF EnGrad
+  n_points: 100
 sevennet_HomonuclearDiatomics:
   elements: []
   eq_distance: covalent-radiuis
