@@ -1,14 +1,14 @@
-import zntrack
-from models import MODELS
-
 import mlipx
+import zntrack
+
+from models import MODELS
 
 project = zntrack.Project()
 
 frames = []
 
 with project.group("initialize"):
-    for smiles in ["[Li+].[Cl-]"]:
+    for smiles in ['[Li+].[Cl-]']:
         frames.append(mlipx.Smiles2Conformers(smiles=smiles, num_confs=1).frames)
 
 

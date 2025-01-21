@@ -5,19 +5,16 @@ from mlipx.nodes.generic_ase import Device
 
 MODELS = {}
 
-MODELS["orca"] = mlipx.OrcaSinglePoint(
-    orcasimpleinput= "PBE def2-TZVP TightSCF EnGrad",
-    orcablocks ="%pal nprocs 8 end",
-    orca_shell="/data/fzills/tools/orca_5_0_4/orca",
-)
+
 
 # https://github.com/ACEsuit/mace
 MODELS["mace_mp"] = mlipx.GenericASECalculator(
     module="mace.calculators",
     class_name="mace_mp",
     device="auto",
-    kwargs={"model": "medium"},
+    kwargs={"model": "medium"}
 )
+
 
 
 # https://github.com/MDIL-SNU/SevenNet
@@ -25,8 +22,9 @@ MODELS["sevennet"] = mlipx.GenericASECalculator(
     module="sevenn.sevennet_calculator",
     class_name="SevenNetCalculator",
     device="auto",
-    kwargs={"model": "7net-0"},
+    kwargs={"model": "7net-0"}
 )
+
 
 
 # https://github.com/orbital-materials/orb-models
@@ -51,16 +49,30 @@ class OrbCalc:
             calc = ORBCalculator(orbff, device=self.device, **kwargs)
         return calc
 
+MODELS["orb_v2"] = OrbCalc(
+    name="orb_v2",
+    device="auto"
+)
 
-MODELS["orb_v2"] = OrbCalc(name="orb_v2", device="auto")
 
 
-# https://github.com/CederGroupHub/chgnet
+# https://github.com/microsoft/mattersim
 MODELS["mattersim"] = mlipx.GenericASECalculator(
     module="mattersim.forcefield",
     class_name="MatterSimCalculator",
     device="auto",
 )
+
+
+
+# https://www.faccts.de/orca/
+MODELS["orca"] = mlipx.OrcaSinglePoint(
+    orcasimpleinput= "PBE def2-TZVP TightSCF EnGrad",
+    orcablocks ="%pal nprocs 8 end",
+    orca_shell="/dlls/tools/orca_5_0_4/orca",
+)
+
+
 
 
 # OPTIONAL
