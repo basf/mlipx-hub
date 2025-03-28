@@ -4,7 +4,7 @@
             "_type": "pathlib.Path",
             "value": "nodes/initialize/LoadDataFile"
         },
-        "path": "../data/DODH_adsorption_dft.xyz"
+        "path": "../../data/DODH_adsorption_dft.xyz"
     },
     "reference_EvaluateCalculatorResults": {
         "nwd": {
