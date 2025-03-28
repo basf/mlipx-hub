@@ -3,7 +3,7 @@ stages:
   initialize_LoadDataFile:
     cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
     deps:
-    - path: ../data/neb_end_p.xyz
+    - path: ../../data/neb_end_p.xyz
       hash: md5
       md5: b9e57be0b668b7334a85c6b12eb95cb1
       size: 25252
