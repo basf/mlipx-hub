@@ -3,7 +3,7 @@ from models import MODELS
 
 import mlipx
 
-DATAPATH = "../data/neb_end_p.xyz"
+DATAPATH = "../../data/neb_end_p.xyz"
 
 project = zntrack.Project()
 

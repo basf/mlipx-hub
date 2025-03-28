@@ -3,7 +3,7 @@ stages:
   initialize_LoadDataFile:
     cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
     deps:
-    - path: ../data/DODH_adsorption_dft.xyz
+    - path: ../../data/DODH_adsorption_dft.xyz
       hash: md5
       md5: fd972b8de5a22be3fc281d36f46de3e7
       size: 1096734

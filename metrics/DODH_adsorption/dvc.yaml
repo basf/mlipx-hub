@@ -131,7 +131,7 @@ stages:
   initialize_LoadDataFile:
     cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
     deps:
-    - ../data/DODH_adsorption_dft.xyz
+    - ../../data/DODH_adsorption_dft.xyz
     metrics:
     - nodes/initialize/LoadDataFile/node-meta.json:
         cache: false

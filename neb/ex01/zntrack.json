@@ -4,7 +4,7 @@
             "_type": "pathlib.Path",
             "value": "nodes/initialize/LoadDataFile"
         },
-        "path": "../data/neb_end_p.xyz"
+        "path": "../../data/neb_end_p.xyz"
     },
     "initialize_NEBinterpolate": {
         "nwd": {
