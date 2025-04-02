@@ -1,0 +1,127 @@
+chgnet_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: CHGNetCalculator
+    device: null
+    kwargs: null
+    module: chgnet.model
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+chgnet_md_RadialDistributionFunction:
+  nbins: null
+  rmax: null
+  species: &id001
+  - O
+  - O
+chgnet_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: CHGNetCalculator
+    device: null
+    kwargs: null
+    module: chgnet.model
+  optimizer: LBFGS
+  steps: 100000000
+initialize_BuildBox:
+  counts:
+  - 64
+  density: 997
+initialize_Smiles2Conformers:
+  max_attempts: 1000
+  num_confs: 100
+  random_seed: 42
+  smiles: O
+mace-mp_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: medium
+    module: mace.calculators
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+mace-mp_md_RadialDistributionFunction:
+  nbins: null
+  rmax: null
+  species: *id001
+mace-mp_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: medium
+    module: mace.calculators
+  optimizer: LBFGS
+  steps: 100000000
+orb_v2_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: models.OrbCalc
+    device: auto
+    name: orb_v2
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+orb_v2_md_RadialDistributionFunction:
+  nbins: null
+  rmax: null
+  species: *id001
+orb_v2_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: models.OrbCalc
+    device: auto
+    name: orb_v2
+  optimizer: LBFGS
+  steps: 100000000
+sevennet_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+sevennet_md_RadialDistributionFunction:
+  nbins: null
+  rmax: null
+  species: *id001
+sevennet_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  optimizer: LBFGS
+  steps: 100000000

@@ -1,0 +1,266 @@
+plots:
+- mace-mp_relax_StructureOptimization_plots_0:
+    x:
+      nodes/mace-mp/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace-mp/relax/StructureOptimization/plots.csv: energy
+- mace-mp_relax_StructureOptimization_plots_1:
+    x:
+      nodes/mace-mp/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace-mp/relax/StructureOptimization/plots.csv: fmax
+- mace-mp_md_MolecularDynamics_plots_0:
+    x:
+      nodes/mace-mp/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/mace-mp/md/MolecularDynamics/plots.csv: energy
+- mace-mp_md_MolecularDynamics_plots_1:
+    x:
+      nodes/mace-mp/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/mace-mp/md/MolecularDynamics/plots.csv: fmax
+- sevennet_relax_StructureOptimization_plots_0:
+    x:
+      nodes/sevennet/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/sevennet/relax/StructureOptimization/plots.csv: energy
+- sevennet_relax_StructureOptimization_plots_1:
+    x:
+      nodes/sevennet/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/sevennet/relax/StructureOptimization/plots.csv: fmax
+- sevennet_md_MolecularDynamics_plots_0:
+    x:
+      nodes/sevennet/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/sevennet/md/MolecularDynamics/plots.csv: energy
+- sevennet_md_MolecularDynamics_plots_1:
+    x:
+      nodes/sevennet/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/sevennet/md/MolecularDynamics/plots.csv: fmax
+- chgnet_relax_StructureOptimization_plots_0:
+    x:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: energy
+- chgnet_relax_StructureOptimization_plots_1:
+    x:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: fmax
+- chgnet_md_MolecularDynamics_plots_0:
+    x:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: energy
+- chgnet_md_MolecularDynamics_plots_1:
+    x:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: fmax
+- orb_v2_relax_StructureOptimization_plots_0:
+    x:
+      nodes/orb_v2/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/orb_v2/relax/StructureOptimization/plots.csv: energy
+- orb_v2_relax_StructureOptimization_plots_1:
+    x:
+      nodes/orb_v2/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/orb_v2/relax/StructureOptimization/plots.csv: fmax
+- orb_v2_md_MolecularDynamics_plots_0:
+    x:
+      nodes/orb_v2/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/orb_v2/md/MolecularDynamics/plots.csv: energy
+- orb_v2_md_MolecularDynamics_plots_1:
+    x:
+      nodes/orb_v2/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/orb_v2/md/MolecularDynamics/plots.csv: fmax
+stages:
+  chgnet_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name chgnet_md_MolecularDynamics
+    deps:
+    - nodes/chgnet/relax/StructureOptimization/frames.traj
+    - nodes/chgnet/relax/StructureOptimization/plots.csv
+    metrics:
+    - nodes/chgnet/md/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/chgnet/md/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/chgnet/md/MolecularDynamics/frames.xyz
+    - nodes/chgnet/md/MolecularDynamics/plots.csv
+    params:
+    - chgnet_md_MolecularDynamics
+  chgnet_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name chgnet_md_RadialDistributionFunction
+    deps:
+    - nodes/chgnet/md/MolecularDynamics/frames.xyz
+    - nodes/chgnet/md/MolecularDynamics/observer_metrics.json
+    - nodes/chgnet/md/MolecularDynamics/plots.csv
+    metrics:
+    - nodes/chgnet/md/RadialDistributionFunction/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/RadialDistributionFunction/rdf.csv
+    params:
+    - chgnet_md_RadialDistributionFunction
+  chgnet_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_relax_StructureOptimization
+    deps:
+    - nodes/initialize/BuildBox/frames.xyz
+    metrics:
+    - nodes/chgnet/relax/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/relax/StructureOptimization/frames.traj
+    - nodes/chgnet/relax/StructureOptimization/plots.csv
+    params:
+    - chgnet_relax_StructureOptimization
+  initialize_BuildBox:
+    cmd: zntrack run mlipx.nodes.smiles.BuildBox --name initialize_BuildBox
+    deps:
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/initialize/BuildBox/node-meta.json:
+        cache: true
+    outs:
+    - nodes/initialize/BuildBox/frames.xyz
+    params:
+    - initialize_BuildBox
+  initialize_Smiles2Conformers:
+    cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers
+    metrics:
+    - nodes/initialize/Smiles2Conformers/node-meta.json:
+        cache: true
+    outs:
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    params:
+    - initialize_Smiles2Conformers
+  mace-mp_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mace-mp_md_MolecularDynamics
+    deps:
+    - nodes/mace-mp/relax/StructureOptimization/frames.traj
+    - nodes/mace-mp/relax/StructureOptimization/plots.csv
+    metrics:
+    - nodes/mace-mp/md/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/mace-mp/md/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/mace-mp/md/MolecularDynamics/frames.xyz
+    - nodes/mace-mp/md/MolecularDynamics/plots.csv
+    params:
+    - mace-mp_md_MolecularDynamics
+  mace-mp_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name mace-mp_md_RadialDistributionFunction
+    deps:
+    - nodes/mace-mp/md/MolecularDynamics/frames.xyz
+    - nodes/mace-mp/md/MolecularDynamics/observer_metrics.json
+    - nodes/mace-mp/md/MolecularDynamics/plots.csv
+    metrics:
+    - nodes/mace-mp/md/RadialDistributionFunction/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mp/md/RadialDistributionFunction/rdf.csv
+    params:
+    - mace-mp_md_RadialDistributionFunction
+  mace-mp_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-mp_relax_StructureOptimization
+    deps:
+    - nodes/initialize/BuildBox/frames.xyz
+    metrics:
+    - nodes/mace-mp/relax/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mp/relax/StructureOptimization/frames.traj
+    - nodes/mace-mp/relax/StructureOptimization/plots.csv
+    params:
+    - mace-mp_relax_StructureOptimization
+  orb_v2_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name orb_v2_md_MolecularDynamics
+    deps:
+    - nodes/orb_v2/relax/StructureOptimization/frames.traj
+    - nodes/orb_v2/relax/StructureOptimization/plots.csv
+    metrics:
+    - nodes/orb_v2/md/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/orb_v2/md/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/orb_v2/md/MolecularDynamics/frames.xyz
+    - nodes/orb_v2/md/MolecularDynamics/plots.csv
+    params:
+    - orb_v2_md_MolecularDynamics
+  orb_v2_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name orb_v2_md_RadialDistributionFunction
+    deps:
+    - nodes/orb_v2/md/MolecularDynamics/frames.xyz
+    - nodes/orb_v2/md/MolecularDynamics/observer_metrics.json
+    - nodes/orb_v2/md/MolecularDynamics/plots.csv
+    metrics:
+    - nodes/orb_v2/md/RadialDistributionFunction/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb_v2/md/RadialDistributionFunction/rdf.csv
+    params:
+    - orb_v2_md_RadialDistributionFunction
+  orb_v2_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_relax_StructureOptimization
+    deps:
+    - nodes/initialize/BuildBox/frames.xyz
+    metrics:
+    - nodes/orb_v2/relax/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb_v2/relax/StructureOptimization/frames.traj
+    - nodes/orb_v2/relax/StructureOptimization/plots.csv
+    params:
+    - orb_v2_relax_StructureOptimization
+  sevennet_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name sevennet_md_MolecularDynamics
+    deps:
+    - nodes/sevennet/relax/StructureOptimization/frames.traj
+    - nodes/sevennet/relax/StructureOptimization/plots.csv
+    metrics:
+    - nodes/sevennet/md/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/sevennet/md/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/sevennet/md/MolecularDynamics/frames.xyz
+    - nodes/sevennet/md/MolecularDynamics/plots.csv
+    params:
+    - sevennet_md_MolecularDynamics
+  sevennet_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name sevennet_md_RadialDistributionFunction
+    deps:
+    - nodes/sevennet/md/MolecularDynamics/frames.xyz
+    - nodes/sevennet/md/MolecularDynamics/observer_metrics.json
+    - nodes/sevennet/md/MolecularDynamics/plots.csv
+    metrics:
+    - nodes/sevennet/md/RadialDistributionFunction/node-meta.json:
+        cache: true
+    outs:
+    - nodes/sevennet/md/RadialDistributionFunction/rdf.csv
+    params:
+    - sevennet_md_RadialDistributionFunction
+  sevennet_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet_relax_StructureOptimization
+    deps:
+    - nodes/initialize/BuildBox/frames.xyz
+    metrics:
+    - nodes/sevennet/relax/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/sevennet/relax/StructureOptimization/frames.traj
+    - nodes/sevennet/relax/StructureOptimization/plots.csv
+    params:
+    - sevennet_relax_StructureOptimization

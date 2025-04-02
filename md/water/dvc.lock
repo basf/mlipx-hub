@@ -1,0 +1,829 @@
+schema: '2.0'
+stages:
+  initialize_Smiles2Conformers:
+    cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers
+    params:
+      params.yaml:
+        initialize_Smiles2Conformers:
+          max_attempts: 1000
+          num_confs: 100
+          random_seed: 42
+          smiles: O
+    outs:
+    - path: nodes/initialize/Smiles2Conformers/frames.xyz
+      hash: md5
+      md5: 0a42831e4d69d067df8f5709374a0578
+      size: 20700
+    - path: nodes/initialize/Smiles2Conformers/node-meta.json
+      hash: md5
+      md5: bee14c395a69227f03cd0e3abdf1f4e9
+      size: 154
+  initialize_BuildBox:
+    cmd: zntrack run mlipx.nodes.smiles.BuildBox --name initialize_BuildBox
+    deps:
+    - path: nodes/initialize/Smiles2Conformers/frames.xyz
+      hash: md5
+      md5: 0a42831e4d69d067df8f5709374a0578
+      size: 20700
+    params:
+      params.yaml:
+        initialize_BuildBox:
+          counts:
+          - 64
+          density: 997
+    outs:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    - path: nodes/initialize/BuildBox/node-meta.json
+      hash: md5
+      md5: 0270be914f4526630d50b4e1b139d598
+      size: 154
+  mace_mp_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_mp_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        mace_mp_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: medium
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/mace_mp/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 967869d67418df3a65757c2690e23c02
+      size: 1626632
+    - path: nodes/mace_mp/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 71788dd444ac783a59826b75ac155f0b
+      size: 155
+    - path: nodes/mace_mp/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 946a18f482544a11217d85224df94fbc
+      size: 7069
+  mace-mp_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-mp_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        mace-mp_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: medium
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/mace-mp/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a6c604c73f2ade66b9852cab19d51125
+      size: 1648814
+    - path: nodes/mace-mp/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 6602ff8b4cafcdaa39b74da2680b51ad
+      size: 155
+    - path: nodes/mace-mp/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: a066d5dd13027edc86987d8ae0897239
+      size: 7158
+  mace-mp_relax_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mace-mp_relax_MolecularDynamics
+    deps:
+    - path: nodes/mace-mp/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a6c604c73f2ade66b9852cab19d51125
+      size: 1648814
+    - path: nodes/mace-mp/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: a066d5dd13027edc86987d8ae0897239
+      size: 7158
+    params:
+      params.yaml:
+        mace-mp_relax_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: medium
+            module: mace.calculators
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/mace-mp/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 5cf66e541baf896e225eb9398d36ced3
+      size: 3037762239
+    - path: nodes/mace-mp/relax/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: a3e16b79a1fd4dd115eb41efe1763de8
+      size: 156
+    - path: nodes/mace-mp/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/mace-mp/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: b11118caf61cb4652d0b3ce2cd667473
+      size: 4376309
+  mace-mp_relax_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name mace-mp_relax_RadialDistributionFunction
+    deps:
+    - path: nodes/mace-mp/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 5cf66e541baf896e225eb9398d36ced3
+      size: 3037762239
+    - path: nodes/mace-mp/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/mace-mp/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: b11118caf61cb4652d0b3ce2cd667473
+      size: 4376309
+    params:
+      params.yaml:
+        mace-mp_relax_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/mace-mp/relax/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: 7be668615ae8530176cdf5151824e079
+      size: 157
+    - path: nodes/mace-mp/relax/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: 79add1e97c93075b9bc5a4af755c313f
+      size: 22217
+  sevennet_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        sevennet_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/sevennet/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a56157ff3dba15e5a18a24f55fbf4363
+      size: 1739722
+    - path: nodes/sevennet/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 698b6c4ea64d5ac269b304d4deb20117
+      size: 155
+    - path: nodes/sevennet/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 2b9e39da7b82f215a9a336743b595b0d
+      size: 6750
+  sevennet_relax_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name sevennet_relax_MolecularDynamics
+    deps:
+    - path: nodes/sevennet/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a56157ff3dba15e5a18a24f55fbf4363
+      size: 1739722
+    - path: nodes/sevennet/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 2b9e39da7b82f215a9a336743b595b0d
+      size: 6750
+    params:
+      params.yaml:
+        sevennet_relax_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/sevennet/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: fe54b56a0e39e739e02b33d34397da7a
+      size: 3365464354
+    - path: nodes/sevennet/relax/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: ad875f9c5cd615a88a3d4c098aacc05a
+      size: 157
+    - path: nodes/sevennet/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/sevennet/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 44388aa530aa73c908aa6a2fba55bc68
+      size: 4362499
+  sevennet_relax_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name sevennet_relax_RadialDistributionFunction
+    deps:
+    - path: nodes/sevennet/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: fe54b56a0e39e739e02b33d34397da7a
+      size: 3365464354
+    - path: nodes/sevennet/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/sevennet/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 44388aa530aa73c908aa6a2fba55bc68
+      size: 4362499
+    params:
+      params.yaml:
+        sevennet_relax_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/sevennet/relax/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: 222a5021e1d4bd3ff430bf65f1c99fe8
+      size: 157
+    - path: nodes/sevennet/relax/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: e76d01a0a3720f80c7bf637d90140ffc
+      size: 22207
+  chgnet_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        chgnet_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/chgnet/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 699de0bf17367390f26a25ebfced66c7
+      size: 1765295
+    - path: nodes/chgnet/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: d55da76079f4853674959ed6060f8dfc
+      size: 155
+    - path: nodes/chgnet/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 956ab9f124f443e40d09882cd7b4d387
+      size: 6931
+  chgnet_relax_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name chgnet_relax_MolecularDynamics
+    deps:
+    - path: nodes/chgnet/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 699de0bf17367390f26a25ebfced66c7
+      size: 1765295
+    - path: nodes/chgnet/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 956ab9f124f443e40d09882cd7b4d387
+      size: 6931
+    params:
+      params.yaml:
+        chgnet_relax_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/chgnet/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 72fcb0a251e654b378d9239915d56d2a
+      size: 3365463594
+    - path: nodes/chgnet/relax/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 145848dc642fbb54636a8928616d0abc
+      size: 157
+    - path: nodes/chgnet/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/chgnet/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: d0caed6b102811faa29cceafa67a7d24
+      size: 4401197
+  chgnet_relax_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name chgnet_relax_RadialDistributionFunction
+    deps:
+    - path: nodes/chgnet/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 72fcb0a251e654b378d9239915d56d2a
+      size: 3365463594
+    - path: nodes/chgnet/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/chgnet/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: d0caed6b102811faa29cceafa67a7d24
+      size: 4401197
+    params:
+      params.yaml:
+        chgnet_relax_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/chgnet/relax/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: 4117da5e98894b1456cc251736868a2c
+      size: 156
+    - path: nodes/chgnet/relax/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: 967f5dcfe1806ced6847a99163d5364c
+      size: 22218
+  orb_v2_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        orb_v2_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/orb_v2/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: f9e8e5c450fa648df1fd382e5411ada8
+      size: 1663672
+    - path: nodes/orb_v2/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 1adbb4391e8c1cfa55ea80008076e1e5
+      size: 155
+    - path: nodes/orb_v2/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: df46fcb0b60acc1f236fbc7d0a282e58
+      size: 7209
+  orb_v2_relax_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name orb_v2_relax_MolecularDynamics
+    deps:
+    - path: nodes/orb_v2/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: f9e8e5c450fa648df1fd382e5411ada8
+      size: 1663672
+    - path: nodes/orb_v2/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: df46fcb0b60acc1f236fbc7d0a282e58
+      size: 7209
+    params:
+      params.yaml:
+        orb_v2_relax_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            name: orb_v2
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/orb_v2/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 93861e23c947676cb813b409773b41b0
+      size: 3038107418
+    - path: nodes/orb_v2/relax/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 0c139bafb9fe7f765f4ed756fd7ab9a6
+      size: 157
+    - path: nodes/orb_v2/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb_v2/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: f3e0b7751980ea2d5043bbfcf111c1ab
+      size: 4359978
+  orb_v2_relax_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name orb_v2_relax_RadialDistributionFunction
+    deps:
+    - path: nodes/orb_v2/relax/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 93861e23c947676cb813b409773b41b0
+      size: 3038107418
+    - path: nodes/orb_v2/relax/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb_v2/relax/MolecularDynamics/plots.csv
+      hash: md5
+      md5: f3e0b7751980ea2d5043bbfcf111c1ab
+      size: 4359978
+    params:
+      params.yaml:
+        orb_v2_relax_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/orb_v2/relax/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: 7e92f9e961c2bdc0a098e5ac47535642
+      size: 157
+    - path: nodes/orb_v2/relax/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: 434a48cdaf086f5ac9ff976d0c643704
+      size: 22218
+  chgnet_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name chgnet_md_MolecularDynamics
+    deps:
+    - path: nodes/chgnet/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 699de0bf17367390f26a25ebfced66c7
+      size: 1765295
+    - path: nodes/chgnet/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 956ab9f124f443e40d09882cd7b4d387
+      size: 6931
+    params:
+      params.yaml:
+        chgnet_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/chgnet/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 736c39a9718bcc667446f354a8baac75
+      size: 3365470891
+    - path: nodes/chgnet/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 344b51e8affe95365ce381f95fc7f772
+      size: 157
+    - path: nodes/chgnet/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/chgnet/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: a23e5a40fb9d149a2249b0ee684fa914
+      size: 4401905
+  chgnet_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name chgnet_md_RadialDistributionFunction
+    deps:
+    - path: nodes/chgnet/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 736c39a9718bcc667446f354a8baac75
+      size: 3365470891
+    - path: nodes/chgnet/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/chgnet/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: a23e5a40fb9d149a2249b0ee684fa914
+      size: 4401905
+    params:
+      params.yaml:
+        chgnet_md_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/chgnet/md/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: fe8aa7ce7dee5ff9faea8b07ee0e864c
+      size: 157
+    - path: nodes/chgnet/md/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: 36c422109e4b2fbdfb31958cbcbb2b75
+      size: 22249
+  orb_v2_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name orb_v2_md_MolecularDynamics
+    deps:
+    - path: nodes/orb_v2/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: f9e8e5c450fa648df1fd382e5411ada8
+      size: 1663672
+    - path: nodes/orb_v2/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: df46fcb0b60acc1f236fbc7d0a282e58
+      size: 7209
+    params:
+      params.yaml:
+        orb_v2_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            name: orb_v2
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/orb_v2/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: fc0389d54c4eb792c5c4743f7f382235
+      size: 3038105651
+    - path: nodes/orb_v2/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: c227cd00561e4bfa6ec8f717ea07c987
+      size: 157
+    - path: nodes/orb_v2/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb_v2/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 49c18a43f4067b3cc4537744e2370d5f
+      size: 4361489
+  mace-mp_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mace-mp_md_MolecularDynamics
+    deps:
+    - path: nodes/mace-mp/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a6c604c73f2ade66b9852cab19d51125
+      size: 1648814
+    - path: nodes/mace-mp/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: a066d5dd13027edc86987d8ae0897239
+      size: 7158
+    params:
+      params.yaml:
+        mace-mp_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: medium
+            module: mace.calculators
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/mace-mp/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 36e959bf73d49b2ebb347cc741520554
+      size: 3037781044
+    - path: nodes/mace-mp/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: c15efa436b7c753ee573a302501441ae
+      size: 157
+    - path: nodes/mace-mp/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/mace-mp/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 1e102e1547dbea7324192d3bdccb2731
+      size: 4376437
+  mace-mp_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name mace-mp_md_RadialDistributionFunction
+    deps:
+    - path: nodes/mace-mp/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 36e959bf73d49b2ebb347cc741520554
+      size: 3037781044
+    - path: nodes/mace-mp/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/mace-mp/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 1e102e1547dbea7324192d3bdccb2731
+      size: 4376437
+    params:
+      params.yaml:
+        mace-mp_md_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/mace-mp/md/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: 09505d008998f847a48855dbd7375ba2
+      size: 157
+    - path: nodes/mace-mp/md/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: 282eb028a0b7f2093b24fd437f614e86
+      size: 22260
+  orb_v2_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name orb_v2_md_RadialDistributionFunction
+    deps:
+    - path: nodes/orb_v2/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: fc0389d54c4eb792c5c4743f7f382235
+      size: 3038105651
+    - path: nodes/orb_v2/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb_v2/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 49c18a43f4067b3cc4537744e2370d5f
+      size: 4361489
+    params:
+      params.yaml:
+        orb_v2_md_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/orb_v2/md/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: 821cc132ef51bbb2a091e8e8f1f15b48
+      size: 157
+    - path: nodes/orb_v2/md/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: 0da84e645e32b3bb7b1ef3776950f59a
+      size: 22213
+  sevennet_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name sevennet_md_MolecularDynamics
+    deps:
+    - path: nodes/sevennet/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a56157ff3dba15e5a18a24f55fbf4363
+      size: 1739722
+    - path: nodes/sevennet/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 2b9e39da7b82f215a9a336743b595b0d
+      size: 6750
+    params:
+      params.yaml:
+        sevennet_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/sevennet/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 9b63c876fe83e03e2fd810414ba6240c
+      size: 3365462243
+    - path: nodes/sevennet/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: b962027b1fb747513c8cc81c47d16c20
+      size: 158
+    - path: nodes/sevennet/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/sevennet/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: b01c03c4044b7ad83794995cc41124be
+      size: 4369003
+  sevennet_md_RadialDistributionFunction:
+    cmd: zntrack run mlipx.nodes.radial_distribution_function.RadialDistributionFunction
+      --name sevennet_md_RadialDistributionFunction
+    deps:
+    - path: nodes/sevennet/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 9b63c876fe83e03e2fd810414ba6240c
+      size: 3365462243
+    - path: nodes/sevennet/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/sevennet/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: b01c03c4044b7ad83794995cc41124be
+      size: 4369003
+    params:
+      params.yaml:
+        sevennet_md_RadialDistributionFunction:
+          nbins:
+          rmax:
+          species:
+          - O
+          - O
+    outs:
+    - path: nodes/sevennet/md/RadialDistributionFunction/node-meta.json
+      hash: md5
+      md5: e562d9b0b82c177227c2ed0df8bde7f4
+      size: 157
+    - path: nodes/sevennet/md/RadialDistributionFunction/rdf.csv
+      hash: md5
+      md5: a0fd8ee4d1fb420ee768cc6954a298ab
+      size: 22183

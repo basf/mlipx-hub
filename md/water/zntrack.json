@@ -1,0 +1,441 @@
+{
+    "initialize_Smiles2Conformers": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/initialize/Smiles2Conformers"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "initialize_BuildBox": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/initialize/BuildBox"
+        },
+        "data": [
+            {
+                "_type": "znflow.Connection",
+                "value": {
+                    "instance": {
+                        "_type": "zntrack.Node",
+                        "value": {
+                            "module": "mlipx.nodes.smiles",
+                            "name": "initialize_Smiles2Conformers",
+                            "cls": "Smiles2Conformers",
+                            "remote": null,
+                            "rev": null
+                        }
+                    },
+                    "attribute": "frames",
+                    "item": null
+                }
+            }
+        ],
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "mace-mp_relax_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mace-mp/relax/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_BuildBox",
+                        "cls": "BuildBox",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "mace-mp_md_MolecularDynamics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mace-mp/md/MolecularDynamics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "thermostat": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.molecular_dynamics",
+                "cls": "LangevinConfig"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.structure_optimization",
+                        "name": "mace-mp_relax_StructureOptimization",
+                        "cls": "StructureOptimization",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "observers": null,
+        "modifiers": null,
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "mace-mp_md_RadialDistributionFunction": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mace-mp/md/RadialDistributionFunction"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.molecular_dynamics",
+                        "name": "mace-mp_md_MolecularDynamics",
+                        "cls": "MolecularDynamics",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        }
+    },
+    "sevennet_relax_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/sevennet/relax/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_BuildBox",
+                        "cls": "BuildBox",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "sevennet_md_MolecularDynamics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/sevennet/md/MolecularDynamics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "thermostat": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.molecular_dynamics",
+                "cls": "LangevinConfig"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.structure_optimization",
+                        "name": "sevennet_relax_StructureOptimization",
+                        "cls": "StructureOptimization",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "observers": null,
+        "modifiers": null,
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "sevennet_md_RadialDistributionFunction": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/sevennet/md/RadialDistributionFunction"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.molecular_dynamics",
+                        "name": "sevennet_md_MolecularDynamics",
+                        "cls": "MolecularDynamics",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        }
+    },
+    "chgnet_relax_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/relax/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_BuildBox",
+                        "cls": "BuildBox",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "chgnet_md_MolecularDynamics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/MolecularDynamics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "thermostat": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.molecular_dynamics",
+                "cls": "LangevinConfig"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.structure_optimization",
+                        "name": "chgnet_relax_StructureOptimization",
+                        "cls": "StructureOptimization",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "observers": null,
+        "modifiers": null,
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "chgnet_md_RadialDistributionFunction": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/RadialDistributionFunction"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.molecular_dynamics",
+                        "name": "chgnet_md_MolecularDynamics",
+                        "cls": "MolecularDynamics",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        }
+    },
+    "orb_v2_relax_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb_v2/relax/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_BuildBox",
+                        "cls": "BuildBox",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "OrbCalc"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "orb_v2_md_MolecularDynamics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb_v2/md/MolecularDynamics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "OrbCalc"
+            }
+        },
+        "thermostat": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.molecular_dynamics",
+                "cls": "LangevinConfig"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.structure_optimization",
+                        "name": "orb_v2_relax_StructureOptimization",
+                        "cls": "StructureOptimization",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "observers": null,
+        "modifiers": null,
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "orb_v2_md_RadialDistributionFunction": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb_v2/md/RadialDistributionFunction"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.molecular_dynamics",
+                        "name": "orb_v2_md_MolecularDynamics",
+                        "cls": "MolecularDynamics",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        }
+    }
+}
