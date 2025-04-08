@@ -11,7 +11,7 @@ MODELS["mace-mp"] = mlipx.GenericASECalculator(
     module="mace.calculators",
     class_name="mace_mp",
     device="auto",
-    kwargs={"model": "medium"},
+    kwargs={"model": "../../data/mace-mpa-0-medium.model"},
 )
 
 # https://github.com/MDIL-SNU/SevenNet
@@ -52,3 +52,10 @@ class OrbCalc:
 
 
 MODELS["orb_v2"] = OrbCalc(name="orb_v2", device="auto")
+
+# https://github.com/microsoft/mattersim
+MODELS["mattersim"] = mlipx.GenericASECalculator(
+    module="mattersim.forcefield",
+    class_name="MatterSimCalculator",
+    device="auto",
+)

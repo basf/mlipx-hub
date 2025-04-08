@@ -1,3 +1,32 @@
+chgnet_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+chgnet_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
 chgnet_md_MolecularDynamics:
   data_id: -1
   model:
@@ -18,6 +47,12 @@ chgnet_md_RadialDistributionFunction:
   species: &id001
   - O
   - O
+chgnet_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+chgnet_md_Universe:
+  residues:
+    H2O: O
 chgnet_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -38,6 +73,35 @@ initialize_Smiles2Conformers:
   num_confs: 100
   random_seed: 42
   smiles: O
+mace-mp_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+mace-mp_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+mace-mp_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+mace-mp_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+mace-mp_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
 mace-mp_md_MolecularDynamics:
   data_id: -1
   model:
@@ -45,7 +109,7 @@ mace-mp_md_MolecularDynamics:
     class_name: mace_mp
     device: auto
     kwargs:
-      model: medium
+      model: ../../data/mace-mpa-0-medium.model
     module: mace.calculators
   steps: 100000
   thermostat:
@@ -57,6 +121,12 @@ mace-mp_md_RadialDistributionFunction:
   nbins: null
   rmax: null
   species: *id001
+mace-mp_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+mace-mp_md_Universe:
+  residues:
+    H2O: O
 mace-mp_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -65,10 +135,103 @@ mace-mp_relax_StructureOptimization:
     class_name: mace_mp
     device: auto
     kwargs:
-      model: medium
+      model: ../../data/mace-mpa-0-medium.model
     module: mace.calculators
   optimizer: LBFGS
   steps: 100000000
+mattersim_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+mattersim_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+mattersim_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+mattersim_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+mattersim_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
+mattersim_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: MatterSimCalculator
+    device: auto
+    kwargs: null
+    module: mattersim.forcefield
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+mattersim_md_RadialDistributionFunction:
+  nbins: null
+  rmax: null
+  species: *id001
+mattersim_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+mattersim_md_Universe:
+  residues:
+    H2O: O
+mattersim_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: MatterSimCalculator
+    device: auto
+    kwargs: null
+    module: mattersim.forcefield
+  optimizer: LBFGS
+  steps: 100000000
+orb_v2_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+orb_v2_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+orb_v2_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+orb_v2_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+orb_v2_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
 orb_v2_md_MolecularDynamics:
   data_id: -1
   model:
@@ -85,6 +248,12 @@ orb_v2_md_RadialDistributionFunction:
   nbins: null
   rmax: null
   species: *id001
+orb_v2_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+orb_v2_md_Universe:
+  residues:
+    H2O: O
 orb_v2_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -94,6 +263,35 @@ orb_v2_relax_StructureOptimization:
     name: orb_v2
   optimizer: LBFGS
   steps: 100000000
+sevennet_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+sevennet_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+sevennet_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+sevennet_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+sevennet_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
 sevennet_md_MolecularDynamics:
   data_id: -1
   model:
@@ -113,6 +311,12 @@ sevennet_md_RadialDistributionFunction:
   nbins: null
   rmax: null
   species: *id001
+sevennet_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+sevennet_md_Universe:
+  residues:
+    H2O: O
 sevennet_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
