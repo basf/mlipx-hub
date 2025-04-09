@@ -627,17 +627,17 @@ stages:
     outs:
     - path: nodes/GRACE-2L-OMAT/NEBs/frames.xyz
       hash: md5
-      md5: 06fd81fad80fc4dc3757e4b414e1b266
-      size: 59924
+      md5: 69f56bda33cdd11f34e229bdfbefcefb
+      size: 64163
     - path: nodes/GRACE-2L-OMAT/NEBs/neb_trajectory.traj
       hash: md5
-      md5: a05cf0b1ead9290fdfc22ec71e77ae9b
+      md5: b2f29f970c802d6b2c60806cf500570f
       size: 10525722
     - path: nodes/GRACE-2L-OMAT/NEBs/node-meta.json
       hash: md5
-      md5: 798089c8c0722c4e1550ad72b270b420
-      size: 155
+      md5: 79e29b8e12c2f79d4ea8da022328adc6
+      size: 156
     - path: nodes/GRACE-2L-OMAT/NEBs/results.csv
       hash: md5
-      md5: 89bc148d030e29ac5515fc6b1475b03a
-      size: 244
+      md5: bfde79132a85e7f6eda5e0dafd82e9a9
+      size: 243
