@@ -11,12 +11,12 @@ stages:
     outs:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     - path: nodes/initialize/MPRester/node-meta.json
       hash: md5
-      md5: 4f6d9dc7b6e2c7a9e178509f8c6d81d6
-      size: 64
+      md5: 008fb9c10f0413f56d66dc6142cf1a06
+      size: 154
   orb_v2_0_TranslationalInvariance:
     cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name orb_v2_0_TranslationalInvariance
     deps:
@@ -199,8 +199,8 @@ stages:
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         chgnet_0_PermutationInvariance:
@@ -215,16 +215,16 @@ stages:
     outs:
     - path: nodes/chgnet/0/PermutationInvariance/frames.xyz
       hash: md5
-      md5: 07a41d873411a9d5606319e7cba6b47f
-      size: 183700
+      md5: 976d8c578a97bddb6156257fc2c59b7d
+      size: 184400
     - path: nodes/chgnet/0/PermutationInvariance/metrics.json
       hash: md5
       md5: 0c81ec9700d1f2b17e8bb4542a0f1216
       size: 40
     - path: nodes/chgnet/0/PermutationInvariance/node-meta.json
       hash: md5
-      md5: a20926b32be212524cc149151b4dd2f4
-      size: 64
+      md5: 09332fde1acd9392e1d25f12893ae628
+      size: 154
     - path: nodes/chgnet/0/PermutationInvariance/plots.csv
       hash: md5
       md5: 3be96ad48b87e6805788b08ebfb8455f
@@ -372,8 +372,8 @@ stages:
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         chgnet_0_RotationalInvariance:
@@ -388,27 +388,27 @@ stages:
     outs:
     - path: nodes/chgnet/0/RotationalInvariance/frames.xyz
       hash: md5
-      md5: 1e9072c113d5f127218191724203afe2
-      size: 192949
+      md5: 0b43905f2d0968bc7c7d19bf7890332b
+      size: 193018
     - path: nodes/chgnet/0/RotationalInvariance/metrics.json
       hash: md5
-      md5: 6f7c0b5d5586e2d08e882c3b9ea7b93e
-      size: 58
+      md5: fe79c07b199c99565136276403ee27e5
+      size: 56
     - path: nodes/chgnet/0/RotationalInvariance/node-meta.json
       hash: md5
-      md5: aadae06534099062a2e44401335c4c00
-      size: 64
+      md5: e4a1e304a6658e2554be2471e9f460db
+      size: 153
     - path: nodes/chgnet/0/RotationalInvariance/plots.csv
       hash: md5
-      md5: e3d90cc4497c6eefc87577a306cc30f5
-      size: 2170
+      md5: db72ec85eece3b8a4d43af506963fb37
+      size: 2197
   chgnet_0_TranslationalInvariance:
     cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name chgnet_0_TranslationalInvariance
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         chgnet_0_TranslationalInvariance:
@@ -423,27 +423,27 @@ stages:
     outs:
     - path: nodes/chgnet/0/TranslationalInvariance/frames.xyz
       hash: md5
-      md5: 8391d9a944fabc10f347a74a0a44ca3f
-      size: 183557
+      md5: 747af4e88805a43d1bdaad716ecb23c4
+      size: 184913
     - path: nodes/chgnet/0/TranslationalInvariance/metrics.json
       hash: md5
-      md5: 72fe91a4681c352f4ec5b4c7929d5a98
+      md5: 73ddb6c5a686b93990755ab68d00d65c
       size: 58
     - path: nodes/chgnet/0/TranslationalInvariance/node-meta.json
       hash: md5
-      md5: 6e9591c2a46f5bacfa76d8671943edbe
-      size: 64
+      md5: 348ad4ab72cc2d18b8e442283cc57fb3
+      size: 154
     - path: nodes/chgnet/0/TranslationalInvariance/plots.csv
       hash: md5
-      md5: 9c6a8b5fe9083d3b630a1eeae994bb32
-      size: 2174
+      md5: 03a2e19af405cc32bd43e8708246a807
+      size: 2198
   mattersim_0_RotationalInvariance:
     cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name mattersim_0_RotationalInvariance
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         mattersim_0_RotationalInvariance:
@@ -458,27 +458,27 @@ stages:
     outs:
     - path: nodes/mattersim/0/RotationalInvariance/frames.xyz
       hash: md5
-      md5: 707a6dc4eecc8a0a0b02fd95ca83e443
-      size: 174713
+      md5: e8783ef03f4b53f56a9a384b0732f96f
+      size: 174752
     - path: nodes/mattersim/0/RotationalInvariance/metrics.json
       hash: md5
-      md5: 77ccde3a333100eb4349487f89f5b6bb
-      size: 59
+      md5: 63d905817a018231796284b83e5650b0
+      size: 58
     - path: nodes/mattersim/0/RotationalInvariance/node-meta.json
       hash: md5
-      md5: a85268bf8a3ecc93b11a7147b83ae77d
-      size: 64
+      md5: 9080f72d09675a80ef5bf456f4836282
+      size: 154
     - path: nodes/mattersim/0/RotationalInvariance/plots.csv
       hash: md5
-      md5: 2bde6d882f64043daf58e44cf084e23e
-      size: 1333
+      md5: 04863a2bd94663f89c19c67b6cd512ef
+      size: 1334
   mattersim_0_PermutationInvariance:
     cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name mattersim_0_PermutationInvariance
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         mattersim_0_PermutationInvariance:
@@ -493,27 +493,27 @@ stages:
     outs:
     - path: nodes/mattersim/0/PermutationInvariance/frames.xyz
       hash: md5
-      md5: 1b409395466af84044d0287f895045bf
-      size: 165300
+      md5: dcfdeb8947365581bbd02854e2e6c08c
+      size: 166600
     - path: nodes/mattersim/0/PermutationInvariance/metrics.json
       hash: md5
-      md5: 4e4427ee1edb555656e7147e83f02c3f
-      size: 40
+      md5: c3f647b49c56d0c21a3bf5d265c517fa
+      size: 54
     - path: nodes/mattersim/0/PermutationInvariance/node-meta.json
       hash: md5
-      md5: e781deaac25d66bceb3516f0d782411b
-      size: 64
+      md5: e2a9bf9e8763d14abb5267111677946b
+      size: 154
     - path: nodes/mattersim/0/PermutationInvariance/plots.csv
       hash: md5
-      md5: 1c1c42ccb7cb6a2c7fa26e80401d4b2c
-      size: 1298
+      md5: 5c78c1d8115811a0908308493c453d69
+      size: 1398
   mattersim_0_TranslationalInvariance:
     cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name mattersim_0_TranslationalInvariance
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         mattersim_0_TranslationalInvariance:
@@ -528,17 +528,656 @@ stages:
     outs:
     - path: nodes/mattersim/0/TranslationalInvariance/frames.xyz
       hash: md5
-      md5: 46b9c42ac7326387e45bd50371a4fb84
-      size: 165318
+      md5: 153e5cc8c9b7db106838d46ce91be347
+      size: 166635
     - path: nodes/mattersim/0/TranslationalInvariance/metrics.json
       hash: md5
-      md5: 7d4ad028825f3dc04b1f1dd31af3ad8a
+      md5: be2aa3d385e31e727354f6a07971ff6d
       size: 58
     - path: nodes/mattersim/0/TranslationalInvariance/node-meta.json
       hash: md5
-      md5: 5637f1d232f8039a0a364fd6daa150b4
-      size: 64
+      md5: 03055e2e0bb4cfe39c0d5397a7478a30
+      size: 153
     - path: nodes/mattersim/0/TranslationalInvariance/plots.csv
       hash: md5
-      md5: f1d21493378826913984aa19aa0dc61b
-      size: 1316
+      md5: 840905648f6335efc7e1f6954d4022a9
+      size: 1335
+  orb-v3_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name orb-v3_0_RotationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v3_0_RotationalInvariance:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          n_points: 100
+    outs:
+    - path: nodes/orb-v3/0/RotationalInvariance/frames.xyz
+      hash: md5
+      md5: f9c618446cdbc067f118a016b954123f
+      size: 174832
+    - path: nodes/orb-v3/0/RotationalInvariance/metrics.json
+      hash: md5
+      md5: 8feb6214155c2b0d739638b3914e9e6a
+      size: 58
+    - path: nodes/orb-v3/0/RotationalInvariance/node-meta.json
+      hash: md5
+      md5: b039a301769bf39615cd338e14ee5578
+      size: 155
+    - path: nodes/orb-v3/0/RotationalInvariance/plots.csv
+      hash: md5
+      md5: 43f749f90cb6a9960445fb6ebf551126
+      size: 2187
+  7net-0_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name 7net-0_0_TranslationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-0_0_TranslationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          n_points: 100
+    outs:
+    - path: nodes/7net-0/0/TranslationalInvariance/frames.xyz
+      hash: md5
+      md5: 85f3bd9c35842566e810c92a1a99e9ef
+      size: 185052
+    - path: nodes/7net-0/0/TranslationalInvariance/metrics.json
+      hash: md5
+      md5: d6a930db0add0fe7d291479ec6e2e022
+      size: 58
+    - path: nodes/7net-0/0/TranslationalInvariance/node-meta.json
+      hash: md5
+      md5: a86e1c99841e2b42b6d92d1b565261bc
+      size: 154
+    - path: nodes/7net-0/0/TranslationalInvariance/plots.csv
+      hash: md5
+      md5: 3cb21d0a3f44185893f8e7e97b06b20f
+      size: 2165
+  orb-v2_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name orb-v2_0_PermutationInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v2_0_PermutationInvariance:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          n_points: 100
+    outs:
+    - path: nodes/orb-v2/0/PermutationInvariance/frames.xyz
+      hash: md5
+      md5: f17fe75e10fbbb7e3a771b98138e5b53
+      size: 167100
+    - path: nodes/orb-v2/0/PermutationInvariance/metrics.json
+      hash: md5
+      md5: 238c3ca3f6b4d1aeadd7e906d33b9b72
+      size: 40
+    - path: nodes/orb-v2/0/PermutationInvariance/node-meta.json
+      hash: md5
+      md5: 3f06d95a567b7c2d9740ae66b2fd8abf
+      size: 155
+    - path: nodes/orb-v2/0/PermutationInvariance/plots.csv
+      hash: md5
+      md5: ecd5c1252f5aeb871099d227f54f5f05
+      size: 2198
+  GRACE-2L-OMAT_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name GRACE-2L-OMAT_0_RotationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_0_RotationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          n_points: 100
+    outs:
+    - path: nodes/GRACE-2L-OMAT/0/RotationalInvariance/frames.xyz
+      hash: md5
+      md5: f81b8798a3ded179548258cd164bc174
+      size: 174728
+    - path: nodes/GRACE-2L-OMAT/0/RotationalInvariance/metrics.json
+      hash: md5
+      md5: 80f496c5e26b3ed7deba073c88f593d3
+      size: 58
+    - path: nodes/GRACE-2L-OMAT/0/RotationalInvariance/node-meta.json
+      hash: md5
+      md5: e22490dd1573dc307fb8740ac16cb1fe
+      size: 155
+    - path: nodes/GRACE-2L-OMAT/0/RotationalInvariance/plots.csv
+      hash: md5
+      md5: 8e0130713733467ab4236c2b8d003ab3
+      size: 2179
+  orb-v3_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name orb-v3_0_TranslationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v3_0_TranslationalInvariance:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          n_points: 100
+    outs:
+    - path: nodes/orb-v3/0/TranslationalInvariance/frames.xyz
+      hash: md5
+      md5: f3eafdc05fab6dffb397d4445c9a0ab3
+      size: 167145
+    - path: nodes/orb-v3/0/TranslationalInvariance/metrics.json
+      hash: md5
+      md5: d6e2c00d75d53ca9b7f8ef41be28d986
+      size: 58
+    - path: nodes/orb-v3/0/TranslationalInvariance/node-meta.json
+      hash: md5
+      md5: f83817c2229f2e5e304e50ad389406bc
+      size: 155
+    - path: nodes/orb-v3/0/TranslationalInvariance/plots.csv
+      hash: md5
+      md5: c8197daffaa7b7d750b5e0c943b1b685
+      size: 2181
+  GRACE-2L-OMAT_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name GRACE-2L-OMAT_0_PermutationInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_0_PermutationInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          n_points: 100
+    outs:
+    - path: nodes/GRACE-2L-OMAT/0/PermutationInvariance/frames.xyz
+      hash: md5
+      md5: 7a624334a3fd145c54048430d859bd53
+      size: 167300
+    - path: nodes/GRACE-2L-OMAT/0/PermutationInvariance/metrics.json
+      hash: md5
+      md5: b2b1952666b402b6c3df477c2769f63d
+      size: 40
+    - path: nodes/GRACE-2L-OMAT/0/PermutationInvariance/node-meta.json
+      hash: md5
+      md5: 06b7d5f3b2453f5758b1b9c9ae51e291
+      size: 155
+    - path: nodes/GRACE-2L-OMAT/0/PermutationInvariance/plots.csv
+      hash: md5
+      md5: 97ec5081604b8da3141e0719c0103e7b
+      size: 2198
+  GRACE-2L-OMAT_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name GRACE-2L-OMAT_0_TranslationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_0_TranslationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          n_points: 100
+    outs:
+    - path: nodes/GRACE-2L-OMAT/0/TranslationalInvariance/frames.xyz
+      hash: md5
+      md5: d8899adad7eb31eda10b856976603ebc
+      size: 167120
+    - path: nodes/GRACE-2L-OMAT/0/TranslationalInvariance/metrics.json
+      hash: md5
+      md5: d2f098c3c1394f0069743feb0b2ec1e3
+      size: 58
+    - path: nodes/GRACE-2L-OMAT/0/TranslationalInvariance/node-meta.json
+      hash: md5
+      md5: a010d595d8cb8a0bcd4c56aa10d1cb40
+      size: 155
+    - path: nodes/GRACE-2L-OMAT/0/TranslationalInvariance/plots.csv
+      hash: md5
+      md5: f59ae74a96ec8dc0fbe3112f9b65ecac
+      size: 2170
+  orb-v2_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name orb-v2_0_TranslationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v2_0_TranslationalInvariance:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          n_points: 100
+    outs:
+    - path: nodes/orb-v2/0/TranslationalInvariance/frames.xyz
+      hash: md5
+      md5: 63b0ed18e286c384cc57ffa8722d00d2
+      size: 167284
+    - path: nodes/orb-v2/0/TranslationalInvariance/metrics.json
+      hash: md5
+      md5: 34cf74dbcd799e5783fd6676656f057f
+      size: 58
+    - path: nodes/orb-v2/0/TranslationalInvariance/node-meta.json
+      hash: md5
+      md5: 63aef041c23e342dd0e24944470d46e1
+      size: 155
+    - path: nodes/orb-v2/0/TranslationalInvariance/plots.csv
+      hash: md5
+      md5: ef2763a146fb6201968f0581686220c8
+      size: 2145
+  7net-0_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name 7net-0_0_RotationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-0_0_RotationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          n_points: 100
+    outs:
+    - path: nodes/7net-0/0/RotationalInvariance/frames.xyz
+      hash: md5
+      md5: 696e1c5a8217741b30d2d51ca0cce65a
+      size: 193265
+    - path: nodes/7net-0/0/RotationalInvariance/metrics.json
+      hash: md5
+      md5: 0d5fc79476f9e2a074482e28097755dd
+      size: 58
+    - path: nodes/7net-0/0/RotationalInvariance/node-meta.json
+      hash: md5
+      md5: 89b62c1e6f2702583c56bf6c1bb5ae1e
+      size: 154
+    - path: nodes/7net-0/0/RotationalInvariance/plots.csv
+      hash: md5
+      md5: 257de32ff62073fa5a6671fe2b4e6fdc
+      size: 2176
+  7net-mf-ompa-mpa_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name 7net-mf-ompa-mpa_0_PermutationInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_0_PermutationInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          n_points: 100
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/0/PermutationInvariance/frames.xyz
+      hash: md5
+      md5: d6f3fc3b9478deedc33414b71f1995ad
+      size: 185300
+    - path: nodes/7net-mf-ompa-mpa/0/PermutationInvariance/metrics.json
+      hash: md5
+      md5: 0d0d49d793b218700d3c27276a69e71c
+      size: 40
+    - path: nodes/7net-mf-ompa-mpa/0/PermutationInvariance/node-meta.json
+      hash: md5
+      md5: 51e8872b6140309bd605a5da9e67e837
+      size: 154
+    - path: nodes/7net-mf-ompa-mpa/0/PermutationInvariance/plots.csv
+      hash: md5
+      md5: 9593f3d8453706dd325d60c86fe8070b
+      size: 2198
+  7net-mf-ompa-mpa_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name 7net-mf-ompa-mpa_0_TranslationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_0_TranslationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          n_points: 100
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/0/TranslationalInvariance/frames.xyz
+      hash: md5
+      md5: 1dffe6e528f7e7c58bd116d1247c81a4
+      size: 185531
+    - path: nodes/7net-mf-ompa-mpa/0/TranslationalInvariance/metrics.json
+      hash: md5
+      md5: 3a4bde0cd7905ce30eb7cf67a79c7011
+      size: 58
+    - path: nodes/7net-mf-ompa-mpa/0/TranslationalInvariance/node-meta.json
+      hash: md5
+      md5: 3ffe3b55657c4cbd7e50f13fff7fd0e6
+      size: 155
+    - path: nodes/7net-mf-ompa-mpa/0/TranslationalInvariance/plots.csv
+      hash: md5
+      md5: b6ea5af67e874e955fd6335eb784cb55
+      size: 2158
+  7net-mf-ompa-mpa_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name 7net-mf-ompa-mpa_0_RotationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_0_RotationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          n_points: 100
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/0/RotationalInvariance/frames.xyz
+      hash: md5
+      md5: f8522e10ee1871dc6c703ec9f113d885
+      size: 193040
+    - path: nodes/7net-mf-ompa-mpa/0/RotationalInvariance/metrics.json
+      hash: md5
+      md5: 8afa39a141b08b5fb2156dd4de3f0e77
+      size: 59
+    - path: nodes/7net-mf-ompa-mpa/0/RotationalInvariance/node-meta.json
+      hash: md5
+      md5: 93bbb049514f3886f9bbd976caf5e9d8
+      size: 155
+    - path: nodes/7net-mf-ompa-mpa/0/RotationalInvariance/plots.csv
+      hash: md5
+      md5: b3c0b493fe5c9f749ed8960abcdffaf5
+      size: 2163
+  7net-0_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name 7net-0_0_PermutationInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-0_0_PermutationInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          n_points: 100
+    outs:
+    - path: nodes/7net-0/0/PermutationInvariance/frames.xyz
+      hash: md5
+      md5: 806dbf35cebe898ea4a9f78af6d3e298
+      size: 185000
+    - path: nodes/7net-0/0/PermutationInvariance/metrics.json
+      hash: md5
+      md5: 59e59504cc43884e6940b27f05331e78
+      size: 40
+    - path: nodes/7net-0/0/PermutationInvariance/node-meta.json
+      hash: md5
+      md5: 37246a56a5e7491b09e8f141d47bf52c
+      size: 154
+    - path: nodes/7net-0/0/PermutationInvariance/plots.csv
+      hash: md5
+      md5: 9b1f6c751de2079d1bb471d88eb8b924
+      size: 2198
+  orb-v3_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name orb-v3_0_PermutationInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v3_0_PermutationInvariance:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          n_points: 100
+    outs:
+    - path: nodes/orb-v3/0/PermutationInvariance/frames.xyz
+      hash: md5
+      md5: 1f3c52051aafc1531b8b6164e59b9a84
+      size: 166800
+    - path: nodes/orb-v3/0/PermutationInvariance/metrics.json
+      hash: md5
+      md5: 0519e7433d4a1bb5c2e0537e1a61de38
+      size: 40
+    - path: nodes/orb-v3/0/PermutationInvariance/node-meta.json
+      hash: md5
+      md5: 92d4d5c9659cc7450584a9b30ab28bfa
+      size: 155
+    - path: nodes/orb-v3/0/PermutationInvariance/plots.csv
+      hash: md5
+      md5: 889bc2d49dcc912af90d67a9ba01e115
+      size: 2198
+  orb-v2_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name orb-v2_0_RotationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v2_0_RotationalInvariance:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          n_points: 100
+    outs:
+    - path: nodes/orb-v2/0/RotationalInvariance/frames.xyz
+      hash: md5
+      md5: 0183ba77afec86c5460efba20c5ebfc2
+      size: 175131
+    - path: nodes/orb-v2/0/RotationalInvariance/metrics.json
+      hash: md5
+      md5: f49be10ad32ddde9e52c16fed0cd64ca
+      size: 57
+    - path: nodes/orb-v2/0/RotationalInvariance/node-meta.json
+      hash: md5
+      md5: ea63136c7866fb312cd7888db0b503ba
+      size: 155
+    - path: nodes/orb-v2/0/RotationalInvariance/plots.csv
+      hash: md5
+      md5: a13b2585cfc8ad2031f075af41c75db7
+      size: 2177
+  MACE-MPA-0_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name MACE-MPA-0_0_TranslationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        MACE-MPA-0_0_TranslationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          n_points: 100
+    outs:
+    - path: nodes/MACE-MPA-0/0/TranslationalInvariance/frames.xyz
+      hash: md5
+      md5: 83e71c214d07cfc3908caab3ff267ac9
+      size: 166811
+    - path: nodes/MACE-MPA-0/0/TranslationalInvariance/metrics.json
+      hash: md5
+      md5: c2d80e05ec43182dae6ac9390cf38106
+      size: 58
+    - path: nodes/MACE-MPA-0/0/TranslationalInvariance/node-meta.json
+      hash: md5
+      md5: 9b4ea90502667e91bc3c4a6fcad50a58
+      size: 154
+    - path: nodes/MACE-MPA-0/0/TranslationalInvariance/plots.csv
+      hash: md5
+      md5: 2189b5fd05f75859ab2d9aae7efbfbb4
+      size: 2084
+  MACE-MPA-0_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name MACE-MPA-0_0_PermutationInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        MACE-MPA-0_0_PermutationInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          n_points: 100
+    outs:
+    - path: nodes/MACE-MPA-0/0/PermutationInvariance/frames.xyz
+      hash: md5
+      md5: 14b340268df3007afedab067febb28fc
+      size: 167200
+    - path: nodes/MACE-MPA-0/0/PermutationInvariance/metrics.json
+      hash: md5
+      md5: 8ec31fe4f01bd8acae894383d4e84300
+      size: 40
+    - path: nodes/MACE-MPA-0/0/PermutationInvariance/node-meta.json
+      hash: md5
+      md5: cbcc7b4eb5590cda8c0a3a10a2ac3fe5
+      size: 154
+    - path: nodes/MACE-MPA-0/0/PermutationInvariance/plots.csv
+      hash: md5
+      md5: 0d0ad419e9d9d325a2d24328c186f72f
+      size: 2198
+  MACE-MPA-0_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name MACE-MPA-0_0_RotationalInvariance
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        MACE-MPA-0_0_RotationalInvariance:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          n_points: 100
+    outs:
+    - path: nodes/MACE-MPA-0/0/RotationalInvariance/frames.xyz
+      hash: md5
+      md5: 06c890b30dff1d679108b80195ceedae
+      size: 174579
+    - path: nodes/MACE-MPA-0/0/RotationalInvariance/metrics.json
+      hash: md5
+      md5: 03aee63faf14706c79ef0b951c6004c6
+      size: 58
+    - path: nodes/MACE-MPA-0/0/RotationalInvariance/node-meta.json
+      hash: md5
+      md5: 34a87f82c56626791013fc6e23d08d8a
+      size: 154
+    - path: nodes/MACE-MPA-0/0/RotationalInvariance/plots.csv
+      hash: md5
+      md5: 7eb96ba462f5edf0c100322b02b5de9e
+      size: 2090

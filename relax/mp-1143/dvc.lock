@@ -766,3 +766,210 @@ stages:
       hash: md5
       md5: 2bbc8ed4eef0275f20400b4da806fdf7
       size: 220
+  GRACE-2L-OMAT_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      GRACE-2L-OMAT_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/GRACE-2L-OMAT/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 79bb067e8b2b343e6b3d5a71a7a3058e
+      size: 10775
+    - path: nodes/GRACE-2L-OMAT/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 09c8a0f8cc11944606ee1490f73a919c
+      size: 153
+    - path: nodes/GRACE-2L-OMAT/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: c3cd530acf43bf52c0b4f1261759d004
+      size: 379
+  orb-v2_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb-v2_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        orb-v2_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/orb-v2/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 70692b04cf5162a1a999e2dda542cc63
+      size: 9715
+    - path: nodes/orb-v2/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 1ea976f86fddbfcf4ed320014aa3b3f5
+      size: 155
+    - path: nodes/orb-v2/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: aa2bf93a27c3d03a1b00843bf2dea046
+      size: 296
+  orb-v3_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb-v3_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        orb-v3_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/orb-v3/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: adfa37f0bd2c7743e3c6efc4624b0156
+      size: 9693
+    - path: nodes/orb-v3/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 46c92847fd4d594db4798df415b1c171
+      size: 154
+    - path: nodes/orb-v3/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: 4061714a3c5aee608b60c1ec545bf0bb
+      size: 296
+  7net-mf-ompa-mpa_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      7net-mf-ompa-mpa_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 5acf4e6e876e4fed0b2f809659676e9e
+      size: 10544
+    - path: nodes/7net-mf-ompa-mpa/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 17079a413e865107ae41f9317ddf0ca1
+      size: 154
+    - path: nodes/7net-mf-ompa-mpa/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: 6a45e3f636fb1e127f3e6c897f2f5bd3
+      size: 297
+  7net-0_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      7net-0_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        7net-0_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/7net-0/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: fb7a445bd85092b6350688aec9fff67f
+      size: 11680
+    - path: nodes/7net-0/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 4484a21771c4f9a4053929f590f1c3f4
+      size: 154
+    - path: nodes/7net-0/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: f436da2cc3fa76d6c2ae9d3d5629668c
+      size: 329
+  MACE-MPA-0_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      MACE-MPA-0_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        MACE-MPA-0_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/MACE-MPA-0/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 8006bb71887dce6bddb9a557d2072d3b
+      size: 9696
+    - path: nodes/MACE-MPA-0/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: e21be67757d4e0fcd099bb469f26644a
+      size: 154
+    - path: nodes/MACE-MPA-0/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: add4c51e7586962801fb7a378a51bbdd
+      size: 296

@@ -213,16 +213,16 @@
             "value": "$nwd$/model_outs"
         }
     },
-    "GRACE-2L-OMAT_HomonuclearDiatomics": {
+    "orca_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/HomonuclearDiatomics"
+            "value": "nodes/orca/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
             "value": {
-                "module": "mlipx.nodes.generic_ase",
-                "cls": "GenericASECalculator"
+                "module": "mlipx.nodes.orca",
+                "cls": "OrcaSinglePoint"
             }
         },
         "data": {
@@ -247,16 +247,16 @@
             "value": "$nwd$/model_outs"
         }
     },
-    "orca_HomonuclearDiatomics": {
+    "GRACE-2L-OMAT_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orca/HomonuclearDiatomics"
+            "value": "nodes/GRACE-2L-OMAT/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
             "value": {
-                "module": "mlipx.nodes.orca",
-                "cls": "OrcaSinglePoint"
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
             }
         },
         "data": {

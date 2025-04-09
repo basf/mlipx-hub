@@ -1,3 +1,68 @@
+7net-0_0_RelaxAdsorptionConfigs:
+  adsorbate_id: -1
+  fmax: 0.05
+  height: 2.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  mol_index: 0
+  optimizer: LBFGS
+  position: all
+  slab_id: -1
+  steps: 300
+7net-mf-ompa-mpa_0_RelaxAdsorptionConfigs:
+  adsorbate_id: -1
+  fmax: 0.05
+  height: 2.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+  mol_index: 0
+  optimizer: LBFGS
+  position: all
+  slab_id: -1
+  steps: 300
+GRACE-2L-OMAT_0_RelaxAdsorptionConfigs:
+  adsorbate_id: -1
+  fmax: 0.05
+  height: 2.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  mol_index: 0
+  optimizer: LBFGS
+  position: all
+  slab_id: -1
+  steps: 300
+MACE-MPA-0_0_RelaxAdsorptionConfigs:
+  adsorbate_id: -1
+  fmax: 0.05
+  height: 2.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  mol_index: 0
+  optimizer: LBFGS
+  position: all
+  slab_id: -1
+  steps: 300
 initialize_BuildASEslab:
   a: null
   c: false
@@ -15,22 +80,6 @@ initialize_Smiles2Conformers:
   num_confs: 1
   random_seed: 42
   smiles: CCO
-mace_mp_0_RelaxAdsorptionConfigs:
-  adsorbate_id: -1
-  fmax: 0.05
-  height: 2.1
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: medium
-    module: mace.calculators
-  mol_index: 0
-  optimizer: LBFGS
-  position: all
-  slab_id: -1
-  steps: 300
 mattersim_0_RelaxAdsorptionConfigs:
   adsorbate_id: -1
   fmax: 0.05
@@ -46,30 +95,29 @@ mattersim_0_RelaxAdsorptionConfigs:
   position: all
   slab_id: -1
   steps: 300
-orb_v2_0_RelaxAdsorptionConfigs:
+orb-v2_0_RelaxAdsorptionConfigs:
   adsorbate_id: -1
   fmax: 0.05
   height: 2.1
   model:
     _cls: models.OrbCalc
     device: auto
+    kwargs: {}
     name: orb_v2
   mol_index: 0
   optimizer: LBFGS
   position: all
   slab_id: -1
   steps: 300
-sevennet_0_RelaxAdsorptionConfigs:
+orb-v3_0_RelaxAdsorptionConfigs:
   adsorbate_id: -1
   fmax: 0.05
   height: 2.1
   model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: SevenNetCalculator
+    _cls: models.OrbCalc
     device: auto
-    kwargs:
-      model: 7net-0
-    module: sevenn.sevennet_calculator
+    kwargs: {}
+    name: orb_v3_conservative_inf_omat
   mol_index: 0
   optimizer: LBFGS
   position: all

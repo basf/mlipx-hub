@@ -1,9 +1,65 @@
 stages:
+  7net-0_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name 7net-0_0_RelaxAdsorptionConfigs
+    deps:
+    - nodes/initialize/BuildASEslab/frames.traj
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/7net-0/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/7net-0/0/RelaxAdsorptionConfigs/node-meta.json:
+        cache: true
+    outs:
+    - nodes/7net-0/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/7net-0/0/RelaxAdsorptionConfigs/relax
+    params:
+    - 7net-0_0_RelaxAdsorptionConfigs
+  7net-mf-ompa-mpa_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name 7net-mf-ompa-mpa_0_RelaxAdsorptionConfigs
+    deps:
+    - nodes/initialize/BuildASEslab/frames.traj
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/7net-mf-ompa-mpa/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/7net-mf-ompa-mpa/0/RelaxAdsorptionConfigs/node-meta.json:
+        cache: true
+    outs:
+    - nodes/7net-mf-ompa-mpa/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/7net-mf-ompa-mpa/0/RelaxAdsorptionConfigs/relax
+    params:
+    - 7net-mf-ompa-mpa_0_RelaxAdsorptionConfigs
+  GRACE-2L-OMAT_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name GRACE-2L-OMAT_0_RelaxAdsorptionConfigs
+    deps:
+    - nodes/initialize/BuildASEslab/frames.traj
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/node-meta.json:
+        cache: true
+    outs:
+    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/relax
+    params:
+    - GRACE-2L-OMAT_0_RelaxAdsorptionConfigs
+  MACE-MPA-0_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name MACE-MPA-0_0_RelaxAdsorptionConfigs
+    deps:
+    - nodes/initialize/BuildASEslab/frames.traj
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/node-meta.json:
+        cache: true
+    outs:
+    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/relax
+    params:
+    - MACE-MPA-0_0_RelaxAdsorptionConfigs
   initialize_BuildASEslab:
     cmd: zntrack run mlipx.nodes.adsorption.BuildASEslab --name initialize_BuildASEslab
     metrics:
     - nodes/initialize/BuildASEslab/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/initialize/BuildASEslab/frames.traj
     params:
@@ -12,68 +68,50 @@ stages:
     cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers
     metrics:
     - nodes/initialize/Smiles2Conformers/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     params:
     - initialize_Smiles2Conformers
-  mace_mp_0_RelaxAdsorptionConfigs:
-    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name mace_mp_0_RelaxAdsorptionConfigs
-    deps:
-    - nodes/initialize/BuildASEslab/frames.traj
-    - nodes/initialize/Smiles2Conformers/frames.xyz
-    metrics:
-    - nodes/mace_mp/0/RelaxAdsorptionConfigs/ads_energies.json:
-        cache: false
-    - nodes/mace_mp/0/RelaxAdsorptionConfigs/node-meta.json:
-        cache: false
-    outs:
-    - nodes/mace_mp/0/RelaxAdsorptionConfigs/frames.traj
-    - nodes/mace_mp/0/RelaxAdsorptionConfigs/relax
-    params:
-    - mace_mp_0_RelaxAdsorptionConfigs
   mattersim_0_RelaxAdsorptionConfigs:
     cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name mattersim_0_RelaxAdsorptionConfigs
     deps:
     - nodes/initialize/BuildASEslab/frames.traj
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
-    - nodes/mattersim/0/RelaxAdsorptionConfigs/ads_energies.json:
-        cache: false
+    - nodes/mattersim/0/RelaxAdsorptionConfigs/ads_energies.json
     - nodes/mattersim/0/RelaxAdsorptionConfigs/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/mattersim/0/RelaxAdsorptionConfigs/frames.traj
     - nodes/mattersim/0/RelaxAdsorptionConfigs/relax
     params:
     - mattersim_0_RelaxAdsorptionConfigs
-  orb_v2_0_RelaxAdsorptionConfigs:
-    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name orb_v2_0_RelaxAdsorptionConfigs
+  orb-v2_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name orb-v2_0_RelaxAdsorptionConfigs
     deps:
     - nodes/initialize/BuildASEslab/frames.traj
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
-    - nodes/orb_v2/0/RelaxAdsorptionConfigs/ads_energies.json:
-        cache: false
-    - nodes/orb_v2/0/RelaxAdsorptionConfigs/node-meta.json:
-        cache: false
+    - nodes/orb-v2/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/orb-v2/0/RelaxAdsorptionConfigs/node-meta.json:
+        cache: true
     outs:
-    - nodes/orb_v2/0/RelaxAdsorptionConfigs/frames.traj
-    - nodes/orb_v2/0/RelaxAdsorptionConfigs/relax
+    - nodes/orb-v2/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/orb-v2/0/RelaxAdsorptionConfigs/relax
     params:
-    - orb_v2_0_RelaxAdsorptionConfigs
-  sevennet_0_RelaxAdsorptionConfigs:
-    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name sevennet_0_RelaxAdsorptionConfigs
+    - orb-v2_0_RelaxAdsorptionConfigs
+  orb-v3_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name orb-v3_0_RelaxAdsorptionConfigs
     deps:
     - nodes/initialize/BuildASEslab/frames.traj
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
-    - nodes/sevennet/0/RelaxAdsorptionConfigs/ads_energies.json:
-        cache: false
-    - nodes/sevennet/0/RelaxAdsorptionConfigs/node-meta.json:
-        cache: false
+    - nodes/orb-v3/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/orb-v3/0/RelaxAdsorptionConfigs/node-meta.json:
+        cache: true
     outs:
-    - nodes/sevennet/0/RelaxAdsorptionConfigs/frames.traj
-    - nodes/sevennet/0/RelaxAdsorptionConfigs/relax
+    - nodes/orb-v3/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/orb-v3/0/RelaxAdsorptionConfigs/relax
     params:
-    - sevennet_0_RelaxAdsorptionConfigs
+    - orb-v3_0_RelaxAdsorptionConfigs

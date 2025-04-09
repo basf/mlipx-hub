@@ -671,3 +671,83 @@ stages:
       hash: md5
       md5: 52207e8820b3778cb86f3ea96e526726
       size: 126
+  MACE-MPA-0_ApplyCalculator:
+    cmd: zntrack run mlipx.nodes.apply_calculator.ApplyCalculator --name MACE-MPA-0_ApplyCalculator
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: d698bbefc7956d101a2ce01ed3d72b3c
+      size: 153
+    params:
+      params.yaml:
+        MACE-MPA-0_ApplyCalculator:
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+    outs:
+    - path: nodes/MACE-MPA-0/ApplyCalculator/frames.h5
+      hash: md5
+      md5: a4fca7ced530b3ffbb6c9006364f02ed
+      size: 474184
+    - path: nodes/MACE-MPA-0/ApplyCalculator/node-meta.json
+      hash: md5
+      md5: 5b095d7da1c89b90244cd547ceee7969
+      size: 155
+  MACE-MPA-0_EvaluateCalculatorResults:
+    cmd: zntrack run mlipx.nodes.evaluate_calculator.EvaluateCalculatorResults --name
+      MACE-MPA-0_EvaluateCalculatorResults
+    deps:
+    - path: nodes/MACE-MPA-0/ApplyCalculator/frames.h5
+      hash: md5
+      md5: a4fca7ced530b3ffbb6c9006364f02ed
+      size: 474184
+    outs:
+    - path: nodes/MACE-MPA-0/EvaluateCalculatorResults/node-meta.json
+      hash: md5
+      md5: 420a715a09e6909426d68c26fda4d2fd
+      size: 154
+    - path: nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv
+      hash: md5
+      md5: 517d6e9ec43d136be6c41d6d187e7864
+      size: 7131
+  MACE-MPA-0_CompareCalculatorResults:
+    cmd: zntrack run mlipx.nodes.compare_calculator.CompareCalculatorResults --name
+      MACE-MPA-0_CompareCalculatorResults
+    deps:
+    - path: nodes/MACE-MPA-0/EvaluateCalculatorResults/node-meta.json
+      hash: md5
+      md5: 420a715a09e6909426d68c26fda4d2fd
+      size: 154
+    - path: nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv
+      hash: md5
+      md5: 517d6e9ec43d136be6c41d6d187e7864
+      size: 7131
+    - path: nodes/reference/EvaluateCalculatorResults/node-meta.json
+      hash: md5
+      md5: 15e4c32030e55eaf97d66c71c74c9739
+      size: 154
+    - path: nodes/reference/EvaluateCalculatorResults/plots.csv
+      hash: md5
+      md5: f0ac23343b3ca6627eb642e08c8e8dc4
+      size: 7211
+    outs:
+    - path: nodes/MACE-MPA-0/CompareCalculatorResults/error.json
+      hash: md5
+      md5: 7b6493362a3803f850302039bdf0c562
+      size: 329
+    - path: nodes/MACE-MPA-0/CompareCalculatorResults/node-meta.json
+      hash: md5
+      md5: 13daf12448a1f107191c36af8c06e75b
+      size: 153
+    - path: nodes/MACE-MPA-0/CompareCalculatorResults/plots.csv
+      hash: md5
+      md5: 2adf412549f0aa726b4ddb896528e159
+      size: 9182
+    - path: nodes/MACE-MPA-0/CompareCalculatorResults/rmse.json
+      hash: md5
+      md5: b7303404159e62e6c3c03f37330e5e6e
+      size: 126

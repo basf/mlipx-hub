@@ -118,7 +118,6 @@ MODELS = {
     "orb-v2": ALL_MODELS["orb-v2"],
     "orb-v3": ALL_MODELS["orb-v3"],
     "mattersim": ALL_MODELS["mattersim"],
-    "orca": ALL_MODELS["orca"],
     "GRACE-2L-OMAT": ALL_MODELS["GRACE-2L-OMAT"],
     "chgnet": ALL_MODELS["chgnet"],
 }

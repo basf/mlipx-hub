@@ -182,3 +182,204 @@ stages:
       hash: md5
       md5: 6f321306723e64768132e90ef8959bd4
       size: 3067
+  7net-mf-ompa-mpa_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name 7net-mf-ompa-mpa_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: 8c545ea805de0f5a1943bacb54793f6d
+      size: 96156
+    - path: nodes/7net-mf-ompa-mpa/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: 17d7bdd59f7630cf4c6a2cde4c72bbd0
+      size: 155
+    - path: nodes/7net-mf-ompa-mpa/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: 32ae5f986eb72dce2f1d32965a8f97f5
+      size: 3498
+  7net-0_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name 7net-0_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-0_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/7net-0/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: 0d03c567c09897014ee74311b51061b7
+      size: 96135
+    - path: nodes/7net-0/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: e991d7278c727cfcdbb2eab622b66115
+      size: 154
+    - path: nodes/7net-0/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: dee642e7176c194f3524cc6e3f78d960
+      size: 3496
+  GRACE-2L-OMAT_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name GRACE-2L-OMAT_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: cdd251f9d21f245e5db7f69562f4938b
+      size: 86996
+    - path: nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: 6bb848ec53bdea060d4f457db4eeef80
+      size: 155
+    - path: nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: 8b072202e9ffb993c397552c27ca7fd8
+      size: 3934
+  orb-v3_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name orb-v3_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v3_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/orb-v3/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: 147043ddac91f9104cca4147b277e46b
+      size: 87003
+    - path: nodes/orb-v3/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: a7463824f9b90a539a94397bee67b14b
+      size: 155
+    - path: nodes/orb-v3/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: 30cb710e63ff964e72dd19df4e1c8895
+      size: 3501
+  orb-v2_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name orb-v2_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v2_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/orb-v2/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: 83fb9c91fdef571464dd2d4f9d7ee0ec
+      size: 87268
+    - path: nodes/orb-v2/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: bdd4ecfc446288fdf639c6dd92883c1c
+      size: 155
+    - path: nodes/orb-v2/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: 9b7900f0d377112dde1a865ea8fd0094
+      size: 3524
+  MACE-MPA-0_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name MACE-MPA-0_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        MACE-MPA-0_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/MACE-MPA-0/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: b17b17666a0b5e3e7750f80df426c167
+      size: 86991
+    - path: nodes/MACE-MPA-0/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: 1945a324db55b7dbe20ffbfe1d2726b1
+      size: 154
+    - path: nodes/MACE-MPA-0/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: ba7cfa9a4a6ff77bf9e4ef5956f2e422
+      size: 3487

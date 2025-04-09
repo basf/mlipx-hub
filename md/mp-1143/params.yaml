@@ -1,3 +1,100 @@
+7net-0_0_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  modifiers:
+  - _cls: mlipx.nodes.modifier.TemperatureRampModifier
+    end_temperature: 400
+    interval: 1
+    start_temperature: null
+    total_steps: 100
+  observers:
+  - _cls: mlipx.nodes.observer.MaximumForceObserver
+    f_max: 100
+  steps: 1000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 300
+    timestep: 0.5
+7net-mf-ompa-mpa_0_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+  modifiers:
+  - _cls: mlipx.nodes.modifier.TemperatureRampModifier
+    end_temperature: 400
+    interval: 1
+    start_temperature: null
+    total_steps: 100
+  observers:
+  - _cls: mlipx.nodes.observer.MaximumForceObserver
+    f_max: 100
+  steps: 1000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 300
+    timestep: 0.5
+GRACE-2L-OMAT_0_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  modifiers:
+  - _cls: mlipx.nodes.modifier.TemperatureRampModifier
+    end_temperature: 400
+    interval: 1
+    start_temperature: null
+    total_steps: 100
+  observers:
+  - _cls: mlipx.nodes.observer.MaximumForceObserver
+    f_max: 100
+  steps: 1000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 300
+    timestep: 0.5
+MACE-MPA-0_0_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  modifiers:
+  - _cls: mlipx.nodes.modifier.TemperatureRampModifier
+    end_temperature: 400
+    interval: 1
+    start_temperature: null
+    total_steps: 100
+  observers:
+  - _cls: mlipx.nodes.observer.MaximumForceObserver
+    f_max: 100
+  steps: 1000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 300
+    timestep: 0.5
 chgnet_0_MolecularDynamics:
   data_id: -1
   model:
@@ -25,30 +122,6 @@ initialize_MPRester:
   search_kwargs:
     material_ids:
     - mp-1143
-mace_mp_0_MolecularDynamics:
-  data_id: -1
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: medium
-    module: mace.calculators
-  modifiers:
-  - _cls: mlipx.nodes.modifier.TemperatureRampModifier
-    end_temperature: 400
-    interval: 1
-    start_temperature: null
-    total_steps: 100
-  observers:
-  - _cls: mlipx.nodes.observer.MaximumForceObserver
-    f_max: 100
-  steps: 1000
-  thermostat:
-    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
-    friction: 0.05
-    temperature: 300
-    timestep: 0.5
 mattersim_0_MolecularDynamics:
   data_id: -1
   model:
@@ -72,11 +145,12 @@ mattersim_0_MolecularDynamics:
     friction: 0.05
     temperature: 300
     timestep: 0.5
-orb_v2_0_MolecularDynamics:
+orb-v2_0_MolecularDynamics:
   data_id: -1
   model:
     _cls: models.OrbCalc
     device: auto
+    kwargs: {}
     name: orb_v2
   modifiers:
   - _cls: mlipx.nodes.modifier.TemperatureRampModifier
@@ -93,15 +167,13 @@ orb_v2_0_MolecularDynamics:
     friction: 0.05
     temperature: 300
     timestep: 0.5
-sevennet_0_MolecularDynamics:
+orb-v3_0_MolecularDynamics:
   data_id: -1
   model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: SevenNetCalculator
+    _cls: models.OrbCalc
     device: auto
-    kwargs:
-      model: 7net-0
-    module: sevenn.sevennet_calculator
+    kwargs: {}
+    name: orb_v3_conservative_inf_omat
   modifiers:
   - _cls: mlipx.nodes.modifier.TemperatureRampModifier
     end_temperature: 400
