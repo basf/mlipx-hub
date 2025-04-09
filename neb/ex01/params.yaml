@@ -77,33 +77,3 @@ mattersim_NEBs:
   n_steps: 500
   optimizer: FIRE
   relax: true
-orb-v2_NEBs:
-  fmax: 0.05
-  model:
-    _cls: models.OrbCalc
-    device: auto
-    kwargs: {}
-    name: orb_v2
-  n_steps: 500
-  optimizer: FIRE
-  relax: true
-orb-v3_NEBs:
-  fmax: 0.05
-  model:
-    _cls: models.OrbCalc
-    device: auto
-    kwargs: {}
-    name: orb_v3_conservative_inf_omat
-  n_steps: 500
-  optimizer: FIRE
-  relax: true
-orca_NEBs:
-  fmax: 0.05
-  model:
-    _cls: mlipx.nodes.orca.OrcaSinglePoint
-    orca_shell: ''
-    orcablocks: '%pal nprocs 8 end'
-    orcasimpleinput: PBE def2-TZVP TightSCF EnGrad
-  n_steps: 500
-  optimizer: FIRE
-  relax: true

@@ -14,26 +14,11 @@ plots:
       nodes/7net-mf-ompa-mpa/NEBs/results.csv: data_id
     y:
       nodes/7net-mf-ompa-mpa/NEBs/results.csv: potential_energy
-- orb-v2_NEBs_results:
-    x:
-      nodes/orb-v2/NEBs/results.csv: data_id
-    y:
-      nodes/orb-v2/NEBs/results.csv: potential_energy
-- orb-v3_NEBs_results:
-    x:
-      nodes/orb-v3/NEBs/results.csv: data_id
-    y:
-      nodes/orb-v3/NEBs/results.csv: potential_energy
 - mattersim_NEBs_results:
     x:
       nodes/mattersim/NEBs/results.csv: data_id
     y:
       nodes/mattersim/NEBs/results.csv: potential_energy
-- orca_NEBs_results:
-    x:
-      nodes/orca/NEBs/results.csv: data_id
-    y:
-      nodes/orca/NEBs/results.csv: potential_energy
 - GRACE-2L-OMAT_NEBs_results:
     x:
       nodes/GRACE-2L-OMAT/NEBs/results.csv: data_id
@@ -143,42 +128,3 @@ stages:
     - nodes/mattersim/NEBs/results.csv
     params:
     - mattersim_NEBs
-  orb-v2_NEBs:
-    cmd: zntrack run mlipx.nodes.nebs.NEBs --name orb-v2_NEBs
-    deps:
-    - nodes/initialize/NEBinterpolate/initial_frames.xyz
-    metrics:
-    - nodes/orb-v2/NEBs/node-meta.json:
-        cache: true
-    outs:
-    - nodes/orb-v2/NEBs/frames.xyz
-    - nodes/orb-v2/NEBs/neb_trajectory.traj
-    - nodes/orb-v2/NEBs/results.csv
-    params:
-    - orb-v2_NEBs
-  orb-v3_NEBs:
-    cmd: zntrack run mlipx.nodes.nebs.NEBs --name orb-v3_NEBs
-    deps:
-    - nodes/initialize/NEBinterpolate/initial_frames.xyz
-    metrics:
-    - nodes/orb-v3/NEBs/node-meta.json:
-        cache: true
-    outs:
-    - nodes/orb-v3/NEBs/frames.xyz
-    - nodes/orb-v3/NEBs/neb_trajectory.traj
-    - nodes/orb-v3/NEBs/results.csv
-    params:
-    - orb-v3_NEBs
-  orca_NEBs:
-    cmd: zntrack run mlipx.nodes.nebs.NEBs --name orca_NEBs
-    deps:
-    - nodes/initialize/NEBinterpolate/initial_frames.xyz
-    metrics:
-    - nodes/orca/NEBs/node-meta.json:
-        cache: true
-    outs:
-    - nodes/orca/NEBs/frames.xyz
-    - nodes/orca/NEBs/neb_trajectory.traj
-    - nodes/orca/NEBs/results.csv
-    params:
-    - orca_NEBs
