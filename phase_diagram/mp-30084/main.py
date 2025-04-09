@@ -1,14 +1,14 @@
-import zntrack
-from models import MODELS
-
 import mlipx
+import zntrack
+
+from models import MODELS
 
 project = zntrack.Project()
 
 frames = []
 
 with project.group("initialize"):
-    for material_id in ["mp-30084"]:
+    for material_id in ['mp-30084']:
         frames.append(mlipx.MPRester(search_kwargs={"material_ids": [material_id]}))
 
 
