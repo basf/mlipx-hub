@@ -1,4 +1,4 @@
 ```bash
-mlipx recipes metrics --models mace_mp,sevennet,orb_v2,chgnet,mattersim --datapath ../data/DODH_adsorption_dft.xyz --repro
+mlipx recipes metrics --models MACE-MPA-0,7net-0,7net-mf-ompa-mpa,mattersim,GRACE-2L-OMAT,chgnet --datapath ../../data/DODH_adsorption_dft.xyz --repro
 mlipx compare --glob "*CompareCalculatorResults"
 ```
