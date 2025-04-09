@@ -3,35 +3,28 @@ import dataclasses
 import mlipx
 from mlipx.nodes.generic_ase import Device
 
-MODELS = {}
-
-
+ALL_MODELS = {}
 
 # https://github.com/ACEsuit/mace
-MODELS["MACE-MPA-0"] = mlipx.GenericASECalculator(
+ALL_MODELS["MACE-MPA-0"] = mlipx.GenericASECalculator(
     module="mace.calculators",
     class_name="mace_mp",
     device="auto",
     kwargs={"model": "../../models/mace-mpa-0-medium.model"}
 )
-
-
-
 # https://github.com/MDIL-SNU/SevenNet
-MODELS["7net-0"] = mlipx.GenericASECalculator(
+ALL_MODELS["7net-0"] = mlipx.GenericASECalculator(
     module="sevenn.sevennet_calculator",
     class_name="SevenNetCalculator",
     device="auto",
     kwargs={"model": "7net-0"}
 )
-
-MODELS["7net-mf-ompa-mpa"] = mlipx.GenericASECalculator(
+ALL_MODELS["7net-mf-ompa-mpa"] = mlipx.GenericASECalculator(
     module="sevenn.sevennet_calculator",
     class_name="SevenNetCalculator",
     device="auto",
     kwargs={"model": "7net-mf-ompa", "modal": "mpa"}
 )
-
 
 # https://github.com/orbital-materials/orb-models
 @dataclasses.dataclass
@@ -55,27 +48,45 @@ class OrbCalc:
             orbff = method(device=self.device, **self.kwargs)
             calc = ORBCalculator(orbff, device=self.device, **self.kwargs)
         return calc
+    
+    @property
+    def available(self) -> bool:
+        try:
+            from orb_models.forcefield import pretrained
+            from orb_models.forcefield.calculator import ORBCalculator
+            return True
+        except ImportError:
+            return False
 
-MODELS["orb-v2"] = OrbCalc(
+ALL_MODELS["orb-v2"] = OrbCalc(
     name="orb_v2",
     device="auto"
 )
-
-MODELS["orb-v3"] = OrbCalc(
+ALL_MODELS["orb-v3"] = OrbCalc(
     name="orb_v3_conservative_inf_omat",
     device="auto"
 )
 
-
+# https://github.com/CederGroupHub/chgnet
+ALL_MODELS["chgnet"] = mlipx.GenericASECalculator(
+    module="chgnet.model",
+    class_name="CHGNetCalculator",
+)
 # https://github.com/microsoft/mattersim
-MODELS["mattersim"] = mlipx.GenericASECalculator(
+ALL_MODELS["mattersim"] = mlipx.GenericASECalculator(
     module="mattersim.forcefield",
     class_name="MatterSimCalculator",
     device="auto",
 )
+# https://www.faccts.de/orca/
+ALL_MODELS["orca"] = mlipx.OrcaSinglePoint(
+    orcasimpleinput= "PBE def2-TZVP TightSCF EnGrad",
+    orcablocks ="%pal nprocs 8 end",
+    orca_shell="None",
+)
 
-# https://github.com/microsoft/mattersim
-MODELS["GRACE-2L-OMAT"] = mlipx.GenericASECalculator(
+# https://gracemaker.readthedocs.io/en/latest/gracemaker/foundation/
+ALL_MODELS["GRACE-2L-OMAT"] = mlipx.GenericASECalculator(
     module="tensorpotential.calculator",
     class_name="TPCalculator",
     device=None,
@@ -83,16 +94,6 @@ MODELS["GRACE-2L-OMAT"] = mlipx.GenericASECalculator(
         "model": "../../models/GRACE-2L-OMAT",
     },
 )
-
-
-# https://www.faccts.de/orca/
-MODELS["orca"] = mlipx.OrcaSinglePoint(
-    orcasimpleinput= "PBE def2-TZVP TightSCF EnGrad",
-    orcablocks ="%pal nprocs 8 end"
-)
-
-
-
 
 # OPTIONAL
 # ========
@@ -103,3 +104,18 @@ MODELS["orca"] = mlipx.OrcaSinglePoint(
 #     results_mapping={"energy": "DFT_ENERGY", "forces": "DFT_FORCES"},
 #     info_mapping={mlipx.abc.ASEKeys.isolated_energies.value: "isol_ene"},
 # )
+
+# ============================================================
+# THE SELECTED MODELS!
+# ONLY THESE MODELS WILL BE USED IN THE RECIPE
+# ============================================================
+MODELS = {
+    "MACE-MPA-0": ALL_MODELS["MACE-MPA-0"],
+    "7net-0": ALL_MODELS["7net-0"],
+    "7net-mf-ompa-mpa": ALL_MODELS["7net-mf-ompa-mpa"],
+    "orb-v2": ALL_MODELS["orb-v2"],
+    "orb-v3": ALL_MODELS["orb-v3"],
+    "mattersim": ALL_MODELS["mattersim"],
+    "orca": ALL_MODELS["orca"],
+    "GRACE-2L-OMAT": ALL_MODELS["GRACE-2L-OMAT"],
+}
