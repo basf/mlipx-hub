@@ -11,19 +11,19 @@ stages:
     outs:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     - path: nodes/initialize/MPRester/node-meta.json
       hash: md5
-      md5: 4f6d9dc7b6e2c7a9e178509f8c6d81d6
-      size: 64
+      md5: 536dd8e6718bca9a0d32be17b8ed09c1
+      size: 153
   sevennet_0_EnergyVolumeCurve:
     cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name sevennet_0_EnergyVolumeCurve
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         sevennet_0_EnergyVolumeCurve:
@@ -41,23 +41,23 @@ stages:
     outs:
     - path: nodes/sevennet/0/EnergyVolumeCurve/frames.xyz
       hash: md5
-      md5: c082dd2fc9b6c664d0ef3631e3bb4626
-      size: 96067
+      md5: 32fa7091c367c055f7b44ef1bd604eb6
+      size: 96128
     - path: nodes/sevennet/0/EnergyVolumeCurve/node-meta.json
       hash: md5
-      md5: 58f0a46b09a54d60f9706bdbbc3bb011
-      size: 64
+      md5: c01867314dcd2e61970fd394283647eb
+      size: 154
     - path: nodes/sevennet/0/EnergyVolumeCurve/results.csv
       hash: md5
-      md5: 0a1bb9e4a7f569875c4f38d00bd6a5ee
+      md5: 40cb6500adb05ee449c984eec52dad94
       size: 3499
   orb_v2_0_EnergyVolumeCurve:
     cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name orb_v2_0_EnergyVolumeCurve
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         orb_v2_0_EnergyVolumeCurve:
@@ -72,23 +72,23 @@ stages:
     outs:
     - path: nodes/orb_v2/0/EnergyVolumeCurve/frames.xyz
       hash: md5
-      md5: 54f3419a984669d688d290225bf49b8b
-      size: 87197
+      md5: 6d8f8260c4971d73f2affd52c0fcd1e7
+      size: 87253
     - path: nodes/orb_v2/0/EnergyVolumeCurve/node-meta.json
       hash: md5
-      md5: 74bc853feeb012f97101fbf252718aa0
-      size: 64
+      md5: 5c6fec5e228f5e8780764893781fee0b
+      size: 155
     - path: nodes/orb_v2/0/EnergyVolumeCurve/results.csv
       hash: md5
-      md5: 9d5cf35632e2f82b14521af9f831fc03
-      size: 3518
+      md5: 66ab570cfbbb1e5b0dda94f64657284e
+      size: 3527
   chgnet_0_EnergyVolumeCurve:
     cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name chgnet_0_EnergyVolumeCurve
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         chgnet_0_EnergyVolumeCurve:
@@ -105,23 +105,23 @@ stages:
     outs:
     - path: nodes/chgnet/0/EnergyVolumeCurve/frames.xyz
       hash: md5
-      md5: 79d25579a42e95a8666b22b493a11b0a
-      size: 96049
+      md5: ffb7c57f3c650b2ebc9f5a5ddf02cdf0
+      size: 96079
     - path: nodes/chgnet/0/EnergyVolumeCurve/node-meta.json
       hash: md5
-      md5: d9b126de50955ea013304476a8d4f32a
-      size: 64
+      md5: f8045f3d7f8ba393b9418818629f075b
+      size: 154
     - path: nodes/chgnet/0/EnergyVolumeCurve/results.csv
       hash: md5
-      md5: 7a90b4ca15c76fde15b0b7b526f4bf48
-      size: 3492
+      md5: 0ec53281aa9bdbfc24e3847c5d1d0a8e
+      size: 3506
   mace_mp_0_EnergyVolumeCurve:
     cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name mace_mp_0_EnergyVolumeCurve
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         mace_mp_0_EnergyVolumeCurve:
@@ -139,23 +139,23 @@ stages:
     outs:
     - path: nodes/mace_mp/0/EnergyVolumeCurve/frames.xyz
       hash: md5
-      md5: d43e6bf8a11006ed549893c184c52309
-      size: 86940
+      md5: 24f112d759b18e11b0ab4b1fbd8278dc
+      size: 87006
     - path: nodes/mace_mp/0/EnergyVolumeCurve/node-meta.json
       hash: md5
-      md5: c58c00f4aa9538aa319be7fcc3bc122b
-      size: 64
+      md5: bcdfeda708a3a1ea19668a9804124813
+      size: 155
     - path: nodes/mace_mp/0/EnergyVolumeCurve/results.csv
       hash: md5
-      md5: fa8b44ba9924d82a0487acc3e2f55a68
-      size: 3509
+      md5: d058c7b0cd58c569954ffeb6be6352b5
+      size: 3497
   mattersim_0_EnergyVolumeCurve:
     cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name mattersim_0_EnergyVolumeCurve
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         mattersim_0_EnergyVolumeCurve:
@@ -172,13 +172,13 @@ stages:
     outs:
     - path: nodes/mattersim/0/EnergyVolumeCurve/frames.xyz
       hash: md5
-      md5: 0ad32e40ec27684ee853591e273982f2
-      size: 86946
+      md5: 9362eebcec53ac4db500276508dc6beb
+      size: 86960
     - path: nodes/mattersim/0/EnergyVolumeCurve/node-meta.json
       hash: md5
-      md5: 92019096017c6c38d3633632cb0942fc
-      size: 64
+      md5: 5ee4de23c99e3f4e48af6388cb0f6c91
+      size: 155
     - path: nodes/mattersim/0/EnergyVolumeCurve/results.csv
       hash: md5
-      md5: 1756b0048cae0710eaac8db037e20f6f
-      size: 3057
+      md5: 6f321306723e64768132e90ef8959bd4
+      size: 3067
