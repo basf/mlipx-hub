@@ -8,23 +8,29 @@ MODELS = {}
 
 
 # https://github.com/ACEsuit/mace
-MODELS["mace-mp"] = mlipx.GenericASECalculator(
+MODELS["MACE-MPA-0"] = mlipx.GenericASECalculator(
     module="mace.calculators",
     class_name="mace_mp",
     device="auto",
-    kwargs={"model": "medium"}
+    kwargs={"model": "../../models/mace-mpa-0-medium.model"}
 )
 
 
 
 # https://github.com/MDIL-SNU/SevenNet
-MODELS["sevennet"] = mlipx.GenericASECalculator(
+MODELS["7net-0"] = mlipx.GenericASECalculator(
     module="sevenn.sevennet_calculator",
     class_name="SevenNetCalculator",
     device="auto",
     kwargs={"model": "7net-0"}
 )
 
+MODELS["7net-mf-ompa-mpa"] = mlipx.GenericASECalculator(
+    module="sevenn.sevennet_calculator",
+    class_name="SevenNetCalculator",
+    device="auto",
+    kwargs={"model": "7net-mf-ompa", "modal": "mpa"}
+)
 
 
 # https://github.com/orbital-materials/orb-models
@@ -32,6 +38,7 @@ MODELS["sevennet"] = mlipx.GenericASECalculator(
 class OrbCalc:
     name: str
     device: Device | None = None
+    kwargs: dict = dataclasses.field(default_factory=dict)
 
     def get_calculator(self, **kwargs):
         from orb_models.forcefield import pretrained
@@ -39,14 +46,14 @@ class OrbCalc:
 
         method = getattr(pretrained, self.name)
         if self.device is None:
-            orbff = method(**kwargs)
-            calc = ORBCalculator(orbff, **kwargs)
+            orbff = method(**self.kwargs)
+            calc = ORBCalculator(orbff, **self.kwargs)
         elif self.device == Device.AUTO:
-            orbff = method(device=Device.resolve_auto(), **kwargs)
-            calc = ORBCalculator(orbff, device=Device.resolve_auto(), **kwargs)
+            orbff = method(device=Device.resolve_auto(), **self.kwargs)
+            calc = ORBCalculator(orbff, device=Device.resolve_auto(), **self.kwargs)
         else:
-            orbff = method(device=self.device, **kwargs)
-            calc = ORBCalculator(orbff, device=self.device, **kwargs)
+            orbff = method(device=self.device, **self.kwargs)
+            calc = ORBCalculator(orbff, device=self.device, **self.kwargs)
         return calc
 
 MODELS["orb-v2"] = OrbCalc(
@@ -72,8 +79,7 @@ MODELS["mattersim"] = mlipx.GenericASECalculator(
 # https://www.faccts.de/orca/
 MODELS["orca"] = mlipx.OrcaSinglePoint(
     orcasimpleinput= "PBE def2-TZVP TightSCF EnGrad",
-    orcablocks ="%pal nprocs 8 end",
-    orca_shell="/dlls/tools/orca_5_0_4/orca",
+    orcablocks ="%pal nprocs 8 end"
 )
 
 
