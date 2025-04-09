@@ -25,6 +25,19 @@ stages:
     - nodes/7net-mf-ompa-mpa/HomonuclearDiatomics/results.csv
     params:
     - 7net-mf-ompa-mpa_HomonuclearDiatomics
+  GRACE-2L-OMAT_HomonuclearDiatomics:
+    cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name GRACE-2L-OMAT_HomonuclearDiatomics
+    deps:
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/node-meta.json:
+        cache: true
+    outs:
+    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/frames.json
+    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/model_outs
+    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/results.csv
+    params:
+    - GRACE-2L-OMAT_HomonuclearDiatomics
   MACE-MPA-0_HomonuclearDiatomics:
     cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name MACE-MPA-0_HomonuclearDiatomics
     deps:

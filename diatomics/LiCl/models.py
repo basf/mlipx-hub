@@ -74,6 +74,15 @@ MODELS["mattersim"] = mlipx.GenericASECalculator(
     device="auto",
 )
 
+# https://github.com/microsoft/mattersim
+MODELS["GRACE-2L-OMAT"] = mlipx.GenericASECalculator(
+    module="tensorpotential.calculator",
+    class_name="TPCalculator",
+    device=None,
+    kwargs={
+        "model": "../../models/GRACE-2L-OMAT",
+    },
+)
 
 
 # https://www.faccts.de/orca/

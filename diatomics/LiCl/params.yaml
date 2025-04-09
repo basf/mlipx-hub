@@ -25,6 +25,19 @@
       model: 7net-mf-ompa
     module: sevenn.sevennet_calculator
   n_points: 100
+GRACE-2L-OMAT_HomonuclearDiatomics:
+  elements: []
+  eq_distance: covalent-radiuis
+  max_distance: 2.0
+  min_distance: 0.5
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  n_points: 100
 MACE-MPA-0_HomonuclearDiatomics:
   elements: []
   eq_distance: covalent-radiuis
