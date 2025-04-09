@@ -38,6 +38,16 @@ orb_v2_HomonuclearDiatomics:
     device: auto
     name: orb_v2
   n_points: 100
+orb_v3_HomonuclearDiatomics:
+  elements: []
+  eq_distance: covalent-radiuis
+  max_distance: 2.0
+  min_distance: 0.5
+  model:
+    _cls: models.OrbCalc
+    device: auto
+    name: orb_v3_conservative_inf_omat
+  n_points: 100
 orca_HomonuclearDiatomics:
   elements: []
   eq_distance: covalent-radiuis
@@ -45,7 +55,7 @@ orca_HomonuclearDiatomics:
   min_distance: 0.5
   model:
     _cls: mlipx.nodes.orca.OrcaSinglePoint
-    orca_shell: /data/fzills/tools/orca_5_0_4/orca
+    orca_shell: /dlls/tools/orca_5_0_4/orca
     orcablocks: '%pal nprocs 8 end'
     orcasimpleinput: PBE def2-TZVP TightSCF EnGrad
   n_points: 100

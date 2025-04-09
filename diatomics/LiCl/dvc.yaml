@@ -3,7 +3,7 @@ stages:
     cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers
     metrics:
     - nodes/initialize/Smiles2Conformers/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     params:
@@ -14,7 +14,7 @@ stages:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
     - nodes/mace_mp/HomonuclearDiatomics/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/mace_mp/HomonuclearDiatomics/frames.json
     - nodes/mace_mp/HomonuclearDiatomics/model_outs
@@ -27,7 +27,7 @@ stages:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
     - nodes/mattersim/HomonuclearDiatomics/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/mattersim/HomonuclearDiatomics/frames.json
     - nodes/mattersim/HomonuclearDiatomics/model_outs
@@ -40,20 +40,33 @@ stages:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
     - nodes/orb_v2/HomonuclearDiatomics/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/orb_v2/HomonuclearDiatomics/frames.json
     - nodes/orb_v2/HomonuclearDiatomics/model_outs
     - nodes/orb_v2/HomonuclearDiatomics/results.csv
     params:
     - orb_v2_HomonuclearDiatomics
+  orb_v3_HomonuclearDiatomics:
+    cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name orb_v3_HomonuclearDiatomics
+    deps:
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/orb_v3/HomonuclearDiatomics/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb_v3/HomonuclearDiatomics/frames.json
+    - nodes/orb_v3/HomonuclearDiatomics/model_outs
+    - nodes/orb_v3/HomonuclearDiatomics/results.csv
+    params:
+    - orb_v3_HomonuclearDiatomics
   orca_HomonuclearDiatomics:
     cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name orca_HomonuclearDiatomics
     deps:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
     - nodes/orca/HomonuclearDiatomics/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/orca/HomonuclearDiatomics/frames.json
     - nodes/orca/HomonuclearDiatomics/model_outs
@@ -66,7 +79,7 @@ stages:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
     - nodes/sevennet/HomonuclearDiatomics/node-meta.json:
-        cache: false
+        cache: true
     outs:
     - nodes/sevennet/HomonuclearDiatomics/frames.json
     - nodes/sevennet/HomonuclearDiatomics/model_outs

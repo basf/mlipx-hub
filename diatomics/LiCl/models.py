@@ -8,7 +8,7 @@ MODELS = {}
 
 
 # https://github.com/ACEsuit/mace
-MODELS["mace_mp"] = mlipx.GenericASECalculator(
+MODELS["mace-mp"] = mlipx.GenericASECalculator(
     module="mace.calculators",
     class_name="mace_mp",
     device="auto",
@@ -49,11 +49,15 @@ class OrbCalc:
             calc = ORBCalculator(orbff, device=self.device, **kwargs)
         return calc
 
-MODELS["orb_v2"] = OrbCalc(
+MODELS["orb-v2"] = OrbCalc(
     name="orb_v2",
     device="auto"
 )
 
+MODELS["orb-v3"] = OrbCalc(
+    name="orb_v3_conservative_inf_omat",
+    device="auto"
+)
 
 
 # https://github.com/microsoft/mattersim
