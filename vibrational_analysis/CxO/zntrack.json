@@ -39,10 +39,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "mace_mp_VibrationalAnalysis": {
+    "MACE-MPA-0_VibrationalAnalysis": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/VibrationalAnalysis"
+            "value": "nodes/MACE-MPA-0/VibrationalAnalysis"
         },
         "data": {
             "_type": "znflow.CombinedConnections",
@@ -144,10 +144,10 @@
             "value": "$nwd$/vib"
         }
     },
-    "sevennet_VibrationalAnalysis": {
+    "7net-0_VibrationalAnalysis": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/VibrationalAnalysis"
+            "value": "nodes/7net-0/VibrationalAnalysis"
         },
         "data": {
             "_type": "znflow.CombinedConnections",
@@ -249,10 +249,220 @@
             "value": "$nwd$/vib"
         }
     },
-    "orb_v2_VibrationalAnalysis": {
+    "7net-mf-ompa-mpa_VibrationalAnalysis": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/VibrationalAnalysis"
+            "value": "nodes/7net-mf-ompa-mpa/VibrationalAnalysis"
+        },
+        "data": {
+            "_type": "znflow.CombinedConnections",
+            "value": {
+                "connections": [
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_1",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_2",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_3",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    }
+                ],
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        },
+        "modes_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/modes.xyz"
+        },
+        "modes_cache": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/modes"
+        },
+        "vib_cache": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/vib"
+        }
+    },
+    "orb-v2_VibrationalAnalysis": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/VibrationalAnalysis"
+        },
+        "data": {
+            "_type": "znflow.CombinedConnections",
+            "value": {
+                "connections": [
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_1",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_2",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_3",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    }
+                ],
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "OrbCalc"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        },
+        "modes_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/modes.xyz"
+        },
+        "modes_cache": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/modes"
+        },
+        "vib_cache": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/vib"
+        }
+    },
+    "orb-v3_VibrationalAnalysis": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v3/VibrationalAnalysis"
         },
         "data": {
             "_type": "znflow.CombinedConnections",
@@ -358,6 +568,111 @@
         "nwd": {
             "_type": "pathlib.Path",
             "value": "nodes/mattersim/VibrationalAnalysis"
+        },
+        "data": {
+            "_type": "znflow.CombinedConnections",
+            "value": {
+                "connections": [
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_1",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_2",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    },
+                    {
+                        "_type": "znflow.Connection",
+                        "value": {
+                            "instance": {
+                                "_type": "zntrack.Node",
+                                "value": {
+                                    "module": "mlipx.nodes.smiles",
+                                    "name": "initialize_Smiles2Conformers_3",
+                                    "cls": "Smiles2Conformers",
+                                    "remote": null,
+                                    "rev": null
+                                }
+                            },
+                            "attribute": "frames",
+                            "item": null
+                        }
+                    }
+                ],
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        },
+        "modes_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/modes.xyz"
+        },
+        "modes_cache": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/modes"
+        },
+        "vib_cache": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/vib"
+        }
+    },
+    "GRACE-2L-OMAT_VibrationalAnalysis": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/VibrationalAnalysis"
         },
         "data": {
             "_type": "znflow.CombinedConnections",

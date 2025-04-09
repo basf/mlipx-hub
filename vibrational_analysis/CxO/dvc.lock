@@ -229,12 +229,12 @@ stages:
     outs:
     - path: nodes/initialize/Smiles2Conformers_2/frames.xyz
       hash: md5
-      md5: a76929bb06b25f306ced9d308a3aba20
+      md5: b9d2505ac70be77832a01380be4ffed1
       size: 694
     - path: nodes/initialize/Smiles2Conformers_2/node-meta.json
       hash: md5
-      md5: af3eec859c5d5313002fd87cc874efb9
-      size: 64
+      md5: ed03117fd3d625d9fad8aba1c9985c4b
+      size: 154
   initialize_Smiles2Conformers:
     cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers
     params:
@@ -265,12 +265,12 @@ stages:
     outs:
     - path: nodes/initialize/Smiles2Conformers_3/frames.xyz
       hash: md5
-      md5: 915327424112f9b99cb5971c59b20842
+      md5: 15154f70d4f5af0e688315d24f644e3a
       size: 856
     - path: nodes/initialize/Smiles2Conformers_3/node-meta.json
       hash: md5
-      md5: f109eaa39a70add87d804334e5b2148f
-      size: 64
+      md5: c10906d2b1e8644ad5607e31e41d73a0
+      size: 153
   initialize_Smiles2Conformers_1:
     cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers_1
     params:
@@ -283,12 +283,12 @@ stages:
     outs:
     - path: nodes/initialize/Smiles2Conformers_1/frames.xyz
       hash: md5
-      md5: f2aa9aaa4c216155e3cbbf82fdbe2f53
+      md5: e13f90ab5acaf6103b8d9c7c9017e1c6
       size: 531
     - path: nodes/initialize/Smiles2Conformers_1/node-meta.json
       hash: md5
-      md5: e012bc81bde824a49d715cb3a6b028d8
-      size: 64
+      md5: 0cae19dd7948812f88571e1738a6c811
+      size: 154
   mace_mp_1_VibrationalAnalysis:
     cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name mace_mp_1_VibrationalAnalysis
     deps:
