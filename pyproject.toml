@@ -6,8 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "dvc-s3>=3.2.0",
-    "mlipx[models]",
-    "torch-dftd>=0.5.1",
+    "mlipx[mattersim,orb,sevenn,grace,chgnet]",
     "znmdakit",
 ]
 

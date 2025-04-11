@@ -1,3 +1,52 @@
+7net-0_0_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  optimizer: LBFGS
+  steps: 100000000
+7net-mf-ompa-mpa_0_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+  optimizer: LBFGS
+  steps: 100000000
+GRACE-2L-OMAT_0_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  optimizer: LBFGS
+  steps: 100000000
+MACE-MPA-0_0_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  optimizer: LBFGS
+  steps: 100000000
 chgnet_0_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -16,18 +65,6 @@ initialize_MPRester:
 initialize_Rattle:
   seed: 42
   stdev: 0.1
-mace_mp_0_StructureOptimization:
-  data_id: -1
-  fmax: 0.1
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: medium
-    module: mace.calculators
-  optimizer: LBFGS
-  steps: 100000000
 mattersim_0_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -39,24 +76,23 @@ mattersim_0_StructureOptimization:
     module: mattersim.forcefield
   optimizer: LBFGS
   steps: 100000000
-orb_v2_0_StructureOptimization:
+orb-v2_0_StructureOptimization:
   data_id: -1
   fmax: 0.1
   model:
     _cls: models.OrbCalc
     device: auto
+    kwargs: {}
     name: orb_v2
   optimizer: LBFGS
   steps: 100000000
-sevennet_0_StructureOptimization:
+orb-v3_0_StructureOptimization:
   data_id: -1
   fmax: 0.1
   model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: SevenNetCalculator
+    _cls: models.OrbCalc
     device: auto
-    kwargs:
-      model: 7net-0
-    module: sevenn.sevennet_calculator
+    kwargs: {}
+    name: orb_v3_conservative_inf_omat
   optimizer: LBFGS
   steps: 100000000

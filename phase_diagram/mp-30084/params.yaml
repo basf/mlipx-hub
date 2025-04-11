@@ -1,3 +1,52 @@
+7net-0_0_PhaseDiagram:
+  chemsys: null
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+7net-mf-ompa-mpa_0_PhaseDiagram:
+  chemsys: null
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+GRACE-2L-OMAT_0_PhaseDiagram:
+  chemsys: null
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+MACE-MPA-0_0_PhaseDiagram:
+  chemsys: null
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
 chgnet_0_PhaseDiagram:
   chemsys: null
   data_ids: null
@@ -13,18 +62,6 @@ initialize_MPRester:
   search_kwargs:
     material_ids:
     - mp-30084
-mace_mp_0_PhaseDiagram:
-  chemsys: null
-  data_ids: null
-  fmax: 0.05
-  geo_opt: false
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: medium
-    module: mace.calculators
 mattersim_0_PhaseDiagram:
   chemsys: null
   data_ids: null
@@ -36,7 +73,7 @@ mattersim_0_PhaseDiagram:
     device: auto
     kwargs: null
     module: mattersim.forcefield
-orb_v2_0_PhaseDiagram:
+orb-v2_0_PhaseDiagram:
   chemsys: null
   data_ids: null
   fmax: 0.05
@@ -44,16 +81,15 @@ orb_v2_0_PhaseDiagram:
   model:
     _cls: models.OrbCalc
     device: auto
+    kwargs: {}
     name: orb_v2
-sevennet_0_PhaseDiagram:
+orb-v3_0_PhaseDiagram:
   chemsys: null
   data_ids: null
   fmax: 0.05
   geo_opt: false
   model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: SevenNetCalculator
+    _cls: models.OrbCalc
     device: auto
-    kwargs:
-      model: 7net-0
-    module: sevenn.sevennet_calculator
+    kwargs: {}
+    name: orb_v3_conservative_inf_omat

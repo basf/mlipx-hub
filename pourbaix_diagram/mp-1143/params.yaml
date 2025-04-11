@@ -1,3 +1,60 @@
+7net-0_0_PourbaixDiagram:
+  V: 1.8
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  pH: 1.0
+  use_gibbs: false
+7net-mf-ompa-mpa_0_PourbaixDiagram:
+  V: 1.8
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+  pH: 1.0
+  use_gibbs: false
+GRACE-2L-OMAT_0_PourbaixDiagram:
+  V: 1.8
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  pH: 1.0
+  use_gibbs: false
+MACE-MPA-0_0_PourbaixDiagram:
+  V: 1.8
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  pH: 1.0
+  use_gibbs: false
 chgnet_0_PourbaixDiagram:
   V: 1.8
   data_ids: null
@@ -15,20 +72,6 @@ initialize_MPRester:
   search_kwargs:
     material_ids:
     - mp-1143
-mace_mp_0_PourbaixDiagram:
-  V: 1.8
-  data_ids: null
-  fmax: 0.05
-  geo_opt: false
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: medium
-    module: mace.calculators
-  pH: 1.0
-  use_gibbs: false
 mattersim_0_PourbaixDiagram:
   V: 1.8
   data_ids: null
@@ -42,7 +85,7 @@ mattersim_0_PourbaixDiagram:
     module: mattersim.forcefield
   pH: 1.0
   use_gibbs: false
-orb_v2_0_PourbaixDiagram:
+orb-v2_0_PourbaixDiagram:
   V: 1.8
   data_ids: null
   fmax: 0.05
@@ -50,20 +93,19 @@ orb_v2_0_PourbaixDiagram:
   model:
     _cls: models.OrbCalc
     device: auto
+    kwargs: {}
     name: orb_v2
   pH: 1.0
   use_gibbs: false
-sevennet_0_PourbaixDiagram:
+orb-v3_0_PourbaixDiagram:
   V: 1.8
   data_ids: null
   fmax: 0.05
   geo_opt: false
   model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: SevenNetCalculator
+    _cls: models.OrbCalc
     device: auto
-    kwargs:
-      model: 7net-0
-    module: sevenn.sevennet_calculator
+    kwargs: {}
+    name: orb_v3_conservative_inf_omat
   pH: 1.0
   use_gibbs: false

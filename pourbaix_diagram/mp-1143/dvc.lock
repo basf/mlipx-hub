@@ -331,19 +331,19 @@ stages:
     outs:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     - path: nodes/initialize/MPRester/node-meta.json
       hash: md5
-      md5: 4f6d9dc7b6e2c7a9e178509f8c6d81d6
-      size: 64
+      md5: 242be528046ccd0d7228d4598c5652f6
+      size: 154
   mace_mp_0_PourbaixDiagram:
     cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name mace_mp_0_PourbaixDiagram
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         mace_mp_0_PourbaixDiagram:
@@ -363,16 +363,16 @@ stages:
     outs:
     - path: nodes/mace_mp/0/PourbaixDiagram/frames.xyz
       hash: md5
-      md5: e9ffbcce1cfb44b3c59af103a2cae31c
-      size: 1654
+      md5: 1719494ced609442f18e1feae03f1784
+      size: 1662
     - path: nodes/mace_mp/0/PourbaixDiagram/node-meta.json
       hash: md5
-      md5: 79872860f5eb2680d192355d423344cc
-      size: 64
+      md5: a6c0c71ff78e03290568c7323275b8aa
+      size: 154
     - path: nodes/mace_mp/0/PourbaixDiagram/pourbaix_diagram.json
       hash: md5
-      md5: cbc4e4b7bc06e3b96a73a2007eef69f9
-      size: 49751
+      md5: 77ffe1b4f689a6ae1512fb8b4f135da3
+      size: 48171
     - path: nodes/mace_mp/0/PourbaixDiagram/results.csv
       hash: md5
       md5: aa443b6eb5f6579daa1ec52123d0c603
@@ -382,8 +382,8 @@ stages:
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         sevennet_0_PourbaixDiagram:
@@ -403,27 +403,27 @@ stages:
     outs:
     - path: nodes/sevennet/0/PourbaixDiagram/frames.xyz
       hash: md5
-      md5: 7b2a70c6f19e5ecac7621e3e2f876647
-      size: 1834
+      md5: 9b02d085fae9ebbb952953ba86d321d9
+      size: 1850
     - path: nodes/sevennet/0/PourbaixDiagram/node-meta.json
       hash: md5
-      md5: 003402b95874be1f0e644a5ea30529f3
-      size: 64
+      md5: e54ee84d23dc5c4b9470f43b1c5801b1
+      size: 155
     - path: nodes/sevennet/0/PourbaixDiagram/pourbaix_diagram.json
       hash: md5
-      md5: bb14de5c3f094a9ce279173ba1142315
-      size: 49751
+      md5: ed0b2c9fe4490f2d8745529deab8c89c
+      size: 48183
     - path: nodes/sevennet/0/PourbaixDiagram/results.csv
       hash: md5
-      md5: 0e04b16bd5f23ab03baf05c4b3211bc3
-      size: 98
+      md5: 8493bdfae7839199d730c9322b17e50a
+      size: 99
   chgnet_0_PourbaixDiagram:
     cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name chgnet_0_PourbaixDiagram
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         chgnet_0_PourbaixDiagram:
@@ -442,16 +442,16 @@ stages:
     outs:
     - path: nodes/chgnet/0/PourbaixDiagram/frames.xyz
       hash: md5
-      md5: 6515356cd1a3592e37753e7eb7078c8e
-      size: 1838
+      md5: bb793fadc3229fbe669a1425ccb1d6bb
+      size: 1848
     - path: nodes/chgnet/0/PourbaixDiagram/node-meta.json
       hash: md5
-      md5: 4bd52d04334e6360d7892f24349f9c7a
-      size: 64
+      md5: dcbc1b58ba4fa49bd6bc05b5a9ff42f3
+      size: 155
     - path: nodes/chgnet/0/PourbaixDiagram/pourbaix_diagram.json
       hash: md5
-      md5: d7e182627991b38cae594ce9c78cf1a4
-      size: 48079
+      md5: 2f243348d356be2dbe9aaed690475af9
+      size: 48091
     - path: nodes/chgnet/0/PourbaixDiagram/results.csv
       hash: md5
       md5: dc09d36992987f6e79968b0a21707b5c
@@ -461,8 +461,8 @@ stages:
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         orb_v2_0_PourbaixDiagram:
@@ -479,27 +479,27 @@ stages:
     outs:
     - path: nodes/orb_v2/0/PourbaixDiagram/frames.xyz
       hash: md5
-      md5: b16267a10d9704a9c8214dcaab1833ef
-      size: 1662
+      md5: 5acd84fab7c5d2251592051ba6affb22
+      size: 1675
     - path: nodes/orb_v2/0/PourbaixDiagram/node-meta.json
       hash: md5
-      md5: 42fbee867b17dcab912993f221f8e739
-      size: 64
+      md5: 62f37bdfb8fe59f6fecce71afb544b15
+      size: 155
     - path: nodes/orb_v2/0/PourbaixDiagram/pourbaix_diagram.json
       hash: md5
-      md5: 79800bcd7ae541942329763c8fa3bc19
-      size: 49739
+      md5: de6088ec0b1090b75382d25400459da0
+      size: 48159
     - path: nodes/orb_v2/0/PourbaixDiagram/results.csv
       hash: md5
-      md5: 6bf1cb423234b96f9c803f9eae8c0519
+      md5: 705538a8b09b5b8ae79f4a584eef5c4c
       size: 99
   mattersim_0_PourbaixDiagram:
     cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name mattersim_0_PourbaixDiagram
     deps:
     - path: nodes/initialize/MPRester/frames.xyz
       hash: md5
-      md5: b2aa0fb43e0b26ef88bedc082a0a2325
-      size: 866
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
     params:
       params.yaml:
         mattersim_0_PourbaixDiagram:
@@ -518,17 +518,254 @@ stages:
     outs:
     - path: nodes/mattersim/0/PourbaixDiagram/frames.xyz
       hash: md5
-      md5: 1169a9cec040363a981068961f32a688
-      size: 1655
+      md5: 0a1d0045494a6f445cfd5c2bc8722be6
+      size: 1666
     - path: nodes/mattersim/0/PourbaixDiagram/node-meta.json
       hash: md5
-      md5: 82895f3f096fc9390b33518f4c35f3cc
-      size: 64
+      md5: 118d8fec0a9a2f407494e3af56adbea8
+      size: 154
     - path: nodes/mattersim/0/PourbaixDiagram/pourbaix_diagram.json
       hash: md5
-      md5: 5fdfeef6c52abee16982757c6d737ff5
-      size: 49599
+      md5: 416984b8f0c014fb06b9f7fddfc6c442
+      size: 48059
     - path: nodes/mattersim/0/PourbaixDiagram/results.csv
       hash: md5
-      md5: 5c090275907a414db3b8fc0a65301073
-      size: 89
+      md5: d040983a9a7fe0b225e2b4db4ee3660d
+      size: 91
+  orb-v2_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name orb-v2_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v2_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/orb-v2/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: b14c42ba5aea648e967d0e346a1b8010
+      size: 1675
+    - path: nodes/orb-v2/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: ab817a16898d86c82ac3915c23de708a
+      size: 155
+    - path: nodes/orb-v2/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: 6247ce837a6748077a47162393a283c0
+      size: 48159
+    - path: nodes/orb-v2/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 1fead203bbb356de9c92f0f8cfd2653e
+      size: 98
+  7net-0_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name 7net-0_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-0_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/7net-0/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: 0293c9d204ed2f5e4a5b936d0b67c52f
+      size: 1851
+    - path: nodes/7net-0/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: e74cd06900c91cac5fd15c6188f5ee28
+      size: 155
+    - path: nodes/7net-0/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: 63f640bdcb97bb6e35ddb183249bc54c
+      size: 48171
+    - path: nodes/7net-0/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 0e04b16bd5f23ab03baf05c4b3211bc3
+      size: 98
+  GRACE-2L-OMAT_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name GRACE-2L-OMAT_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/GRACE-2L-OMAT/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: ba97f136e8b2a767582b56d82e350b9d
+      size: 1673
+    - path: nodes/GRACE-2L-OMAT/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: 164ea22e6326a78b8ce7bd2daf4020f7
+      size: 155
+    - path: nodes/GRACE-2L-OMAT/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: 162e1851b1debc7e923f9e88808d28c5
+      size: 48071
+    - path: nodes/GRACE-2L-OMAT/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 4659b37019cb91d91decd7cadb832550
+      size: 99
+  orb-v3_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name orb-v3_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        orb-v3_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/orb-v3/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: f44893bb81d3298e4bf9136a64492862
+      size: 1672
+    - path: nodes/orb-v3/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: a5b355f733e4caf07ae6916d6caca11a
+      size: 155
+    - path: nodes/orb-v3/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: b161d5feda9e149d123a1320fa2e5b59
+      size: 48171
+    - path: nodes/orb-v3/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 39bd5e14942c500bdfaffa92f2d19dbf
+      size: 99
+  7net-mf-ompa-mpa_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name 7net-mf-ompa-mpa_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: 1073e93fc2dc0fb5f9debb046edb7e1b
+      size: 1857
+    - path: nodes/7net-mf-ompa-mpa/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: 29137ddd65483576fd79dc6ea226649d
+      size: 155
+    - path: nodes/7net-mf-ompa-mpa/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: e76363fd9830093a21a56c33ebb12008
+      size: 48159
+    - path: nodes/7net-mf-ompa-mpa/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 1db9687674647caff0b771471a06086a
+      size: 99
+  MACE-MPA-0_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name MACE-MPA-0_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        MACE-MPA-0_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/MACE-MPA-0/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: 774ecb0302780f0f99e5535c4914829b
+      size: 1667
+    - path: nodes/MACE-MPA-0/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: 524c5a9213a0a017e21dd6bf2d6bc049
+      size: 155
+    - path: nodes/MACE-MPA-0/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: bffa2768a443f701801709c7ca68e473
+      size: 48171
+    - path: nodes/MACE-MPA-0/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 51a218158b20835990c0008dd33f17e2
+      size: 96

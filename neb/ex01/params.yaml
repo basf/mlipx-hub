@@ -1,3 +1,52 @@
+7net-0_NEBs:
+  fmax: 0.05
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  n_steps: 500
+  optimizer: FIRE
+  relax: true
+7net-mf-ompa-mpa_NEBs:
+  fmax: 0.05
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+  n_steps: 500
+  optimizer: FIRE
+  relax: true
+GRACE-2L-OMAT_NEBs:
+  fmax: 0.05
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  n_steps: 500
+  optimizer: FIRE
+  relax: true
+MACE-MPA-0_NEBs:
+  fmax: 0.05
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  n_steps: 500
+  optimizer: FIRE
+  relax: true
 chgnet_NEBs:
   fmax: 0.05
   model:
@@ -17,18 +66,6 @@ initialize_NEBinterpolate:
   add_constraints: true
   mic: true
   n_images: 5
-mace_mp_NEBs:
-  fmax: 0.05
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: medium
-    module: mace.calculators
-  n_steps: 500
-  optimizer: FIRE
-  relax: true
 mattersim_NEBs:
   fmax: 0.05
   model:
@@ -37,27 +74,6 @@ mattersim_NEBs:
     device: auto
     kwargs: null
     module: mattersim.forcefield
-  n_steps: 500
-  optimizer: FIRE
-  relax: true
-orb_v2_NEBs:
-  fmax: 0.05
-  model:
-    _cls: models.OrbCalc
-    device: auto
-    name: orb_v2
-  n_steps: 500
-  optimizer: FIRE
-  relax: true
-sevennet_NEBs:
-  fmax: 0.05
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: SevenNetCalculator
-    device: auto
-    kwargs:
-      model: 7net-0
-    module: sevenn.sevennet_calculator
   n_steps: 500
   optimizer: FIRE
   relax: true

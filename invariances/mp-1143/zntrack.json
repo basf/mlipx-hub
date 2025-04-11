@@ -9,10 +9,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "mace_mp_0_RotationalInvariance": {
+    "MACE-MPA-0_0_RotationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/0/RotationalInvariance"
+            "value": "nodes/MACE-MPA-0/0/RotationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -43,10 +43,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "mace_mp_0_TranslationalInvariance": {
+    "MACE-MPA-0_0_TranslationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/0/TranslationalInvariance"
+            "value": "nodes/MACE-MPA-0/0/TranslationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -77,10 +77,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "mace_mp_0_PermutationInvariance": {
+    "MACE-MPA-0_0_PermutationInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/0/PermutationInvariance"
+            "value": "nodes/MACE-MPA-0/0/PermutationInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -111,10 +111,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "sevennet_0_RotationalInvariance": {
+    "7net-0_0_RotationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/0/RotationalInvariance"
+            "value": "nodes/7net-0/0/RotationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -145,10 +145,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "sevennet_0_TranslationalInvariance": {
+    "7net-0_0_TranslationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/0/TranslationalInvariance"
+            "value": "nodes/7net-0/0/TranslationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -179,10 +179,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "sevennet_0_PermutationInvariance": {
+    "7net-0_0_PermutationInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/0/PermutationInvariance"
+            "value": "nodes/7net-0/0/PermutationInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -213,10 +213,112 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "orb_v2_0_RotationalInvariance": {
+    "7net-mf-ompa-mpa_0_RotationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/0/RotationalInvariance"
+            "value": "nodes/7net-mf-ompa-mpa/0/RotationalInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "7net-mf-ompa-mpa_0_TranslationalInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-mf-ompa-mpa/0/TranslationalInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "7net-mf-ompa-mpa_0_PermutationInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-mf-ompa-mpa/0/PermutationInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "orb-v2_0_RotationalInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/0/RotationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -247,10 +349,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "orb_v2_0_TranslationalInvariance": {
+    "orb-v2_0_TranslationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/0/TranslationalInvariance"
+            "value": "nodes/orb-v2/0/TranslationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -281,10 +383,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "orb_v2_0_PermutationInvariance": {
+    "orb-v2_0_PermutationInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/0/PermutationInvariance"
+            "value": "nodes/orb-v2/0/PermutationInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -315,16 +417,16 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "chgnet_0_RotationalInvariance": {
+    "orb-v3_0_RotationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/chgnet/0/RotationalInvariance"
+            "value": "nodes/orb-v3/0/RotationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
             "value": {
-                "module": "mlipx.nodes.generic_ase",
-                "cls": "GenericASECalculator"
+                "module": "models",
+                "cls": "OrbCalc"
             }
         },
         "data": {
@@ -349,16 +451,16 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "chgnet_0_TranslationalInvariance": {
+    "orb-v3_0_TranslationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/chgnet/0/TranslationalInvariance"
+            "value": "nodes/orb-v3/0/TranslationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
             "value": {
-                "module": "mlipx.nodes.generic_ase",
-                "cls": "GenericASECalculator"
+                "module": "models",
+                "cls": "OrbCalc"
             }
         },
         "data": {
@@ -383,16 +485,16 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "chgnet_0_PermutationInvariance": {
+    "orb-v3_0_PermutationInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/chgnet/0/PermutationInvariance"
+            "value": "nodes/orb-v3/0/PermutationInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
             "value": {
-                "module": "mlipx.nodes.generic_ase",
-                "cls": "GenericASECalculator"
+                "module": "models",
+                "cls": "OrbCalc"
             }
         },
         "data": {
@@ -489,6 +591,210 @@
         "nwd": {
             "_type": "pathlib.Path",
             "value": "nodes/mattersim/0/PermutationInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "GRACE-2L-OMAT_0_RotationalInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/0/RotationalInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "GRACE-2L-OMAT_0_TranslationalInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/0/TranslationalInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "GRACE-2L-OMAT_0_PermutationInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/0/PermutationInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "chgnet_0_RotationalInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/0/RotationalInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "chgnet_0_TranslationalInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/0/TranslationalInvariance"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "chgnet_0_PermutationInvariance": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/0/PermutationInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
