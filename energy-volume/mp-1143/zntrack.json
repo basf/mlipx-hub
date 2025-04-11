@@ -9,10 +9,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "mace_mp_0_EnergyVolumeCurve": {
+    "MACE-MPA-0_0_EnergyVolumeCurve": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/0/EnergyVolumeCurve"
+            "value": "nodes/MACE-MPA-0/0/EnergyVolumeCurve"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -43,10 +43,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "sevennet_0_EnergyVolumeCurve": {
+    "7net-0_0_EnergyVolumeCurve": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/0/EnergyVolumeCurve"
+            "value": "nodes/7net-0/0/EnergyVolumeCurve"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -77,10 +77,44 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "orb_v2_0_EnergyVolumeCurve": {
+    "7net-mf-ompa-mpa_0_EnergyVolumeCurve": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/0/EnergyVolumeCurve"
+            "value": "nodes/7net-mf-ompa-mpa/0/EnergyVolumeCurve"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "orb-v2_0_EnergyVolumeCurve": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/0/EnergyVolumeCurve"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -111,10 +145,44 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "chgnet_0_EnergyVolumeCurve": {
+    "orb-v3_0_EnergyVolumeCurve": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/chgnet/0/EnergyVolumeCurve"
+            "value": "nodes/orb-v3/0/EnergyVolumeCurve"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "OrbCalc"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "mattersim_0_EnergyVolumeCurve": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mattersim/0/EnergyVolumeCurve"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -145,10 +213,44 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "mattersim_0_EnergyVolumeCurve": {
+    "GRACE-2L-OMAT_0_EnergyVolumeCurve": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mattersim/0/EnergyVolumeCurve"
+            "value": "nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "chgnet_0_EnergyVolumeCurve": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/0/EnergyVolumeCurve"
         },
         "model": {
             "_type": "@dataclasses.dataclass",

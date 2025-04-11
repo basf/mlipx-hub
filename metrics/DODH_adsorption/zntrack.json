@@ -29,10 +29,10 @@
             }
         }
     },
-    "mace_mp_ApplyCalculator": {
+    "MACE-MPA-0_ApplyCalculator": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/ApplyCalculator"
+            "value": "nodes/MACE-MPA-0/ApplyCalculator"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -63,10 +63,10 @@
             "value": "$nwd$/frames.h5"
         }
     },
-    "mace_mp_EvaluateCalculatorResults": {
+    "MACE-MPA-0_EvaluateCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/EvaluateCalculatorResults"
+            "value": "nodes/MACE-MPA-0/EvaluateCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -75,7 +75,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.apply_calculator",
-                        "name": "mace_mp_ApplyCalculator",
+                        "name": "MACE-MPA-0_ApplyCalculator",
                         "cls": "ApplyCalculator",
                         "remote": null,
                         "rev": null
@@ -86,10 +86,10 @@
             }
         }
     },
-    "mace_mp_CompareCalculatorResults": {
+    "MACE-MPA-0_CompareCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/CompareCalculatorResults"
+            "value": "nodes/MACE-MPA-0/CompareCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -98,7 +98,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.evaluate_calculator",
-                        "name": "mace_mp_EvaluateCalculatorResults",
+                        "name": "MACE-MPA-0_EvaluateCalculatorResults",
                         "cls": "EvaluateCalculatorResults",
                         "remote": null,
                         "rev": null
@@ -126,10 +126,10 @@
             }
         }
     },
-    "sevennet_ApplyCalculator": {
+    "7net-0_ApplyCalculator": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/ApplyCalculator"
+            "value": "nodes/7net-0/ApplyCalculator"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -160,10 +160,10 @@
             "value": "$nwd$/frames.h5"
         }
     },
-    "sevennet_EvaluateCalculatorResults": {
+    "7net-0_EvaluateCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/EvaluateCalculatorResults"
+            "value": "nodes/7net-0/EvaluateCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -172,7 +172,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.apply_calculator",
-                        "name": "sevennet_ApplyCalculator",
+                        "name": "7net-0_ApplyCalculator",
                         "cls": "ApplyCalculator",
                         "remote": null,
                         "rev": null
@@ -183,10 +183,10 @@
             }
         }
     },
-    "sevennet_CompareCalculatorResults": {
+    "7net-0_CompareCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/CompareCalculatorResults"
+            "value": "nodes/7net-0/CompareCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -195,7 +195,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.evaluate_calculator",
-                        "name": "sevennet_EvaluateCalculatorResults",
+                        "name": "7net-0_EvaluateCalculatorResults",
                         "cls": "EvaluateCalculatorResults",
                         "remote": null,
                         "rev": null
@@ -223,107 +223,10 @@
             }
         }
     },
-    "orb_v2_ApplyCalculator": {
+    "7net-mf-ompa-mpa_ApplyCalculator": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/ApplyCalculator"
-        },
-        "data": {
-            "_type": "znflow.Connection",
-            "value": {
-                "instance": {
-                    "_type": "zntrack.Node",
-                    "value": {
-                        "module": "mlipx.nodes.io",
-                        "name": "initialize_LoadDataFile",
-                        "cls": "LoadDataFile",
-                        "remote": null,
-                        "rev": null
-                    }
-                },
-                "attribute": "frames",
-                "item": null
-            }
-        },
-        "model": {
-            "_type": "@dataclasses.dataclass",
-            "value": {
-                "module": "models",
-                "cls": "OrbCalc"
-            }
-        },
-        "frames_path": {
-            "_type": "pathlib.Path",
-            "value": "$nwd$/frames.h5"
-        }
-    },
-    "orb_v2_EvaluateCalculatorResults": {
-        "nwd": {
-            "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/EvaluateCalculatorResults"
-        },
-        "data": {
-            "_type": "znflow.Connection",
-            "value": {
-                "instance": {
-                    "_type": "zntrack.Node",
-                    "value": {
-                        "module": "mlipx.nodes.apply_calculator",
-                        "name": "orb_v2_ApplyCalculator",
-                        "cls": "ApplyCalculator",
-                        "remote": null,
-                        "rev": null
-                    }
-                },
-                "attribute": "frames",
-                "item": null
-            }
-        }
-    },
-    "orb_v2_CompareCalculatorResults": {
-        "nwd": {
-            "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/CompareCalculatorResults"
-        },
-        "data": {
-            "_type": "znflow.Connection",
-            "value": {
-                "instance": {
-                    "_type": "zntrack.Node",
-                    "value": {
-                        "module": "mlipx.nodes.evaluate_calculator",
-                        "name": "orb_v2_EvaluateCalculatorResults",
-                        "cls": "EvaluateCalculatorResults",
-                        "remote": null,
-                        "rev": null
-                    }
-                },
-                "attribute": null,
-                "item": null
-            }
-        },
-        "reference": {
-            "_type": "znflow.Connection",
-            "value": {
-                "instance": {
-                    "_type": "zntrack.Node",
-                    "value": {
-                        "module": "mlipx.nodes.evaluate_calculator",
-                        "name": "reference_EvaluateCalculatorResults",
-                        "cls": "EvaluateCalculatorResults",
-                        "remote": null,
-                        "rev": null
-                    }
-                },
-                "attribute": null,
-                "item": null
-            }
-        }
-    },
-    "chgnet_ApplyCalculator": {
-        "nwd": {
-            "_type": "pathlib.Path",
-            "value": "nodes/chgnet/ApplyCalculator"
+            "value": "nodes/7net-mf-ompa-mpa/ApplyCalculator"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -354,10 +257,10 @@
             "value": "$nwd$/frames.h5"
         }
     },
-    "chgnet_EvaluateCalculatorResults": {
+    "7net-mf-ompa-mpa_EvaluateCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/chgnet/EvaluateCalculatorResults"
+            "value": "nodes/7net-mf-ompa-mpa/EvaluateCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -366,7 +269,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.apply_calculator",
-                        "name": "chgnet_ApplyCalculator",
+                        "name": "7net-mf-ompa-mpa_ApplyCalculator",
                         "cls": "ApplyCalculator",
                         "remote": null,
                         "rev": null
@@ -377,10 +280,10 @@
             }
         }
     },
-    "chgnet_CompareCalculatorResults": {
+    "7net-mf-ompa-mpa_CompareCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/chgnet/CompareCalculatorResults"
+            "value": "nodes/7net-mf-ompa-mpa/CompareCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -389,7 +292,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.evaluate_calculator",
-                        "name": "chgnet_EvaluateCalculatorResults",
+                        "name": "7net-mf-ompa-mpa_EvaluateCalculatorResults",
                         "cls": "EvaluateCalculatorResults",
                         "remote": null,
                         "rev": null
@@ -487,6 +390,200 @@
                     "value": {
                         "module": "mlipx.nodes.evaluate_calculator",
                         "name": "mattersim_EvaluateCalculatorResults",
+                        "cls": "EvaluateCalculatorResults",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "reference": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.evaluate_calculator",
+                        "name": "reference_EvaluateCalculatorResults",
+                        "cls": "EvaluateCalculatorResults",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        }
+    },
+    "GRACE-2L-OMAT_ApplyCalculator": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/ApplyCalculator"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.io",
+                        "name": "initialize_LoadDataFile",
+                        "cls": "LoadDataFile",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.h5"
+        }
+    },
+    "GRACE-2L-OMAT_EvaluateCalculatorResults": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/EvaluateCalculatorResults"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.apply_calculator",
+                        "name": "GRACE-2L-OMAT_ApplyCalculator",
+                        "cls": "ApplyCalculator",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        }
+    },
+    "GRACE-2L-OMAT_CompareCalculatorResults": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/CompareCalculatorResults"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.evaluate_calculator",
+                        "name": "GRACE-2L-OMAT_EvaluateCalculatorResults",
+                        "cls": "EvaluateCalculatorResults",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "reference": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.evaluate_calculator",
+                        "name": "reference_EvaluateCalculatorResults",
+                        "cls": "EvaluateCalculatorResults",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        }
+    },
+    "chgnet_ApplyCalculator": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/ApplyCalculator"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.io",
+                        "name": "initialize_LoadDataFile",
+                        "cls": "LoadDataFile",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.h5"
+        }
+    },
+    "chgnet_EvaluateCalculatorResults": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/EvaluateCalculatorResults"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.apply_calculator",
+                        "name": "chgnet_ApplyCalculator",
+                        "cls": "ApplyCalculator",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        }
+    },
+    "chgnet_CompareCalculatorResults": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/CompareCalculatorResults"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.evaluate_calculator",
+                        "name": "chgnet_EvaluateCalculatorResults",
                         "cls": "EvaluateCalculatorResults",
                         "remote": null,
                         "rev": null

@@ -9,44 +9,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "orca_HomonuclearDiatomics": {
+    "MACE-MPA-0_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orca/HomonuclearDiatomics"
-        },
-        "model": {
-            "_type": "@dataclasses.dataclass",
-            "value": {
-                "module": "mlipx.nodes.orca",
-                "cls": "OrcaSinglePoint"
-            }
-        },
-        "data": {
-            "_type": "znflow.Connection",
-            "value": {
-                "instance": {
-                    "_type": "zntrack.Node",
-                    "value": {
-                        "module": "mlipx.nodes.smiles",
-                        "name": "initialize_Smiles2Conformers",
-                        "cls": "Smiles2Conformers",
-                        "remote": null,
-                        "rev": null
-                    }
-                },
-                "attribute": "frames",
-                "item": null
-            }
-        },
-        "model_outs": {
-            "_type": "pathlib.Path",
-            "value": "$nwd$/model_outs"
-        }
-    },
-    "mace_mp_HomonuclearDiatomics": {
-        "nwd": {
-            "_type": "pathlib.Path",
-            "value": "nodes/mace_mp/HomonuclearDiatomics"
+            "value": "nodes/MACE-MPA-0/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -77,10 +43,10 @@
             "value": "$nwd$/model_outs"
         }
     },
-    "sevennet_HomonuclearDiatomics": {
+    "7net-0_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/sevennet/HomonuclearDiatomics"
+            "value": "nodes/7net-0/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -111,10 +77,78 @@
             "value": "$nwd$/model_outs"
         }
     },
-    "orb_v2_HomonuclearDiatomics": {
+    "7net-mf-ompa-mpa_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/orb_v2/HomonuclearDiatomics"
+            "value": "nodes/7net-mf-ompa-mpa/HomonuclearDiatomics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_Smiles2Conformers",
+                        "cls": "Smiles2Conformers",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
+        }
+    },
+    "orb-v2_HomonuclearDiatomics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/HomonuclearDiatomics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "OrbCalc"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_Smiles2Conformers",
+                        "cls": "Smiles2Conformers",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
+        }
+    },
+    "orb-v3_HomonuclearDiatomics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v3/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -149,6 +183,74 @@
         "nwd": {
             "_type": "pathlib.Path",
             "value": "nodes/mattersim/HomonuclearDiatomics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_Smiles2Conformers",
+                        "cls": "Smiles2Conformers",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
+        }
+    },
+    "orca_HomonuclearDiatomics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orca/HomonuclearDiatomics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.orca",
+                "cls": "OrcaSinglePoint"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_Smiles2Conformers",
+                        "cls": "Smiles2Conformers",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model_outs": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/model_outs"
+        }
+    },
+    "GRACE-2L-OMAT_HomonuclearDiatomics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/GRACE-2L-OMAT/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",

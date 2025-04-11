@@ -1,9 +1,44 @@
-initialize_Smiles2Conformers:
-  max_attempts: 1000
-  num_confs: 1
-  random_seed: 42
-  smiles: '[Li+].[Cl-]'
-mace_mp_HomonuclearDiatomics:
+7net-0_HomonuclearDiatomics:
+  elements: []
+  eq_distance: covalent-radiuis
+  max_distance: 2.0
+  min_distance: 0.5
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  n_points: 100
+7net-mf-ompa-mpa_HomonuclearDiatomics:
+  elements: []
+  eq_distance: covalent-radiuis
+  max_distance: 2.0
+  min_distance: 0.5
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+  n_points: 100
+GRACE-2L-OMAT_HomonuclearDiatomics:
+  elements: []
+  eq_distance: covalent-radiuis
+  max_distance: 2.0
+  min_distance: 0.5
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  n_points: 100
+MACE-MPA-0_HomonuclearDiatomics:
   elements: []
   eq_distance: covalent-radiuis
   max_distance: 2.0
@@ -13,9 +48,14 @@ mace_mp_HomonuclearDiatomics:
     class_name: mace_mp
     device: auto
     kwargs:
-      model: medium
+      model: ../../models/mace-mpa-0-medium.model
     module: mace.calculators
   n_points: 100
+initialize_Smiles2Conformers:
+  max_attempts: 1000
+  num_confs: 1
+  random_seed: 42
+  smiles: '[Li+].[Cl-]'
 mattersim_HomonuclearDiatomics:
   elements: []
   eq_distance: covalent-radiuis
@@ -28,7 +68,7 @@ mattersim_HomonuclearDiatomics:
     kwargs: null
     module: mattersim.forcefield
   n_points: 100
-orb_v2_HomonuclearDiatomics:
+orb-v2_HomonuclearDiatomics:
   elements: []
   eq_distance: covalent-radiuis
   max_distance: 2.0
@@ -36,7 +76,19 @@ orb_v2_HomonuclearDiatomics:
   model:
     _cls: models.OrbCalc
     device: auto
+    kwargs: {}
     name: orb_v2
+  n_points: 100
+orb-v3_HomonuclearDiatomics:
+  elements: []
+  eq_distance: covalent-radiuis
+  max_distance: 2.0
+  min_distance: 0.5
+  model:
+    _cls: models.OrbCalc
+    device: auto
+    kwargs: {}
+    name: orb_v3_conservative_inf_omat
   n_points: 100
 orca_HomonuclearDiatomics:
   elements: []
@@ -45,20 +97,7 @@ orca_HomonuclearDiatomics:
   min_distance: 0.5
   model:
     _cls: mlipx.nodes.orca.OrcaSinglePoint
-    orca_shell: /data/fzills/tools/orca_5_0_4/orca
+    orca_shell: None
     orcablocks: '%pal nprocs 8 end'
     orcasimpleinput: PBE def2-TZVP TightSCF EnGrad
-  n_points: 100
-sevennet_HomonuclearDiatomics:
-  elements: []
-  eq_distance: covalent-radiuis
-  max_distance: 2.0
-  min_distance: 0.5
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: SevenNetCalculator
-    device: auto
-    kwargs:
-      model: 7net-0
-    module: sevenn.sevennet_calculator
   n_points: 100
