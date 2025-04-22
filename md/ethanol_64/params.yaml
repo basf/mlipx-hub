@@ -1,7 +1,7 @@
 7net-0_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
-  select: name COM and resname H2O
+  select: name COM and resname EtO
   timestep: 0.0005
 7net-0_md_InterRDF:
   apply_com_transform: false
@@ -23,8 +23,8 @@
   range: auto
 7net-0_md_InterRDF_3:
   apply_com_transform: true
-  g1: name COM and resname H2O
-  g2: name COM and resname H2O
+  g1: name COM and resname EtO
+  g2: name COM and resname EtO
   nbins: 1000
   range: auto
 7net-0_md_MolecularDynamics:
@@ -47,7 +47,7 @@
   start_time: 5.7
 7net-0_md_Universe:
   residues:
-    H2O: O
+    EtO: CCO
 7net-0_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -63,7 +63,7 @@
 7net-mf-ompa-mpa_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
-  select: name COM and resname H2O
+  select: name COM and resname EtO
   timestep: 0.0005
 7net-mf-ompa-mpa_md_InterRDF:
   apply_com_transform: false
@@ -85,8 +85,8 @@
   range: auto
 7net-mf-ompa-mpa_md_InterRDF_3:
   apply_com_transform: true
-  g1: name COM and resname H2O
-  g2: name COM and resname H2O
+  g1: name COM and resname EtO
+  g2: name COM and resname EtO
   nbins: 1000
   range: auto
 7net-mf-ompa-mpa_md_MolecularDynamics:
@@ -110,7 +110,7 @@
   start_time: 5.7
 7net-mf-ompa-mpa_md_Universe:
   residues:
-    H2O: O
+    EtO: CCO
 7net-mf-ompa-mpa_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -127,7 +127,7 @@
 MACE-MPA-0_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
-  select: name COM and resname H2O
+  select: name COM and resname EtO
   timestep: 0.0005
 MACE-MPA-0_md_InterRDF:
   apply_com_transform: false
@@ -149,8 +149,8 @@ MACE-MPA-0_md_InterRDF_2:
   range: auto
 MACE-MPA-0_md_InterRDF_3:
   apply_com_transform: true
-  g1: name COM and resname H2O
-  g2: name COM and resname H2O
+  g1: name COM and resname EtO
+  g2: name COM and resname EtO
   nbins: 1000
   range: auto
 MACE-MPA-0_md_MolecularDynamics:
@@ -173,7 +173,7 @@ MACE-MPA-0_md_SelfDiffusionFromMSD:
   start_time: 5.7
 MACE-MPA-0_md_Universe:
   residues:
-    H2O: O
+    EtO: CCO
 MACE-MPA-0_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -189,7 +189,7 @@ MACE-MPA-0_relax_StructureOptimization:
 chgnet_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
-  select: name COM and resname H2O
+  select: name COM and resname EtO
   timestep: 0.0005
 chgnet_md_InterRDF:
   apply_com_transform: false
@@ -211,8 +211,8 @@ chgnet_md_InterRDF_2:
   range: auto
 chgnet_md_InterRDF_3:
   apply_com_transform: true
-  g1: name COM and resname H2O
-  g2: name COM and resname H2O
+  g1: name COM and resname EtO
+  g2: name COM and resname EtO
   nbins: 1000
   range: auto
 chgnet_md_MolecularDynamics:
@@ -234,7 +234,7 @@ chgnet_md_SelfDiffusionFromMSD:
   start_time: 5.7
 chgnet_md_Universe:
   residues:
-    H2O: O
+    EtO: CCO
 chgnet_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -249,16 +249,16 @@ chgnet_relax_StructureOptimization:
 initialize_BuildBox:
   counts:
   - 64
-  density: 997
+  density: 785
 initialize_Smiles2Conformers:
   max_attempts: 1000
   num_confs: 100
   random_seed: 42
-  smiles: O
+  smiles: CCO
 mattersim_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
-  select: name COM and resname H2O
+  select: name COM and resname EtO
   timestep: 0.0005
 mattersim_md_InterRDF:
   apply_com_transform: false
@@ -280,8 +280,8 @@ mattersim_md_InterRDF_2:
   range: auto
 mattersim_md_InterRDF_3:
   apply_com_transform: true
-  g1: name COM and resname H2O
-  g2: name COM and resname H2O
+  g1: name COM and resname EtO
+  g2: name COM and resname EtO
   nbins: 1000
   range: auto
 mattersim_md_MolecularDynamics:
@@ -303,7 +303,7 @@ mattersim_md_SelfDiffusionFromMSD:
   start_time: 5.7
 mattersim_md_Universe:
   residues:
-    H2O: O
+    EtO: CCO
 mattersim_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -318,7 +318,7 @@ mattersim_relax_StructureOptimization:
 orb-v2_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
-  select: name COM and resname H2O
+  select: name COM and resname EtO
   timestep: 0.0005
 orb-v2_md_InterRDF:
   apply_com_transform: false
@@ -340,8 +340,8 @@ orb-v2_md_InterRDF_2:
   range: auto
 orb-v2_md_InterRDF_3:
   apply_com_transform: true
-  g1: name COM and resname H2O
-  g2: name COM and resname H2O
+  g1: name COM and resname EtO
+  g2: name COM and resname EtO
   nbins: 1000
   range: auto
 orb-v2_md_MolecularDynamics:
@@ -362,7 +362,7 @@ orb-v2_md_SelfDiffusionFromMSD:
   start_time: 5.7
 orb-v2_md_Universe:
   residues:
-    H2O: O
+    EtO: CCO
 orb-v2_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1
@@ -376,7 +376,7 @@ orb-v2_relax_StructureOptimization:
 orb-v3_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
-  select: name COM and resname H2O
+  select: name COM and resname EtO
   timestep: 0.0005
 orb-v3_md_InterRDF:
   apply_com_transform: false
@@ -398,8 +398,8 @@ orb-v3_md_InterRDF_2:
   range: auto
 orb-v3_md_InterRDF_3:
   apply_com_transform: true
-  g1: name COM and resname H2O
-  g2: name COM and resname H2O
+  g1: name COM and resname EtO
+  g2: name COM and resname EtO
   nbins: 1000
   range: auto
 orb-v3_md_MolecularDynamics:
@@ -420,7 +420,7 @@ orb-v3_md_SelfDiffusionFromMSD:
   start_time: 5.7
 orb-v3_md_Universe:
   residues:
-    H2O: O
+    EtO: CCO
 orb-v3_relax_StructureOptimization:
   data_id: -1
   fmax: 0.1

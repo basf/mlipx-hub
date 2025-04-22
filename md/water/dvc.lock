@@ -1888,3 +1888,1382 @@ stages:
       hash: md5
       md5: 652273d4482bf827fde94a8c91b1d07f
       size: 31998
+  orb-v3_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb-v3_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        orb-v3_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/orb-v3/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: aaef71fbb8cbd0976c1b48ea647552ee
+      size: 1930585
+    - path: nodes/orb-v3/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 2ae0a15a78c2d93e649c0364869a5d19
+      size: 155
+    - path: nodes/orb-v3/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 46564cf034231b20ec7639b1f7e96442
+      size: 8393
+  orb-v3_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name orb-v3_md_MolecularDynamics
+    deps:
+    - path: nodes/orb-v3/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: aaef71fbb8cbd0976c1b48ea647552ee
+      size: 1930585
+    - path: nodes/orb-v3/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 46564cf034231b20ec7639b1f7e96442
+      size: 8393
+    params:
+      params.yaml:
+        orb-v3_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/orb-v3/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 30175b77129773e8a6e27b6f63eaddb2
+      size: 3037755298
+    - path: nodes/orb-v3/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 1a121ce8770eef1e844d7b638696f429
+      size: 157
+    - path: nodes/orb-v3/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb-v3/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 0b1c7d9663d6ec2bfd67e2a6d7d97caa
+      size: 4358699
+  orb-v3_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name orb-v3_md_Universe
+    deps:
+    - path: nodes/orb-v3/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 30175b77129773e8a6e27b6f63eaddb2
+      size: 3037755298
+    - path: nodes/orb-v3/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb-v3/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 0b1c7d9663d6ec2bfd67e2a6d7d97caa
+      size: 4358699
+    params:
+      params.yaml:
+        orb-v3_md_Universe:
+          residues:
+            H2O: O
+    outs:
+    - path: nodes/orb-v3/md/Universe/frames.h5
+      hash: md5
+      md5: 67260d290ced74d9a8af68999c536ef0
+      size: 1332356073
+    - path: nodes/orb-v3/md/Universe/node-meta.json
+      hash: md5
+      md5: b0d7bc029a076dd8108b515818d83823
+      size: 156
+  orb-v3_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v3_md_InterRDF
+    deps:
+    - path: nodes/orb-v3/md/Universe/frames.h5
+      hash: md5
+      md5: 67260d290ced74d9a8af68999c536ef0
+      size: 1332356073
+    params:
+      params.yaml:
+        orb-v3_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v3/md/InterRDF/node-meta.json
+      hash: md5
+      md5: 5b3f2971f5d1fad81fefea6e49c17ff7
+      size: 155
+    - path: nodes/orb-v3/md/InterRDF/rdf.png
+      hash: md5
+      md5: e99c4e0c6401eff0683cd517206d4ae2
+      size: 30463
+    - path: nodes/orb-v3/md/InterRDF/results.csv
+      hash: md5
+      md5: 5499d52a1e8f5200d5b109d36bae7436
+      size: 34468
+  GRACE-2L-OMAT_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      GRACE-2L-OMAT_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/GRACE-2L-OMAT/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: ab514fee8a9e8120612e3ed19a5e64cb
+      size: 2175210
+    - path: nodes/GRACE-2L-OMAT/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: e6e553d36516895eea282524b97af972
+      size: 156
+    - path: nodes/GRACE-2L-OMAT/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 1629205361ecf09d7cf5a3d6af6d8a22
+      size: 9264
+  7net-0_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      7net-0_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        7net-0_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/7net-0/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: b18f24db64ee5df40a402eb49d8d168b
+      size: 1715230
+    - path: nodes/7net-0/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 04390bf657e450b99138c03582beb434
+      size: 155
+    - path: nodes/7net-0/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 28629199eaa96065602d624da4d627d9
+      size: 6707
+  7net-0_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name 7net-0_md_MolecularDynamics
+    deps:
+    - path: nodes/7net-0/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: b18f24db64ee5df40a402eb49d8d168b
+      size: 1715230
+    - path: nodes/7net-0/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 28629199eaa96065602d624da4d627d9
+      size: 6707
+    params:
+      params.yaml:
+        7net-0_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/7net-0/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 879c59a1b992935578615786b505fcbf
+      size: 3365434659
+    - path: nodes/7net-0/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 14c0b041d222a85031b874596377dfd4
+      size: 157
+    - path: nodes/7net-0/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/7net-0/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: aa5ceb406c6c5d3d3b1bec0e3219e9b0
+      size: 4360943
+  7net-0_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name 7net-0_md_Universe
+    deps:
+    - path: nodes/7net-0/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 879c59a1b992935578615786b505fcbf
+      size: 3365434659
+    - path: nodes/7net-0/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/7net-0/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: aa5ceb406c6c5d3d3b1bec0e3219e9b0
+      size: 4360943
+    params:
+      params.yaml:
+        7net-0_md_Universe:
+          residues:
+            H2O: O
+    outs:
+    - path: nodes/7net-0/md/Universe/frames.h5
+      hash: md5
+      md5: 25f4e1280101643fb7ee0236b9d02e76
+      size: 1460532423
+    - path: nodes/7net-0/md/Universe/node-meta.json
+      hash: md5
+      md5: cbcbb174ff21c80fb4546e28a4e67d1b
+      size: 156
+  7net-0_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-0_md_InterRDF_1
+    deps:
+    - path: nodes/7net-0/md/Universe/frames.h5
+      hash: md5
+      md5: 25f4e1280101643fb7ee0236b9d02e76
+      size: 1460532423
+    params:
+      params.yaml:
+        7net-0_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-0/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: e82410964e8c0c7fc18216aabcc1e2fa
+      size: 156
+    - path: nodes/7net-0/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: 8785a9d43c150a945040f688bf5d0eba
+      size: 26226
+    - path: nodes/7net-0/md/InterRDF_1/results.csv
+      hash: md5
+      md5: c56b0ba7e0e315de96c7761a10e40b60
+      size: 35476
+  orb-v2_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb-v2_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        orb-v2_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/orb-v2/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a1b872260b0c72447822bbfa21879f05
+      size: 1129351
+    - path: nodes/orb-v2/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: ec56f60b54cd8eafd346f7b6c7830b14
+      size: 155
+    - path: nodes/orb-v2/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: d061c4178a6f66908a0d253af8d841ce
+      size: 4831
+  orb-v2_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name orb-v2_md_MolecularDynamics
+    deps:
+    - path: nodes/orb-v2/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: a1b872260b0c72447822bbfa21879f05
+      size: 1129351
+    - path: nodes/orb-v2/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: d061c4178a6f66908a0d253af8d841ce
+      size: 4831
+    params:
+      params.yaml:
+        orb-v2_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/orb-v2/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: b52c091a752d41608f628d0ab0abc087
+      size: 3038103622
+    - path: nodes/orb-v2/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 57af1f239da1f41cd2f2febd7a2f5fda
+      size: 157
+    - path: nodes/orb-v2/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb-v2/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: a089060e64766b552e7436cfdc53bde2
+      size: 4360095
+  orb-v2_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name orb-v2_md_Universe
+    deps:
+    - path: nodes/orb-v2/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: b52c091a752d41608f628d0ab0abc087
+      size: 3038103622
+    - path: nodes/orb-v2/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/orb-v2/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: a089060e64766b552e7436cfdc53bde2
+      size: 4360095
+    params:
+      params.yaml:
+        orb-v2_md_Universe:
+          residues:
+            H2O: O
+    outs:
+    - path: nodes/orb-v2/md/Universe/frames.h5
+      hash: md5
+      md5: ebf9f55fd16d9372dc567fb8f720dc1e
+      size: 1333934701
+    - path: nodes/orb-v2/md/Universe/node-meta.json
+      hash: md5
+      md5: c97d2cbffa9b7bde7bf1ac47518c7ff8
+      size: 156
+  orb-v2_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v2_md_InterRDF_2
+    deps:
+    - path: nodes/orb-v2/md/Universe/frames.h5
+      hash: md5
+      md5: ebf9f55fd16d9372dc567fb8f720dc1e
+      size: 1333934701
+    params:
+      params.yaml:
+        orb-v2_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v2/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: fec0b66a41063775e2269c97dce4217a
+      size: 156
+    - path: nodes/orb-v2/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: 14ce561d7657542b0ea0f65a5bbf1a7a
+      size: 29437
+    - path: nodes/orb-v2/md/InterRDF_2/results.csv
+      hash: md5
+      md5: c7a47b8bf72e8f0a5cfc15b2a3c9281f
+      size: 31930
+  orb-v3_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v3_md_InterRDF_2
+    deps:
+    - path: nodes/orb-v3/md/Universe/frames.h5
+      hash: md5
+      md5: 67260d290ced74d9a8af68999c536ef0
+      size: 1332356073
+    params:
+      params.yaml:
+        orb-v3_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v3/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: 93c040e80a9edfa161619f85e392017e
+      size: 156
+    - path: nodes/orb-v3/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: 36a7fe3277bc996e60acea5ca91c6839
+      size: 29566
+    - path: nodes/orb-v3/md/InterRDF_2/results.csv
+      hash: md5
+      md5: c9c32b8e71678a652d85fa259f515f59
+      size: 32033
+  7net-0_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-0_md_InterRDF_2
+    deps:
+    - path: nodes/7net-0/md/Universe/frames.h5
+      hash: md5
+      md5: 25f4e1280101643fb7ee0236b9d02e76
+      size: 1460532423
+    params:
+      params.yaml:
+        7net-0_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-0/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: baefacba64c5cffd7859891ba555b7ac
+      size: 156
+    - path: nodes/7net-0/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: 1be7dff87166c3e8a25bfa74e4e73a84
+      size: 29511
+    - path: nodes/7net-0/md/InterRDF_2/results.csv
+      hash: md5
+      md5: 63d5e246c3bcd689f709df7af159110c
+      size: 32053
+  orb-v2_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name orb-v2_md_EinsteinMSD
+    deps:
+    - path: nodes/orb-v2/md/Universe/frames.h5
+      hash: md5
+      md5: ebf9f55fd16d9372dc567fb8f720dc1e
+      size: 1333934701
+    params:
+      params.yaml:
+        orb-v2_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname H2O
+          timestep: 0.0005
+    outs:
+    - path: nodes/orb-v2/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: 7af9b66efca2df7ce182c072a5308093
+      size: 156
+    - path: nodes/orb-v2/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: d3165b9f72124e1e52721e398bd295ca
+      size: 2717935
+  7net-0_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-0_md_InterRDF
+    deps:
+    - path: nodes/7net-0/md/Universe/frames.h5
+      hash: md5
+      md5: 25f4e1280101643fb7ee0236b9d02e76
+      size: 1460532423
+    params:
+      params.yaml:
+        7net-0_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-0/md/InterRDF/node-meta.json
+      hash: md5
+      md5: c021d19b2ce6579801a0ccdcf3321f7a
+      size: 156
+    - path: nodes/7net-0/md/InterRDF/rdf.png
+      hash: md5
+      md5: 5b0efe8f9256137a948795130f8e01da
+      size: 30549
+    - path: nodes/7net-0/md/InterRDF/results.csv
+      hash: md5
+      md5: 7dec4afa381a8f9c9646543ef027017c
+      size: 34427
+  7net-0_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name 7net-0_md_EinsteinMSD
+    deps:
+    - path: nodes/7net-0/md/Universe/frames.h5
+      hash: md5
+      md5: 25f4e1280101643fb7ee0236b9d02e76
+      size: 1460532423
+    params:
+      params.yaml:
+        7net-0_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname H2O
+          timestep: 0.0005
+    outs:
+    - path: nodes/7net-0/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: e41b25c2677bc1a1779f2bbf037f2558
+      size: 156
+    - path: nodes/7net-0/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: 7dbfc0bf62519397877f83503ade5783
+      size: 2725943
+  7net-0_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name 7net-0_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/7net-0/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: 7dbfc0bf62519397877f83503ade5783
+      size: 2725943
+    params:
+      params.yaml:
+        7net-0_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/7net-0/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: 74cdfba3ae8f44616e92ade408f898ad
+      size: 126
+    - path: nodes/7net-0/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: 744707f4d5c21bf93bfbd9944a0734df
+      size: 53492
+    - path: nodes/7net-0/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: beda6fd0f976b0e2f6047c916c0dccc3
+      size: 154
+  orb-v2_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v2_md_InterRDF_3
+    deps:
+    - path: nodes/orb-v2/md/Universe/frames.h5
+      hash: md5
+      md5: ebf9f55fd16d9372dc567fb8f720dc1e
+      size: 1333934701
+    params:
+      params.yaml:
+        orb-v2_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname H2O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v2/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: 113b52fc8986873e240d781c4723b229
+      size: 156
+    - path: nodes/orb-v2/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: 839efaec1d21b4616f0cedaaa9bf96fd
+      size: 32581
+    - path: nodes/orb-v2/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 1c57e75d47424ae8ed82655f5948efa2
+      size: 31901
+  orb-v3_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v3_md_InterRDF_1
+    deps:
+    - path: nodes/orb-v3/md/Universe/frames.h5
+      hash: md5
+      md5: 67260d290ced74d9a8af68999c536ef0
+      size: 1332356073
+    params:
+      params.yaml:
+        orb-v3_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v3/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: 72ee7c3afcd28a7c06c1d7a4bf173f84
+      size: 156
+    - path: nodes/orb-v3/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: ccc094bb73179433137a3fd4d4c11554
+      size: 26167
+    - path: nodes/orb-v3/md/InterRDF_1/results.csv
+      hash: md5
+      md5: 45efdedcca2c1c89cf0228990ec41c4c
+      size: 35472
+  orb-v2_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v2_md_InterRDF
+    deps:
+    - path: nodes/orb-v2/md/Universe/frames.h5
+      hash: md5
+      md5: ebf9f55fd16d9372dc567fb8f720dc1e
+      size: 1333934701
+    params:
+      params.yaml:
+        orb-v2_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v2/md/InterRDF/node-meta.json
+      hash: md5
+      md5: 1a47f8876a452f2f686dffc8ee3f0553
+      size: 156
+    - path: nodes/orb-v2/md/InterRDF/rdf.png
+      hash: md5
+      md5: 6d7a61178c2f6481d05f0680e216c9a2
+      size: 30401
+    - path: nodes/orb-v2/md/InterRDF/results.csv
+      hash: md5
+      md5: b9cc15160423c90a1d7b6e6743fe5327
+      size: 34511
+  orb-v3_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name orb-v3_md_EinsteinMSD
+    deps:
+    - path: nodes/orb-v3/md/Universe/frames.h5
+      hash: md5
+      md5: 67260d290ced74d9a8af68999c536ef0
+      size: 1332356073
+    params:
+      params.yaml:
+        orb-v3_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname H2O
+          timestep: 0.0005
+    outs:
+    - path: nodes/orb-v3/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: 2e6077ad035936a11ddabd129ed5b138
+      size: 155
+    - path: nodes/orb-v3/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: 20ba0c3678f8a3664cecc5e93b3c6f12
+      size: 2728220
+  orb-v3_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name orb-v3_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/orb-v3/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: 20ba0c3678f8a3664cecc5e93b3c6f12
+      size: 2728220
+    params:
+      params.yaml:
+        orb-v3_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/orb-v3/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: 173518861e65e16bb495c653f0995324
+      size: 125
+    - path: nodes/orb-v3/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: a94659e1ef19960481e3b467f4993eed
+      size: 61137
+    - path: nodes/orb-v3/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: c51bd95b9fd2bbc9618c2cfb96289034
+      size: 154
+  orb-v2_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name orb-v2_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/orb-v2/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: d3165b9f72124e1e52721e398bd295ca
+      size: 2717935
+    params:
+      params.yaml:
+        orb-v2_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/orb-v2/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: d543d373340849aa41b966fdfc8e8a0c
+      size: 124
+    - path: nodes/orb-v2/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: 4f606c4515b3121a0a8e42a121b7fb37
+      size: 59603
+    - path: nodes/orb-v2/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: fffe9ba26f1d6f7758484a7947e6baa0
+      size: 154
+  orb-v2_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v2_md_InterRDF_1
+    deps:
+    - path: nodes/orb-v2/md/Universe/frames.h5
+      hash: md5
+      md5: ebf9f55fd16d9372dc567fb8f720dc1e
+      size: 1333934701
+    params:
+      params.yaml:
+        orb-v2_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v2/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: d2f9025fe4904b6884d9fa98dd2b9c70
+      size: 156
+    - path: nodes/orb-v2/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: 4d5f66e925e7cb4d0e1fa809515d45f7
+      size: 26119
+    - path: nodes/orb-v2/md/InterRDF_1/results.csv
+      hash: md5
+      md5: d7ca3d353ff0750cd38514392cb33d40
+      size: 35502
+  7net-0_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-0_md_InterRDF_3
+    deps:
+    - path: nodes/7net-0/md/Universe/frames.h5
+      hash: md5
+      md5: 25f4e1280101643fb7ee0236b9d02e76
+      size: 1460532423
+    params:
+      params.yaml:
+        7net-0_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname H2O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-0/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: 8c510d776a8347d860076ec15cecd585
+      size: 156
+    - path: nodes/7net-0/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: 4504b6aed12543cbcfcac9307064511f
+      size: 32738
+    - path: nodes/7net-0/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 94b75a8a4284d8d933f67e0c88ef3c2a
+      size: 32004
+  orb-v3_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name orb-v3_md_InterRDF_3
+    deps:
+    - path: nodes/orb-v3/md/Universe/frames.h5
+      hash: md5
+      md5: 67260d290ced74d9a8af68999c536ef0
+      size: 1332356073
+    params:
+      params.yaml:
+        orb-v3_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname H2O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/orb-v3/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: 73bf666c256f1a9836b03d6bd4ac77fb
+      size: 156
+    - path: nodes/orb-v3/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: 37580fa4ee93cc817eddeda0a0c5fbd7
+      size: 32776
+    - path: nodes/orb-v3/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 01584b46d7fc690659ef6c84fb3fec13
+      size: 31984
+  MACE-MPA-0_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      MACE-MPA-0_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        MACE-MPA-0_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/MACE-MPA-0/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 5525de9f3ae8ec8508352e197a6490d8
+      size: 1478150
+    - path: nodes/MACE-MPA-0/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 1f8983dfb7f85892a6b578c4cd45b2a0
+      size: 155
+    - path: nodes/MACE-MPA-0/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 368825086a42a0b65c99f861515e779a
+      size: 6414
+  MACE-MPA-0_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name MACE-MPA-0_md_MolecularDynamics
+    deps:
+    - path: nodes/MACE-MPA-0/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 5525de9f3ae8ec8508352e197a6490d8
+      size: 1478150
+    - path: nodes/MACE-MPA-0/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 368825086a42a0b65c99f861515e779a
+      size: 6414
+    params:
+      params.yaml:
+        MACE-MPA-0_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/MACE-MPA-0/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: d040df180cee34bd8c8a3bff22789412
+      size: 3037820353
+    - path: nodes/MACE-MPA-0/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: f1b785fb8d7a46ad7a46f6dd36e849eb
+      size: 157
+    - path: nodes/MACE-MPA-0/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/MACE-MPA-0/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: ed1e46390ed044194434597b0d0284b5
+      size: 4376672
+  MACE-MPA-0_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name MACE-MPA-0_md_Universe
+    deps:
+    - path: nodes/MACE-MPA-0/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: d040df180cee34bd8c8a3bff22789412
+      size: 3037820353
+    - path: nodes/MACE-MPA-0/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/MACE-MPA-0/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: ed1e46390ed044194434597b0d0284b5
+      size: 4376672
+    params:
+      params.yaml:
+        MACE-MPA-0_md_Universe:
+          residues:
+            H2O: O
+    outs:
+    - path: nodes/MACE-MPA-0/md/Universe/frames.h5
+      hash: md5
+      md5: 21d7322b59637593ed6fc75841b3445d
+      size: 1332517189
+    - path: nodes/MACE-MPA-0/md/Universe/node-meta.json
+      hash: md5
+      md5: c263d12151affa217cde240c58d50135
+      size: 155
+  MACE-MPA-0_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-MPA-0_md_InterRDF_3
+    deps:
+    - path: nodes/MACE-MPA-0/md/Universe/frames.h5
+      hash: md5
+      md5: 21d7322b59637593ed6fc75841b3445d
+      size: 1332517189
+    params:
+      params.yaml:
+        MACE-MPA-0_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname H2O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-MPA-0/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: c117a195388667507ae8c4533fe0c54c
+      size: 156
+    - path: nodes/MACE-MPA-0/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: 7d782d8125c2319c2dc98b4f57348217
+      size: 33826
+    - path: nodes/MACE-MPA-0/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 0ff5cfe8cc78937bc741b3349b073451
+      size: 31960
+  MACE-MPA-0_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-MPA-0_md_InterRDF_1
+    deps:
+    - path: nodes/MACE-MPA-0/md/Universe/frames.h5
+      hash: md5
+      md5: 21d7322b59637593ed6fc75841b3445d
+      size: 1332517189
+    params:
+      params.yaml:
+        MACE-MPA-0_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-MPA-0/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: 9ab4f669cf56949756bb4ed9818d79cc
+      size: 156
+    - path: nodes/MACE-MPA-0/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: 342b4c9bcfb491ba5a30957349c2ce5f
+      size: 26412
+    - path: nodes/MACE-MPA-0/md/InterRDF_1/results.csv
+      hash: md5
+      md5: 0138aaed3a39d87233660809a6967b04
+      size: 35481
+  MACE-MPA-0_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name MACE-MPA-0_md_EinsteinMSD
+    deps:
+    - path: nodes/MACE-MPA-0/md/Universe/frames.h5
+      hash: md5
+      md5: 21d7322b59637593ed6fc75841b3445d
+      size: 1332517189
+    params:
+      params.yaml:
+        MACE-MPA-0_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname H2O
+          timestep: 0.0005
+    outs:
+    - path: nodes/MACE-MPA-0/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: b8a1e4789f227198aefc57f7e26b26b6
+      size: 156
+    - path: nodes/MACE-MPA-0/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: 2ce2cb5c256843754c773fa463f30ccf
+      size: 2725569
+  MACE-MPA-0_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-MPA-0_md_InterRDF
+    deps:
+    - path: nodes/MACE-MPA-0/md/Universe/frames.h5
+      hash: md5
+      md5: 21d7322b59637593ed6fc75841b3445d
+      size: 1332517189
+    params:
+      params.yaml:
+        MACE-MPA-0_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-MPA-0/md/InterRDF/node-meta.json
+      hash: md5
+      md5: 6c29af661cb994051e6aa58e7c483f12
+      size: 156
+    - path: nodes/MACE-MPA-0/md/InterRDF/rdf.png
+      hash: md5
+      md5: 81efd8828ec676ff7cd1f7ceefa28c64
+      size: 30884
+    - path: nodes/MACE-MPA-0/md/InterRDF/results.csv
+      hash: md5
+      md5: c82bdea39388986a1f20dc7eeae981c2
+      size: 34422
+  MACE-MPA-0_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-MPA-0_md_InterRDF_2
+    deps:
+    - path: nodes/MACE-MPA-0/md/Universe/frames.h5
+      hash: md5
+      md5: 21d7322b59637593ed6fc75841b3445d
+      size: 1332517189
+    params:
+      params.yaml:
+        MACE-MPA-0_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-MPA-0/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: 6b5c33d73f0be9c1887f543651579e69
+      size: 155
+    - path: nodes/MACE-MPA-0/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: a45328c1768f2c3392fd52343293ab46
+      size: 30589
+    - path: nodes/MACE-MPA-0/md/InterRDF_2/results.csv
+      hash: md5
+      md5: f0e0fb198c45b2a7ef4f701b930bde73
+      size: 32033
+  MACE-MPA-0_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name MACE-MPA-0_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/MACE-MPA-0/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: 2ce2cb5c256843754c773fa463f30ccf
+      size: 2725569
+    params:
+      params.yaml:
+        MACE-MPA-0_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/MACE-MPA-0/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: 42d9a2364f9b8b7955eb46c4975893e2
+      size: 125
+    - path: nodes/MACE-MPA-0/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: 24b74a0663220801274921a0c24ce5d8
+      size: 53416
+    - path: nodes/MACE-MPA-0/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: c5cecb86016759020e20470997f7abd6
+      size: 154
+  7net-mf-ompa-mpa_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      7net-mf-ompa-mpa_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 15053a68c535722cefa1a01bcfd38af9
+      size: 2094623
+    - path: nodes/7net-mf-ompa-mpa/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: c314c9b4233e139e206865a76568fe6b
+      size: 156
+    - path: nodes/7net-mf-ompa-mpa/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 2017f34e6aa2e5ae3a0b6f18f2f5b4f2
+      size: 8157
+  7net-mf-ompa-mpa_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name 7net-mf-ompa-mpa_md_MolecularDynamics
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 15053a68c535722cefa1a01bcfd38af9
+      size: 2094623
+    - path: nodes/7net-mf-ompa-mpa/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 2017f34e6aa2e5ae3a0b6f18f2f5b4f2
+      size: 8157
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 1e697f2a0e7717c62013fe7b347fb93c
+      size: 3365475351
+    - path: nodes/7net-mf-ompa-mpa/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 5d92be33bce7a08600ee1a0ff5ba798f
+      size: 158
+    - path: nodes/7net-mf-ompa-mpa/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/7net-mf-ompa-mpa/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 3dd37790f99a52d836f1046ab6046496
+      size: 4362075
+  7net-mf-ompa-mpa_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name 7net-mf-ompa-mpa_md_Universe
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 1e697f2a0e7717c62013fe7b347fb93c
+      size: 3365475351
+    - path: nodes/7net-mf-ompa-mpa/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/7net-mf-ompa-mpa/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 3dd37790f99a52d836f1046ab6046496
+      size: 4362075
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_Universe:
+          residues:
+            H2O: O
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/Universe/frames.h5
+      hash: md5
+      md5: 38ff0bbb60959fff819cb6e1d3186dde
+      size: 1460050735
+    - path: nodes/7net-mf-ompa-mpa/md/Universe/node-meta.json
+      hash: md5
+      md5: 16ac797582e4413659ee679250b6eee5
+      size: 156
+  7net-mf-ompa-mpa_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name 7net-mf-ompa-mpa_md_EinsteinMSD
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/md/Universe/frames.h5
+      hash: md5
+      md5: 38ff0bbb60959fff819cb6e1d3186dde
+      size: 1460050735
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname H2O
+          timestep: 0.0005
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: aebe1392cbae19259eb09eaef3cac310
+      size: 156
+    - path: nodes/7net-mf-ompa-mpa/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: c13d878134af19fd586e74d426687e12
+      size: 2729400
+  7net-mf-ompa-mpa_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-mf-ompa-mpa_md_InterRDF_2
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/md/Universe/frames.h5
+      hash: md5
+      md5: 38ff0bbb60959fff819cb6e1d3186dde
+      size: 1460050735
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: 733a13dd422773d156b14b4653224a27
+      size: 156
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: f0fb33becaeb495fcfde0eb3e6fc906b
+      size: 30557
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_2/results.csv
+      hash: md5
+      md5: 1e69a288387d2bbc85d30253c4fa6980
+      size: 31931
+  7net-mf-ompa-mpa_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name 7net-mf-ompa-mpa_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: c13d878134af19fd586e74d426687e12
+      size: 2729400
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: 9adc61fb5e2038d992819198aa6bf4f8
+      size: 125
+    - path: nodes/7net-mf-ompa-mpa/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: 2ca99a4d7ee16a76f6bf21212a3893fe
+      size: 58842
+    - path: nodes/7net-mf-ompa-mpa/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: 3ebcd6752900781cc655bc6a6708d541
+      size: 154
+  7net-mf-ompa-mpa_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-mf-ompa-mpa_md_InterRDF
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/md/Universe/frames.h5
+      hash: md5
+      md5: 38ff0bbb60959fff819cb6e1d3186dde
+      size: 1460050735
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF/node-meta.json
+      hash: md5
+      md5: da436bb5a82ca776df04dfb4250d08d5
+      size: 156
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF/rdf.png
+      hash: md5
+      md5: d2f041c106c3ac1fbac06d61f35c56cb
+      size: 30744
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF/results.csv
+      hash: md5
+      md5: bb4546b0c31f49203491ce7eec1bc218
+      size: 34448
+  7net-mf-ompa-mpa_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-mf-ompa-mpa_md_InterRDF_3
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/md/Universe/frames.h5
+      hash: md5
+      md5: 38ff0bbb60959fff819cb6e1d3186dde
+      size: 1460050735
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname H2O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: f7aa37880ba97c78cb383d423718df37
+      size: 156
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: fcf657cf088e266e602a21ae04fe4b9f
+      size: 33545
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 8bfe56889e28782167f17acac3732627
+      size: 31945
+  7net-mf-ompa-mpa_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name 7net-mf-ompa-mpa_md_InterRDF_1
+    deps:
+    - path: nodes/7net-mf-ompa-mpa/md/Universe/frames.h5
+      hash: md5
+      md5: 38ff0bbb60959fff819cb6e1d3186dde
+      size: 1460050735
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: a7d95a6ec69c54725227ce6ff1a2c902
+      size: 156
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: 7ec0cec7d793289aebf3c1d9d8281e48
+      size: 26265
+    - path: nodes/7net-mf-ompa-mpa/md/InterRDF_1/results.csv
+      hash: md5
+      md5: 4b98b15de0f9c21e1127b579037b748d
+      size: 35492

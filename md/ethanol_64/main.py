@@ -5,14 +5,15 @@ import znmdakit
 project = mlipx.Project()
 
 with project.group("initialize"):
-    water = mlipx.Smiles2Conformers(
-        smiles="O",
+    etoh = mlipx.Smiles2Conformers(
+        smiles="CCO",
         num_confs=100,
     )
     box = mlipx.BuildBox(
-        data=[water.frames],
+        data=[etoh.frames],
         counts=[64],
-        density=997,
+        density=785,
+        # https://www.engineeringtoolbox.com/ethanol-water-mixture-density-d_2162.html
     )
 
 thermostat = mlipx.LangevinConfig(timestep=0.5, temperature=400, friction=0.05)
@@ -30,7 +31,7 @@ for model_name, model in MODELS.items():
 
         universe = znmdakit.Universe(
             data=md.frames,
-            residues={"H2O": "O"},
+            residues={"EtO": "CCO"}
         )
 
         znmdakit.InterRDF(
@@ -59,15 +60,15 @@ for model_name, model in MODELS.items():
 
         znmdakit.InterRDF(
             universe=universe.universe,
-            g1="name COM and resname H2O",
-            g2="name COM and resname H2O",
+            g1="name COM and resname EtO",
+            g2="name COM and resname EtO",
             nbins=1000,
             apply_com_transform=True,
         )
 
         msd = znmdakit.EinsteinMSD(
             universe=universe.universe,
-            select="name COM and resname H2O",
+            select="name COM and resname EtO",
             timestep=0.0005, # ps
             sampling_rate=1, # ps
             apply_com_transform=True,

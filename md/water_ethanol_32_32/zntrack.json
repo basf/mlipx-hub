@@ -9,6 +9,16 @@
             "value": "$nwd$/frames.xyz"
         }
     },
+    "initialize_Smiles2Conformers_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/initialize/Smiles2Conformers_1"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
     "initialize_BuildBox": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -23,6 +33,23 @@
                         "value": {
                             "module": "mlipx.nodes.smiles",
                             "name": "initialize_Smiles2Conformers",
+                            "cls": "Smiles2Conformers",
+                            "remote": null,
+                            "rev": null
+                        }
+                    },
+                    "attribute": "frames",
+                    "item": null
+                }
+            },
+            {
+                "_type": "znflow.Connection",
+                "value": {
+                    "instance": {
+                        "_type": "zntrack.Node",
+                        "value": {
+                            "module": "mlipx.nodes.smiles",
+                            "name": "initialize_Smiles2Conformers_1",
                             "cls": "Smiles2Conformers",
                             "remote": null,
                             "rev": null
@@ -250,6 +277,33 @@
             "value": "$nwd$/rdf.png"
         }
     },
+    "MACE-MPA-0_md_InterRDF_4": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/MACE-MPA-0/md/InterRDF_4"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "MACE-MPA-0_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
     "MACE-MPA-0_md_EinsteinMSD": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -286,6 +340,83 @@
                     "value": {
                         "module": "znmdakit.nodes.mean_square_displacement",
                         "name": "MACE-MPA-0_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
+    "MACE-MPA-0_md_InterRDF_5": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/MACE-MPA-0/md/InterRDF_5"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "MACE-MPA-0_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "MACE-MPA-0_md_EinsteinMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/MACE-MPA-0/md/EinsteinMSD_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "MACE-MPA-0_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "MACE-MPA-0_md_SelfDiffusionFromMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/MACE-MPA-0/md/SelfDiffusionFromMSD_1"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "MACE-MPA-0_md_EinsteinMSD_1",
                         "cls": "EinsteinMSD",
                         "remote": null,
                         "rev": null
@@ -512,6 +643,33 @@
             "value": "$nwd$/rdf.png"
         }
     },
+    "7net-0_md_InterRDF_4": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-0/md/InterRDF_4"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "7net-0_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
     "7net-0_md_EinsteinMSD": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -548,6 +706,83 @@
                     "value": {
                         "module": "znmdakit.nodes.mean_square_displacement",
                         "name": "7net-0_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
+    "7net-0_md_InterRDF_5": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-0/md/InterRDF_5"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "7net-0_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "7net-0_md_EinsteinMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-0/md/EinsteinMSD_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "7net-0_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "7net-0_md_SelfDiffusionFromMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-0/md/SelfDiffusionFromMSD_1"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "7net-0_md_EinsteinMSD_1",
                         "cls": "EinsteinMSD",
                         "remote": null,
                         "rev": null
@@ -774,6 +1009,33 @@
             "value": "$nwd$/rdf.png"
         }
     },
+    "7net-mf-ompa-mpa_md_InterRDF_4": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-mf-ompa-mpa/md/InterRDF_4"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "7net-mf-ompa-mpa_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
     "7net-mf-ompa-mpa_md_EinsteinMSD": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -810,6 +1072,83 @@
                     "value": {
                         "module": "znmdakit.nodes.mean_square_displacement",
                         "name": "7net-mf-ompa-mpa_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
+    "7net-mf-ompa-mpa_md_InterRDF_5": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-mf-ompa-mpa/md/InterRDF_5"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "7net-mf-ompa-mpa_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "7net-mf-ompa-mpa_md_EinsteinMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-mf-ompa-mpa/md/EinsteinMSD_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "7net-mf-ompa-mpa_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "7net-mf-ompa-mpa_md_SelfDiffusionFromMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-mf-ompa-mpa/md/SelfDiffusionFromMSD_1"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "7net-mf-ompa-mpa_md_EinsteinMSD_1",
                         "cls": "EinsteinMSD",
                         "remote": null,
                         "rev": null
@@ -1036,6 +1375,33 @@
             "value": "$nwd$/rdf.png"
         }
     },
+    "orb-v2_md_InterRDF_4": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/md/InterRDF_4"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "orb-v2_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
     "orb-v2_md_EinsteinMSD": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -1072,6 +1438,83 @@
                     "value": {
                         "module": "znmdakit.nodes.mean_square_displacement",
                         "name": "orb-v2_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
+    "orb-v2_md_InterRDF_5": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/md/InterRDF_5"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "orb-v2_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "orb-v2_md_EinsteinMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/md/EinsteinMSD_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "orb-v2_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "orb-v2_md_SelfDiffusionFromMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/md/SelfDiffusionFromMSD_1"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "orb-v2_md_EinsteinMSD_1",
                         "cls": "EinsteinMSD",
                         "remote": null,
                         "rev": null
@@ -1298,6 +1741,33 @@
             "value": "$nwd$/rdf.png"
         }
     },
+    "orb-v3_md_InterRDF_4": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v3/md/InterRDF_4"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "orb-v3_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
     "orb-v3_md_EinsteinMSD": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -1334,6 +1804,83 @@
                     "value": {
                         "module": "znmdakit.nodes.mean_square_displacement",
                         "name": "orb-v3_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
+    "orb-v3_md_InterRDF_5": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v3/md/InterRDF_5"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "orb-v3_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "orb-v3_md_EinsteinMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v3/md/EinsteinMSD_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "orb-v3_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "orb-v3_md_SelfDiffusionFromMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v3/md/SelfDiffusionFromMSD_1"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "orb-v3_md_EinsteinMSD_1",
                         "cls": "EinsteinMSD",
                         "remote": null,
                         "rev": null
@@ -1560,6 +2107,33 @@
             "value": "$nwd$/rdf.png"
         }
     },
+    "mattersim_md_InterRDF_4": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mattersim/md/InterRDF_4"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "mattersim_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
     "mattersim_md_EinsteinMSD": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -1596,6 +2170,83 @@
                     "value": {
                         "module": "znmdakit.nodes.mean_square_displacement",
                         "name": "mattersim_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
+    "mattersim_md_InterRDF_5": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mattersim/md/InterRDF_5"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "mattersim_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "mattersim_md_EinsteinMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mattersim/md/EinsteinMSD_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "mattersim_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "mattersim_md_SelfDiffusionFromMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mattersim/md/SelfDiffusionFromMSD_1"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "mattersim_md_EinsteinMSD_1",
                         "cls": "EinsteinMSD",
                         "remote": null,
                         "rev": null
@@ -1822,6 +2473,33 @@
             "value": "$nwd$/rdf.png"
         }
     },
+    "chgnet_md_InterRDF_4": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/InterRDF_4"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
     "chgnet_md_EinsteinMSD": {
         "nwd": {
             "_type": "pathlib.Path",
@@ -1858,6 +2536,83 @@
                     "value": {
                         "module": "znmdakit.nodes.mean_square_displacement",
                         "name": "chgnet_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
+    "chgnet_md_InterRDF_5": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/InterRDF_5"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "chgnet_md_EinsteinMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/EinsteinMSD_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "chgnet_md_SelfDiffusionFromMSD_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/SelfDiffusionFromMSD_1"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "chgnet_md_EinsteinMSD_1",
                         "cls": "EinsteinMSD",
                         "remote": null,
                         "rev": null
