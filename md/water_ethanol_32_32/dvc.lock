@@ -1933,3 +1933,381 @@ stages:
       hash: md5
       md5: 036a0f7dcdb4fbb0fb5f1ce4ca74a2cd
       size: 31818
+  MACE-OFF_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      MACE-OFF_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 5aa6fdc87ac4b11268e8bc1eacf54a6f
+      size: 40150
+    params:
+      params.yaml:
+        MACE-OFF_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_off
+            device: auto
+            kwargs:
+              default_dtype: float32
+              model: medium
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/MACE-OFF/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 6d940c172ebd4c746848d1823b0480d1
+      size: 3456070
+    - path: nodes/MACE-OFF/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 2393f7ef708f4fc5f8ceaa164a448f00
+      size: 155
+    - path: nodes/MACE-OFF/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 066ce71a0e3d8989c1588e10301a8059
+      size: 6798
+  MACE-OFF_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name MACE-OFF_md_MolecularDynamics
+    deps:
+    - path: nodes/MACE-OFF/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 6d940c172ebd4c746848d1823b0480d1
+      size: 3456070
+    - path: nodes/MACE-OFF/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 066ce71a0e3d8989c1588e10301a8059
+      size: 6798
+    params:
+      params.yaml:
+        MACE-OFF_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_off
+            device: auto
+            kwargs:
+              default_dtype: float32
+              model: medium
+            module: mace.calculators
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/MACE-OFF/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 5e516eb10f5449538a3398f4fb8eda22
+      size: 6032060685
+    - path: nodes/MACE-OFF/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 9c011ddeb9d36c29316191c80e49d0c9
+      size: 157
+    - path: nodes/MACE-OFF/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/MACE-OFF/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: ac198804eedb74a9bc3767dcc766b59a
+      size: 3911720
+  MACE-OFF_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name MACE-OFF_md_Universe
+    deps:
+    - path: nodes/MACE-OFF/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 5e516eb10f5449538a3398f4fb8eda22
+      size: 6032060685
+    - path: nodes/MACE-OFF/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/MACE-OFF/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: ac198804eedb74a9bc3767dcc766b59a
+      size: 3911720
+    params:
+      params.yaml:
+        MACE-OFF_md_Universe:
+          residues:
+            Eta: CCO
+            H2O: O
+    outs:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    - path: nodes/MACE-OFF/md/Universe/node-meta.json
+      hash: md5
+      md5: e1ba994e07180ce9395f3fb4fe77df70
+      size: 156
+  MACE-OFF_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-OFF_md_InterRDF_3
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname H2O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-OFF/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: b86d3ada70a430bac8e5f1c47c176553
+      size: 156
+    - path: nodes/MACE-OFF/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: 141c914ca0aeab8ba14e1d7f734f018b
+      size: 31292
+    - path: nodes/MACE-OFF/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 931255ddfd492ba45304022398d22366
+      size: 32638
+  MACE-OFF_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name MACE-OFF_md_EinsteinMSD
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname H2O
+          timestep: 0.0005
+    outs:
+    - path: nodes/MACE-OFF/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: 3f4c0d8c4b96c924ba8d632da18eead8
+      size: 157
+    - path: nodes/MACE-OFF/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: d7ce9d8135a44e0026100ccbcf99c8e7
+      size: 2710499
+  MACE-OFF_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name MACE-OFF_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/MACE-OFF/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: d7ce9d8135a44e0026100ccbcf99c8e7
+      size: 2710499
+    params:
+      params.yaml:
+        MACE-OFF_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/MACE-OFF/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: 4f0186461fd3a47822b351cfe548f40f
+      size: 122
+    - path: nodes/MACE-OFF/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: 32031de10cd220cd6a8e6a5fd484f5e0
+      size: 64174
+    - path: nodes/MACE-OFF/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: 4ef842538b88bd62e51c7be96ea669be
+      size: 153
+  MACE-OFF_md_EinsteinMSD_1:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name MACE-OFF_md_EinsteinMSD_1
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_EinsteinMSD_1:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname Eta
+          timestep: 0.0005
+    outs:
+    - path: nodes/MACE-OFF/md/EinsteinMSD_1/node-meta.json
+      hash: md5
+      md5: 75790a3f8d16a0a69a485c30d10b47ba
+      size: 156
+    - path: nodes/MACE-OFF/md/EinsteinMSD_1/results.csv
+      hash: md5
+      md5: 1116493b294fa436c33a4258994eee4a
+      size: 2735285
+  MACE-OFF_md_SelfDiffusionFromMSD_1:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name MACE-OFF_md_SelfDiffusionFromMSD_1
+    deps:
+    - path: nodes/MACE-OFF/md/EinsteinMSD_1/results.csv
+      hash: md5
+      md5: 1116493b294fa436c33a4258994eee4a
+      size: 2735285
+    params:
+      params.yaml:
+        MACE-OFF_md_SelfDiffusionFromMSD_1:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/MACE-OFF/md/SelfDiffusionFromMSD_1/metrics.json
+      hash: md5
+      md5: e340c8d9a1f7c78cafe115c7fd560a99
+      size: 124
+    - path: nodes/MACE-OFF/md/SelfDiffusionFromMSD_1/msd_fit.png
+      hash: md5
+      md5: 06fd745659749b38c32fca1b89708abb
+      size: 60641
+    - path: nodes/MACE-OFF/md/SelfDiffusionFromMSD_1/node-meta.json
+      hash: md5
+      md5: 031faf54cfa9e4d92285c972761318b9
+      size: 153
+  MACE-OFF_md_InterRDF_5:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-OFF_md_InterRDF_5
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_InterRDF_5:
+          apply_com_transform: true
+          g1: name COM and resname Eta
+          g2: name COM and resname Eta
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-OFF/md/InterRDF_5/node-meta.json
+      hash: md5
+      md5: 25d3c6cc8f2002ebee5860a875e46228
+      size: 157
+    - path: nodes/MACE-OFF/md/InterRDF_5/rdf.png
+      hash: md5
+      md5: b935b0c23e3705f617407663ff86053f
+      size: 38214
+    - path: nodes/MACE-OFF/md/InterRDF_5/results.csv
+      hash: md5
+      md5: 0cbe13472fc947f62c3196a3c928a163
+      size: 31680
+  MACE-OFF_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-OFF_md_InterRDF_2
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-OFF/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: 81bb9a4b454327809135139a1d5f8df2
+      size: 157
+    - path: nodes/MACE-OFF/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: 3096163e143470794a8f765331c73d5a
+      size: 30700
+    - path: nodes/MACE-OFF/md/InterRDF_2/results.csv
+      hash: md5
+      md5: 085157f3256798d5cbc3b9da4042a9ef
+      size: 32805
+  MACE-OFF_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-OFF_md_InterRDF
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-OFF/md/InterRDF/node-meta.json
+      hash: md5
+      md5: 36d18959cb269878ec38f868baf39c99
+      size: 157
+    - path: nodes/MACE-OFF/md/InterRDF/rdf.png
+      hash: md5
+      md5: d0111d08e64dd038d5fcb5ad002f3633
+      size: 29851
+    - path: nodes/MACE-OFF/md/InterRDF/results.csv
+      hash: md5
+      md5: 7f5d10ecd89ef0576ad7b01ddf64bb70
+      size: 34950
+  MACE-OFF_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-OFF_md_InterRDF_1
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-OFF/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: f5fcf2673f4c368bf21b491789086674
+      size: 156
+    - path: nodes/MACE-OFF/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: b568366a13cc6f3f365d47fd047e9b98
+      size: 25601
+    - path: nodes/MACE-OFF/md/InterRDF_1/results.csv
+      hash: md5
+      md5: 95c263149d9c66bb7c0ca425ac568541
+      size: 35484
+  MACE-OFF_md_InterRDF_4:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name MACE-OFF_md_InterRDF_4
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 80272992ffab109685c0514fb865fa51
+      size: 2644888133
+    params:
+      params.yaml:
+        MACE-OFF_md_InterRDF_4:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname Eta
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/MACE-OFF/md/InterRDF_4/node-meta.json
+      hash: md5
+      md5: 1376a4c49a3b4dca5e80400f98b47b5a
+      size: 157
+    - path: nodes/MACE-OFF/md/InterRDF_4/rdf.png
+      hash: md5
+      md5: 5a2fe1f0a06899cc357080438028dc2f
+      size: 35363
+    - path: nodes/MACE-OFF/md/InterRDF_4/results.csv
+      hash: md5
+      md5: d76856bca08d2f578f9ed5ad7e6299dc
+      size: 32397
