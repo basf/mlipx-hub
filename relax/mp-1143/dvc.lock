@@ -973,3 +973,73 @@ stages:
       hash: md5
       md5: add4c51e7586962801fb7a378a51bbdd
       size: 296
+  grace-2l-omat_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace-2l-omat_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        grace-2l-omat_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/grace-2l-omat/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 79bb067e8b2b343e6b3d5a71a7a3058e
+      size: 10775
+    - path: nodes/grace-2l-omat/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 09c8a0f8cc11944606ee1490f73a919c
+      size: 153
+    - path: nodes/grace-2l-omat/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: c3cd530acf43bf52c0b4f1261759d004
+      size: 379
+  mace-mpa-0_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-mpa-0_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        mace-mpa-0_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/mace-mpa-0/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 8006bb71887dce6bddb9a557d2072d3b
+      size: 9696
+    - path: nodes/mace-mpa-0/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: e21be67757d4e0fcd099bb469f26644a
+      size: 154
+    - path: nodes/mace-mpa-0/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: add4c51e7586962801fb7a378a51bbdd
+      size: 296

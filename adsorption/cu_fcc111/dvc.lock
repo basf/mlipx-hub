@@ -796,3 +796,97 @@ stages:
       md5: 4f2f8f1a2e23a8e8cfcbf1137e37b66a.dir
       size: 1017576
       nfiles: 6
+  grace-2l-omat_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name grace-2l-omat_0_RelaxAdsorptionConfigs
+    deps:
+    - path: nodes/initialize/BuildASEslab/frames.traj
+      hash: md5
+      md5: 78b6efa9243c938388f89f5bb1828cf6
+      size: 2794
+    - path: nodes/initialize/Smiles2Conformers/frames.xyz
+      hash: md5
+      md5: e13f90ab5acaf6103b8d9c7c9017e1c6
+      size: 531
+    params:
+      params.yaml:
+        grace-2l-omat_0_RelaxAdsorptionConfigs:
+          adsorbate_id: -1
+          fmax: 0.05
+          height: 2.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          mol_index: 0
+          optimizer: LBFGS
+          position: all
+          slab_id: -1
+          steps: 300
+    outs:
+    - path: nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/ads_energies.json
+      hash: md5
+      md5: d4c6536e986a26ec2994b1e99511b121
+      size: 118
+    - path: nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/frames.traj
+      hash: md5
+      md5: d526e3e5ef1c661cc6fbf59ad5e58954
+      size: 19758
+    - path: nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/node-meta.json
+      hash: md5
+      md5: f4e90e5b716f5560db677c98c36fff83
+      size: 154
+    - path: nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/relax
+      hash: md5
+      md5: 06263b3ed451f712a723680a2317c3d1.dir
+      size: 919053
+      nfiles: 6
+  mace-mpa-0_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name mace-mpa-0_0_RelaxAdsorptionConfigs
+    deps:
+    - path: nodes/initialize/BuildASEslab/frames.traj
+      hash: md5
+      md5: 78b6efa9243c938388f89f5bb1828cf6
+      size: 2794
+    - path: nodes/initialize/Smiles2Conformers/frames.xyz
+      hash: md5
+      md5: e13f90ab5acaf6103b8d9c7c9017e1c6
+      size: 531
+    params:
+      params.yaml:
+        mace-mpa-0_0_RelaxAdsorptionConfigs:
+          adsorbate_id: -1
+          fmax: 0.05
+          height: 2.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          mol_index: 0
+          optimizer: LBFGS
+          position: all
+          slab_id: -1
+          steps: 300
+    outs:
+    - path: nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/ads_energies.json
+      hash: md5
+      md5: ce61d33a5528f4fb6cf8a1b175969f6e
+      size: 121
+    - path: nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/frames.traj
+      hash: md5
+      md5: 14b499f60b87561172677c0c2e6efacf
+      size: 17038
+    - path: nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/node-meta.json
+      hash: md5
+      md5: e760252202861d04a328d70c8b8f834b
+      size: 155
+    - path: nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/relax
+      hash: md5
+      md5: 4f2f8f1a2e23a8e8cfcbf1137e37b66a.dir
+      size: 1017576
+      nfiles: 6

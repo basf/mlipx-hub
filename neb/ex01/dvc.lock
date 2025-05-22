@@ -641,3 +641,79 @@ stages:
       hash: md5
       md5: bfde79132a85e7f6eda5e0dafd82e9a9
       size: 243
+  grace-2l-omat_NEBs:
+    cmd: zntrack run mlipx.nodes.nebs.NEBs --name grace-2l-omat_NEBs
+    deps:
+    - path: nodes/initialize/NEBinterpolate/initial_frames.xyz
+      hash: md5
+      md5: b61c8f880c88a88b47928b9c34198860
+      size: 46938
+    params:
+      params.yaml:
+        grace-2l-omat_NEBs:
+          fmax: 0.05
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          n_steps: 500
+          optimizer: FIRE
+          relax: true
+    outs:
+    - path: nodes/grace-2l-omat/NEBs/frames.xyz
+      hash: md5
+      md5: 69f56bda33cdd11f34e229bdfbefcefb
+      size: 64163
+    - path: nodes/grace-2l-omat/NEBs/neb_trajectory.traj
+      hash: md5
+      md5: b2f29f970c802d6b2c60806cf500570f
+      size: 10525722
+    - path: nodes/grace-2l-omat/NEBs/node-meta.json
+      hash: md5
+      md5: 79e29b8e12c2f79d4ea8da022328adc6
+      size: 156
+    - path: nodes/grace-2l-omat/NEBs/results.csv
+      hash: md5
+      md5: bfde79132a85e7f6eda5e0dafd82e9a9
+      size: 243
+  mace-mpa-0_NEBs:
+    cmd: zntrack run mlipx.nodes.nebs.NEBs --name mace-mpa-0_NEBs
+    deps:
+    - path: nodes/initialize/NEBinterpolate/initial_frames.xyz
+      hash: md5
+      md5: b61c8f880c88a88b47928b9c34198860
+      size: 46938
+    params:
+      params.yaml:
+        mace-mpa-0_NEBs:
+          fmax: 0.05
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          n_steps: 500
+          optimizer: FIRE
+          relax: true
+    outs:
+    - path: nodes/mace-mpa-0/NEBs/frames.xyz
+      hash: md5
+      md5: 535461523ef9ad55d4083f3b19ad0b46
+      size: 64184
+    - path: nodes/mace-mpa-0/NEBs/neb_trajectory.traj
+      hash: md5
+      md5: 4f58e851d2bb8fab241a431ea2221978
+      size: 10662678
+    - path: nodes/mace-mpa-0/NEBs/node-meta.json
+      hash: md5
+      md5: cd4de874386eac129d97c2e0a6e3263c
+      size: 155
+    - path: nodes/mace-mpa-0/NEBs/results.csv
+      hash: md5
+      md5: fef47970cd29b3c571336c972061b2e0
+      size: 234

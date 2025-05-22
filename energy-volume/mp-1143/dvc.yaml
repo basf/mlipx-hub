@@ -1,9 +1,9 @@
 plots:
-- MACE-MPA-0_0_EnergyVolumeCurve_results:
+- mace-mpa-0_0_EnergyVolumeCurve_results:
     x:
-      nodes/MACE-MPA-0/0/EnergyVolumeCurve/results.csv: scale
+      nodes/mace-mpa-0/0/EnergyVolumeCurve/results.csv: scale
     y:
-      nodes/MACE-MPA-0/0/EnergyVolumeCurve/results.csv: energy
+      nodes/mace-mpa-0/0/EnergyVolumeCurve/results.csv: energy
 - 7net-0_0_EnergyVolumeCurve_results:
     x:
       nodes/7net-0/0/EnergyVolumeCurve/results.csv: scale
@@ -29,11 +29,11 @@ plots:
       nodes/mattersim/0/EnergyVolumeCurve/results.csv: scale
     y:
       nodes/mattersim/0/EnergyVolumeCurve/results.csv: energy
-- GRACE-2L-OMAT_0_EnergyVolumeCurve_results:
+- grace-2l-omat_0_EnergyVolumeCurve_results:
     x:
-      nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/results.csv: scale
+      nodes/grace-2l-omat/0/EnergyVolumeCurve/results.csv: scale
     y:
-      nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/results.csv: energy
+      nodes/grace-2l-omat/0/EnergyVolumeCurve/results.csv: energy
 - chgnet_0_EnergyVolumeCurve_results:
     x:
       nodes/chgnet/0/EnergyVolumeCurve/results.csv: scale
@@ -64,30 +64,6 @@ stages:
     - nodes/7net-mf-ompa-mpa/0/EnergyVolumeCurve/results.csv
     params:
     - 7net-mf-ompa-mpa_0_EnergyVolumeCurve
-  GRACE-2L-OMAT_0_EnergyVolumeCurve:
-    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name GRACE-2L-OMAT_0_EnergyVolumeCurve
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/frames.xyz
-    - nodes/GRACE-2L-OMAT/0/EnergyVolumeCurve/results.csv
-    params:
-    - GRACE-2L-OMAT_0_EnergyVolumeCurve
-  MACE-MPA-0_0_EnergyVolumeCurve:
-    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name MACE-MPA-0_0_EnergyVolumeCurve
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/EnergyVolumeCurve/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/EnergyVolumeCurve/frames.xyz
-    - nodes/MACE-MPA-0/0/EnergyVolumeCurve/results.csv
-    params:
-    - MACE-MPA-0_0_EnergyVolumeCurve
   chgnet_0_EnergyVolumeCurve:
     cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name chgnet_0_EnergyVolumeCurve
     deps:
@@ -100,6 +76,18 @@ stages:
     - nodes/chgnet/0/EnergyVolumeCurve/results.csv
     params:
     - chgnet_0_EnergyVolumeCurve
+  grace-2l-omat_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name grace-2l-omat_0_EnergyVolumeCurve
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/EnergyVolumeCurve/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/0/EnergyVolumeCurve/frames.xyz
+    - nodes/grace-2l-omat/0/EnergyVolumeCurve/results.csv
+    params:
+    - grace-2l-omat_0_EnergyVolumeCurve
   initialize_MPRester:
     cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
     metrics:
@@ -109,6 +97,18 @@ stages:
     - nodes/initialize/MPRester/frames.xyz
     params:
     - initialize_MPRester
+  mace-mpa-0_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name mace-mpa-0_0_EnergyVolumeCurve
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/EnergyVolumeCurve/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/EnergyVolumeCurve/frames.xyz
+    - nodes/mace-mpa-0/0/EnergyVolumeCurve/results.csv
+    params:
+    - mace-mpa-0_0_EnergyVolumeCurve
   mattersim_0_EnergyVolumeCurve:
     cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name mattersim_0_EnergyVolumeCurve
     deps:

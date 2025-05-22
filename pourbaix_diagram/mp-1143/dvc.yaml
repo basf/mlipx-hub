@@ -1,9 +1,9 @@
 plots:
-- MACE-MPA-0_0_PourbaixDiagram_results:
+- mace-mpa-0_0_PourbaixDiagram_results:
     x:
-      nodes/MACE-MPA-0/0/PourbaixDiagram/results.csv: data_id
+      nodes/mace-mpa-0/0/PourbaixDiagram/results.csv: data_id
     y:
-      nodes/MACE-MPA-0/0/PourbaixDiagram/results.csv: pourbaix_decomposition_energy
+      nodes/mace-mpa-0/0/PourbaixDiagram/results.csv: pourbaix_decomposition_energy
 - 7net-0_0_PourbaixDiagram_results:
     x:
       nodes/7net-0/0/PourbaixDiagram/results.csv: data_id
@@ -29,11 +29,11 @@ plots:
       nodes/mattersim/0/PourbaixDiagram/results.csv: data_id
     y:
       nodes/mattersim/0/PourbaixDiagram/results.csv: pourbaix_decomposition_energy
-- GRACE-2L-OMAT_0_PourbaixDiagram_results:
+- grace-2l-omat_0_PourbaixDiagram_results:
     x:
-      nodes/GRACE-2L-OMAT/0/PourbaixDiagram/results.csv: data_id
+      nodes/grace-2l-omat/0/PourbaixDiagram/results.csv: data_id
     y:
-      nodes/GRACE-2L-OMAT/0/PourbaixDiagram/results.csv: pourbaix_decomposition_energy
+      nodes/grace-2l-omat/0/PourbaixDiagram/results.csv: pourbaix_decomposition_energy
 - chgnet_0_PourbaixDiagram_results:
     x:
       nodes/chgnet/0/PourbaixDiagram/results.csv: data_id
@@ -66,32 +66,6 @@ stages:
     - nodes/7net-mf-ompa-mpa/0/PourbaixDiagram/results.csv
     params:
     - 7net-mf-ompa-mpa_0_PourbaixDiagram
-  GRACE-2L-OMAT_0_PourbaixDiagram:
-    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name GRACE-2L-OMAT_0_PourbaixDiagram
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/PourbaixDiagram/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/0/PourbaixDiagram/frames.xyz
-    - nodes/GRACE-2L-OMAT/0/PourbaixDiagram/pourbaix_diagram.json
-    - nodes/GRACE-2L-OMAT/0/PourbaixDiagram/results.csv
-    params:
-    - GRACE-2L-OMAT_0_PourbaixDiagram
-  MACE-MPA-0_0_PourbaixDiagram:
-    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name MACE-MPA-0_0_PourbaixDiagram
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/PourbaixDiagram/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/PourbaixDiagram/frames.xyz
-    - nodes/MACE-MPA-0/0/PourbaixDiagram/pourbaix_diagram.json
-    - nodes/MACE-MPA-0/0/PourbaixDiagram/results.csv
-    params:
-    - MACE-MPA-0_0_PourbaixDiagram
   chgnet_0_PourbaixDiagram:
     cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name chgnet_0_PourbaixDiagram
     deps:
@@ -105,6 +79,19 @@ stages:
     - nodes/chgnet/0/PourbaixDiagram/results.csv
     params:
     - chgnet_0_PourbaixDiagram
+  grace-2l-omat_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name grace-2l-omat_0_PourbaixDiagram
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/PourbaixDiagram/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/0/PourbaixDiagram/frames.xyz
+    - nodes/grace-2l-omat/0/PourbaixDiagram/pourbaix_diagram.json
+    - nodes/grace-2l-omat/0/PourbaixDiagram/results.csv
+    params:
+    - grace-2l-omat_0_PourbaixDiagram
   initialize_MPRester:
     cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
     metrics:
@@ -114,6 +101,19 @@ stages:
     - nodes/initialize/MPRester/frames.xyz
     params:
     - initialize_MPRester
+  mace-mpa-0_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name mace-mpa-0_0_PourbaixDiagram
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/PourbaixDiagram/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/PourbaixDiagram/frames.xyz
+    - nodes/mace-mpa-0/0/PourbaixDiagram/pourbaix_diagram.json
+    - nodes/mace-mpa-0/0/PourbaixDiagram/results.csv
+    params:
+    - mace-mpa-0_0_PourbaixDiagram
   mattersim_0_PourbaixDiagram:
     cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name mattersim_0_PourbaixDiagram
     deps:

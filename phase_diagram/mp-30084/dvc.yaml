@@ -1,9 +1,9 @@
 plots:
-- MACE-MPA-0_0_PhaseDiagram_results:
+- mace-mpa-0_0_PhaseDiagram_results:
     x:
-      nodes/MACE-MPA-0/0/PhaseDiagram/results.csv: data_id
+      nodes/mace-mpa-0/0/PhaseDiagram/results.csv: data_id
     y:
-      nodes/MACE-MPA-0/0/PhaseDiagram/results.csv: formation_energy
+      nodes/mace-mpa-0/0/PhaseDiagram/results.csv: formation_energy
 - 7net-0_0_PhaseDiagram_results:
     x:
       nodes/7net-0/0/PhaseDiagram/results.csv: data_id
@@ -29,11 +29,11 @@ plots:
       nodes/mattersim/0/PhaseDiagram/results.csv: data_id
     y:
       nodes/mattersim/0/PhaseDiagram/results.csv: formation_energy
-- GRACE-2L-OMAT_0_PhaseDiagram_results:
+- grace-2l-omat_0_PhaseDiagram_results:
     x:
-      nodes/GRACE-2L-OMAT/0/PhaseDiagram/results.csv: data_id
+      nodes/grace-2l-omat/0/PhaseDiagram/results.csv: data_id
     y:
-      nodes/GRACE-2L-OMAT/0/PhaseDiagram/results.csv: formation_energy
+      nodes/grace-2l-omat/0/PhaseDiagram/results.csv: formation_energy
 - chgnet_0_PhaseDiagram_results:
     x:
       nodes/chgnet/0/PhaseDiagram/results.csv: data_id
@@ -66,32 +66,6 @@ stages:
     - nodes/7net-mf-ompa-mpa/0/PhaseDiagram/results.csv
     params:
     - 7net-mf-ompa-mpa_0_PhaseDiagram
-  GRACE-2L-OMAT_0_PhaseDiagram:
-    cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name GRACE-2L-OMAT_0_PhaseDiagram
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/PhaseDiagram/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/0/PhaseDiagram/frames.xyz
-    - nodes/GRACE-2L-OMAT/0/PhaseDiagram/phase_diagram.json
-    - nodes/GRACE-2L-OMAT/0/PhaseDiagram/results.csv
-    params:
-    - GRACE-2L-OMAT_0_PhaseDiagram
-  MACE-MPA-0_0_PhaseDiagram:
-    cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name MACE-MPA-0_0_PhaseDiagram
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/PhaseDiagram/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/PhaseDiagram/frames.xyz
-    - nodes/MACE-MPA-0/0/PhaseDiagram/phase_diagram.json
-    - nodes/MACE-MPA-0/0/PhaseDiagram/results.csv
-    params:
-    - MACE-MPA-0_0_PhaseDiagram
   chgnet_0_PhaseDiagram:
     cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name chgnet_0_PhaseDiagram
     deps:
@@ -105,6 +79,19 @@ stages:
     - nodes/chgnet/0/PhaseDiagram/results.csv
     params:
     - chgnet_0_PhaseDiagram
+  grace-2l-omat_0_PhaseDiagram:
+    cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name grace-2l-omat_0_PhaseDiagram
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/PhaseDiagram/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/0/PhaseDiagram/frames.xyz
+    - nodes/grace-2l-omat/0/PhaseDiagram/phase_diagram.json
+    - nodes/grace-2l-omat/0/PhaseDiagram/results.csv
+    params:
+    - grace-2l-omat_0_PhaseDiagram
   initialize_MPRester:
     cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
     metrics:
@@ -114,6 +101,19 @@ stages:
     - nodes/initialize/MPRester/frames.xyz
     params:
     - initialize_MPRester
+  mace-mpa-0_0_PhaseDiagram:
+    cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name mace-mpa-0_0_PhaseDiagram
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/PhaseDiagram/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/PhaseDiagram/frames.xyz
+    - nodes/mace-mpa-0/0/PhaseDiagram/phase_diagram.json
+    - nodes/mace-mpa-0/0/PhaseDiagram/results.csv
+    params:
+    - mace-mpa-0_0_PhaseDiagram
   mattersim_0_PhaseDiagram:
     cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name mattersim_0_PhaseDiagram
     deps:

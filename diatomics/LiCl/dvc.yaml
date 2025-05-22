@@ -25,32 +25,19 @@ stages:
     - nodes/7net-mf-ompa-mpa/HomonuclearDiatomics/results.csv
     params:
     - 7net-mf-ompa-mpa_HomonuclearDiatomics
-  GRACE-2L-OMAT_HomonuclearDiatomics:
-    cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name GRACE-2L-OMAT_HomonuclearDiatomics
+  grace-2l-omat_HomonuclearDiatomics:
+    cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name grace-2l-omat_HomonuclearDiatomics
     deps:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
-    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/node-meta.json:
+    - nodes/grace-2l-omat/HomonuclearDiatomics/node-meta.json:
         cache: true
     outs:
-    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/frames.json
-    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/model_outs
-    - nodes/GRACE-2L-OMAT/HomonuclearDiatomics/results.csv
+    - nodes/grace-2l-omat/HomonuclearDiatomics/frames.json
+    - nodes/grace-2l-omat/HomonuclearDiatomics/model_outs
+    - nodes/grace-2l-omat/HomonuclearDiatomics/results.csv
     params:
-    - GRACE-2L-OMAT_HomonuclearDiatomics
-  MACE-MPA-0_HomonuclearDiatomics:
-    cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name MACE-MPA-0_HomonuclearDiatomics
-    deps:
-    - nodes/initialize/Smiles2Conformers/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/HomonuclearDiatomics/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/HomonuclearDiatomics/frames.json
-    - nodes/MACE-MPA-0/HomonuclearDiatomics/model_outs
-    - nodes/MACE-MPA-0/HomonuclearDiatomics/results.csv
-    params:
-    - MACE-MPA-0_HomonuclearDiatomics
+    - grace-2l-omat_HomonuclearDiatomics
   initialize_Smiles2Conformers:
     cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers
     metrics:
@@ -60,6 +47,19 @@ stages:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     params:
     - initialize_Smiles2Conformers
+  mace-mpa-0_HomonuclearDiatomics:
+    cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name mace-mpa-0_HomonuclearDiatomics
+    deps:
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/HomonuclearDiatomics/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/HomonuclearDiatomics/frames.json
+    - nodes/mace-mpa-0/HomonuclearDiatomics/model_outs
+    - nodes/mace-mpa-0/HomonuclearDiatomics/results.csv
+    params:
+    - mace-mpa-0_HomonuclearDiatomics
   mattersim_HomonuclearDiatomics:
     cmd: zntrack run mlipx.nodes.diatomics.HomonuclearDiatomics --name mattersim_HomonuclearDiatomics
     deps:

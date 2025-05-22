@@ -9,10 +9,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_HomonuclearDiatomics": {
+    "mace-mpa-0_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/HomonuclearDiatomics"
+            "value": "nodes/mace-mpa-0/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -247,10 +247,10 @@
             "value": "$nwd$/model_outs"
         }
     },
-    "GRACE-2L-OMAT_HomonuclearDiatomics": {
+    "grace-2l-omat_HomonuclearDiatomics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/HomonuclearDiatomics"
+            "value": "nodes/grace-2l-omat/HomonuclearDiatomics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",

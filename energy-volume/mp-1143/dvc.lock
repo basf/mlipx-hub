@@ -383,3 +383,71 @@ stages:
       hash: md5
       md5: ba7cfa9a4a6ff77bf9e4ef5956f2e422
       size: 3487
+  grace-2l-omat_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name grace-2l-omat_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        grace-2l-omat_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/grace-2l-omat/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: cdd251f9d21f245e5db7f69562f4938b
+      size: 86996
+    - path: nodes/grace-2l-omat/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: 6bb848ec53bdea060d4f457db4eeef80
+      size: 155
+    - path: nodes/grace-2l-omat/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: 8b072202e9ffb993c397552c27ca7fd8
+      size: 3934
+  mace-mpa-0_0_EnergyVolumeCurve:
+    cmd: zntrack run mlipx.nodes.energy_volume.EnergyVolumeCurve --name mace-mpa-0_0_EnergyVolumeCurve
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        mace-mpa-0_0_EnergyVolumeCurve:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          n_points: 50
+          start: 0.8
+          stop: 2.0
+    outs:
+    - path: nodes/mace-mpa-0/0/EnergyVolumeCurve/frames.xyz
+      hash: md5
+      md5: b17b17666a0b5e3e7750f80df426c167
+      size: 86991
+    - path: nodes/mace-mpa-0/0/EnergyVolumeCurve/node-meta.json
+      hash: md5
+      md5: 1945a324db55b7dbe20ffbfe1d2726b1
+      size: 154
+    - path: nodes/mace-mpa-0/0/EnergyVolumeCurve/results.csv
+      hash: md5
+      md5: ba7cfa9a4a6ff77bf9e4ef5956f2e422
+      size: 3487

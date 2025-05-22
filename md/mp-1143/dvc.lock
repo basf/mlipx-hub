@@ -722,3 +722,103 @@ stages:
       hash: md5
       md5: f90d87134769abd9f94adf9e6700d725
       size: 42310
+  grace-2l-omat_0_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name grace-2l-omat_0_MolecularDynamics
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        grace-2l-omat_0_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          modifiers:
+          - _cls: mlipx.nodes.modifier.TemperatureRampModifier
+            end_temperature: 400
+            interval: 1
+            start_temperature:
+            total_steps: 100
+          observers:
+          - _cls: mlipx.nodes.observer.MaximumForceObserver
+            f_max: 100
+          steps: 1000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 300
+            timestep: 0.5
+    outs:
+    - path: nodes/grace-2l-omat/0/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 1363d2049d64ef8dabf978e64bb6418b
+      size: 2186610
+    - path: nodes/grace-2l-omat/0/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 5f777058c95617dae796998c3d8741ec
+      size: 155
+    - path: nodes/grace-2l-omat/0/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99d1bc2c8fde362f1c1b8ccf64ceac4c
+      size: 28
+    - path: nodes/grace-2l-omat/0/MolecularDynamics/plots.csv
+      hash: md5
+      md5: d2439219a5eb837c560a2b04ba27a7f6
+      size: 59833
+  mace-mpa-0_0_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mace-mpa-0_0_MolecularDynamics
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        mace-mpa-0_0_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          modifiers:
+          - _cls: mlipx.nodes.modifier.TemperatureRampModifier
+            end_temperature: 400
+            interval: 1
+            start_temperature:
+            total_steps: 100
+          observers:
+          - _cls: mlipx.nodes.observer.MaximumForceObserver
+            f_max: 100
+          steps: 1000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 300
+            timestep: 0.5
+    outs:
+    - path: nodes/mace-mpa-0/0/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: 10bdd0d0d000f480a8ad5d741b386453
+      size: 2186084
+    - path: nodes/mace-mpa-0/0/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: a99946d32fb9c1a943aa33102cf02f7b
+      size: 155
+    - path: nodes/mace-mpa-0/0/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99d1bc2c8fde362f1c1b8ccf64ceac4c
+      size: 28
+    - path: nodes/mace-mpa-0/0/MolecularDynamics/plots.csv
+      hash: md5
+      md5: f90d87134769abd9f94adf9e6700d725
+      size: 42310

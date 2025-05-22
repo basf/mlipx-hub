@@ -6,7 +6,7 @@ from mlipx.nodes.generic_ase import Device
 ALL_MODELS = {}
 
 # https://github.com/ACEsuit/mace
-ALL_MODELS["MACE-MPA-0"] = mlipx.GenericASECalculator(
+ALL_MODELS["mace-mpa-0"] = mlipx.GenericASECalculator(
     module="mace.calculators",
     class_name="mace_mp",
     device="auto",
@@ -49,7 +49,7 @@ class OrbCalc:
             orbff = method(device=self.device, **self.kwargs)
             calc = ORBCalculator(orbff, device=self.device, **self.kwargs)
         return calc
-    
+
     @property
     def available(self) -> bool:
         try:
@@ -87,7 +87,7 @@ ALL_MODELS["orca"] = mlipx.OrcaSinglePoint(
 )
 
 # https://gracemaker.readthedocs.io/en/latest/gracemaker/foundation/
-ALL_MODELS["GRACE-2L-OMAT"] = mlipx.GenericASECalculator(
+ALL_MODELS["grace-2l-omat"] = mlipx.GenericASECalculator(
     module="tensorpotential.calculator",
     class_name="TPCalculator",
     device=None,
@@ -112,11 +112,11 @@ ALL_MODELS["GRACE-2L-OMAT"] = mlipx.GenericASECalculator(
 # ONLY THESE MODELS WILL BE USED IN THE RECIPE
 # ============================================================
 MODELS = {
-    "MACE-MPA-0": ALL_MODELS["MACE-MPA-0"],
+    "mace-mpa-0": ALL_MODELS["mace-mpa-0"],
     "7net-0": ALL_MODELS["7net-0"],
     "7net-mf-ompa-mpa": ALL_MODELS["7net-mf-ompa-mpa"],
     "orb-v2": ALL_MODELS["orb-v2"],
     "orb-v3": ALL_MODELS["orb-v3"],
     "mattersim": ALL_MODELS["mattersim"],
-    "GRACE-2L-OMAT": ALL_MODELS["GRACE-2L-OMAT"],
+    "grace-2l-omat": ALL_MODELS["grace-2l-omat"],
 }

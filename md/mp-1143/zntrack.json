@@ -9,10 +9,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_0_MolecularDynamics": {
+    "mace-mpa-0_0_MolecularDynamics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/0/MolecularDynamics"
+            "value": "nodes/mace-mpa-0/0/MolecularDynamics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -363,10 +363,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "GRACE-2L-OMAT_0_MolecularDynamics": {
+    "grace-2l-omat_0_MolecularDynamics": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/0/MolecularDynamics"
+            "value": "nodes/grace-2l-omat/0/MolecularDynamics"
         },
         "model": {
             "_type": "@dataclasses.dataclass",

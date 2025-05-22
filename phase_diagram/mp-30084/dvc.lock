@@ -731,3 +731,79 @@ stages:
       hash: md5
       md5: 08afa464bfb8f17e6740dfb42e604b90
       size: 86
+  grace-2l-omat_0_PhaseDiagram:
+    cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name grace-2l-omat_0_PhaseDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: f9530a4f1035bbaa1b88dedbd38d9f63
+      size: 1165
+    params:
+      params.yaml:
+        grace-2l-omat_0_PhaseDiagram:
+          chemsys:
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+    outs:
+    - path: nodes/grace-2l-omat/0/PhaseDiagram/frames.xyz
+      hash: md5
+      md5: f2df84961e7b1e1868369dcd8b84da56
+      size: 2156
+    - path: nodes/grace-2l-omat/0/PhaseDiagram/node-meta.json
+      hash: md5
+      md5: d39edc2f2b81a4014e6f85998fa1693d
+      size: 155
+    - path: nodes/grace-2l-omat/0/PhaseDiagram/phase_diagram.json
+      hash: md5
+      md5: 087a62263ef6ed9dc83f4a217a29f45f
+      size: 2436191
+    - path: nodes/grace-2l-omat/0/PhaseDiagram/results.csv
+      hash: md5
+      md5: b190c3bee417f75f79d4e5ea4e6f5e36
+      size: 86
+  mace-mpa-0_0_PhaseDiagram:
+    cmd: zntrack run mlipx.nodes.phase_diagram.PhaseDiagram --name mace-mpa-0_0_PhaseDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: f9530a4f1035bbaa1b88dedbd38d9f63
+      size: 1165
+    params:
+      params.yaml:
+        mace-mpa-0_0_PhaseDiagram:
+          chemsys:
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+    outs:
+    - path: nodes/mace-mpa-0/0/PhaseDiagram/frames.xyz
+      hash: md5
+      md5: 720d9e35ea79b3b826f06fdd3c410c96
+      size: 2157
+    - path: nodes/mace-mpa-0/0/PhaseDiagram/node-meta.json
+      hash: md5
+      md5: 592a9dab447b0a9d09ca8fbdfa49d23f
+      size: 154
+    - path: nodes/mace-mpa-0/0/PhaseDiagram/phase_diagram.json
+      hash: md5
+      md5: f99fb4869cebfeead3b747e8c400bc24
+      size: 2436163
+    - path: nodes/mace-mpa-0/0/PhaseDiagram/results.csv
+      hash: md5
+      md5: e16415d8832c1a938c5071767e31d162
+      size: 86

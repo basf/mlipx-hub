@@ -29,10 +29,10 @@
             }
         }
     },
-    "MACE-MPA-0_ApplyCalculator": {
+    "mace-mpa-0_ApplyCalculator": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/ApplyCalculator"
+            "value": "nodes/mace-mpa-0/ApplyCalculator"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -63,10 +63,10 @@
             "value": "$nwd$/frames.h5"
         }
     },
-    "MACE-MPA-0_EvaluateCalculatorResults": {
+    "mace-mpa-0_EvaluateCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/EvaluateCalculatorResults"
+            "value": "nodes/mace-mpa-0/EvaluateCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -75,7 +75,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.apply_calculator",
-                        "name": "MACE-MPA-0_ApplyCalculator",
+                        "name": "mace-mpa-0_ApplyCalculator",
                         "cls": "ApplyCalculator",
                         "remote": null,
                         "rev": null
@@ -86,10 +86,10 @@
             }
         }
     },
-    "MACE-MPA-0_CompareCalculatorResults": {
+    "mace-mpa-0_CompareCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/CompareCalculatorResults"
+            "value": "nodes/mace-mpa-0/CompareCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -98,7 +98,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.evaluate_calculator",
-                        "name": "MACE-MPA-0_EvaluateCalculatorResults",
+                        "name": "mace-mpa-0_EvaluateCalculatorResults",
                         "cls": "EvaluateCalculatorResults",
                         "remote": null,
                         "rev": null
@@ -417,10 +417,10 @@
             }
         }
     },
-    "GRACE-2L-OMAT_ApplyCalculator": {
+    "grace-2l-omat_ApplyCalculator": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/ApplyCalculator"
+            "value": "nodes/grace-2l-omat/ApplyCalculator"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -451,10 +451,10 @@
             "value": "$nwd$/frames.h5"
         }
     },
-    "GRACE-2L-OMAT_EvaluateCalculatorResults": {
+    "grace-2l-omat_EvaluateCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/EvaluateCalculatorResults"
+            "value": "nodes/grace-2l-omat/EvaluateCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -463,7 +463,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.apply_calculator",
-                        "name": "GRACE-2L-OMAT_ApplyCalculator",
+                        "name": "grace-2l-omat_ApplyCalculator",
                         "cls": "ApplyCalculator",
                         "remote": null,
                         "rev": null
@@ -474,10 +474,10 @@
             }
         }
     },
-    "GRACE-2L-OMAT_CompareCalculatorResults": {
+    "grace-2l-omat_CompareCalculatorResults": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/CompareCalculatorResults"
+            "value": "nodes/grace-2l-omat/CompareCalculatorResults"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -486,7 +486,7 @@
                     "_type": "zntrack.Node",
                     "value": {
                         "module": "mlipx.nodes.evaluate_calculator",
-                        "name": "GRACE-2L-OMAT_EvaluateCalculatorResults",
+                        "name": "grace-2l-omat_EvaluateCalculatorResults",
                         "cls": "EvaluateCalculatorResults",
                         "remote": null,
                         "rev": null
