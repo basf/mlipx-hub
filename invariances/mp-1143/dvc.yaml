@@ -77,84 +77,6 @@ stages:
     - nodes/7net-mf-ompa-mpa/0/TranslationalInvariance/plots.csv
     params:
     - 7net-mf-ompa-mpa_0_TranslationalInvariance
-  GRACE-2L-OMAT_0_PermutationInvariance:
-    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name GRACE-2L-OMAT_0_PermutationInvariance
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/PermutationInvariance/metrics.json
-    - nodes/GRACE-2L-OMAT/0/PermutationInvariance/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/0/PermutationInvariance/frames.xyz
-    - nodes/GRACE-2L-OMAT/0/PermutationInvariance/plots.csv
-    params:
-    - GRACE-2L-OMAT_0_PermutationInvariance
-  GRACE-2L-OMAT_0_RotationalInvariance:
-    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name GRACE-2L-OMAT_0_RotationalInvariance
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/RotationalInvariance/metrics.json
-    - nodes/GRACE-2L-OMAT/0/RotationalInvariance/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/0/RotationalInvariance/frames.xyz
-    - nodes/GRACE-2L-OMAT/0/RotationalInvariance/plots.csv
-    params:
-    - GRACE-2L-OMAT_0_RotationalInvariance
-  GRACE-2L-OMAT_0_TranslationalInvariance:
-    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name GRACE-2L-OMAT_0_TranslationalInvariance
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/TranslationalInvariance/metrics.json
-    - nodes/GRACE-2L-OMAT/0/TranslationalInvariance/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/0/TranslationalInvariance/frames.xyz
-    - nodes/GRACE-2L-OMAT/0/TranslationalInvariance/plots.csv
-    params:
-    - GRACE-2L-OMAT_0_TranslationalInvariance
-  MACE-MPA-0_0_PermutationInvariance:
-    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name MACE-MPA-0_0_PermutationInvariance
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/PermutationInvariance/metrics.json
-    - nodes/MACE-MPA-0/0/PermutationInvariance/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/PermutationInvariance/frames.xyz
-    - nodes/MACE-MPA-0/0/PermutationInvariance/plots.csv
-    params:
-    - MACE-MPA-0_0_PermutationInvariance
-  MACE-MPA-0_0_RotationalInvariance:
-    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name MACE-MPA-0_0_RotationalInvariance
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/RotationalInvariance/metrics.json
-    - nodes/MACE-MPA-0/0/RotationalInvariance/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/RotationalInvariance/frames.xyz
-    - nodes/MACE-MPA-0/0/RotationalInvariance/plots.csv
-    params:
-    - MACE-MPA-0_0_RotationalInvariance
-  MACE-MPA-0_0_TranslationalInvariance:
-    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name MACE-MPA-0_0_TranslationalInvariance
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/TranslationalInvariance/metrics.json
-    - nodes/MACE-MPA-0/0/TranslationalInvariance/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/TranslationalInvariance/frames.xyz
-    - nodes/MACE-MPA-0/0/TranslationalInvariance/plots.csv
-    params:
-    - MACE-MPA-0_0_TranslationalInvariance
   chgnet_0_PermutationInvariance:
     cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name chgnet_0_PermutationInvariance
     deps:
@@ -194,6 +116,45 @@ stages:
     - nodes/chgnet/0/TranslationalInvariance/plots.csv
     params:
     - chgnet_0_TranslationalInvariance
+  grace-2l-omat_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name grace-2l-omat_0_PermutationInvariance
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/PermutationInvariance/metrics.json
+    - nodes/grace-2l-omat/0/PermutationInvariance/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/0/PermutationInvariance/frames.xyz
+    - nodes/grace-2l-omat/0/PermutationInvariance/plots.csv
+    params:
+    - grace-2l-omat_0_PermutationInvariance
+  grace-2l-omat_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name grace-2l-omat_0_RotationalInvariance
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/RotationalInvariance/metrics.json
+    - nodes/grace-2l-omat/0/RotationalInvariance/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/0/RotationalInvariance/frames.xyz
+    - nodes/grace-2l-omat/0/RotationalInvariance/plots.csv
+    params:
+    - grace-2l-omat_0_RotationalInvariance
+  grace-2l-omat_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name grace-2l-omat_0_TranslationalInvariance
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/TranslationalInvariance/metrics.json
+    - nodes/grace-2l-omat/0/TranslationalInvariance/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/0/TranslationalInvariance/frames.xyz
+    - nodes/grace-2l-omat/0/TranslationalInvariance/plots.csv
+    params:
+    - grace-2l-omat_0_TranslationalInvariance
   initialize_MPRester:
     cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
     metrics:
@@ -203,6 +164,45 @@ stages:
     - nodes/initialize/MPRester/frames.xyz
     params:
     - initialize_MPRester
+  mace-mpa-0_0_PermutationInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name mace-mpa-0_0_PermutationInvariance
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/PermutationInvariance/metrics.json
+    - nodes/mace-mpa-0/0/PermutationInvariance/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/PermutationInvariance/frames.xyz
+    - nodes/mace-mpa-0/0/PermutationInvariance/plots.csv
+    params:
+    - mace-mpa-0_0_PermutationInvariance
+  mace-mpa-0_0_RotationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.RotationalInvariance --name mace-mpa-0_0_RotationalInvariance
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/RotationalInvariance/metrics.json
+    - nodes/mace-mpa-0/0/RotationalInvariance/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/RotationalInvariance/frames.xyz
+    - nodes/mace-mpa-0/0/RotationalInvariance/plots.csv
+    params:
+    - mace-mpa-0_0_RotationalInvariance
+  mace-mpa-0_0_TranslationalInvariance:
+    cmd: zntrack run mlipx.nodes.invariances.TranslationalInvariance --name mace-mpa-0_0_TranslationalInvariance
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/TranslationalInvariance/metrics.json
+    - nodes/mace-mpa-0/0/TranslationalInvariance/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/TranslationalInvariance/frames.xyz
+    - nodes/mace-mpa-0/0/TranslationalInvariance/plots.csv
+    params:
+    - mace-mpa-0_0_TranslationalInvariance
   mattersim_0_PermutationInvariance:
     cmd: zntrack run mlipx.nodes.invariances.PermutationInvariance --name mattersim_0_PermutationInvariance
     deps:
