@@ -1,9 +1,9 @@
 plots:
-- MACE-MPA-0_VibrationalAnalysis_results:
+- mace-mpa-0_VibrationalAnalysis_results:
     x:
-      nodes/MACE-MPA-0/VibrationalAnalysis/results.csv: Frame
+      nodes/mace-mpa-0/VibrationalAnalysis/results.csv: Frame
     y:
-      nodes/MACE-MPA-0/VibrationalAnalysis/results.csv: ddG
+      nodes/mace-mpa-0/VibrationalAnalysis/results.csv: ddG
 - 7net-0_VibrationalAnalysis_results:
     x:
       nodes/7net-0/VibrationalAnalysis/results.csv: Frame
@@ -29,11 +29,11 @@ plots:
       nodes/mattersim/VibrationalAnalysis/results.csv: Frame
     y:
       nodes/mattersim/VibrationalAnalysis/results.csv: ddG
-- GRACE-2L-OMAT_VibrationalAnalysis_results:
+- grace-2l-omat_VibrationalAnalysis_results:
     x:
-      nodes/GRACE-2L-OMAT/VibrationalAnalysis/results.csv: Frame
+      nodes/grace-2l-omat/VibrationalAnalysis/results.csv: Frame
     y:
-      nodes/GRACE-2L-OMAT/VibrationalAnalysis/results.csv: ddG
+      nodes/grace-2l-omat/VibrationalAnalysis/results.csv: ddG
 stages:
   7net-0_VibrationalAnalysis:
     cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name 7net-0_VibrationalAnalysis
@@ -71,42 +71,24 @@ stages:
     - nodes/7net-mf-ompa-mpa/VibrationalAnalysis/vib
     params:
     - 7net-mf-ompa-mpa_VibrationalAnalysis
-  GRACE-2L-OMAT_VibrationalAnalysis:
-    cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name GRACE-2L-OMAT_VibrationalAnalysis
+  grace-2l-omat_VibrationalAnalysis:
+    cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name grace-2l-omat_VibrationalAnalysis
     deps:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     - nodes/initialize/Smiles2Conformers_1/frames.xyz
     - nodes/initialize/Smiles2Conformers_2/frames.xyz
     - nodes/initialize/Smiles2Conformers_3/frames.xyz
     metrics:
-    - nodes/GRACE-2L-OMAT/VibrationalAnalysis/node-meta.json:
+    - nodes/grace-2l-omat/VibrationalAnalysis/node-meta.json:
         cache: true
     outs:
-    - nodes/GRACE-2L-OMAT/VibrationalAnalysis/frames.xyz
-    - nodes/GRACE-2L-OMAT/VibrationalAnalysis/modes
-    - nodes/GRACE-2L-OMAT/VibrationalAnalysis/modes.xyz
-    - nodes/GRACE-2L-OMAT/VibrationalAnalysis/results.csv
-    - nodes/GRACE-2L-OMAT/VibrationalAnalysis/vib
+    - nodes/grace-2l-omat/VibrationalAnalysis/frames.xyz
+    - nodes/grace-2l-omat/VibrationalAnalysis/modes
+    - nodes/grace-2l-omat/VibrationalAnalysis/modes.xyz
+    - nodes/grace-2l-omat/VibrationalAnalysis/results.csv
+    - nodes/grace-2l-omat/VibrationalAnalysis/vib
     params:
-    - GRACE-2L-OMAT_VibrationalAnalysis
-  MACE-MPA-0_VibrationalAnalysis:
-    cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name MACE-MPA-0_VibrationalAnalysis
-    deps:
-    - nodes/initialize/Smiles2Conformers/frames.xyz
-    - nodes/initialize/Smiles2Conformers_1/frames.xyz
-    - nodes/initialize/Smiles2Conformers_2/frames.xyz
-    - nodes/initialize/Smiles2Conformers_3/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/VibrationalAnalysis/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/VibrationalAnalysis/frames.xyz
-    - nodes/MACE-MPA-0/VibrationalAnalysis/modes
-    - nodes/MACE-MPA-0/VibrationalAnalysis/modes.xyz
-    - nodes/MACE-MPA-0/VibrationalAnalysis/results.csv
-    - nodes/MACE-MPA-0/VibrationalAnalysis/vib
-    params:
-    - MACE-MPA-0_VibrationalAnalysis
+    - grace-2l-omat_VibrationalAnalysis
   initialize_Smiles2Conformers:
     cmd: zntrack run mlipx.nodes.smiles.Smiles2Conformers --name initialize_Smiles2Conformers
     metrics:
@@ -143,6 +125,24 @@ stages:
     - nodes/initialize/Smiles2Conformers_3/frames.xyz
     params:
     - initialize_Smiles2Conformers_3
+  mace-mpa-0_VibrationalAnalysis:
+    cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name mace-mpa-0_VibrationalAnalysis
+    deps:
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    - nodes/initialize/Smiles2Conformers_1/frames.xyz
+    - nodes/initialize/Smiles2Conformers_2/frames.xyz
+    - nodes/initialize/Smiles2Conformers_3/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/VibrationalAnalysis/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/VibrationalAnalysis/frames.xyz
+    - nodes/mace-mpa-0/VibrationalAnalysis/modes
+    - nodes/mace-mpa-0/VibrationalAnalysis/modes.xyz
+    - nodes/mace-mpa-0/VibrationalAnalysis/results.csv
+    - nodes/mace-mpa-0/VibrationalAnalysis/vib
+    params:
+    - mace-mpa-0_VibrationalAnalysis
   mattersim_VibrationalAnalysis:
     cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name mattersim_VibrationalAnalysis
     deps:

@@ -963,3 +963,129 @@ stages:
       md5: 7cd26d0767073741f31ff63db5123c52.dir
       size: 394989
       nfiles: 508
+  grace-2l-omat_VibrationalAnalysis:
+    cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name grace-2l-omat_VibrationalAnalysis
+    deps:
+    - path: nodes/initialize/Smiles2Conformers/frames.xyz
+      hash: md5
+      md5: 106c9892108d155aaf3f3e0eb456638f
+      size: 369
+    - path: nodes/initialize/Smiles2Conformers_1/frames.xyz
+      hash: md5
+      md5: e13f90ab5acaf6103b8d9c7c9017e1c6
+      size: 531
+    - path: nodes/initialize/Smiles2Conformers_2/frames.xyz
+      hash: md5
+      md5: b9d2505ac70be77832a01380be4ffed1
+      size: 694
+    - path: nodes/initialize/Smiles2Conformers_3/frames.xyz
+      hash: md5
+      md5: 15154f70d4f5af0e688315d24f644e3a
+      size: 856
+    params:
+      params.yaml:
+        grace-2l-omat_VibrationalAnalysis:
+          calc_type:
+          displacement: 0.015
+          free_indices:
+          lower_freq_threshold: 12
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          nfree: 4
+          system: molecule
+          temperature: 298.15
+    outs:
+    - path: nodes/grace-2l-omat/VibrationalAnalysis/frames.xyz
+      hash: md5
+      md5: 571cab077028f2766bb77525fbe349b8
+      size: 7373
+    - path: nodes/grace-2l-omat/VibrationalAnalysis/modes
+      hash: md5
+      md5: 18c99b052e13fb56e61324e428f55fd3.dir
+      size: 2674314
+      nfiles: 126
+    - path: nodes/grace-2l-omat/VibrationalAnalysis/modes.xyz
+      hash: md5
+      md5: 027114b8f528d9ed5121b56ea3607ded
+      size: 2878470
+    - path: nodes/grace-2l-omat/VibrationalAnalysis/node-meta.json
+      hash: md5
+      md5: 7dd44a58731ac41b27dd7b5ffbba5b3a
+      size: 155
+    - path: nodes/grace-2l-omat/VibrationalAnalysis/results.csv
+      hash: md5
+      md5: cd6608160b5f2fd3099c6421721b8c31
+      size: 102
+    - path: nodes/grace-2l-omat/VibrationalAnalysis/vib
+      hash: md5
+      md5: 7cd26d0767073741f31ff63db5123c52.dir
+      size: 394989
+      nfiles: 508
+  mace-mpa-0_VibrationalAnalysis:
+    cmd: zntrack run mlipx.nodes.vibrational_analysis.VibrationalAnalysis --name mace-mpa-0_VibrationalAnalysis
+    deps:
+    - path: nodes/initialize/Smiles2Conformers/frames.xyz
+      hash: md5
+      md5: 106c9892108d155aaf3f3e0eb456638f
+      size: 369
+    - path: nodes/initialize/Smiles2Conformers_1/frames.xyz
+      hash: md5
+      md5: e13f90ab5acaf6103b8d9c7c9017e1c6
+      size: 531
+    - path: nodes/initialize/Smiles2Conformers_2/frames.xyz
+      hash: md5
+      md5: b9d2505ac70be77832a01380be4ffed1
+      size: 694
+    - path: nodes/initialize/Smiles2Conformers_3/frames.xyz
+      hash: md5
+      md5: 15154f70d4f5af0e688315d24f644e3a
+      size: 856
+    params:
+      params.yaml:
+        mace-mpa-0_VibrationalAnalysis:
+          calc_type:
+          displacement: 0.015
+          free_indices:
+          lower_freq_threshold: 12
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          nfree: 4
+          system: molecule
+          temperature: 298.15
+    outs:
+    - path: nodes/mace-mpa-0/VibrationalAnalysis/frames.xyz
+      hash: md5
+      md5: b93ed71e30db9533f200dc1898bab887
+      size: 6999
+    - path: nodes/mace-mpa-0/VibrationalAnalysis/modes
+      hash: md5
+      md5: 5f1779a7734b07aaae7d7aa5c0b8bd75.dir
+      size: 2512062
+      nfiles: 126
+    - path: nodes/mace-mpa-0/VibrationalAnalysis/modes.xyz
+      hash: md5
+      md5: 54ad733ede88585576f7b0158fecae75
+      size: 2534490
+    - path: nodes/mace-mpa-0/VibrationalAnalysis/node-meta.json
+      hash: md5
+      md5: 6b5f1c8410b89afa20e96aa8fd0bf33e
+      size: 155
+    - path: nodes/mace-mpa-0/VibrationalAnalysis/results.csv
+      hash: md5
+      md5: d00526851f80d4344877fde0e7e05c39
+      size: 102
+    - path: nodes/mace-mpa-0/VibrationalAnalysis/vib
+      hash: md5
+      md5: 13d6c224533461f15f1b84c2c594f325.dir
+      size: 396476
+      nfiles: 508
