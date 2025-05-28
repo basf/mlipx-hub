@@ -9,10 +9,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_0_RotationalInvariance": {
+    "mace-mpa-0_0_RotationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/0/RotationalInvariance"
+            "value": "nodes/mace-mpa-0/0/RotationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -43,10 +43,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_0_TranslationalInvariance": {
+    "mace-mpa-0_0_TranslationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/0/TranslationalInvariance"
+            "value": "nodes/mace-mpa-0/0/TranslationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -77,10 +77,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_0_PermutationInvariance": {
+    "mace-mpa-0_0_PermutationInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/0/PermutationInvariance"
+            "value": "nodes/mace-mpa-0/0/PermutationInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -621,10 +621,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "GRACE-2L-OMAT_0_RotationalInvariance": {
+    "grace-2l-omat_0_RotationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/0/RotationalInvariance"
+            "value": "nodes/grace-2l-omat/0/RotationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -655,10 +655,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "GRACE-2L-OMAT_0_TranslationalInvariance": {
+    "grace-2l-omat_0_TranslationalInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/0/TranslationalInvariance"
+            "value": "nodes/grace-2l-omat/0/TranslationalInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",
@@ -689,10 +689,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "GRACE-2L-OMAT_0_PermutationInvariance": {
+    "grace-2l-omat_0_PermutationInvariance": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/0/PermutationInvariance"
+            "value": "nodes/grace-2l-omat/0/PermutationInvariance"
         },
         "model": {
             "_type": "@dataclasses.dataclass",

@@ -15,22 +15,6 @@
       modal: mpa
       model: 7net-mf-ompa
     module: sevenn.sevennet_calculator
-GRACE-2L-OMAT_ApplyCalculator:
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: TPCalculator
-    device: null
-    kwargs:
-      model: ../../models/GRACE-2L-OMAT
-    module: tensorpotential.calculator
-MACE-MPA-0_ApplyCalculator:
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: ../../models/mace-mpa-0-medium.model
-    module: mace.calculators
 chgnet_ApplyCalculator:
   model:
     _cls: mlipx.nodes.generic_ase.GenericASECalculator
@@ -38,10 +22,26 @@ chgnet_ApplyCalculator:
     device: null
     kwargs: null
     module: chgnet.model
+grace-2l-omat_ApplyCalculator:
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
 initialize_LoadDataFile:
   start: 0
   step: 1
   stop: null
+mace-mpa-0_ApplyCalculator:
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
 mattersim_ApplyCalculator:
   model:
     _cls: mlipx.nodes.generic_ase.GenericASECalculator

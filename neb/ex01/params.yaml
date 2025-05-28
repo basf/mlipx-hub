@@ -23,30 +23,6 @@
   n_steps: 500
   optimizer: FIRE
   relax: true
-GRACE-2L-OMAT_NEBs:
-  fmax: 0.05
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: TPCalculator
-    device: null
-    kwargs:
-      model: ../../models/GRACE-2L-OMAT
-    module: tensorpotential.calculator
-  n_steps: 500
-  optimizer: FIRE
-  relax: true
-MACE-MPA-0_NEBs:
-  fmax: 0.05
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: ../../models/mace-mpa-0-medium.model
-    module: mace.calculators
-  n_steps: 500
-  optimizer: FIRE
-  relax: true
 chgnet_NEBs:
   fmax: 0.05
   model:
@@ -58,6 +34,18 @@ chgnet_NEBs:
   n_steps: 500
   optimizer: FIRE
   relax: true
+grace-2l-omat_NEBs:
+  fmax: 0.05
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  n_steps: 500
+  optimizer: FIRE
+  relax: true
 initialize_LoadDataFile:
   start: 0
   step: 1
@@ -66,6 +54,18 @@ initialize_NEBinterpolate:
   add_constraints: true
   mic: true
   n_images: 5
+mace-mpa-0_NEBs:
+  fmax: 0.05
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  n_steps: 500
+  optimizer: FIRE
+  relax: true
 mattersim_NEBs:
   fmax: 0.05
   model:
