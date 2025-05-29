@@ -10,48 +10,50 @@ from pathlib import Path
 @dataclasses.dataclass
 class BaseModel:
     name: str
-    url: str
     sha256sum: str
 
-    def download_file(self):
-        print(f"📥 Downloading: {self.name}")
-        urllib.request.urlretrieve(self.url, self.name)
-        print(f"✅ Downloaded: {self.name}")
-        self.verify_checksum()
-
-    def verify_checksum(self):
-        print(f"🔐 Verifying SHA256 checksum for {self.name}...")
+    def verify_checksum(self, filepath: Path, expected_hash: str):
+        print(f"🔐 Verifying SHA256 for {filepath.name}...")
         h = hashlib.sha256()
-        with open(self.name, "rb") as f:
+        with open(filepath, "rb") as f:
             for chunk in iter(lambda: f.read(8192), b""):
                 h.update(chunk)
         computed_hash = h.hexdigest()
-        if computed_hash != self.sha256sum:
+        if computed_hash != expected_hash:
             raise ValueError(
-                f"❌ Checksum mismatch for {self.name}!\nExpected: {self.sha256sum}\nFound:    {computed_hash}"
+                f"❌ Checksum mismatch for {filepath.name}!\nExpected: {expected_hash}\nFound:    {computed_hash}"
             )
         print("✅ Checksum verified.")
 
 
 @dataclasses.dataclass
 class DefaultModel(BaseModel):
+    url: str
+
     def download(self):
-        self.download_file()
+        print(f"📥 Downloading: {self.name}")
+        urllib.request.urlretrieve(self.url, self.name)
+        print(f"✅ Downloaded: {self.name}")
+        self.verify_checksum(Path(self.name), self.sha256sum)
 
 
 @dataclasses.dataclass
 class GraceModel(BaseModel):
+    url: str
+
     def download(self):
-        self.download_file()
+        print(f"📥 Downloading: {self.name}")
+        urllib.request.urlretrieve(self.url, self.name)
+        print(f"✅ Downloaded: {self.name}")
+        self.verify_checksum(Path(self.name), self.sha256sum)
+
         print(f"📦 Extracting: {self.name}")
         target_dir = Path("GRACE-2L-OAM")
         with tarfile.open(self.name, "r:gz") as tar:
-            members = tar.getmembers()
             temp_dir = Path("._tmp_extract")
             temp_dir.mkdir(exist_ok=True)
             tar.extractall(temp_dir)
 
-            # Move contents to standardized directory
             extracted_root = next(temp_dir.iterdir())
             if extracted_root.is_dir():
                 if target_dir.exists():
@@ -61,6 +63,48 @@ class GraceModel(BaseModel):
             shutil.rmtree(temp_dir)
         os.remove(self.name)
         print(f"🧹 Cleaned up: {self.name}")
+
+
+@dataclasses.dataclass
+class MultiFileModel:
+    name: str
+    files: list  # List of {"filename": str, "url": str, "sha256sum": str}
+
+    def download(self):
+        print(f"\n📦 Processing model: {self.name}")
+        target_dir = Path(self.name)
+        target_dir.mkdir(parents=True, exist_ok=True)
+
+        for f in self.files:
+            filepath = target_dir / f["filename"]
+            print(f"📥 Downloading: {f['filename']}")
+            urllib.request.urlretrieve(f["url"], filepath)
+            print(f"✅ Downloaded: {f['filename']}")
+            BaseModel(name=f["filename"], sha256sum=f["sha256sum"]).verify_checksum(
+                filepath, f["sha256sum"]
+            )
+
+
+@dataclasses.dataclass
+class HuggingFaceModel(BaseModel):
+    repo_id: str
+    file: str
+
+    def download(self):
+        from huggingface_hub import hf_hub_download
+
+        print(f"📥 Downloading from Hugging Face: {self.repo_id}/{self.file}")
+        downloaded_path = hf_hub_download(
+            repo_id=self.repo_id,
+            filename=self.file,
+            repo_type="model",
+            local_dir=".",
+        )
+        target_path = Path(self.name)
+        shutil.move(downloaded_path, target_path)
+
+        print(f"✅ Downloaded: {target_path}")
+        self.verify_checksum(Path(target_path), self.sha256sum)
 
 
 if __name__ == "__main__":
@@ -84,6 +128,32 @@ if __name__ == "__main__":
             name="GRACE-2L-OAM.tar.gz",
             url="https://ruhr-uni-bochum.sciebo.de/s/vbTYV9Pt4ppKSZ8/download",
             sha256sum="76132d20b2d9c971e1b174a4c698994f2ca18a9aa877850418bd2bdfc9657a66",
+        ),
+        MultiFileModel(
+            name="TensorNet-MatPES-PBE-v2025.1-PES",
+            files=[
+                {
+                    "filename": "model.json",
+                    "url": "https://raw.githubusercontent.com/materialsvirtuallab/matgl/refs/heads/main/pretrained_models/TensorNet-MatPES-PBE-v2025.1-PES/model.json",
+                    "sha256sum": "3844d0bf89361478b0f4ec936c0e8b58cd0607ed34db661e9b51dead7ab9e5ad",
+                },
+                {
+                    "filename": "model.pt",
+                    "url": "https://raw.githubusercontent.com/materialsvirtuallab/matgl/refs/heads/main/pretrained_models/TensorNet-MatPES-PBE-v2025.1-PES/model.pt",
+                    "sha256sum": "859890c3974a938c1756ae2936e06b8382ac4abac5f0164b74622bade2f713d4",
+                },
+                {
+                    "filename": "state.pt",
+                    "url": "https://raw.githubusercontent.com/materialsvirtuallab/matgl/refs/heads/main/pretrained_models/TensorNet-MatPES-PBE-v2025.1-PES/state.pt",
+                    "sha256sum": "6cac801fb5c537a3a2d48ce49724766f7bd2ddd1f762796351a4d72cbe83d487",
+                },
+            ],
+        ),
+        HuggingFaceModel(
+            name="meta-uam.pt",
+            sha256sum="3b6953c0efa36f5bb5ef6de058226d97aaa1d225e3c745f2ce77d12037ef4994",
+            repo_id="facebook/UMA",
+            file="uma_sm.pt",
         ),
     ]
 

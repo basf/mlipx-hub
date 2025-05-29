@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "dvc-s3>=3.2.0",
+    "huggingface-hub[cli]>=0.32.2",
     "mlipx",
 ]
 
