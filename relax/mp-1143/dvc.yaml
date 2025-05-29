@@ -79,6 +79,26 @@ plots:
       nodes/chgnet/0/StructureOptimization/plots.csv: step
     y:
       nodes/chgnet/0/StructureOptimization/plots.csv: fmax
+- matpes-pbe_0_StructureOptimization_plots_0:
+    x:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: energy
+- matpes-pbe_0_StructureOptimization_plots_1:
+    x:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: fmax
+- meta-uma-sm_0_StructureOptimization_plots_0:
+    x:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: energy
+- meta-uma-sm_0_StructureOptimization_plots_1:
+    x:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: fmax
 stages:
   7net-0_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
@@ -165,6 +185,19 @@ stages:
     - nodes/mace-mpa-0/0/StructureOptimization/plots.csv
     params:
     - mace-mpa-0_0_StructureOptimization
+  matpes-pbe_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      matpes-pbe_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/matpes-pbe/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/matpes-pbe/0/StructureOptimization/frames.traj
+    - nodes/matpes-pbe/0/StructureOptimization/plots.csv
+    params:
+    - matpes-pbe_0_StructureOptimization
   mattersim_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
       mattersim_0_StructureOptimization
@@ -178,6 +211,19 @@ stages:
     - nodes/mattersim/0/StructureOptimization/plots.csv
     params:
     - mattersim_0_StructureOptimization
+  meta-uma-sm_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      meta-uma-sm_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/meta-uma-sm/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/meta-uma-sm/0/StructureOptimization/frames.traj
+    - nodes/meta-uma-sm/0/StructureOptimization/plots.csv
+    params:
+    - meta-uma-sm_0_StructureOptimization
   orb-v2_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
       orb-v2_0_StructureOptimization

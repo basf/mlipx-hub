@@ -1043,3 +1043,67 @@ stages:
       hash: md5
       md5: add4c51e7586962801fb7a378a51bbdd
       size: 296
+  matpes-pbe_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      matpes-pbe_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        matpes-pbe_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: models.MatglModel
+            path: ../../models/TensorNet-MatPES-PBE-v2025.1-PES
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/matpes-pbe/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 3db566af51a18de87acae7e40dd6bc6d
+      size: 11231
+    - path: nodes/matpes-pbe/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 2f26252c858c5124a7268301ad043475
+      size: 154
+    - path: nodes/matpes-pbe/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: 90a91f05a2ff146c41ea9f5b9cf8d833
+      size: 329
+  meta-uma-sm_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      meta-uma-sm_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        meta-uma-sm_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: models.FairchemModel
+            device: auto
+            path: ../../models/meta-uam.pt
+            task_name: oc20
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/meta-uma-sm/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: f082d483242a581d12e95b47ce0b8c92
+      size: 10019
+    - path: nodes/meta-uma-sm/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 5c9664ad151cc4a5eda6df5026d6a2a9
+      size: 154
+    - path: nodes/meta-uma-sm/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: 11765a9fd4d5e04d04bc762de247f833
+      size: 297
