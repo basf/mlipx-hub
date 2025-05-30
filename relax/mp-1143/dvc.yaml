@@ -109,6 +109,16 @@ plots:
       nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv: step
     y:
       nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv: fmax
+- pet-mad_0_StructureOptimization_plots_0:
+    x:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: energy
+- pet-mad_0_StructureOptimization_plots_1:
+    x:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: fmax
 stages:
   7net-0_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
@@ -273,3 +283,16 @@ stages:
     - nodes/orb-v3/0/StructureOptimization/plots.csv
     params:
     - orb-v3_0_StructureOptimization
+  pet-mad_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      pet-mad_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/pet-mad/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/0/StructureOptimization/frames.traj
+    - nodes/pet-mad/0/StructureOptimization/plots.csv
+    params:
+    - pet-mad_0_StructureOptimization

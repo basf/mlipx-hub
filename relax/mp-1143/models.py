@@ -156,6 +156,13 @@ ALL_MODELS["meta-uma-sm"] = FairchemModel(
     task_name="oc20"
     # MLIPX-hub model path, adjust as needed
 )
+
+ALL_MODELS["pet-mad"] = mlipx.GenericASECalculator(
+    module="pet_mad.calculator",
+    class_name="PETMADCalculator",
+    kwargs={"checkpoint_path": "../../models/pet-mad-latest.ckpt"},
+    # MLIPX-hub model path, adjust as needed
+)
 # OPTIONAL
 # ========
 # If you have custom property names you can use the UpdatedFramesCalc
@@ -182,4 +189,5 @@ MODELS = {
     "matpes-pbe": ALL_MODELS["matpes-pbe"],
     "meta-uma-sm": ALL_MODELS["meta-uma-sm"],
     "mace-matpes-pbe-0": ALL_MODELS["mace-matpes-pbe-0"],
+    "pet-mad": ALL_MODELS["pet-mad"],
 }

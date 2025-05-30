@@ -160,6 +160,12 @@ if __name__ == "__main__":
             repo_id="facebook/UMA",
             file="checkpoints/uma-s-1.pt",
         ),
+        HuggingFaceModel(
+            name="pet-mad-latest.ckpt",
+            sha256sum="48631d5c27f95d13c527bd21dc3aea3934c35e648fbf04403760791edb126237",
+            repo_id="lab-cosmo/pet-mad",
+            file="models/pet-mad-latest.ckpt",
+        )
     ]
 
     for model in models:

@@ -1142,3 +1142,38 @@ stages:
       hash: md5
       md5: f7413b3e8415e5b5f8e3a801850296de
       size: 329
+  pet-mad_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      pet-mad_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        pet-mad_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device:
+            kwargs:
+              checkpoint_path: ../../models/pet-mad-latest.ckpt
+            module: pet_mad.calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/pet-mad/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 647ce2d7d4ce2726a5dd1fea37a18836
+      size: 12629
+    - path: nodes/pet-mad/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 7325cb171c356936774bfaf6c1510e44
+      size: 153
+    - path: nodes/pet-mad/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: 3c2323ddcbfaba7c6c5beb15779813a5
+      size: 417
