@@ -1920,3 +1920,38 @@ stages:
       hash: md5
       md5: 50c1daad45b236f448fcba311b9219b9
       size: 35601
+  GRACE-2L-OMAT_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      GRACE-2L-OMAT_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: c96cd91e09717a4e2a94d74b0cebf98f
+      size: 60112
+    params:
+      params.yaml:
+        GRACE-2L-OMAT_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/GRACE-2L-OMAT/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: 75c45ba166294c6edf3250d64c1f0710
+      size: 8043247
+    - path: nodes/GRACE-2L-OMAT/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 423b982baa83b77285e7893d161bdf39
+      size: 156
+    - path: nodes/GRACE-2L-OMAT/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: e774f6c1b880d594214426eb969129bb
+      size: 12154

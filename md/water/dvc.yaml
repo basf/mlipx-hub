@@ -224,6 +224,51 @@ plots:
       nodes/mattersim/md/EinsteinMSD/results.csv: lagtimes
     y:
       nodes/mattersim/md/EinsteinMSD/results.csv: msd
+- chgnet_relax_StructureOptimization_plots_0:
+    x:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: energy
+- chgnet_relax_StructureOptimization_plots_1:
+    x:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/chgnet/relax/StructureOptimization/plots.csv: fmax
+- chgnet_md_MolecularDynamics_plots_0:
+    x:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: energy
+- chgnet_md_MolecularDynamics_plots_1:
+    x:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/chgnet/md/MolecularDynamics/plots.csv: fmax
+- chgnet_md_InterRDF_results:
+    x:
+      nodes/chgnet/md/InterRDF/results.csv: r
+    y:
+      nodes/chgnet/md/InterRDF/results.csv: g(r)
+- chgnet_md_InterRDF_1_results:
+    x:
+      nodes/chgnet/md/InterRDF_1/results.csv: r
+    y:
+      nodes/chgnet/md/InterRDF_1/results.csv: g(r)
+- chgnet_md_InterRDF_2_results:
+    x:
+      nodes/chgnet/md/InterRDF_2/results.csv: r
+    y:
+      nodes/chgnet/md/InterRDF_2/results.csv: g(r)
+- chgnet_md_InterRDF_3_results:
+    x:
+      nodes/chgnet/md/InterRDF_3/results.csv: r
+    y:
+      nodes/chgnet/md/InterRDF_3/results.csv: g(r)
+- chgnet_md_EinsteinMSD_results:
+    x:
+      nodes/chgnet/md/EinsteinMSD/results.csv: lagtimes
+    y:
+      nodes/chgnet/md/EinsteinMSD/results.csv: msd
 - MACE-OFF_relax_StructureOptimization_plots_0:
     x:
       nodes/MACE-OFF/relax/StructureOptimization/plots.csv: step
@@ -606,6 +651,118 @@ stages:
     - nodes/MACE-OFF/relax/StructureOptimization/plots.csv
     params:
     - MACE-OFF_relax_StructureOptimization
+  chgnet_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name chgnet_md_EinsteinMSD
+    deps:
+    - nodes/chgnet/md/Universe/frames.h5
+    metrics:
+    - nodes/chgnet/md/EinsteinMSD/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/EinsteinMSD/results.csv
+    params:
+    - chgnet_md_EinsteinMSD
+  chgnet_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name chgnet_md_InterRDF
+    deps:
+    - nodes/chgnet/md/Universe/frames.h5
+    metrics:
+    - nodes/chgnet/md/InterRDF/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/InterRDF/rdf.png
+    - nodes/chgnet/md/InterRDF/results.csv
+    params:
+    - chgnet_md_InterRDF
+  chgnet_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name chgnet_md_InterRDF_1
+    deps:
+    - nodes/chgnet/md/Universe/frames.h5
+    metrics:
+    - nodes/chgnet/md/InterRDF_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/InterRDF_1/rdf.png
+    - nodes/chgnet/md/InterRDF_1/results.csv
+    params:
+    - chgnet_md_InterRDF_1
+  chgnet_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name chgnet_md_InterRDF_2
+    deps:
+    - nodes/chgnet/md/Universe/frames.h5
+    metrics:
+    - nodes/chgnet/md/InterRDF_2/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/InterRDF_2/rdf.png
+    - nodes/chgnet/md/InterRDF_2/results.csv
+    params:
+    - chgnet_md_InterRDF_2
+  chgnet_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name chgnet_md_InterRDF_3
+    deps:
+    - nodes/chgnet/md/Universe/frames.h5
+    metrics:
+    - nodes/chgnet/md/InterRDF_3/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/InterRDF_3/rdf.png
+    - nodes/chgnet/md/InterRDF_3/results.csv
+    params:
+    - chgnet_md_InterRDF_3
+  chgnet_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name chgnet_md_MolecularDynamics
+    deps:
+    - nodes/chgnet/relax/StructureOptimization/frames.traj
+    - nodes/chgnet/relax/StructureOptimization/plots.csv
+    metrics:
+    - nodes/chgnet/md/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/chgnet/md/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/chgnet/md/MolecularDynamics/frames.xyz
+    - nodes/chgnet/md/MolecularDynamics/plots.csv
+    params:
+    - chgnet_md_MolecularDynamics
+  chgnet_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name chgnet_md_SelfDiffusionFromMSD
+    deps:
+    - nodes/chgnet/md/EinsteinMSD/results.csv
+    metrics:
+    - nodes/chgnet/md/SelfDiffusionFromMSD/metrics.json
+    - nodes/chgnet/md/SelfDiffusionFromMSD/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/SelfDiffusionFromMSD/msd_fit.png
+    params:
+    - chgnet_md_SelfDiffusionFromMSD
+  chgnet_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name chgnet_md_Universe
+    deps:
+    - nodes/chgnet/md/MolecularDynamics/frames.xyz
+    - nodes/chgnet/md/MolecularDynamics/observer_metrics.json
+    - nodes/chgnet/md/MolecularDynamics/plots.csv
+    metrics:
+    - nodes/chgnet/md/Universe/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/Universe/frames.h5
+    params:
+    - chgnet_md_Universe
+  chgnet_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_relax_StructureOptimization
+    deps:
+    - nodes/initialize/BuildBox/frames.xyz
+    metrics:
+    - nodes/chgnet/relax/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/relax/StructureOptimization/frames.traj
+    - nodes/chgnet/relax/StructureOptimization/plots.csv
+    params:
+    - chgnet_relax_StructureOptimization
   initialize_BuildBox:
     cmd: zntrack run mlipx.nodes.smiles.BuildBox --name initialize_BuildBox
     deps:

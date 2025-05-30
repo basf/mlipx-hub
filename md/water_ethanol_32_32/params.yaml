@@ -249,6 +249,87 @@ MACE-OFF_relax_StructureOptimization:
     module: mace.calculators
   optimizer: LBFGS
   steps: 100000000
+chgnet_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+chgnet_md_EinsteinMSD_1:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname Eta
+  timestep: 0.0005
+chgnet_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_4:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname Eta
+  nbins: 1000
+  range: auto
+chgnet_md_InterRDF_5:
+  apply_com_transform: true
+  g1: name COM and resname Eta
+  g2: name COM and resname Eta
+  nbins: 1000
+  range: auto
+chgnet_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: CHGNetCalculator
+    device: null
+    kwargs: null
+    module: chgnet.model
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+chgnet_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+chgnet_md_SelfDiffusionFromMSD_1:
+  end_time: 40
+  start_time: 5.7
+chgnet_md_Universe:
+  residues:
+    Eta: CCO
+    H2O: O
+chgnet_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: CHGNetCalculator
+    device: null
+    kwargs: null
+    module: chgnet.model
+  optimizer: LBFGS
+  steps: 100000000
 initialize_BuildBox:
   counts:
   - 32

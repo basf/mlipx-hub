@@ -1348,6 +1348,268 @@
             "value": "$nwd$/msd_fit.png"
         }
     },
+    "chgnet_relax_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/relax/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.smiles",
+                        "name": "initialize_BuildBox",
+                        "cls": "BuildBox",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "chgnet_md_MolecularDynamics": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/MolecularDynamics"
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "thermostat": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.molecular_dynamics",
+                "cls": "LangevinConfig"
+            }
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.structure_optimization",
+                        "name": "chgnet_relax_StructureOptimization",
+                        "cls": "StructureOptimization",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "observers": null,
+        "modifiers": null,
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "chgnet_md_Universe": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/Universe"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.molecular_dynamics",
+                        "name": "chgnet_md_MolecularDynamics",
+                        "cls": "MolecularDynamics",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.h5"
+        }
+    },
+    "chgnet_md_InterRDF": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/InterRDF"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "chgnet_md_InterRDF_1": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/InterRDF_1"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "chgnet_md_InterRDF_2": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/InterRDF_2"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "chgnet_md_InterRDF_3": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/InterRDF_3"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        },
+        "figure_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/rdf.png"
+        }
+    },
+    "chgnet_md_EinsteinMSD": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/EinsteinMSD"
+        },
+        "universe": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.universe",
+                        "name": "chgnet_md_Universe",
+                        "cls": "Universe",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "universe",
+                "item": null
+            }
+        }
+    },
+    "chgnet_md_SelfDiffusionFromMSD": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/chgnet/md/SelfDiffusionFromMSD"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "znmdakit.nodes.mean_square_displacement",
+                        "name": "chgnet_md_EinsteinMSD",
+                        "cls": "EinsteinMSD",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": null,
+                "item": null
+            }
+        },
+        "fit_figure": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/msd_fit.png"
+        }
+    },
     "MACE-OFF_relax_StructureOptimization": {
         "nwd": {
             "_type": "pathlib.Path",
