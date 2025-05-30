@@ -1,14 +1,14 @@
 plots:
-- MACE-MPA-0_0_StructureOptimization_plots_0:
+- mace-mpa-0_0_StructureOptimization_plots_0:
     x:
-      nodes/MACE-MPA-0/0/StructureOptimization/plots.csv: step
+      nodes/mace-mpa-0/0/StructureOptimization/plots.csv: step
     y:
-      nodes/MACE-MPA-0/0/StructureOptimization/plots.csv: energy
-- MACE-MPA-0_0_StructureOptimization_plots_1:
+      nodes/mace-mpa-0/0/StructureOptimization/plots.csv: energy
+- mace-mpa-0_0_StructureOptimization_plots_1:
     x:
-      nodes/MACE-MPA-0/0/StructureOptimization/plots.csv: step
+      nodes/mace-mpa-0/0/StructureOptimization/plots.csv: step
     y:
-      nodes/MACE-MPA-0/0/StructureOptimization/plots.csv: fmax
+      nodes/mace-mpa-0/0/StructureOptimization/plots.csv: fmax
 - 7net-0_0_StructureOptimization_plots_0:
     x:
       nodes/7net-0/0/StructureOptimization/plots.csv: step
@@ -59,16 +59,16 @@ plots:
       nodes/mattersim/0/StructureOptimization/plots.csv: step
     y:
       nodes/mattersim/0/StructureOptimization/plots.csv: fmax
-- GRACE-2L-OMAT_0_StructureOptimization_plots_0:
+- grace-2l-omat_0_StructureOptimization_plots_0:
     x:
-      nodes/GRACE-2L-OMAT/0/StructureOptimization/plots.csv: step
+      nodes/grace-2l-omat/0/StructureOptimization/plots.csv: step
     y:
-      nodes/GRACE-2L-OMAT/0/StructureOptimization/plots.csv: energy
-- GRACE-2L-OMAT_0_StructureOptimization_plots_1:
+      nodes/grace-2l-omat/0/StructureOptimization/plots.csv: energy
+- grace-2l-omat_0_StructureOptimization_plots_1:
     x:
-      nodes/GRACE-2L-OMAT/0/StructureOptimization/plots.csv: step
+      nodes/grace-2l-omat/0/StructureOptimization/plots.csv: step
     y:
-      nodes/GRACE-2L-OMAT/0/StructureOptimization/plots.csv: fmax
+      nodes/grace-2l-omat/0/StructureOptimization/plots.csv: fmax
 - chgnet_0_StructureOptimization_plots_0:
     x:
       nodes/chgnet/0/StructureOptimization/plots.csv: step
@@ -79,6 +79,46 @@ plots:
       nodes/chgnet/0/StructureOptimization/plots.csv: step
     y:
       nodes/chgnet/0/StructureOptimization/plots.csv: fmax
+- matpes-pbe_0_StructureOptimization_plots_0:
+    x:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: energy
+- matpes-pbe_0_StructureOptimization_plots_1:
+    x:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/matpes-pbe/0/StructureOptimization/plots.csv: fmax
+- meta-uma-sm_0_StructureOptimization_plots_0:
+    x:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: energy
+- meta-uma-sm_0_StructureOptimization_plots_1:
+    x:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/meta-uma-sm/0/StructureOptimization/plots.csv: fmax
+- mace-matpes-pbe-0_0_StructureOptimization_plots_0:
+    x:
+      nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv: energy
+- mace-matpes-pbe-0_0_StructureOptimization_plots_1:
+    x:
+      nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv: fmax
+- pet-mad_0_StructureOptimization_plots_0:
+    x:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: energy
+- pet-mad_0_StructureOptimization_plots_1:
+    x:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: step
+    y:
+      nodes/pet-mad/0/StructureOptimization/plots.csv: fmax
 stages:
   7net-0_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
@@ -106,32 +146,6 @@ stages:
     - nodes/7net-mf-ompa-mpa/0/StructureOptimization/plots.csv
     params:
     - 7net-mf-ompa-mpa_0_StructureOptimization
-  GRACE-2L-OMAT_0_StructureOptimization:
-    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
-      GRACE-2L-OMAT_0_StructureOptimization
-    deps:
-    - nodes/initialize/Rattle/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/StructureOptimization/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/0/StructureOptimization/frames.traj
-    - nodes/GRACE-2L-OMAT/0/StructureOptimization/plots.csv
-    params:
-    - GRACE-2L-OMAT_0_StructureOptimization
-  MACE-MPA-0_0_StructureOptimization:
-    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
-      MACE-MPA-0_0_StructureOptimization
-    deps:
-    - nodes/initialize/Rattle/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/StructureOptimization/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/StructureOptimization/frames.traj
-    - nodes/MACE-MPA-0/0/StructureOptimization/plots.csv
-    params:
-    - MACE-MPA-0_0_StructureOptimization
   chgnet_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
       chgnet_0_StructureOptimization
@@ -145,6 +159,19 @@ stages:
     - nodes/chgnet/0/StructureOptimization/plots.csv
     params:
     - chgnet_0_StructureOptimization
+  grace-2l-omat_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace-2l-omat_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/0/StructureOptimization/frames.traj
+    - nodes/grace-2l-omat/0/StructureOptimization/plots.csv
+    params:
+    - grace-2l-omat_0_StructureOptimization
   initialize_MPRester:
     cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
     metrics:
@@ -165,6 +192,45 @@ stages:
     - nodes/initialize/Rattle/frames.xyz
     params:
     - initialize_Rattle
+  mace-matpes-pbe-0_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-matpes-pbe-0_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/mace-matpes-pbe-0/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/0/StructureOptimization/frames.traj
+    - nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv
+    params:
+    - mace-matpes-pbe-0_0_StructureOptimization
+  mace-mpa-0_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-mpa-0_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/StructureOptimization/frames.traj
+    - nodes/mace-mpa-0/0/StructureOptimization/plots.csv
+    params:
+    - mace-mpa-0_0_StructureOptimization
+  matpes-pbe_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      matpes-pbe_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/matpes-pbe/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/matpes-pbe/0/StructureOptimization/frames.traj
+    - nodes/matpes-pbe/0/StructureOptimization/plots.csv
+    params:
+    - matpes-pbe_0_StructureOptimization
   mattersim_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
       mattersim_0_StructureOptimization
@@ -178,6 +244,19 @@ stages:
     - nodes/mattersim/0/StructureOptimization/plots.csv
     params:
     - mattersim_0_StructureOptimization
+  meta-uma-sm_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      meta-uma-sm_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/meta-uma-sm/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/meta-uma-sm/0/StructureOptimization/frames.traj
+    - nodes/meta-uma-sm/0/StructureOptimization/plots.csv
+    params:
+    - meta-uma-sm_0_StructureOptimization
   orb-v2_0_StructureOptimization:
     cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
       orb-v2_0_StructureOptimization
@@ -204,3 +283,16 @@ stages:
     - nodes/orb-v3/0/StructureOptimization/plots.csv
     params:
     - orb-v3_0_StructureOptimization
+  pet-mad_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      pet-mad_0_StructureOptimization
+    deps:
+    - nodes/initialize/Rattle/frames.xyz
+    metrics:
+    - nodes/pet-mad/0/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/0/StructureOptimization/frames.traj
+    - nodes/pet-mad/0/StructureOptimization/plots.csv
+    params:
+    - pet-mad_0_StructureOptimization

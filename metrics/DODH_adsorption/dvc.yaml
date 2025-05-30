@@ -14,21 +14,21 @@ plots:
       nodes/reference/EvaluateCalculatorResults/plots.csv: step
     y:
       nodes/reference/EvaluateCalculatorResults/plots.csv: energy
-- MACE-MPA-0_EvaluateCalculatorResults_plots_0:
+- mace-mpa-0_EvaluateCalculatorResults_plots_0:
     x:
-      nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv: step
+      nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv: step
     y:
-      nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv: fmax
-- MACE-MPA-0_EvaluateCalculatorResults_plots_1:
+      nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv: fmax
+- mace-mpa-0_EvaluateCalculatorResults_plots_1:
     x:
-      nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv: step
+      nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv: step
     y:
-      nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv: fnorm
-- MACE-MPA-0_EvaluateCalculatorResults_plots_2:
+      nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv: fnorm
+- mace-mpa-0_EvaluateCalculatorResults_plots_2:
     x:
-      nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv: step
+      nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv: step
     y:
-      nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv: energy
+      nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv: energy
 - 7net-0_EvaluateCalculatorResults_plots_0:
     x:
       nodes/7net-0/EvaluateCalculatorResults/plots.csv: step
@@ -74,21 +74,21 @@ plots:
       nodes/mattersim/EvaluateCalculatorResults/plots.csv: step
     y:
       nodes/mattersim/EvaluateCalculatorResults/plots.csv: energy
-- GRACE-2L-OMAT_EvaluateCalculatorResults_plots_0:
+- grace-2l-omat_EvaluateCalculatorResults_plots_0:
     x:
-      nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv: step
+      nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv: step
     y:
-      nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv: fmax
-- GRACE-2L-OMAT_EvaluateCalculatorResults_plots_1:
+      nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv: fmax
+- grace-2l-omat_EvaluateCalculatorResults_plots_1:
     x:
-      nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv: step
+      nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv: step
     y:
-      nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv: fnorm
-- GRACE-2L-OMAT_EvaluateCalculatorResults_plots_2:
+      nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv: fnorm
+- grace-2l-omat_EvaluateCalculatorResults_plots_2:
     x:
-      nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv: step
+      nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv: step
     y:
-      nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv: energy
+      nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv: energy
 - chgnet_EvaluateCalculatorResults_plots_0:
     x:
       nodes/chgnet/EvaluateCalculatorResults/plots.csv: step
@@ -177,78 +177,6 @@ stages:
         cache: true
     outs:
     - nodes/7net-mf-ompa-mpa/EvaluateCalculatorResults/plots.csv
-  GRACE-2L-OMAT_ApplyCalculator:
-    cmd: zntrack run mlipx.nodes.apply_calculator.ApplyCalculator --name GRACE-2L-OMAT_ApplyCalculator
-    deps:
-    - nodes/initialize/LoadDataFile/node-meta.json
-    metrics:
-    - nodes/GRACE-2L-OMAT/ApplyCalculator/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/ApplyCalculator/frames.h5
-    params:
-    - GRACE-2L-OMAT_ApplyCalculator
-  GRACE-2L-OMAT_CompareCalculatorResults:
-    cmd: zntrack run mlipx.nodes.compare_calculator.CompareCalculatorResults --name
-      GRACE-2L-OMAT_CompareCalculatorResults
-    deps:
-    - nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/node-meta.json
-    - nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv
-    - nodes/reference/EvaluateCalculatorResults/node-meta.json
-    - nodes/reference/EvaluateCalculatorResults/plots.csv
-    metrics:
-    - nodes/GRACE-2L-OMAT/CompareCalculatorResults/error.json
-    - nodes/GRACE-2L-OMAT/CompareCalculatorResults/node-meta.json:
-        cache: true
-    - nodes/GRACE-2L-OMAT/CompareCalculatorResults/rmse.json
-    outs:
-    - nodes/GRACE-2L-OMAT/CompareCalculatorResults/plots.csv
-  GRACE-2L-OMAT_EvaluateCalculatorResults:
-    cmd: zntrack run mlipx.nodes.evaluate_calculator.EvaluateCalculatorResults --name
-      GRACE-2L-OMAT_EvaluateCalculatorResults
-    deps:
-    - nodes/GRACE-2L-OMAT/ApplyCalculator/frames.h5
-    metrics:
-    - nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/EvaluateCalculatorResults/plots.csv
-  MACE-MPA-0_ApplyCalculator:
-    cmd: zntrack run mlipx.nodes.apply_calculator.ApplyCalculator --name MACE-MPA-0_ApplyCalculator
-    deps:
-    - nodes/initialize/LoadDataFile/node-meta.json
-    metrics:
-    - nodes/MACE-MPA-0/ApplyCalculator/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/ApplyCalculator/frames.h5
-    params:
-    - MACE-MPA-0_ApplyCalculator
-  MACE-MPA-0_CompareCalculatorResults:
-    cmd: zntrack run mlipx.nodes.compare_calculator.CompareCalculatorResults --name
-      MACE-MPA-0_CompareCalculatorResults
-    deps:
-    - nodes/MACE-MPA-0/EvaluateCalculatorResults/node-meta.json
-    - nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv
-    - nodes/reference/EvaluateCalculatorResults/node-meta.json
-    - nodes/reference/EvaluateCalculatorResults/plots.csv
-    metrics:
-    - nodes/MACE-MPA-0/CompareCalculatorResults/error.json
-    - nodes/MACE-MPA-0/CompareCalculatorResults/node-meta.json:
-        cache: true
-    - nodes/MACE-MPA-0/CompareCalculatorResults/rmse.json
-    outs:
-    - nodes/MACE-MPA-0/CompareCalculatorResults/plots.csv
-  MACE-MPA-0_EvaluateCalculatorResults:
-    cmd: zntrack run mlipx.nodes.evaluate_calculator.EvaluateCalculatorResults --name
-      MACE-MPA-0_EvaluateCalculatorResults
-    deps:
-    - nodes/MACE-MPA-0/ApplyCalculator/frames.h5
-    metrics:
-    - nodes/MACE-MPA-0/EvaluateCalculatorResults/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/EvaluateCalculatorResults/plots.csv
   chgnet_ApplyCalculator:
     cmd: zntrack run mlipx.nodes.apply_calculator.ApplyCalculator --name chgnet_ApplyCalculator
     deps:
@@ -285,6 +213,42 @@ stages:
         cache: true
     outs:
     - nodes/chgnet/EvaluateCalculatorResults/plots.csv
+  grace-2l-omat_ApplyCalculator:
+    cmd: zntrack run mlipx.nodes.apply_calculator.ApplyCalculator --name grace-2l-omat_ApplyCalculator
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/grace-2l-omat/ApplyCalculator/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/ApplyCalculator/frames.h5
+    params:
+    - grace-2l-omat_ApplyCalculator
+  grace-2l-omat_CompareCalculatorResults:
+    cmd: zntrack run mlipx.nodes.compare_calculator.CompareCalculatorResults --name
+      grace-2l-omat_CompareCalculatorResults
+    deps:
+    - nodes/grace-2l-omat/EvaluateCalculatorResults/node-meta.json
+    - nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv
+    - nodes/reference/EvaluateCalculatorResults/node-meta.json
+    - nodes/reference/EvaluateCalculatorResults/plots.csv
+    metrics:
+    - nodes/grace-2l-omat/CompareCalculatorResults/error.json
+    - nodes/grace-2l-omat/CompareCalculatorResults/node-meta.json:
+        cache: true
+    - nodes/grace-2l-omat/CompareCalculatorResults/rmse.json
+    outs:
+    - nodes/grace-2l-omat/CompareCalculatorResults/plots.csv
+  grace-2l-omat_EvaluateCalculatorResults:
+    cmd: zntrack run mlipx.nodes.evaluate_calculator.EvaluateCalculatorResults --name
+      grace-2l-omat_EvaluateCalculatorResults
+    deps:
+    - nodes/grace-2l-omat/ApplyCalculator/frames.h5
+    metrics:
+    - nodes/grace-2l-omat/EvaluateCalculatorResults/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/EvaluateCalculatorResults/plots.csv
   initialize_LoadDataFile:
     cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
     deps:
@@ -294,6 +258,42 @@ stages:
         cache: true
     params:
     - initialize_LoadDataFile
+  mace-mpa-0_ApplyCalculator:
+    cmd: zntrack run mlipx.nodes.apply_calculator.ApplyCalculator --name mace-mpa-0_ApplyCalculator
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/mace-mpa-0/ApplyCalculator/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/ApplyCalculator/frames.h5
+    params:
+    - mace-mpa-0_ApplyCalculator
+  mace-mpa-0_CompareCalculatorResults:
+    cmd: zntrack run mlipx.nodes.compare_calculator.CompareCalculatorResults --name
+      mace-mpa-0_CompareCalculatorResults
+    deps:
+    - nodes/mace-mpa-0/EvaluateCalculatorResults/node-meta.json
+    - nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv
+    - nodes/reference/EvaluateCalculatorResults/node-meta.json
+    - nodes/reference/EvaluateCalculatorResults/plots.csv
+    metrics:
+    - nodes/mace-mpa-0/CompareCalculatorResults/error.json
+    - nodes/mace-mpa-0/CompareCalculatorResults/node-meta.json:
+        cache: true
+    - nodes/mace-mpa-0/CompareCalculatorResults/rmse.json
+    outs:
+    - nodes/mace-mpa-0/CompareCalculatorResults/plots.csv
+  mace-mpa-0_EvaluateCalculatorResults:
+    cmd: zntrack run mlipx.nodes.evaluate_calculator.EvaluateCalculatorResults --name
+      mace-mpa-0_EvaluateCalculatorResults
+    deps:
+    - nodes/mace-mpa-0/ApplyCalculator/frames.h5
+    metrics:
+    - nodes/mace-mpa-0/EvaluateCalculatorResults/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/EvaluateCalculatorResults/plots.csv
   mattersim_ApplyCalculator:
     cmd: zntrack run mlipx.nodes.apply_calculator.ApplyCalculator --name mattersim_ApplyCalculator
     deps:

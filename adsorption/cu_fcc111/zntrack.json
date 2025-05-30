@@ -19,10 +19,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_0_RelaxAdsorptionConfigs": {
+    "mace-mpa-0_0_RelaxAdsorptionConfigs": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs"
+            "value": "nodes/mace-mpa-0/0/RelaxAdsorptionConfigs"
         },
         "slabs": {
             "_type": "znflow.Connection",
@@ -349,10 +349,10 @@
             "value": "$nwd$/relax"
         }
     },
-    "GRACE-2L-OMAT_0_RelaxAdsorptionConfigs": {
+    "grace-2l-omat_0_RelaxAdsorptionConfigs": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs"
+            "value": "nodes/grace-2l-omat/0/RelaxAdsorptionConfigs"
         },
         "slabs": {
             "_type": "znflow.Connection",

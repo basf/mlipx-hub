@@ -769,3 +769,83 @@ stages:
       hash: md5
       md5: 51a218158b20835990c0008dd33f17e2
       size: 96
+  grace-2l-omat_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name grace-2l-omat_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        grace-2l-omat_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/grace-2l-omat/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: ba97f136e8b2a767582b56d82e350b9d
+      size: 1673
+    - path: nodes/grace-2l-omat/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: 164ea22e6326a78b8ce7bd2daf4020f7
+      size: 155
+    - path: nodes/grace-2l-omat/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: 162e1851b1debc7e923f9e88808d28c5
+      size: 48071
+    - path: nodes/grace-2l-omat/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 4659b37019cb91d91decd7cadb832550
+      size: 99
+  mace-mpa-0_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name mace-mpa-0_0_PourbaixDiagram
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 1dff3683312a393372916dab5153c30e
+      size: 879
+    params:
+      params.yaml:
+        mace-mpa-0_0_PourbaixDiagram:
+          V: 1.8
+          data_ids:
+          fmax: 0.05
+          geo_opt: false
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          pH: 1.0
+          use_gibbs: false
+    outs:
+    - path: nodes/mace-mpa-0/0/PourbaixDiagram/frames.xyz
+      hash: md5
+      md5: 774ecb0302780f0f99e5535c4914829b
+      size: 1667
+    - path: nodes/mace-mpa-0/0/PourbaixDiagram/node-meta.json
+      hash: md5
+      md5: 524c5a9213a0a017e21dd6bf2d6bc049
+      size: 155
+    - path: nodes/mace-mpa-0/0/PourbaixDiagram/pourbaix_diagram.json
+      hash: md5
+      md5: bffa2768a443f701801709c7ca68e473
+      size: 48171
+    - path: nodes/mace-mpa-0/0/PourbaixDiagram/results.csv
+      hash: md5
+      md5: 51a218158b20835990c0008dd33f17e2
+      size: 96

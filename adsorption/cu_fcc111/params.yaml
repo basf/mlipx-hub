@@ -31,7 +31,7 @@
   position: all
   slab_id: -1
   steps: 300
-GRACE-2L-OMAT_0_RelaxAdsorptionConfigs:
+grace-2l-omat_0_RelaxAdsorptionConfigs:
   adsorbate_id: -1
   fmax: 0.05
   height: 2.1
@@ -42,22 +42,6 @@ GRACE-2L-OMAT_0_RelaxAdsorptionConfigs:
     kwargs:
       model: ../../models/GRACE-2L-OMAT
     module: tensorpotential.calculator
-  mol_index: 0
-  optimizer: LBFGS
-  position: all
-  slab_id: -1
-  steps: 300
-MACE-MPA-0_0_RelaxAdsorptionConfigs:
-  adsorbate_id: -1
-  fmax: 0.05
-  height: 2.1
-  model:
-    _cls: mlipx.nodes.generic_ase.GenericASECalculator
-    class_name: mace_mp
-    device: auto
-    kwargs:
-      model: ../../models/mace-mpa-0-medium.model
-    module: mace.calculators
   mol_index: 0
   optimizer: LBFGS
   position: all
@@ -80,6 +64,22 @@ initialize_Smiles2Conformers:
   num_confs: 1
   random_seed: 42
   smiles: CCO
+mace-mpa-0_0_RelaxAdsorptionConfigs:
+  adsorbate_id: -1
+  fmax: 0.05
+  height: 2.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  mol_index: 0
+  optimizer: LBFGS
+  position: all
+  slab_id: -1
+  steps: 300
 mattersim_0_RelaxAdsorptionConfigs:
   adsorbate_id: -1
   fmax: 0.05

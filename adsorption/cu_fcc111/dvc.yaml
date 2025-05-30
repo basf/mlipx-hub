@@ -27,34 +27,20 @@ stages:
     - nodes/7net-mf-ompa-mpa/0/RelaxAdsorptionConfigs/relax
     params:
     - 7net-mf-ompa-mpa_0_RelaxAdsorptionConfigs
-  GRACE-2L-OMAT_0_RelaxAdsorptionConfigs:
-    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name GRACE-2L-OMAT_0_RelaxAdsorptionConfigs
+  grace-2l-omat_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name grace-2l-omat_0_RelaxAdsorptionConfigs
     deps:
     - nodes/initialize/BuildASEslab/frames.traj
     - nodes/initialize/Smiles2Conformers/frames.xyz
     metrics:
-    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/ads_energies.json
-    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/node-meta.json:
+    - nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/node-meta.json:
         cache: true
     outs:
-    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/frames.traj
-    - nodes/GRACE-2L-OMAT/0/RelaxAdsorptionConfigs/relax
+    - nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/grace-2l-omat/0/RelaxAdsorptionConfigs/relax
     params:
-    - GRACE-2L-OMAT_0_RelaxAdsorptionConfigs
-  MACE-MPA-0_0_RelaxAdsorptionConfigs:
-    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name MACE-MPA-0_0_RelaxAdsorptionConfigs
-    deps:
-    - nodes/initialize/BuildASEslab/frames.traj
-    - nodes/initialize/Smiles2Conformers/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/ads_energies.json
-    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/frames.traj
-    - nodes/MACE-MPA-0/0/RelaxAdsorptionConfigs/relax
-    params:
-    - MACE-MPA-0_0_RelaxAdsorptionConfigs
+    - grace-2l-omat_0_RelaxAdsorptionConfigs
   initialize_BuildASEslab:
     cmd: zntrack run mlipx.nodes.adsorption.BuildASEslab --name initialize_BuildASEslab
     metrics:
@@ -73,6 +59,20 @@ stages:
     - nodes/initialize/Smiles2Conformers/frames.xyz
     params:
     - initialize_Smiles2Conformers
+  mace-mpa-0_0_RelaxAdsorptionConfigs:
+    cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name mace-mpa-0_0_RelaxAdsorptionConfigs
+    deps:
+    - nodes/initialize/BuildASEslab/frames.traj
+    - nodes/initialize/Smiles2Conformers/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/ads_energies.json
+    - nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/frames.traj
+    - nodes/mace-mpa-0/0/RelaxAdsorptionConfigs/relax
+    params:
+    - mace-mpa-0_0_RelaxAdsorptionConfigs
   mattersim_0_RelaxAdsorptionConfigs:
     cmd: zntrack run mlipx.nodes.adsorption.RelaxAdsorptionConfigs --name mattersim_0_RelaxAdsorptionConfigs
     deps:

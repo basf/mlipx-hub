@@ -1,9 +1,9 @@
 plots:
-- MACE-MPA-0_NEBs_results:
+- mace-mpa-0_NEBs_results:
     x:
-      nodes/MACE-MPA-0/NEBs/results.csv: data_id
+      nodes/mace-mpa-0/NEBs/results.csv: data_id
     y:
-      nodes/MACE-MPA-0/NEBs/results.csv: potential_energy
+      nodes/mace-mpa-0/NEBs/results.csv: potential_energy
 - 7net-0_NEBs_results:
     x:
       nodes/7net-0/NEBs/results.csv: data_id
@@ -19,11 +19,11 @@ plots:
       nodes/mattersim/NEBs/results.csv: data_id
     y:
       nodes/mattersim/NEBs/results.csv: potential_energy
-- GRACE-2L-OMAT_NEBs_results:
+- grace-2l-omat_NEBs_results:
     x:
-      nodes/GRACE-2L-OMAT/NEBs/results.csv: data_id
+      nodes/grace-2l-omat/NEBs/results.csv: data_id
     y:
-      nodes/GRACE-2L-OMAT/NEBs/results.csv: potential_energy
+      nodes/grace-2l-omat/NEBs/results.csv: potential_energy
 - chgnet_NEBs_results:
     x:
       nodes/chgnet/NEBs/results.csv: data_id
@@ -56,32 +56,6 @@ stages:
     - nodes/7net-mf-ompa-mpa/NEBs/results.csv
     params:
     - 7net-mf-ompa-mpa_NEBs
-  GRACE-2L-OMAT_NEBs:
-    cmd: zntrack run mlipx.nodes.nebs.NEBs --name GRACE-2L-OMAT_NEBs
-    deps:
-    - nodes/initialize/NEBinterpolate/initial_frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/NEBs/node-meta.json:
-        cache: true
-    outs:
-    - nodes/GRACE-2L-OMAT/NEBs/frames.xyz
-    - nodes/GRACE-2L-OMAT/NEBs/neb_trajectory.traj
-    - nodes/GRACE-2L-OMAT/NEBs/results.csv
-    params:
-    - GRACE-2L-OMAT_NEBs
-  MACE-MPA-0_NEBs:
-    cmd: zntrack run mlipx.nodes.nebs.NEBs --name MACE-MPA-0_NEBs
-    deps:
-    - nodes/initialize/NEBinterpolate/initial_frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/NEBs/node-meta.json:
-        cache: true
-    outs:
-    - nodes/MACE-MPA-0/NEBs/frames.xyz
-    - nodes/MACE-MPA-0/NEBs/neb_trajectory.traj
-    - nodes/MACE-MPA-0/NEBs/results.csv
-    params:
-    - MACE-MPA-0_NEBs
   chgnet_NEBs:
     cmd: zntrack run mlipx.nodes.nebs.NEBs --name chgnet_NEBs
     deps:
@@ -95,6 +69,19 @@ stages:
     - nodes/chgnet/NEBs/results.csv
     params:
     - chgnet_NEBs
+  grace-2l-omat_NEBs:
+    cmd: zntrack run mlipx.nodes.nebs.NEBs --name grace-2l-omat_NEBs
+    deps:
+    - nodes/initialize/NEBinterpolate/initial_frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/NEBs/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/NEBs/frames.xyz
+    - nodes/grace-2l-omat/NEBs/neb_trajectory.traj
+    - nodes/grace-2l-omat/NEBs/results.csv
+    params:
+    - grace-2l-omat_NEBs
   initialize_LoadDataFile:
     cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
     deps:
@@ -115,6 +102,19 @@ stages:
     - nodes/initialize/NEBinterpolate/initial_frames.xyz
     params:
     - initialize_NEBinterpolate
+  mace-mpa-0_NEBs:
+    cmd: zntrack run mlipx.nodes.nebs.NEBs --name mace-mpa-0_NEBs
+    deps:
+    - nodes/initialize/NEBinterpolate/initial_frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/NEBs/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/NEBs/frames.xyz
+    - nodes/mace-mpa-0/NEBs/neb_trajectory.traj
+    - nodes/mace-mpa-0/NEBs/results.csv
+    params:
+    - mace-mpa-0_NEBs
   mattersim_NEBs:
     cmd: zntrack run mlipx.nodes.nebs.NEBs --name mattersim_NEBs
     deps:

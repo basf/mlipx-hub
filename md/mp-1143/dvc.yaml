@@ -1,14 +1,14 @@
 plots:
-- MACE-MPA-0_0_MolecularDynamics_plots_0:
+- mace-mpa-0_0_MolecularDynamics_plots_0:
     x:
-      nodes/MACE-MPA-0/0/MolecularDynamics/plots.csv: step
+      nodes/mace-mpa-0/0/MolecularDynamics/plots.csv: step
     y:
-      nodes/MACE-MPA-0/0/MolecularDynamics/plots.csv: energy
-- MACE-MPA-0_0_MolecularDynamics_plots_1:
+      nodes/mace-mpa-0/0/MolecularDynamics/plots.csv: energy
+- mace-mpa-0_0_MolecularDynamics_plots_1:
     x:
-      nodes/MACE-MPA-0/0/MolecularDynamics/plots.csv: step
+      nodes/mace-mpa-0/0/MolecularDynamics/plots.csv: step
     y:
-      nodes/MACE-MPA-0/0/MolecularDynamics/plots.csv: fmax
+      nodes/mace-mpa-0/0/MolecularDynamics/plots.csv: fmax
 - 7net-0_0_MolecularDynamics_plots_0:
     x:
       nodes/7net-0/0/MolecularDynamics/plots.csv: step
@@ -59,16 +59,16 @@ plots:
       nodes/mattersim/0/MolecularDynamics/plots.csv: step
     y:
       nodes/mattersim/0/MolecularDynamics/plots.csv: fmax
-- GRACE-2L-OMAT_0_MolecularDynamics_plots_0:
+- grace-2l-omat_0_MolecularDynamics_plots_0:
     x:
-      nodes/GRACE-2L-OMAT/0/MolecularDynamics/plots.csv: step
+      nodes/grace-2l-omat/0/MolecularDynamics/plots.csv: step
     y:
-      nodes/GRACE-2L-OMAT/0/MolecularDynamics/plots.csv: energy
-- GRACE-2L-OMAT_0_MolecularDynamics_plots_1:
+      nodes/grace-2l-omat/0/MolecularDynamics/plots.csv: energy
+- grace-2l-omat_0_MolecularDynamics_plots_1:
     x:
-      nodes/GRACE-2L-OMAT/0/MolecularDynamics/plots.csv: step
+      nodes/grace-2l-omat/0/MolecularDynamics/plots.csv: step
     y:
-      nodes/GRACE-2L-OMAT/0/MolecularDynamics/plots.csv: fmax
+      nodes/grace-2l-omat/0/MolecularDynamics/plots.csv: fmax
 - chgnet_0_MolecularDynamics_plots_0:
     x:
       nodes/chgnet/0/MolecularDynamics/plots.csv: step
@@ -106,32 +106,6 @@ stages:
     - nodes/7net-mf-ompa-mpa/0/MolecularDynamics/plots.csv
     params:
     - 7net-mf-ompa-mpa_0_MolecularDynamics
-  GRACE-2L-OMAT_0_MolecularDynamics:
-    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name GRACE-2L-OMAT_0_MolecularDynamics
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/GRACE-2L-OMAT/0/MolecularDynamics/node-meta.json:
-        cache: true
-    - nodes/GRACE-2L-OMAT/0/MolecularDynamics/observer_metrics.json
-    outs:
-    - nodes/GRACE-2L-OMAT/0/MolecularDynamics/frames.xyz
-    - nodes/GRACE-2L-OMAT/0/MolecularDynamics/plots.csv
-    params:
-    - GRACE-2L-OMAT_0_MolecularDynamics
-  MACE-MPA-0_0_MolecularDynamics:
-    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name MACE-MPA-0_0_MolecularDynamics
-    deps:
-    - nodes/initialize/MPRester/frames.xyz
-    metrics:
-    - nodes/MACE-MPA-0/0/MolecularDynamics/node-meta.json:
-        cache: true
-    - nodes/MACE-MPA-0/0/MolecularDynamics/observer_metrics.json
-    outs:
-    - nodes/MACE-MPA-0/0/MolecularDynamics/frames.xyz
-    - nodes/MACE-MPA-0/0/MolecularDynamics/plots.csv
-    params:
-    - MACE-MPA-0_0_MolecularDynamics
   chgnet_0_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name chgnet_0_MolecularDynamics
     deps:
@@ -145,6 +119,19 @@ stages:
     - nodes/chgnet/0/MolecularDynamics/plots.csv
     params:
     - chgnet_0_MolecularDynamics
+  grace-2l-omat_0_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name grace-2l-omat_0_MolecularDynamics
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/0/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/grace-2l-omat/0/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/grace-2l-omat/0/MolecularDynamics/frames.xyz
+    - nodes/grace-2l-omat/0/MolecularDynamics/plots.csv
+    params:
+    - grace-2l-omat_0_MolecularDynamics
   initialize_MPRester:
     cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
     metrics:
@@ -154,6 +141,19 @@ stages:
     - nodes/initialize/MPRester/frames.xyz
     params:
     - initialize_MPRester
+  mace-mpa-0_0_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mace-mpa-0_0_MolecularDynamics
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/0/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/mace-mpa-0/0/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/mace-mpa-0/0/MolecularDynamics/frames.xyz
+    - nodes/mace-mpa-0/0/MolecularDynamics/plots.csv
+    params:
+    - mace-mpa-0_0_MolecularDynamics
   mattersim_0_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mattersim_0_MolecularDynamics
     deps:

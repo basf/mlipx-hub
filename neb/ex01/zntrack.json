@@ -33,10 +33,10 @@
             "value": "$nwd$/initial_frames.xyz"
         }
     },
-    "MACE-MPA-0_NEBs": {
+    "mace-mpa-0_NEBs": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/NEBs"
+            "value": "nodes/mace-mpa-0/NEBs"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -185,10 +185,10 @@
             "value": "$nwd$/neb_trajectory.traj"
         }
     },
-    "GRACE-2L-OMAT_NEBs": {
+    "grace-2l-omat_NEBs": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/NEBs"
+            "value": "nodes/grace-2l-omat/NEBs"
         },
         "data": {
             "_type": "znflow.Connection",

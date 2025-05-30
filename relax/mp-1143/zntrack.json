@@ -36,10 +36,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_0_StructureOptimization": {
+    "mace-mpa-0_0_StructureOptimization": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/0/StructureOptimization"
+            "value": "nodes/mace-mpa-0/0/StructureOptimization"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -240,10 +240,10 @@
             "value": "$nwd$/frames.traj"
         }
     },
-    "GRACE-2L-OMAT_0_StructureOptimization": {
+    "grace-2l-omat_0_StructureOptimization": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/0/StructureOptimization"
+            "value": "nodes/grace-2l-omat/0/StructureOptimization"
         },
         "data": {
             "_type": "znflow.Connection",
@@ -278,6 +278,142 @@
         "nwd": {
             "_type": "pathlib.Path",
             "value": "nodes/chgnet/0/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.rattle",
+                        "name": "initialize_Rattle",
+                        "cls": "Rattle",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "matpes-pbe_0_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/matpes-pbe/0/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.rattle",
+                        "name": "initialize_Rattle",
+                        "cls": "Rattle",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "MatglModel"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "meta-uma-sm_0_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/meta-uma-sm/0/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.rattle",
+                        "name": "initialize_Rattle",
+                        "cls": "Rattle",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "FairchemModel"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "mace-matpes-pbe-0_0_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mace-matpes-pbe-0/0/StructureOptimization"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.rattle",
+                        "name": "initialize_Rattle",
+                        "cls": "Rattle",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.traj"
+        }
+    },
+    "pet-mad_0_StructureOptimization": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/pet-mad/0/StructureOptimization"
         },
         "data": {
             "_type": "znflow.Connection",

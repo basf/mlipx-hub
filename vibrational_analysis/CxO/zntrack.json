@@ -39,10 +39,10 @@
             "value": "$nwd$/frames.xyz"
         }
     },
-    "MACE-MPA-0_VibrationalAnalysis": {
+    "mace-mpa-0_VibrationalAnalysis": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/MACE-MPA-0/VibrationalAnalysis"
+            "value": "nodes/mace-mpa-0/VibrationalAnalysis"
         },
         "data": {
             "_type": "znflow.CombinedConnections",
@@ -669,10 +669,10 @@
             "value": "$nwd$/vib"
         }
     },
-    "GRACE-2L-OMAT_VibrationalAnalysis": {
+    "grace-2l-omat_VibrationalAnalysis": {
         "nwd": {
             "_type": "pathlib.Path",
-            "value": "nodes/GRACE-2L-OMAT/VibrationalAnalysis"
+            "value": "nodes/grace-2l-omat/VibrationalAnalysis"
         },
         "data": {
             "_type": "znflow.CombinedConnections",
