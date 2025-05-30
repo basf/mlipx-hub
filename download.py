@@ -124,6 +124,11 @@ if __name__ == "__main__":
             url="https://github.com/ACEsuit/mace-mp/releases/download/mace_mpa_0/mace-mpa-0-medium.model",
             sha256sum="75428afe3a1d7d8062e19bcaabd5c433623cabf308242ec9fb493e38604fb638",
         ),
+        DefaultModel(
+            name="mace-matpes-pbe-omat-ft.model",
+            url="https://github.com/ACEsuit/mace-foundations/releases/download/mace_matpes_0/MACE-matpes-pbe-omat-ft.model",
+            sha256sum="e618ad582b84239905b9c3b77ce6e9ce111b0ecd1533223a1a6aac7a696b8aa0",
+        ),
         GraceModel(
             name="GRACE-2L-OAM.tar.gz",
             url="https://ruhr-uni-bochum.sciebo.de/s/vbTYV9Pt4ppKSZ8/download",
@@ -153,7 +158,7 @@ if __name__ == "__main__":
             name="meta-uam.pt",
             sha256sum="3b6953c0efa36f5bb5ef6de058226d97aaa1d225e3c745f2ce77d12037ef4994",
             repo_id="facebook/UMA",
-            file="uma_sm.pt",
+            file="checkpoints/uma-s-1.pt",
         ),
     ]
 

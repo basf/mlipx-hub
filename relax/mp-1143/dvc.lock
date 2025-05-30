@@ -1107,3 +1107,38 @@ stages:
       hash: md5
       md5: 11765a9fd4d5e04d04bc762de247f833
       size: 297
+  mace-matpes-pbe-0_0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-matpes-pbe-0_0_StructureOptimization
+    deps:
+    - path: nodes/initialize/Rattle/frames.xyz
+      hash: md5
+      md5: 1f120b7abf6ab811c619815f87f6d8d5
+      size: 879
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_0_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/mace-matpes-pbe-0/0/StructureOptimization/frames.traj
+      hash: md5
+      md5: 6cb733a2a27891b7b757cb45764a8332
+      size: 10678
+    - path: nodes/mace-matpes-pbe-0/0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 915b222ab326ffad71b2dc1554bb5d99
+      size: 156
+    - path: nodes/mace-matpes-pbe-0/0/StructureOptimization/plots.csv
+      hash: md5
+      md5: f7413b3e8415e5b5f8e3a801850296de
+      size: 329

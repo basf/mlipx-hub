@@ -53,6 +53,18 @@ initialize_MPRester:
 initialize_Rattle:
   seed: 42
   stdev: 0.1
+mace-matpes-pbe-0_0_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-matpes-pbe-omat-ft.model
+    module: mace.calculators
+  optimizer: LBFGS
+  steps: 100000000
 mace-mpa-0_0_StructureOptimization:
   data_id: -1
   fmax: 0.1
