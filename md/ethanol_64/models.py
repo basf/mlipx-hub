@@ -104,6 +104,13 @@ ALL_MODELS["GRACE-2L-OMAT"] = mlipx.GenericASECalculator(
     # MLIPX-hub model path, adjust as needed
 )
 
+ALL_MODELS["pet-mad"] = mlipx.GenericASECalculator(
+    module="pet_mad.calculator",
+    class_name="PETMADCalculator",
+    kwargs={"checkpoint_path": "../../models/pet-mad-latest.ckpt"},
+    # MLIPX-hub model path, adjust as needed
+)
+
 # OPTIONAL
 # ========
 # If you have custom property names you can use the UpdatedFramesCalc
@@ -128,4 +135,5 @@ MODELS = {
     # "GRACE-2L-OMAT": ALL_MODELS["GRACE-2L-OMAT"],
     "chgnet": ALL_MODELS["chgnet"],
     "MACE-OFF": ALL_MODELS["MACE-OFF"],
+    "pet-mad": ALL_MODELS["pet-mad"],
 }

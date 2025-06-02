@@ -3539,3 +3539,273 @@ stages:
       hash: md5
       md5: d339075193bd518299e3c0645d672c5e
       size: 34537
+  pet-mad_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      pet-mad_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: 97e5e7e6ab315f8a43cfd1c8e6f126f5
+      size: 20182
+    params:
+      params.yaml:
+        pet-mad_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device:
+            kwargs:
+              checkpoint_path: ../../models/pet-mad-latest.ckpt
+            module: pet_mad.calculator
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/pet-mad/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: f26e7fae3d9ee3035e1325128b9816c2
+      size: 2760350
+    - path: nodes/pet-mad/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 202cccfb1126822ca0a7ccd0fee71948
+      size: 155
+    - path: nodes/pet-mad/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 446c198ac63c1b4c673c50c5f56e1757
+      size: 11633
+  pet-mad_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name pet-mad_md_MolecularDynamics
+    deps:
+    - path: nodes/pet-mad/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: f26e7fae3d9ee3035e1325128b9816c2
+      size: 2760350
+    - path: nodes/pet-mad/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 446c198ac63c1b4c673c50c5f56e1757
+      size: 11633
+    params:
+      params.yaml:
+        pet-mad_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device:
+            kwargs:
+              checkpoint_path: ../../models/pet-mad-latest.ckpt
+            module: pet_mad.calculator
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/pet-mad/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: ed36f4300b0f3427053dac8d0404383a
+      size: 3034674153
+    - path: nodes/pet-mad/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: cd054b09fc0628bd607b5a05d95e5e87
+      size: 157
+    - path: nodes/pet-mad/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/pet-mad/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 8f9c3fde6d9639ad6bf259aba6660d2c
+      size: 6126163
+  pet-mad_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name pet-mad_md_Universe
+    deps:
+    - path: nodes/pet-mad/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: ed36f4300b0f3427053dac8d0404383a
+      size: 3034674153
+    - path: nodes/pet-mad/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/pet-mad/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 8f9c3fde6d9639ad6bf259aba6660d2c
+      size: 6126163
+    params:
+      params.yaml:
+        pet-mad_md_Universe:
+          residues:
+            H2O: O
+    outs:
+    - path: nodes/pet-mad/md/Universe/frames.h5
+      hash: md5
+      md5: 15dd1277ea79ca2cfc36b01f3b0bdd0a
+      size: 1330331536
+    - path: nodes/pet-mad/md/Universe/node-meta.json
+      hash: md5
+      md5: cecb128099472e8b69d71dcc37d9b571
+      size: 155
+  pet-mad_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_1
+    deps:
+    - path: nodes/pet-mad/md/Universe/frames.h5
+      hash: md5
+      md5: 15dd1277ea79ca2cfc36b01f3b0bdd0a
+      size: 1330331536
+    params:
+      params.yaml:
+        pet-mad_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/pet-mad/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: c1a72de95f0aa49a36924615b6f15e3a
+      size: 156
+    - path: nodes/pet-mad/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: cea7d00c17f1bace0f893ad828cf3978
+      size: 26261
+    - path: nodes/pet-mad/md/InterRDF_1/results.csv
+      hash: md5
+      md5: 5ee1292b1d8d92d70f39de541ab6c575
+      size: 35445
+  pet-mad_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_2
+    deps:
+    - path: nodes/pet-mad/md/Universe/frames.h5
+      hash: md5
+      md5: 15dd1277ea79ca2cfc36b01f3b0bdd0a
+      size: 1330331536
+    params:
+      params.yaml:
+        pet-mad_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/pet-mad/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: c99e5ee1d3063d54a25b72a5a733e9c3
+      size: 156
+    - path: nodes/pet-mad/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: b4f081f5987fef62f4237c3d45d44a11
+      size: 31614
+    - path: nodes/pet-mad/md/InterRDF_2/results.csv
+      hash: md5
+      md5: 054ea11590e4797deae664a21f2eb1f5
+      size: 32092
+  pet-mad_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF
+    deps:
+    - path: nodes/pet-mad/md/Universe/frames.h5
+      hash: md5
+      md5: 15dd1277ea79ca2cfc36b01f3b0bdd0a
+      size: 1330331536
+    params:
+      params.yaml:
+        pet-mad_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/pet-mad/md/InterRDF/node-meta.json
+      hash: md5
+      md5: b92d83f728533b770437e7d9ab634987
+      size: 156
+    - path: nodes/pet-mad/md/InterRDF/rdf.png
+      hash: md5
+      md5: 3f971dd6683ac49a79ef2ca4b1d9645f
+      size: 32090
+    - path: nodes/pet-mad/md/InterRDF/results.csv
+      hash: md5
+      md5: 9c6f9ac5434a462281b8ae66a33c50f8
+      size: 34456
+  pet-mad_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name pet-mad_md_EinsteinMSD
+    deps:
+    - path: nodes/pet-mad/md/Universe/frames.h5
+      hash: md5
+      md5: 15dd1277ea79ca2cfc36b01f3b0bdd0a
+      size: 1330331536
+    params:
+      params.yaml:
+        pet-mad_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname H2O
+          timestep: 0.0005
+    outs:
+    - path: nodes/pet-mad/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: a064b4edd46688fe76af2b51aec7f374
+      size: 156
+    - path: nodes/pet-mad/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: f0ce9d29fbc4e9f6fcb420f9cd4f863c
+      size: 2738350
+  pet-mad_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name pet-mad_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/pet-mad/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: f0ce9d29fbc4e9f6fcb420f9cd4f863c
+      size: 2738350
+    params:
+      params.yaml:
+        pet-mad_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/pet-mad/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: 36723f17190ec85d76a8da1c2e4ded42
+      size: 125
+    - path: nodes/pet-mad/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: d74d0ea6144917d8f2278322e022ecdc
+      size: 55285
+    - path: nodes/pet-mad/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: 3884553b344306e0134612fa19fb649d
+      size: 154
+  pet-mad_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_3
+    deps:
+    - path: nodes/pet-mad/md/Universe/frames.h5
+      hash: md5
+      md5: 15dd1277ea79ca2cfc36b01f3b0bdd0a
+      size: 1330331536
+    params:
+      params.yaml:
+        pet-mad_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname H2O
+          g2: name COM and resname H2O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/pet-mad/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: 8bc3dc8ce191563f97243268b7cfdc81
+      size: 156
+    - path: nodes/pet-mad/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: 68be7c1860d2e1459fb2425d151ea503
+      size: 34598
+    - path: nodes/pet-mad/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 045d2e2640bd8d9370e1f8ff2e002aac
+      size: 32070

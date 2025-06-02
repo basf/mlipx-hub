@@ -431,3 +431,65 @@ orb-v3_relax_StructureOptimization:
     name: orb_v3_conservative_inf_omat
   optimizer: LBFGS
   steps: 100000000
+pet-mad_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+pet-mad_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+pet-mad_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+pet-mad_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+pet-mad_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
+pet-mad_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: PETMADCalculator
+    device: null
+    kwargs:
+      checkpoint_path: ../../models/pet-mad-latest.ckpt
+    module: pet_mad.calculator
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+pet-mad_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+pet-mad_md_Universe:
+  residues:
+    H2O: O
+pet-mad_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: PETMADCalculator
+    device: null
+    kwargs:
+      checkpoint_path: ../../models/pet-mad-latest.ckpt
+    module: pet_mad.calculator
+  optimizer: LBFGS
+  steps: 100000000

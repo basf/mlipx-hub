@@ -419,6 +419,66 @@ plots:
       nodes/MACE-OFF/md/EinsteinMSD_1/results.csv: lagtimes
     y:
       nodes/MACE-OFF/md/EinsteinMSD_1/results.csv: msd
+- pet-mad_relax_StructureOptimization_plots_0:
+    x:
+      nodes/pet-mad/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/pet-mad/relax/StructureOptimization/plots.csv: energy
+- pet-mad_relax_StructureOptimization_plots_1:
+    x:
+      nodes/pet-mad/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/pet-mad/relax/StructureOptimization/plots.csv: fmax
+- pet-mad_md_MolecularDynamics_plots_0:
+    x:
+      nodes/pet-mad/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/pet-mad/md/MolecularDynamics/plots.csv: energy
+- pet-mad_md_MolecularDynamics_plots_1:
+    x:
+      nodes/pet-mad/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/pet-mad/md/MolecularDynamics/plots.csv: fmax
+- pet-mad_md_InterRDF_results:
+    x:
+      nodes/pet-mad/md/InterRDF/results.csv: r
+    y:
+      nodes/pet-mad/md/InterRDF/results.csv: g(r)
+- pet-mad_md_InterRDF_1_results:
+    x:
+      nodes/pet-mad/md/InterRDF_1/results.csv: r
+    y:
+      nodes/pet-mad/md/InterRDF_1/results.csv: g(r)
+- pet-mad_md_InterRDF_2_results:
+    x:
+      nodes/pet-mad/md/InterRDF_2/results.csv: r
+    y:
+      nodes/pet-mad/md/InterRDF_2/results.csv: g(r)
+- pet-mad_md_InterRDF_3_results:
+    x:
+      nodes/pet-mad/md/InterRDF_3/results.csv: r
+    y:
+      nodes/pet-mad/md/InterRDF_3/results.csv: g(r)
+- pet-mad_md_InterRDF_4_results:
+    x:
+      nodes/pet-mad/md/InterRDF_4/results.csv: r
+    y:
+      nodes/pet-mad/md/InterRDF_4/results.csv: g(r)
+- pet-mad_md_EinsteinMSD_results:
+    x:
+      nodes/pet-mad/md/EinsteinMSD/results.csv: lagtimes
+    y:
+      nodes/pet-mad/md/EinsteinMSD/results.csv: msd
+- pet-mad_md_InterRDF_5_results:
+    x:
+      nodes/pet-mad/md/InterRDF_5/results.csv: r
+    y:
+      nodes/pet-mad/md/InterRDF_5/results.csv: g(r)
+- pet-mad_md_EinsteinMSD_1_results:
+    x:
+      nodes/pet-mad/md/EinsteinMSD_1/results.csv: lagtimes
+    y:
+      nodes/pet-mad/md/EinsteinMSD_1/results.csv: msd
 stages:
   7net-0_md_EinsteinMSD:
     cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name 7net-0_md_EinsteinMSD
@@ -1570,3 +1630,163 @@ stages:
     - nodes/orb-v3/relax/StructureOptimization/plots.csv
     params:
     - orb-v3_relax_StructureOptimization
+  pet-mad_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name pet-mad_md_EinsteinMSD
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/EinsteinMSD/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/EinsteinMSD/results.csv
+    params:
+    - pet-mad_md_EinsteinMSD
+  pet-mad_md_EinsteinMSD_1:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name pet-mad_md_EinsteinMSD_1
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/EinsteinMSD_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/EinsteinMSD_1/results.csv
+    params:
+    - pet-mad_md_EinsteinMSD_1
+  pet-mad_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/InterRDF/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/InterRDF/rdf.png
+    - nodes/pet-mad/md/InterRDF/results.csv
+    params:
+    - pet-mad_md_InterRDF
+  pet-mad_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_1
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/InterRDF_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/InterRDF_1/rdf.png
+    - nodes/pet-mad/md/InterRDF_1/results.csv
+    params:
+    - pet-mad_md_InterRDF_1
+  pet-mad_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_2
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/InterRDF_2/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/InterRDF_2/rdf.png
+    - nodes/pet-mad/md/InterRDF_2/results.csv
+    params:
+    - pet-mad_md_InterRDF_2
+  pet-mad_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_3
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/InterRDF_3/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/InterRDF_3/rdf.png
+    - nodes/pet-mad/md/InterRDF_3/results.csv
+    params:
+    - pet-mad_md_InterRDF_3
+  pet-mad_md_InterRDF_4:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_4
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/InterRDF_4/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/InterRDF_4/rdf.png
+    - nodes/pet-mad/md/InterRDF_4/results.csv
+    params:
+    - pet-mad_md_InterRDF_4
+  pet-mad_md_InterRDF_5:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name pet-mad_md_InterRDF_5
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/InterRDF_5/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/InterRDF_5/rdf.png
+    - nodes/pet-mad/md/InterRDF_5/results.csv
+    params:
+    - pet-mad_md_InterRDF_5
+  pet-mad_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name pet-mad_md_MolecularDynamics
+    deps:
+    - nodes/pet-mad/relax/StructureOptimization/frames.traj
+    - nodes/pet-mad/relax/StructureOptimization/plots.csv
+    metrics:
+    - nodes/pet-mad/md/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/pet-mad/md/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/pet-mad/md/MolecularDynamics/frames.xyz
+    - nodes/pet-mad/md/MolecularDynamics/plots.csv
+    params:
+    - pet-mad_md_MolecularDynamics
+  pet-mad_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name pet-mad_md_SelfDiffusionFromMSD
+    deps:
+    - nodes/pet-mad/md/EinsteinMSD/results.csv
+    metrics:
+    - nodes/pet-mad/md/SelfDiffusionFromMSD/metrics.json
+    - nodes/pet-mad/md/SelfDiffusionFromMSD/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/SelfDiffusionFromMSD/msd_fit.png
+    params:
+    - pet-mad_md_SelfDiffusionFromMSD
+  pet-mad_md_SelfDiffusionFromMSD_1:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name pet-mad_md_SelfDiffusionFromMSD_1
+    deps:
+    - nodes/pet-mad/md/EinsteinMSD_1/results.csv
+    metrics:
+    - nodes/pet-mad/md/SelfDiffusionFromMSD_1/metrics.json
+    - nodes/pet-mad/md/SelfDiffusionFromMSD_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/SelfDiffusionFromMSD_1/msd_fit.png
+    params:
+    - pet-mad_md_SelfDiffusionFromMSD_1
+  pet-mad_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name pet-mad_md_Universe
+    deps:
+    - nodes/pet-mad/md/MolecularDynamics/frames.xyz
+    - nodes/pet-mad/md/MolecularDynamics/observer_metrics.json
+    - nodes/pet-mad/md/MolecularDynamics/plots.csv
+    metrics:
+    - nodes/pet-mad/md/Universe/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/Universe/frames.h5
+    params:
+    - pet-mad_md_Universe
+  pet-mad_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      pet-mad_relax_StructureOptimization
+    deps:
+    - nodes/initialize/BuildBox/frames.xyz
+    metrics:
+    - nodes/pet-mad/relax/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/relax/StructureOptimization/frames.traj
+    - nodes/pet-mad/relax/StructureOptimization/plots.csv
+    params:
+    - pet-mad_relax_StructureOptimization
