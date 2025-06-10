@@ -1,0 +1,140 @@
+7net-0_COSplitting:
+  freeze_ratio: 0.5
+  grid_step: 3.0
+  layers: 8
+  miller:
+  - 2
+  - 1
+  - 1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      model: 7net-0
+    module: sevenn.sevennet_calculator
+  supercell:
+  - 2
+  - 2
+  - 1
+  vacuum: 10.0
+7net-mf-ompa-mpa_COSplitting:
+  freeze_ratio: 0.5
+  grid_step: 3.0
+  layers: 8
+  miller:
+  - 2
+  - 1
+  - 1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: auto
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.sevennet_calculator
+  supercell:
+  - 2
+  - 2
+  - 1
+  vacuum: 10.0
+grace-2l-omat_COSplitting:
+  freeze_ratio: 0.5
+  grid_step: 3.0
+  layers: 8
+  miller:
+  - 2
+  - 1
+  - 1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: TPCalculator
+    device: null
+    kwargs:
+      model: ../../models/GRACE-2L-OMAT
+    module: tensorpotential.calculator
+  supercell:
+  - 2
+  - 2
+  - 1
+  vacuum: 10.0
+initialize_MPRester:
+  search_kwargs:
+    material_ids:
+    - mp-30
+mace-mpa-0_COSplitting:
+  freeze_ratio: 0.5
+  grid_step: 3.0
+  layers: 8
+  miller:
+  - 2
+  - 1
+  - 1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-mpa-0-medium.model
+    module: mace.calculators
+  supercell:
+  - 2
+  - 2
+  - 1
+  vacuum: 10.0
+mattersim_COSplitting:
+  freeze_ratio: 0.5
+  grid_step: 3.0
+  layers: 8
+  miller:
+  - 2
+  - 1
+  - 1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: MatterSimCalculator
+    device: auto
+    kwargs: null
+    module: mattersim.forcefield
+  supercell:
+  - 2
+  - 2
+  - 1
+  vacuum: 10.0
+orb-v2_COSplitting:
+  freeze_ratio: 0.5
+  grid_step: 3.0
+  layers: 8
+  miller:
+  - 2
+  - 1
+  - 1
+  model:
+    _cls: models.OrbCalc
+    device: auto
+    kwargs: {}
+    name: orb_v2
+  supercell:
+  - 2
+  - 2
+  - 1
+  vacuum: 10.0
+orb-v3_COSplitting:
+  freeze_ratio: 0.5
+  grid_step: 3.0
+  layers: 8
+  miller:
+  - 2
+  - 1
+  - 1
+  model:
+    _cls: models.OrbCalc
+    device: auto
+    kwargs: {}
+    name: orb_v3_conservative_inf_omat
+  supercell:
+  - 2
+  - 2
+  - 1
+  vacuum: 10.0

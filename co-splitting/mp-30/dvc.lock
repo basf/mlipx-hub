@@ -1,0 +1,351 @@
+schema: '2.0'
+stages:
+  initialize_MPRester:
+    cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
+    params:
+      params.yaml:
+        initialize_MPRester:
+          search_kwargs:
+            material_ids:
+            - mp-30
+    outs:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    - path: nodes/initialize/MPRester/node-meta.json
+      hash: md5
+      md5: c93ec032d94c6c015b758f94b579ce0d
+      size: 155
+  mace-mpa-0_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 
+      mace-mpa-0_COSplitting
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    params:
+      params.yaml:
+        mace-mpa-0_COSplitting:
+          freeze_ratio: 0.5
+          grid_step: 3.0
+          layers: 8
+          miller:
+          - 2
+          - 1
+          - 1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-mpa-0-medium.model
+            module: mace.calculators
+          supercell:
+          - 2
+          - 2
+          - 1
+          vacuum: 10.0
+    outs:
+    - path: nodes/mace-mpa-0/COSplitting/frames.xyz
+      hash: md5
+      md5: c0825f7fdf1e8fe6a4689210820f5640
+      size: 5777
+    - path: nodes/mace-mpa-0/COSplitting/node-meta.json
+      hash: md5
+      md5: df34549ef89c581af776f236a075cac8
+      size: 1135
+    - path: nodes/mace-mpa-0/COSplitting/outputs
+      hash: md5
+      md5: c8dc76936ca2f9eb943de28f8f5e811b.dir
+      size: 1231379
+      nfiles: 37
+    - path: nodes/mace-mpa-0/COSplitting/results.csv
+      hash: md5
+      md5: a45f5ed4b9af6903670f6fbaa0cec441
+      size: 35
+  7net-mf-ompa-mpa_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 
+      7net-mf-ompa-mpa_COSplitting
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    params:
+      params.yaml:
+        7net-mf-ompa-mpa_COSplitting:
+          freeze_ratio: 0.5
+          grid_step: 3.0
+          layers: 8
+          miller:
+          - 2
+          - 1
+          - 1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.sevennet_calculator
+          supercell:
+          - 2
+          - 2
+          - 1
+          vacuum: 10.0
+    outs:
+    - path: nodes/7net-mf-ompa-mpa/COSplitting/frames.xyz
+      hash: md5
+      md5: acc9f63513c1802eed8cebb68b20dc81
+      size: 5777
+    - path: nodes/7net-mf-ompa-mpa/COSplitting/node-meta.json
+      hash: md5
+      md5: fa20c67b48727efd094d4c211e347cf6
+      size: 1173
+    - path: nodes/7net-mf-ompa-mpa/COSplitting/outputs
+      hash: md5
+      md5: b8ecef4878a6637737c1a6f1098caf49.dir
+      size: 1438386
+      nfiles: 37
+    - path: nodes/7net-mf-ompa-mpa/COSplitting/results.csv
+      hash: md5
+      md5: 197ec41558dfc39acc6e2bcb898b7ed5
+      size: 36
+  7net-0_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 
+      7net-0_COSplitting
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    params:
+      params.yaml:
+        7net-0_COSplitting:
+          freeze_ratio: 0.5
+          grid_step: 3.0
+          layers: 8
+          miller:
+          - 2
+          - 1
+          - 1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: auto
+            kwargs:
+              model: 7net-0
+            module: sevenn.sevennet_calculator
+          supercell:
+          - 2
+          - 2
+          - 1
+          vacuum: 10.0
+    outs:
+    - path: nodes/7net-0/COSplitting/frames.xyz
+      hash: md5
+      md5: 832cf2f91814a70cd01b8ebc06012f94
+      size: 5777
+    - path: nodes/7net-0/COSplitting/node-meta.json
+      hash: md5
+      md5: 1c336d958bb4a573a8920fe5afa0956f
+      size: 1118
+    - path: nodes/7net-0/COSplitting/outputs
+      hash: md5
+      md5: a186a475588d4fc9ee59d54021e7ae8b.dir
+      size: 1408734
+      nfiles: 37
+    - path: nodes/7net-0/COSplitting/results.csv
+      hash: md5
+      md5: e2cfcb2ac1bccb3f3b6fd9f61a6a25d7
+      size: 36
+  orb-v2_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 
+      orb-v2_COSplitting
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    params:
+      params.yaml:
+        orb-v2_COSplitting:
+          freeze_ratio: 0.5
+          grid_step: 3.0
+          layers: 8
+          miller:
+          - 2
+          - 1
+          - 1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v2
+          supercell:
+          - 2
+          - 2
+          - 1
+          vacuum: 10.0
+    outs:
+    - path: nodes/orb-v2/COSplitting/frames.xyz
+      hash: md5
+      md5: cf3405ed5f6c86ed23d0deb0c254a37d
+      size: 5777
+    - path: nodes/orb-v2/COSplitting/node-meta.json
+      hash: md5
+      md5: 022ad76533a2ef3d7c5f9600924fcae5
+      size: 973
+    - path: nodes/orb-v2/COSplitting/outputs
+      hash: md5
+      md5: 46d8aece496adb9e889c073c5f92a9ea.dir
+      size: 1016083
+      nfiles: 37
+    - path: nodes/orb-v2/COSplitting/results.csv
+      hash: md5
+      md5: 83b1306032e4eeafc07b5331aed0ea96
+      size: 36
+  orb-v3_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 
+      orb-v3_COSplitting
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    params:
+      params.yaml:
+        orb-v3_COSplitting:
+          freeze_ratio: 0.5
+          grid_step: 3.0
+          layers: 8
+          miller:
+          - 2
+          - 1
+          - 1
+          model:
+            _cls: models.OrbCalc
+            device: auto
+            kwargs: {}
+            name: orb_v3_conservative_inf_omat
+          supercell:
+          - 2
+          - 2
+          - 1
+          vacuum: 10.0
+    outs:
+    - path: nodes/orb-v3/COSplitting/frames.xyz
+      hash: md5
+      md5: 9d1ee30b21d4e3edc975c19544aa7c57
+      size: 5777
+    - path: nodes/orb-v3/COSplitting/node-meta.json
+      hash: md5
+      md5: 4fdd2d61549a389d897a8c4f8bcba844
+      size: 995
+    - path: nodes/orb-v3/COSplitting/outputs
+      hash: md5
+      md5: 47a306a83de4ccaabc8f302d256176e5.dir
+      size: 1346817
+      nfiles: 37
+    - path: nodes/orb-v3/COSplitting/results.csv
+      hash: md5
+      md5: bd1e9c922aed59cc28fe6dc6a01e240d
+      size: 36
+  mattersim_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 
+      mattersim_COSplitting
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    params:
+      params.yaml:
+        mattersim_COSplitting:
+          freeze_ratio: 0.5
+          grid_step: 3.0
+          layers: 8
+          miller:
+          - 2
+          - 1
+          - 1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MatterSimCalculator
+            device: auto
+            kwargs:
+            module: mattersim.forcefield
+          supercell:
+          - 2
+          - 2
+          - 1
+          vacuum: 10.0
+    outs:
+    - path: nodes/mattersim/COSplitting/frames.xyz
+      hash: md5
+      md5: 2f137c4d1626429c7a25418d7986f9b5
+      size: 5777
+    - path: nodes/mattersim/COSplitting/node-meta.json
+      hash: md5
+      md5: 34486cfd150e1b0cc4b131f1123903ed
+      size: 1076
+    - path: nodes/mattersim/COSplitting/outputs
+      hash: md5
+      md5: db23299b1bdbbc82a1d71137f4b749f1.dir
+      size: 1336091
+      nfiles: 37
+    - path: nodes/mattersim/COSplitting/results.csv
+      hash: md5
+      md5: b32833c8939464e01e146ea881300fdc
+      size: 36
+  grace-2l-omat_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 
+      grace-2l-omat_COSplitting
+    deps:
+    - path: nodes/initialize/MPRester/frames.xyz
+      hash: md5
+      md5: 60dff846f4dc6ff8eaea0225e3f0d14f
+      size: 226
+    params:
+      params.yaml:
+        grace-2l-omat_COSplitting:
+          freeze_ratio: 0.5
+          grid_step: 3.0
+          layers: 8
+          miller:
+          - 2
+          - 1
+          - 1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: TPCalculator
+            device:
+            kwargs:
+              model: ../../models/GRACE-2L-OMAT
+            module: tensorpotential.calculator
+          supercell:
+          - 2
+          - 2
+          - 1
+          vacuum: 10.0
+    outs:
+    - path: nodes/grace-2l-omat/COSplitting/frames.xyz
+      hash: md5
+      md5: a958de2096cdf1aad9f23bddd84233a4
+      size: 5777
+    - path: nodes/grace-2l-omat/COSplitting/node-meta.json
+      hash: md5
+      md5: 8cac233a83b76cc98eb17c9e7bf00969
+      size: 1144
+    - path: nodes/grace-2l-omat/COSplitting/outputs
+      hash: md5
+      md5: 2498c814bb8840fa22edea9ec09ac881.dir
+      size: 1313355
+      nfiles: 37
+    - path: nodes/grace-2l-omat/COSplitting/results.csv
+      hash: md5
+      md5: f0fe3ff42afdce4704950fab30d49ff5
+      size: 36

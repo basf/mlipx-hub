@@ -48,7 +48,7 @@ class GraceModel(BaseModel):
         self.verify_checksum(Path(self.name), self.sha256sum)
 
         print(f"📦 Extracting: {self.name}")
-        target_dir = Path("GRACE-2L-OAM")
+        target_dir = Path(self.name.replace(".tar.gz", ""))
         with tarfile.open(self.name, "r:gz") as tar:
             temp_dir = Path("._tmp_extract")
             temp_dir.mkdir(exist_ok=True)
@@ -130,7 +130,7 @@ if __name__ == "__main__":
             sha256sum="e618ad582b84239905b9c3b77ce6e9ce111b0ecd1533223a1a6aac7a696b8aa0",
         ),
         GraceModel(
-            name="GRACE-2L-OAM.tar.gz",
+            name="GRACE-2L-OMAT.tar.gz",
             url="https://ruhr-uni-bochum.sciebo.de/s/vbTYV9Pt4ppKSZ8/download",
             sha256sum="76132d20b2d9c971e1b174a4c698994f2ca18a9aa877850418bd2bdfc9657a66",
         ),
