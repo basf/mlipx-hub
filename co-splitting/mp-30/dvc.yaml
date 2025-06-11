@@ -1,0 +1,137 @@
+plots:
+- mace-mpa-0_COSplitting_results:
+    x:
+      nodes/mace-mpa-0/COSplitting/results.csv: Formula
+    y:
+      nodes/mace-mpa-0/COSplitting/results.csv: dE
+- 7net-0_COSplitting_results:
+    x:
+      nodes/7net-0/COSplitting/results.csv: Formula
+    y:
+      nodes/7net-0/COSplitting/results.csv: dE
+- 7net-mf-ompa-mpa_COSplitting_results:
+    x:
+      nodes/7net-mf-ompa-mpa/COSplitting/results.csv: Formula
+    y:
+      nodes/7net-mf-ompa-mpa/COSplitting/results.csv: dE
+- orb-v2_COSplitting_results:
+    x:
+      nodes/orb-v2/COSplitting/results.csv: Formula
+    y:
+      nodes/orb-v2/COSplitting/results.csv: dE
+- orb-v3_COSplitting_results:
+    x:
+      nodes/orb-v3/COSplitting/results.csv: Formula
+    y:
+      nodes/orb-v3/COSplitting/results.csv: dE
+- mattersim_COSplitting_results:
+    x:
+      nodes/mattersim/COSplitting/results.csv: Formula
+    y:
+      nodes/mattersim/COSplitting/results.csv: dE
+- grace-2l-omat_COSplitting_results:
+    x:
+      nodes/grace-2l-omat/COSplitting/results.csv: Formula
+    y:
+      nodes/grace-2l-omat/COSplitting/results.csv: dE
+stages:
+  7net-0_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 7net-0_COSplitting
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/7net-0/COSplitting/node-meta.json:
+        cache: true
+    outs:
+    - nodes/7net-0/COSplitting/frames.xyz
+    - nodes/7net-0/COSplitting/outputs
+    - nodes/7net-0/COSplitting/results.csv
+    params:
+    - 7net-0_COSplitting
+  7net-mf-ompa-mpa_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name 7net-mf-ompa-mpa_COSplitting
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/7net-mf-ompa-mpa/COSplitting/node-meta.json:
+        cache: true
+    outs:
+    - nodes/7net-mf-ompa-mpa/COSplitting/frames.xyz
+    - nodes/7net-mf-ompa-mpa/COSplitting/outputs
+    - nodes/7net-mf-ompa-mpa/COSplitting/results.csv
+    params:
+    - 7net-mf-ompa-mpa_COSplitting
+  grace-2l-omat_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name grace-2l-omat_COSplitting
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/grace-2l-omat/COSplitting/node-meta.json:
+        cache: true
+    outs:
+    - nodes/grace-2l-omat/COSplitting/frames.xyz
+    - nodes/grace-2l-omat/COSplitting/outputs
+    - nodes/grace-2l-omat/COSplitting/results.csv
+    params:
+    - grace-2l-omat_COSplitting
+  initialize_MPRester:
+    cmd: zntrack run mlipx.nodes.mp_api.MPRester --name initialize_MPRester
+    metrics:
+    - nodes/initialize/MPRester/node-meta.json:
+        cache: true
+    outs:
+    - nodes/initialize/MPRester/frames.xyz
+    params:
+    - initialize_MPRester
+  mace-mpa-0_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name mace-mpa-0_COSplitting
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mace-mpa-0/COSplitting/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-mpa-0/COSplitting/frames.xyz
+    - nodes/mace-mpa-0/COSplitting/outputs
+    - nodes/mace-mpa-0/COSplitting/results.csv
+    params:
+    - mace-mpa-0_COSplitting
+  mattersim_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name mattersim_COSplitting
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/mattersim/COSplitting/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mattersim/COSplitting/frames.xyz
+    - nodes/mattersim/COSplitting/outputs
+    - nodes/mattersim/COSplitting/results.csv
+    params:
+    - mattersim_COSplitting
+  orb-v2_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name orb-v2_COSplitting
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/orb-v2/COSplitting/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb-v2/COSplitting/frames.xyz
+    - nodes/orb-v2/COSplitting/outputs
+    - nodes/orb-v2/COSplitting/results.csv
+    params:
+    - orb-v2_COSplitting
+  orb-v3_COSplitting:
+    cmd: zntrack run mlipx.nodes.co_splitting.COSplitting --name orb-v3_COSplitting
+    deps:
+    - nodes/initialize/MPRester/frames.xyz
+    metrics:
+    - nodes/orb-v3/COSplitting/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb-v3/COSplitting/frames.xyz
+    - nodes/orb-v3/COSplitting/outputs
+    - nodes/orb-v3/COSplitting/results.csv
+    params:
+    - orb-v3_COSplitting

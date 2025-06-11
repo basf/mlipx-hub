@@ -1,0 +1,278 @@
+{
+    "initialize_MPRester": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/initialize/MPRester"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "mace-mpa-0_COSplitting": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mace-mpa-0/COSplitting"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "node_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/outputs"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "7net-0_COSplitting": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-0/COSplitting"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "node_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/outputs"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "7net-mf-ompa-mpa_COSplitting": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/7net-mf-ompa-mpa/COSplitting"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "node_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/outputs"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "orb-v2_COSplitting": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v2/COSplitting"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "OrbCalc"
+            }
+        },
+        "node_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/outputs"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "orb-v3_COSplitting": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/orb-v3/COSplitting"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "models",
+                "cls": "OrbCalc"
+            }
+        },
+        "node_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/outputs"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "mattersim_COSplitting": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/mattersim/COSplitting"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "node_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/outputs"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    },
+    "grace-2l-omat_COSplitting": {
+        "nwd": {
+            "_type": "pathlib.Path",
+            "value": "nodes/grace-2l-omat/COSplitting"
+        },
+        "data": {
+            "_type": "znflow.Connection",
+            "value": {
+                "instance": {
+                    "_type": "zntrack.Node",
+                    "value": {
+                        "module": "mlipx.nodes.mp_api",
+                        "name": "initialize_MPRester",
+                        "cls": "MPRester",
+                        "remote": null,
+                        "rev": null
+                    }
+                },
+                "attribute": "frames",
+                "item": null
+            }
+        },
+        "model": {
+            "_type": "@dataclasses.dataclass",
+            "value": {
+                "module": "mlipx.nodes.generic_ase",
+                "cls": "GenericASECalculator"
+            }
+        },
+        "node_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/outputs"
+        },
+        "frames_path": {
+            "_type": "pathlib.Path",
+            "value": "$nwd$/frames.xyz"
+        }
+    }
+}
