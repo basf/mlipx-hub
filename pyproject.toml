@@ -7,14 +7,17 @@ requires-python = ">=3.11"
 dependencies = [
     "dvc-s3>=3.2.0",
     "ipykernel>=6.29.5",
-    "mlipx[mattersim,orb,sevenn,grace,chgnet]",
-    # "mlipx[mace]",
+    # "mlipx[mattersim,orb,sevenn,grace,chgnet]",
+    "mlipx[mace,pet-mad]",
     "znmdakit",
     "zntrack",
     "huggingface-hub[cli]>=0.32.2",
+    "kinisi>=1.1.1",
+    "massband",
 ]
 
 [tool.uv.sources]
-mlipx = { path = "/data/fzills/tools/mlipx", editable = true }
+mlipx = { path = "/work/fzills/projects/mlipx", editable = true }
 znmdakit = { path = "/data/fzills/tools/znmdakit", editable = true }
-zntrack = { git = "https://github.com/zincware/zntrack", rev = "rich-list" }
+zntrack = { git = "https://github.com/zincware/zntrack", rev = "main" }
+massband = { path = "../../../../data/fzills/tools/massband", editable = true }

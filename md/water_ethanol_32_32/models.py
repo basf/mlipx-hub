@@ -13,6 +13,13 @@ ALL_MODELS["MACE-MPA-0"] = mlipx.GenericASECalculator(
     kwargs={"model": "../../models/mace-mpa-0-medium.model"}
     # MLIPX-hub model path, adjust as needed
 )
+ALL_MODELS["mace-matpes-pbe-0"] = mlipx.GenericASECalculator(
+    module="mace.calculators",
+    class_name="mace_mp",
+    device="auto",
+    kwargs={"model": "../../models/mace-matpes-pbe-omat-ft.model"}
+    # MLIPX-hub model path, adjust as needed
+)
 # https://github.com/ACEsuit/mace
 ALL_MODELS["MACE-OFF"] = mlipx.GenericASECalculator(
     module="mace.calculators",
@@ -136,4 +143,5 @@ MODELS = {
     "chgnet": ALL_MODELS["chgnet"],
     "MACE-OFF": ALL_MODELS["MACE-OFF"],
     "pet-mad": ALL_MODELS["pet-mad"],
+    "mace-matpes-pbe-0": ALL_MODELS["mace-matpes-pbe-0"],
 }

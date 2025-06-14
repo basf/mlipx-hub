@@ -479,6 +479,66 @@ plots:
       nodes/pet-mad/md/EinsteinMSD_1/results.csv: lagtimes
     y:
       nodes/pet-mad/md/EinsteinMSD_1/results.csv: msd
+- mace-matpes-pbe-0_relax_StructureOptimization_plots_0:
+    x:
+      nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv: energy
+- mace-matpes-pbe-0_relax_StructureOptimization_plots_1:
+    x:
+      nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv: fmax
+- mace-matpes-pbe-0_md_MolecularDynamics_plots_0:
+    x:
+      nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv: energy
+- mace-matpes-pbe-0_md_MolecularDynamics_plots_1:
+    x:
+      nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv: step
+    y:
+      nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv: fmax
+- mace-matpes-pbe-0_md_InterRDF_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/InterRDF/results.csv: r
+    y:
+      nodes/mace-matpes-pbe-0/md/InterRDF/results.csv: g(r)
+- mace-matpes-pbe-0_md_InterRDF_1_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/InterRDF_1/results.csv: r
+    y:
+      nodes/mace-matpes-pbe-0/md/InterRDF_1/results.csv: g(r)
+- mace-matpes-pbe-0_md_InterRDF_2_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/InterRDF_2/results.csv: r
+    y:
+      nodes/mace-matpes-pbe-0/md/InterRDF_2/results.csv: g(r)
+- mace-matpes-pbe-0_md_InterRDF_3_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/InterRDF_3/results.csv: r
+    y:
+      nodes/mace-matpes-pbe-0/md/InterRDF_3/results.csv: g(r)
+- mace-matpes-pbe-0_md_InterRDF_4_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/InterRDF_4/results.csv: r
+    y:
+      nodes/mace-matpes-pbe-0/md/InterRDF_4/results.csv: g(r)
+- mace-matpes-pbe-0_md_EinsteinMSD_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/EinsteinMSD/results.csv: lagtimes
+    y:
+      nodes/mace-matpes-pbe-0/md/EinsteinMSD/results.csv: msd
+- mace-matpes-pbe-0_md_InterRDF_5_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/InterRDF_5/results.csv: r
+    y:
+      nodes/mace-matpes-pbe-0/md/InterRDF_5/results.csv: g(r)
+- mace-matpes-pbe-0_md_EinsteinMSD_1_results:
+    x:
+      nodes/mace-matpes-pbe-0/md/EinsteinMSD_1/results.csv: lagtimes
+    y:
+      nodes/mace-matpes-pbe-0/md/EinsteinMSD_1/results.csv: msd
 stages:
   7net-0_md_EinsteinMSD:
     cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name 7net-0_md_EinsteinMSD
@@ -574,6 +634,30 @@ stages:
     - nodes/7net-0/md/InterRDF_5/results.csv
     params:
     - 7net-0_md_InterRDF_5
+  7net-0_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      7net-0_md_KinisiSelfDiffusion
+    deps:
+    - nodes/7net-0/md/Universe/frames.h5
+    metrics:
+    - nodes/7net-0/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/7net-0/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - 7net-0_md_KinisiSelfDiffusion
+  7net-0_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      7net-0_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/7net-0/md/Universe/frames.h5
+    metrics:
+    - nodes/7net-0/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/7net-0/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - 7net-0_md_KinisiSelfDiffusion_1
   7net-0_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name 7net-0_md_MolecularDynamics
     deps:
@@ -734,6 +818,30 @@ stages:
     - nodes/MACE-MPA-0/md/InterRDF_5/results.csv
     params:
     - MACE-MPA-0_md_InterRDF_5
+  MACE-MPA-0_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      MACE-MPA-0_md_KinisiSelfDiffusion
+    deps:
+    - nodes/MACE-MPA-0/md/Universe/frames.h5
+    metrics:
+    - nodes/MACE-MPA-0/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/MACE-MPA-0/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - MACE-MPA-0_md_KinisiSelfDiffusion
+  MACE-MPA-0_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      MACE-MPA-0_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/MACE-MPA-0/md/Universe/frames.h5
+    metrics:
+    - nodes/MACE-MPA-0/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/MACE-MPA-0/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - MACE-MPA-0_md_KinisiSelfDiffusion_1
   MACE-MPA-0_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name MACE-MPA-0_md_MolecularDynamics
     deps:
@@ -894,6 +1002,30 @@ stages:
     - nodes/MACE-OFF/md/InterRDF_5/results.csv
     params:
     - MACE-OFF_md_InterRDF_5
+  MACE-OFF_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      MACE-OFF_md_KinisiSelfDiffusion
+    deps:
+    - nodes/MACE-OFF/md/Universe/frames.h5
+    metrics:
+    - nodes/MACE-OFF/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/MACE-OFF/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - MACE-OFF_md_KinisiSelfDiffusion
+  MACE-OFF_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      MACE-OFF_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/MACE-OFF/md/Universe/frames.h5
+    metrics:
+    - nodes/MACE-OFF/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/MACE-OFF/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - MACE-OFF_md_KinisiSelfDiffusion_1
   MACE-OFF_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name MACE-OFF_md_MolecularDynamics
     deps:
@@ -1054,6 +1186,30 @@ stages:
     - nodes/chgnet/md/InterRDF_5/results.csv
     params:
     - chgnet_md_InterRDF_5
+  chgnet_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      chgnet_md_KinisiSelfDiffusion
+    deps:
+    - nodes/chgnet/md/Universe/frames.h5
+    metrics:
+    - nodes/chgnet/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - chgnet_md_KinisiSelfDiffusion
+  chgnet_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      chgnet_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/chgnet/md/Universe/frames.h5
+    metrics:
+    - nodes/chgnet/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/chgnet/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - chgnet_md_KinisiSelfDiffusion_1
   chgnet_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name chgnet_md_MolecularDynamics
     deps:
@@ -1150,6 +1306,190 @@ stages:
     - nodes/initialize/Smiles2Conformers_1/frames.xyz
     params:
     - initialize_Smiles2Conformers_1
+  mace-matpes-pbe-0_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name mace-matpes-pbe-0_md_EinsteinMSD
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/EinsteinMSD/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/EinsteinMSD/results.csv
+    params:
+    - mace-matpes-pbe-0_md_EinsteinMSD
+  mace-matpes-pbe-0_md_EinsteinMSD_1:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name mace-matpes-pbe-0_md_EinsteinMSD_1
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/EinsteinMSD_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/EinsteinMSD_1/results.csv
+    params:
+    - mace-matpes-pbe-0_md_EinsteinMSD_1
+  mace-matpes-pbe-0_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/InterRDF/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/InterRDF/rdf.png
+    - nodes/mace-matpes-pbe-0/md/InterRDF/results.csv
+    params:
+    - mace-matpes-pbe-0_md_InterRDF
+  mace-matpes-pbe-0_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_1
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_1/rdf.png
+    - nodes/mace-matpes-pbe-0/md/InterRDF_1/results.csv
+    params:
+    - mace-matpes-pbe-0_md_InterRDF_1
+  mace-matpes-pbe-0_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_2
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_2/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_2/rdf.png
+    - nodes/mace-matpes-pbe-0/md/InterRDF_2/results.csv
+    params:
+    - mace-matpes-pbe-0_md_InterRDF_2
+  mace-matpes-pbe-0_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_3
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_3/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_3/rdf.png
+    - nodes/mace-matpes-pbe-0/md/InterRDF_3/results.csv
+    params:
+    - mace-matpes-pbe-0_md_InterRDF_3
+  mace-matpes-pbe-0_md_InterRDF_4:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_4
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_4/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_4/rdf.png
+    - nodes/mace-matpes-pbe-0/md/InterRDF_4/results.csv
+    params:
+    - mace-matpes-pbe-0_md_InterRDF_4
+  mace-matpes-pbe-0_md_InterRDF_5:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_5
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_5/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/InterRDF_5/rdf.png
+    - nodes/mace-matpes-pbe-0/md/InterRDF_5/results.csv
+    params:
+    - mace-matpes-pbe-0_md_InterRDF_5
+  mace-matpes-pbe-0_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      mace-matpes-pbe-0_md_KinisiSelfDiffusion
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - mace-matpes-pbe-0_md_KinisiSelfDiffusion
+  mace-matpes-pbe-0_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      mace-matpes-pbe-0_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - mace-matpes-pbe-0_md_KinisiSelfDiffusion_1
+  mace-matpes-pbe-0_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mace-matpes-pbe-0_md_MolecularDynamics
+    deps:
+    - nodes/mace-matpes-pbe-0/relax/StructureOptimization/frames.traj
+    - nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/MolecularDynamics/node-meta.json:
+        cache: true
+    - nodes/mace-matpes-pbe-0/md/MolecularDynamics/observer_metrics.json
+    outs:
+    - nodes/mace-matpes-pbe-0/md/MolecularDynamics/frames.xyz
+    - nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv
+    params:
+    - mace-matpes-pbe-0_md_MolecularDynamics
+  mace-matpes-pbe-0_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name mace-matpes-pbe-0_md_SelfDiffusionFromMSD
+    deps:
+    - nodes/mace-matpes-pbe-0/md/EinsteinMSD/results.csv
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD/metrics.json
+    - nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD/msd_fit.png
+    params:
+    - mace-matpes-pbe-0_md_SelfDiffusionFromMSD
+  mace-matpes-pbe-0_md_SelfDiffusionFromMSD_1:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name mace-matpes-pbe-0_md_SelfDiffusionFromMSD_1
+    deps:
+    - nodes/mace-matpes-pbe-0/md/EinsteinMSD_1/results.csv
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD_1/metrics.json
+    - nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD_1/msd_fit.png
+    params:
+    - mace-matpes-pbe-0_md_SelfDiffusionFromMSD_1
+  mace-matpes-pbe-0_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name mace-matpes-pbe-0_md_Universe
+    deps:
+    - nodes/mace-matpes-pbe-0/md/MolecularDynamics/frames.xyz
+    - nodes/mace-matpes-pbe-0/md/MolecularDynamics/observer_metrics.json
+    - nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv
+    metrics:
+    - nodes/mace-matpes-pbe-0/md/Universe/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+    params:
+    - mace-matpes-pbe-0_md_Universe
+  mace-matpes-pbe-0_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-matpes-pbe-0_relax_StructureOptimization
+    deps:
+    - nodes/initialize/BuildBox/frames.xyz
+    metrics:
+    - nodes/mace-matpes-pbe-0/relax/StructureOptimization/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mace-matpes-pbe-0/relax/StructureOptimization/frames.traj
+    - nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv
+    params:
+    - mace-matpes-pbe-0_relax_StructureOptimization
   mattersim_md_EinsteinMSD:
     cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name mattersim_md_EinsteinMSD
     deps:
@@ -1244,6 +1584,30 @@ stages:
     - nodes/mattersim/md/InterRDF_5/results.csv
     params:
     - mattersim_md_InterRDF_5
+  mattersim_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      mattersim_md_KinisiSelfDiffusion
+    deps:
+    - nodes/mattersim/md/Universe/frames.h5
+    metrics:
+    - nodes/mattersim/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mattersim/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - mattersim_md_KinisiSelfDiffusion
+  mattersim_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      mattersim_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/mattersim/md/Universe/frames.h5
+    metrics:
+    - nodes/mattersim/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/mattersim/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - mattersim_md_KinisiSelfDiffusion_1
   mattersim_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mattersim_md_MolecularDynamics
     deps:
@@ -1404,6 +1768,30 @@ stages:
     - nodes/orb-v2/md/InterRDF_5/results.csv
     params:
     - orb-v2_md_InterRDF_5
+  orb-v2_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      orb-v2_md_KinisiSelfDiffusion
+    deps:
+    - nodes/orb-v2/md/Universe/frames.h5
+    metrics:
+    - nodes/orb-v2/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb-v2/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - orb-v2_md_KinisiSelfDiffusion
+  orb-v2_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      orb-v2_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/orb-v2/md/Universe/frames.h5
+    metrics:
+    - nodes/orb-v2/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb-v2/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - orb-v2_md_KinisiSelfDiffusion_1
   orb-v2_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name orb-v2_md_MolecularDynamics
     deps:
@@ -1564,6 +1952,30 @@ stages:
     - nodes/orb-v3/md/InterRDF_5/results.csv
     params:
     - orb-v3_md_InterRDF_5
+  orb-v3_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      orb-v3_md_KinisiSelfDiffusion
+    deps:
+    - nodes/orb-v3/md/Universe/frames.h5
+    metrics:
+    - nodes/orb-v3/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb-v3/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - orb-v3_md_KinisiSelfDiffusion
+  orb-v3_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      orb-v3_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/orb-v3/md/Universe/frames.h5
+    metrics:
+    - nodes/orb-v3/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/orb-v3/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - orb-v3_md_KinisiSelfDiffusion_1
   orb-v3_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name orb-v3_md_MolecularDynamics
     deps:
@@ -1724,6 +2136,30 @@ stages:
     - nodes/pet-mad/md/InterRDF_5/results.csv
     params:
     - pet-mad_md_InterRDF_5
+  pet-mad_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      pet-mad_md_KinisiSelfDiffusion
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/KinisiSelfDiffusion/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/KinisiSelfDiffusion/diffusion_data
+    params:
+    - pet-mad_md_KinisiSelfDiffusion
+  pet-mad_md_KinisiSelfDiffusion_1:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      pet-mad_md_KinisiSelfDiffusion_1
+    deps:
+    - nodes/pet-mad/md/Universe/frames.h5
+    metrics:
+    - nodes/pet-mad/md/KinisiSelfDiffusion_1/node-meta.json:
+        cache: true
+    outs:
+    - nodes/pet-mad/md/KinisiSelfDiffusion_1/diffusion_data
+    params:
+    - pet-mad_md_KinisiSelfDiffusion_1
   pet-mad_md_MolecularDynamics:
     cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name pet-mad_md_MolecularDynamics
     deps:

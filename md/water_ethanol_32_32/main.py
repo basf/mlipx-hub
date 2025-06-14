@@ -1,6 +1,7 @@
 import mlipx
 from models import MODELS
 import znmdakit
+import massband
 
 project = mlipx.Project()
 
@@ -110,6 +111,22 @@ for model_name, model in MODELS.items():
             data=msd,
             start_time=5.7,
             end_time=40,
+        )
+
+        massband.KinisiSelfDiffusion(
+            file=universe.frames_path,
+            sampling_rate=1,  # ps
+            time_step=0.5,  # ps
+            structures=["O"],
+            start_dt=10,
+        )
+
+        massband.KinisiSelfDiffusion(
+            file=universe.frames_path,
+            sampling_rate=1,  # ps
+            time_step=0.5,  # ps
+            structures=["CCO"],
+            start_dt=10,
         )
 
 

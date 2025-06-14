@@ -2225,3 +2225,507 @@ stages:
       hash: md5
       md5: 771237097020d5d54b1c7e58ef970509
       size: 35164
+  mace-matpes-pbe-0_relax_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace-matpes-pbe-0_relax_StructureOptimization
+    deps:
+    - path: nodes/initialize/BuildBox/frames.xyz
+      hash: md5
+      md5: c96cd91e09717a4e2a94d74b0cebf98f
+      size: 60112
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_relax_StructureOptimization:
+          data_id: -1
+          fmax: 0.1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 100000000
+    outs:
+    - path: nodes/mace-matpes-pbe-0/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: d4211ffccd08c450e481ce2c75d89d46
+      size: 5668732
+    - path: nodes/mace-matpes-pbe-0/relax/StructureOptimization/node-meta.json
+      hash: md5
+      md5: b5f034130297ca29c0df08b4f2a87e65
+      size: 154
+    - path: nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 337d4d9c44f226ff74d18d993701f107
+      size: 8475
+  mace-matpes-pbe-0_md_MolecularDynamics:
+    cmd: zntrack run mlipx.nodes.molecular_dynamics.MolecularDynamics --name mace-matpes-pbe-0_md_MolecularDynamics
+    deps:
+    - path: nodes/mace-matpes-pbe-0/relax/StructureOptimization/frames.traj
+      hash: md5
+      md5: d4211ffccd08c450e481ce2c75d89d46
+      size: 5668732
+    - path: nodes/mace-matpes-pbe-0/relax/StructureOptimization/plots.csv
+      hash: md5
+      md5: 337d4d9c44f226ff74d18d993701f107
+      size: 8475
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_MolecularDynamics:
+          data_id: -1
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: auto
+            kwargs:
+              model: ../../models/mace-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          steps: 100000
+          thermostat:
+            _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+            friction: 0.05
+            temperature: 400
+            timestep: 0.5
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: d0cb83013dba4578f1fa129e62b0e985
+      size: 9027640197
+    - path: nodes/mace-matpes-pbe-0/md/MolecularDynamics/node-meta.json
+      hash: md5
+      md5: 496f02e9f8f99cf28038fa8e5931e919
+      size: 158
+    - path: nodes/mace-matpes-pbe-0/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 338e042dee4bc8daff8d93d6140c65ff
+      size: 4237445
+  mace-matpes-pbe-0_md_Universe:
+    cmd: zntrack run znmdakit.nodes.universe.Universe --name mace-matpes-pbe-0_md_Universe
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/MolecularDynamics/frames.xyz
+      hash: md5
+      md5: d0cb83013dba4578f1fa129e62b0e985
+      size: 9027640197
+    - path: nodes/mace-matpes-pbe-0/md/MolecularDynamics/observer_metrics.json
+      hash: md5
+      md5: 99914b932bd37a50b983c5e7c90ae93b
+      size: 2
+    - path: nodes/mace-matpes-pbe-0/md/MolecularDynamics/plots.csv
+      hash: md5
+      md5: 338e042dee4bc8daff8d93d6140c65ff
+      size: 4237445
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_Universe:
+          residues:
+            EtO: CCO
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+      hash: md5
+      md5: 8dff1e139d4eae4366713d0ef0f1c876
+      size: 3955186215
+    - path: nodes/mace-matpes-pbe-0/md/Universe/node-meta.json
+      hash: md5
+      md5: 63cb02a7d1b4837fbfdb7263546226ac
+      size: 156
+  mace-matpes-pbe-0_md_InterRDF:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+      hash: md5
+      md5: 8dff1e139d4eae4366713d0ef0f1c876
+      size: 3955186215
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_InterRDF:
+          apply_com_transform: false
+          g1: name H
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF/node-meta.json
+      hash: md5
+      md5: 7fd4daf5efeb3e81cbb4e27f8d53b4bb
+      size: 157
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF/rdf.png
+      hash: md5
+      md5: 1df28a69dd510b175f8ca1b04ce06375
+      size: 29152
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF/results.csv
+      hash: md5
+      md5: f4868ea4f6a617981cfe127c9a9891ad
+      size: 35108
+  mace-matpes-pbe-0_md_InterRDF_3:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_3
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+      hash: md5
+      md5: 8dff1e139d4eae4366713d0ef0f1c876
+      size: 3955186215
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_InterRDF_3:
+          apply_com_transform: true
+          g1: name COM and resname EtO
+          g2: name COM and resname EtO
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_3/node-meta.json
+      hash: md5
+      md5: c5dbc1472bf4fac6aa20164a42c00c30
+      size: 157
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_3/rdf.png
+      hash: md5
+      md5: 1c76a0fc3cb04534da5b2a26b352511f
+      size: 37393
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_3/results.csv
+      hash: md5
+      md5: 1411d3a27f62627f780ae359b01aee83
+      size: 32635
+  mace-matpes-pbe-0_md_EinsteinMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.EinsteinMSD --name mace-matpes-pbe-0_md_EinsteinMSD
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+      hash: md5
+      md5: 8dff1e139d4eae4366713d0ef0f1c876
+      size: 3955186215
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_EinsteinMSD:
+          apply_com_transform: true
+          sampling_rate: 1
+          select: name COM and resname EtO
+          timestep: 0.0005
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/EinsteinMSD/node-meta.json
+      hash: md5
+      md5: 8de3b2dfe162add9705a309e11218d77
+      size: 156
+    - path: nodes/mace-matpes-pbe-0/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: da3b31c7684c6f03b7a5b2f9ba91b038
+      size: 2725839
+  mace-matpes-pbe-0_md_SelfDiffusionFromMSD:
+    cmd: zntrack run znmdakit.nodes.mean_square_displacement.SelfDiffusionFromMSD
+      --name mace-matpes-pbe-0_md_SelfDiffusionFromMSD
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/EinsteinMSD/results.csv
+      hash: md5
+      md5: da3b31c7684c6f03b7a5b2f9ba91b038
+      size: 2725839
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_SelfDiffusionFromMSD:
+          end_time: 40
+          start_time: 5.7
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD/metrics.json
+      hash: md5
+      md5: f94c1df2ba6d839371a25455d3562f42
+      size: 124
+    - path: nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD/msd_fit.png
+      hash: md5
+      md5: 009753ff2921597e8f5dc0bad9963325
+      size: 56846
+    - path: nodes/mace-matpes-pbe-0/md/SelfDiffusionFromMSD/node-meta.json
+      hash: md5
+      md5: b6d5b8f77452f6d883ab7b961bc19ba7
+      size: 154
+  mace-matpes-pbe-0_md_InterRDF_2:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_2
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+      hash: md5
+      md5: 8dff1e139d4eae4366713d0ef0f1c876
+      size: 3955186215
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_InterRDF_2:
+          apply_com_transform: false
+          g1: name O
+          g2: name O
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_2/node-meta.json
+      hash: md5
+      md5: a20b46aacaef624f6c59d986a76f3c6c
+      size: 157
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_2/rdf.png
+      hash: md5
+      md5: 837113dda41cc672c495c0e3c7275a3d
+      size: 30354
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_2/results.csv
+      hash: md5
+      md5: d4b4d4e6a7ad335b20b39cc9b06765f7
+      size: 33444
+  mace-matpes-pbe-0_md_InterRDF_1:
+    cmd: zntrack run znmdakit.nodes.radial_distribution_function.InterRDF --name mace-matpes-pbe-0_md_InterRDF_1
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+      hash: md5
+      md5: 8dff1e139d4eae4366713d0ef0f1c876
+      size: 3955186215
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_InterRDF_1:
+          apply_com_transform: false
+          g1: name O
+          g2: name H
+          nbins: 1000
+          range: auto
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_1/node-meta.json
+      hash: md5
+      md5: 3a7786233048dccd5ee676638259258e
+      size: 157
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_1/rdf.png
+      hash: md5
+      md5: 9667855f58699d65dddb2bd19e766b26
+      size: 28573
+    - path: nodes/mace-matpes-pbe-0/md/InterRDF_1/results.csv
+      hash: md5
+      md5: 12ec879bff96fc68ffbfb544ead67f35
+      size: 35867
+  MACE-OFF_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      MACE-OFF_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/MACE-OFF/md/Universe/frames.h5
+      hash: md5
+      md5: 8aaa922bba2bbea48306e700cff7a8db
+      size: 3956472926
+    params:
+      params.yaml:
+        MACE-OFF_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/MACE-OFF/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: 7939bed28acde5f3850cdfef656086b7.dir
+      size: 2881871
+      nfiles: 4
+    - path: nodes/MACE-OFF/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: c2c849e8fe3e1569bd89a02367e61c1e
+      size: 740
+  7net-0_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      7net-0_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/7net-0/md/Universe/frames.h5
+      hash: md5
+      md5: d58a11443527507e501a8b09961ac518
+      size: 4332743997
+    params:
+      params.yaml:
+        7net-0_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/7net-0/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: 344c1b0b70c0cf4f9d039e063c561b07.dir
+      size: 2882736
+      nfiles: 4
+    - path: nodes/7net-0/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: 41f864bb145cb3925b2214b362b24aaa
+      size: 734
+  mattersim_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      mattersim_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/mattersim/md/Universe/frames.h5
+      hash: md5
+      md5: 81fa2c05ea41815da70cc0d152046c98
+      size: 3957544561
+    params:
+      params.yaml:
+        mattersim_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/mattersim/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: e30186aca1e02e5c94dc804e670b626d.dir
+      size: 2866946
+      nfiles: 4
+    - path: nodes/mattersim/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: 694a87e6a8f6648469370ed3f5d3328f
+      size: 742
+  orb-v3_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      orb-v3_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/orb-v3/md/Universe/frames.h5
+      hash: md5
+      md5: 7f4fccadd1825d75672201a8ec30a841
+      size: 3956221722
+    params:
+      params.yaml:
+        orb-v3_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/orb-v3/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: 43b7506af165853c89b408ba84a11618.dir
+      size: 2857423
+      nfiles: 4
+    - path: nodes/orb-v3/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: d2c5fd9f3239f6e5ecff27fd32591e3b
+      size: 734
+  chgnet_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      chgnet_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/chgnet/md/Universe/frames.h5
+      hash: md5
+      md5: f5f81b7ea3a49d9997f8bb83ee6ac079
+      size: 4387876364
+    params:
+      params.yaml:
+        chgnet_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/chgnet/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: a341f19faaeba1eb1d106182ba8cb69e.dir
+      size: 2886829
+      nfiles: 4
+    - path: nodes/chgnet/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: 511fb22625d90d16d278fe95b3a35716
+      size: 734
+  mace-matpes-pbe-0_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      mace-matpes-pbe-0_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/mace-matpes-pbe-0/md/Universe/frames.h5
+      hash: md5
+      md5: 8dff1e139d4eae4366713d0ef0f1c876
+      size: 3955186215
+    params:
+      params.yaml:
+        mace-matpes-pbe-0_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/mace-matpes-pbe-0/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: 07d4d77797d15e8010611588c8041a38.dir
+      size: 2880674
+      nfiles: 4
+    - path: nodes/mace-matpes-pbe-0/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: 1dac6d5a34f24db58e756385aa1125d8
+      size: 767
+  pet-mad_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      pet-mad_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/pet-mad/md/Universe/frames.h5
+      hash: md5
+      md5: c577475ce06e587af4db23533a24d82b
+      size: 3953490896
+    params:
+      params.yaml:
+        pet-mad_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/pet-mad/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: e3ef7281d09da9bb877445dd2a8342a5.dir
+      size: 2871839
+      nfiles: 4
+    - path: nodes/pet-mad/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: 520ecd0915be10254725408ed173ca9d
+      size: 736
+  MACE-MPA-0_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      MACE-MPA-0_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/MACE-MPA-0/md/Universe/frames.h5
+      hash: md5
+      md5: e44444e5ddd4e1bfb550add010ff3fec
+      size: 3955414770
+    params:
+      params.yaml:
+        MACE-MPA-0_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/MACE-MPA-0/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: dbeff177fa17a63e8f0820c3fe0acc27.dir
+      size: 2864806
+      nfiles: 4
+    - path: nodes/MACE-MPA-0/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: e4136aa18fead2e29cf0b31ec576ea31
+      size: 746
+  orb-v2_md_KinisiSelfDiffusion:
+    cmd: zntrack run massband.diffusion.kinisi_diffusion.KinisiSelfDiffusion --name
+      orb-v2_md_KinisiSelfDiffusion
+    deps:
+    - path: nodes/orb-v2/md/Universe/frames.h5
+      hash: md5
+      md5: 005474437167ef6abbd257ae3e58ceef
+      size: 3961638301
+    params:
+      params.yaml:
+        orb-v2_md_KinisiSelfDiffusion:
+          sampling_rate: 1
+          start_dt: 10
+          structures:
+          - CCO
+          time_step: 0.5
+    outs:
+    - path: nodes/orb-v2/md/KinisiSelfDiffusion/diffusion_data
+      hash: md5
+      md5: 026d4b9a00c97fb8df9b8cb185f16f70.dir
+      size: 2869993
+      nfiles: 4
+    - path: nodes/orb-v2/md/KinisiSelfDiffusion/node-meta.json
+      hash: md5
+      md5: 182d6a8b4a336ee8b650ebf161d5dfc8
+      size: 734

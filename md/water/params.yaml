@@ -27,6 +27,12 @@
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+7net-0_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 7net-0_md_MolecularDynamics:
   data_id: -1
   model:
@@ -89,6 +95,12 @@ MACE-MPA-0_md_InterRDF_3:
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+MACE-MPA-0_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 MACE-MPA-0_md_MolecularDynamics:
   data_id: -1
   model:
@@ -151,6 +163,12 @@ MACE-OFF_md_InterRDF_3:
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+MACE-OFF_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 MACE-OFF_md_MolecularDynamics:
   data_id: -1
   model:
@@ -215,6 +233,12 @@ chgnet_md_InterRDF_3:
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+chgnet_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 chgnet_md_MolecularDynamics:
   data_id: -1
   model:
@@ -255,6 +279,74 @@ initialize_Smiles2Conformers:
   num_confs: 100
   random_seed: 42
   smiles: O
+mace-matpes-pbe-0_md_EinsteinMSD:
+  apply_com_transform: true
+  sampling_rate: 1
+  select: name COM and resname H2O
+  timestep: 0.0005
+mace-matpes-pbe-0_md_InterRDF:
+  apply_com_transform: false
+  g1: name H
+  g2: name H
+  nbins: 1000
+  range: auto
+mace-matpes-pbe-0_md_InterRDF_1:
+  apply_com_transform: false
+  g1: name O
+  g2: name H
+  nbins: 1000
+  range: auto
+mace-matpes-pbe-0_md_InterRDF_2:
+  apply_com_transform: false
+  g1: name O
+  g2: name O
+  nbins: 1000
+  range: auto
+mace-matpes-pbe-0_md_InterRDF_3:
+  apply_com_transform: true
+  g1: name COM and resname H2O
+  g2: name COM and resname H2O
+  nbins: 1000
+  range: auto
+mace-matpes-pbe-0_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
+mace-matpes-pbe-0_md_MolecularDynamics:
+  data_id: -1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-matpes-pbe-omat-ft.model
+    module: mace.calculators
+  steps: 100000
+  thermostat:
+    _cls: mlipx.nodes.molecular_dynamics.LangevinConfig
+    friction: 0.05
+    temperature: 400
+    timestep: 0.5
+mace-matpes-pbe-0_md_SelfDiffusionFromMSD:
+  end_time: 40
+  start_time: 5.7
+mace-matpes-pbe-0_md_Universe:
+  residues:
+    H2O: O
+mace-matpes-pbe-0_relax_StructureOptimization:
+  data_id: -1
+  fmax: 0.1
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: auto
+    kwargs:
+      model: ../../models/mace-matpes-pbe-omat-ft.model
+    module: mace.calculators
+  optimizer: LBFGS
+  steps: 100000000
 mattersim_md_EinsteinMSD:
   apply_com_transform: true
   sampling_rate: 1
@@ -284,6 +376,12 @@ mattersim_md_InterRDF_3:
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+mattersim_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 mattersim_md_MolecularDynamics:
   data_id: -1
   model:
@@ -344,6 +442,12 @@ orb-v2_md_InterRDF_3:
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+orb-v2_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 orb-v2_md_MolecularDynamics:
   data_id: -1
   model:
@@ -402,6 +506,12 @@ orb-v3_md_InterRDF_3:
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+orb-v3_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 orb-v3_md_MolecularDynamics:
   data_id: -1
   model:
@@ -460,6 +570,12 @@ pet-mad_md_InterRDF_3:
   g2: name COM and resname H2O
   nbins: 1000
   range: auto
+pet-mad_md_KinisiSelfDiffusion:
+  sampling_rate: 1
+  start_dt: 10
+  structures:
+  - O
+  time_step: 0.5
 pet-mad_md_MolecularDynamics:
   data_id: -1
   model:
