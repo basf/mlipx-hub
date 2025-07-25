@@ -1,0 +1,264 @@
+plots:
+- mace_agnesi_StructureOptimization_plots_0:
+    x:
+      nodes/mace_agnesi/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace_agnesi/StructureOptimization/plots.csv: energy
+- mace_agnesi_StructureOptimization_plots_1:
+    x:
+      nodes/mace_agnesi/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace_agnesi/StructureOptimization/plots.csv: fmax
+- grace_StructureOptimization_plots_0:
+    x:
+      nodes/grace/StructureOptimization/plots.csv: step
+    y:
+      nodes/grace/StructureOptimization/plots.csv: energy
+- grace_StructureOptimization_plots_1:
+    x:
+      nodes/grace/StructureOptimization/plots.csv: step
+    y:
+      nodes/grace/StructureOptimization/plots.csv: fmax
+- mace_mpa0_StructureOptimization_plots_0:
+    x:
+      nodes/mace_mpa0/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace_mpa0/StructureOptimization/plots.csv: energy
+- mace_mpa0_StructureOptimization_plots_1:
+    x:
+      nodes/mace_mpa0/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace_mpa0/StructureOptimization/plots.csv: fmax
+- mace_matpes-omat_StructureOptimization_plots_0:
+    x:
+      nodes/mace_matpes-omat/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace_matpes-omat/StructureOptimization/plots.csv: energy
+- mace_matpes-omat_StructureOptimization_plots_1:
+    x:
+      nodes/mace_matpes-omat/StructureOptimization/plots.csv: step
+    y:
+      nodes/mace_matpes-omat/StructureOptimization/plots.csv: fmax
+- sevennet-mf-ompa_StructureOptimization_plots_0:
+    x:
+      nodes/sevennet-mf-ompa/StructureOptimization/plots.csv: step
+    y:
+      nodes/sevennet-mf-ompa/StructureOptimization/plots.csv: energy
+- sevennet-mf-ompa_StructureOptimization_plots_1:
+    x:
+      nodes/sevennet-mf-ompa/StructureOptimization/plots.csv: step
+    y:
+      nodes/sevennet-mf-ompa/StructureOptimization/plots.csv: fmax
+- mattersim_StructureOptimization_plots_0:
+    x:
+      nodes/mattersim/StructureOptimization/plots.csv: step
+    y:
+      nodes/mattersim/StructureOptimization/plots.csv: energy
+- mattersim_StructureOptimization_plots_1:
+    x:
+      nodes/mattersim/StructureOptimization/plots.csv: step
+    y:
+      nodes/mattersim/StructureOptimization/plots.csv: fmax
+- eqV2_StructureOptimization_plots_0:
+    x:
+      nodes/eqV2/StructureOptimization/plots.csv: step
+    y:
+      nodes/eqV2/StructureOptimization/plots.csv: energy
+- eqV2_StructureOptimization_plots_1:
+    x:
+      nodes/eqV2/StructureOptimization/plots.csv: step
+    y:
+      nodes/eqV2/StructureOptimization/plots.csv: fmax
+- orb_v2_StructureOptimization_plots_0:
+    x:
+      nodes/orb_v2/StructureOptimization/plots.csv: step
+    y:
+      nodes/orb_v2/StructureOptimization/plots.csv: energy
+- orb_v2_StructureOptimization_plots_1:
+    x:
+      nodes/orb_v2/StructureOptimization/plots.csv: step
+    y:
+      nodes/orb_v2/StructureOptimization/plots.csv: fmax
+- orb_v3_StructureOptimization_plots_0:
+    x:
+      nodes/orb_v3/StructureOptimization/plots.csv: step
+    y:
+      nodes/orb_v3/StructureOptimization/plots.csv: energy
+- orb_v3_StructureOptimization_plots_1:
+    x:
+      nodes/orb_v3/StructureOptimization/plots.csv: step
+    y:
+      nodes/orb_v3/StructureOptimization/plots.csv: fmax
+- PET_StructureOptimization_plots_0:
+    x:
+      nodes/PET/StructureOptimization/plots.csv: step
+    y:
+      nodes/PET/StructureOptimization/plots.csv: energy
+- PET_StructureOptimization_plots_1:
+    x:
+      nodes/PET/StructureOptimization/plots.csv: step
+    y:
+      nodes/PET/StructureOptimization/plots.csv: fmax
+- chgnet_StructureOptimization_plots_0:
+    x:
+      nodes/chgnet/StructureOptimization/plots.csv: step
+    y:
+      nodes/chgnet/StructureOptimization/plots.csv: energy
+- chgnet_StructureOptimization_plots_1:
+    x:
+      nodes/chgnet/StructureOptimization/plots.csv: step
+    y:
+      nodes/chgnet/StructureOptimization/plots.csv: fmax
+stages:
+  PET_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      PET_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/PET/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/PET/StructureOptimization/frames.traj
+    - nodes/PET/StructureOptimization/plots.csv
+    params:
+    - PET_StructureOptimization
+  chgnet_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/chgnet/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/chgnet/StructureOptimization/frames.traj
+    - nodes/chgnet/StructureOptimization/plots.csv
+    params:
+    - chgnet_StructureOptimization
+  eqV2_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      eqV2_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/eqV2/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/eqV2/StructureOptimization/frames.traj
+    - nodes/eqV2/StructureOptimization/plots.csv
+    params:
+    - eqV2_StructureOptimization
+  grace_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/grace/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/grace/StructureOptimization/frames.traj
+    - nodes/grace/StructureOptimization/plots.csv
+    params:
+    - grace_StructureOptimization
+  initialize_LoadDataFile:
+    cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
+    deps:
+    - ../DODH_TTT.traj
+    metrics:
+    - nodes/initialize/LoadDataFile/node-meta.json:
+        cache: false
+    params:
+    - initialize_LoadDataFile
+  mace_agnesi_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_agnesi_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/mace_agnesi/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/mace_agnesi/StructureOptimization/frames.traj
+    - nodes/mace_agnesi/StructureOptimization/plots.csv
+    params:
+    - mace_agnesi_StructureOptimization
+  mace_matpes-omat_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_matpes-omat_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/mace_matpes-omat/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/mace_matpes-omat/StructureOptimization/frames.traj
+    - nodes/mace_matpes-omat/StructureOptimization/plots.csv
+    params:
+    - mace_matpes-omat_StructureOptimization
+  mace_mpa0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_mpa0_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/mace_mpa0/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/mace_mpa0/StructureOptimization/frames.traj
+    - nodes/mace_mpa0/StructureOptimization/plots.csv
+    params:
+    - mace_mpa0_StructureOptimization
+  mattersim_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mattersim_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/mattersim/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/mattersim/StructureOptimization/frames.traj
+    - nodes/mattersim/StructureOptimization/plots.csv
+    params:
+    - mattersim_StructureOptimization
+  orb_v2_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/orb_v2/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/orb_v2/StructureOptimization/frames.traj
+    - nodes/orb_v2/StructureOptimization/plots.csv
+    params:
+    - orb_v2_StructureOptimization
+  orb_v3_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v3_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/orb_v3/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/orb_v3/StructureOptimization/frames.traj
+    - nodes/orb_v3/StructureOptimization/plots.csv
+    params:
+    - orb_v3_StructureOptimization
+  sevennet-mf-ompa_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet-mf-ompa_StructureOptimization
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/sevennet-mf-ompa/StructureOptimization/node-meta.json:
+        cache: false
+    outs:
+    - nodes/sevennet-mf-ompa/StructureOptimization/frames.traj
+    - nodes/sevennet-mf-ompa/StructureOptimization/plots.csv
+    params:
+    - sevennet-mf-ompa_StructureOptimization

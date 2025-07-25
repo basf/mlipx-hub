@@ -1,0 +1,1858 @@
+schema: '2.0'
+stages:
+  initialize_LoadDataFile:
+    cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
+    deps:
+    - path: ../DODH_TTT.traj
+      hash: md5
+      md5: 51c83476941a8eb91cb89fb3364cd5a1
+      size: 6827
+    params:
+      params.yaml:
+        initialize_LoadDataFile:
+          start: 0
+          step: 1
+          stop:
+    outs:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+  chgnet_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        chgnet_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/chgnet/StructureOptimization/frames.traj
+      hash: md5
+      md5: 96bcfa473322cdc3e952f61528aaf0e0
+      size: 423255
+    - path: nodes/chgnet/StructureOptimization/node-meta.json
+      hash: md5
+      md5: f6257bf5c00dd5e467c4e9c2b0b1e54d
+      size: 64
+    - path: nodes/chgnet/StructureOptimization/plots.csv
+      hash: md5
+      md5: 245166f552dcfbb768f649e6d1ac81bf
+      size: 3060
+  initialize_LoadDataFile_1:
+    cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile_1
+    deps:
+    - path: dataset/H.traj
+      hash: md5
+      md5: fbbba90e555242817327b9a0610d326c
+      size: 323
+    params:
+      params.yaml:
+        initialize_LoadDataFile_1:
+          start: 0
+          step: 1
+          stop:
+    outs:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+  chgnet_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        chgnet_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/chgnet/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: 8afb0af24c6c21cefc7ccb66be6ef2a6
+      size: 690
+    - path: nodes/chgnet/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: 2f94516ca9baf8078554afea2e08d25a
+      size: 64
+    - path: nodes/chgnet/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 39d921fe1f06527462667231a31ce0c2
+      size: 42
+  initialize_LoadDataFile_2:
+    cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile_2
+    deps:
+    - path: dataset/O.traj
+      hash: md5
+      md5: 05583bb41a79e84a5e4d7a8052747a09
+      size: 323
+    params:
+      params.yaml:
+        initialize_LoadDataFile_2:
+          start: 0
+          step: 1
+          stop:
+    outs:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+  chgnet_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        chgnet_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/chgnet/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: fbd51d4f3117db6c457d10c9ca883ee7
+      size: 690
+    - path: nodes/chgnet/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: ed38f7ce9efa137dc5fd25692189ccee
+      size: 64
+    - path: nodes/chgnet/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: c5469fd55f6c64d122032c794fb4edee
+      size: 42
+  initialize_LoadDataFile_3:
+    cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile_3
+    deps:
+    - path: dataset/Cu.traj
+      hash: md5
+      md5: 7467a9563b2c7af6d9d23e27ac16c1ca
+      size: 323
+    params:
+      params.yaml:
+        initialize_LoadDataFile_3:
+          start: 0
+          step: 1
+          stop:
+    outs:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+  chgnet_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        chgnet_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/chgnet/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: 94ae4661c7d205c128dbc5fa2c446aae
+      size: 691
+    - path: nodes/chgnet/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: 06ef8a13bc58ac683b5618fbc6f271da
+      size: 64
+    - path: nodes/chgnet/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: 7e1d7210d88bc02025764a19684d9175
+      size: 43
+  initialize_LoadDataFile_4:
+    cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile_4
+    deps:
+    - path: dataset/DODH.traj
+      hash: md5
+      md5: 54f9986a55a5bbbe4c4114db3f875707
+      size: 8927
+    params:
+      params.yaml:
+        initialize_LoadDataFile_4:
+          start: 0
+          step: 1
+          stop:
+    outs:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: eab3384382cd58e667f5b2f5d84553a3
+      size: 64
+  chgnet_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      chgnet_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: eab3384382cd58e667f5b2f5d84553a3
+      size: 64
+    params:
+      params.yaml:
+        chgnet_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: CHGNetCalculator
+            device:
+            kwargs:
+            module: chgnet.model
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/chgnet/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: 96bcfa473322cdc3e952f61528aaf0e0
+      size: 423255
+    - path: nodes/chgnet/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 8b29e30cd07be2accc58d9fc89ed563c
+      size: 64
+    - path: nodes/chgnet/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: 245166f552dcfbb768f649e6d1ac81bf
+      size: 3060
+  grace_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        grace_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: grace_fm
+            device:
+            kwargs:
+              model: GRACE-2L-OAM
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/grace/StructureOptimization/frames.traj
+      hash: md5
+      md5: 0bcb9792714f9db683def5ecadd2bf56
+      size: 596931
+    - path: nodes/grace/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 24cb7a04b0ed562fd5c8e7250cd222f1
+      size: 64
+    - path: nodes/grace/StructureOptimization/plots.csv
+      hash: md5
+      md5: 77f3b7d91f5df4ac8b76044c4c1af872
+      size: 4916
+  grace_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        grace_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: grace_fm
+            device:
+            kwargs:
+              model: GRACE-2L-OAM
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/grace/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: dfcef05d79711eb91be474e1b8f194f9
+      size: 626
+    - path: nodes/grace/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: d74ae02663cce09a716da959b0d63b8a
+      size: 64
+    - path: nodes/grace/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: b28d82acf7521d71ceed89ba6e8bf97c
+      size: 27
+  grace_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        grace_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: grace_fm
+            device:
+            kwargs:
+              model: GRACE-2L-OAM
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/grace/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: cfbd17d5fe2b2b2139d67035daa9ca00
+      size: 626
+    - path: nodes/grace/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: 08d6919357e54144fe4367a45b8d315f
+      size: 64
+    - path: nodes/grace/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: b28d82acf7521d71ceed89ba6e8bf97c
+      size: 27
+  grace_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        grace_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: grace_fm
+            device:
+            kwargs:
+              model: GRACE-2L-OAM
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/grace/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: 520db31b3d803f16e5c1ca0e42e8fb79
+      size: 626
+    - path: nodes/grace/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: 2c4506bf82157484fe2ff089f2084e22
+      size: 64
+    - path: nodes/grace/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: b28d82acf7521d71ceed89ba6e8bf97c
+      size: 27
+  grace_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      grace_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        grace_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: grace_fm
+            device:
+            kwargs:
+              model: GRACE-2L-OAM
+            module: tensorpotential.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/grace/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: 0bcb9792714f9db683def5ecadd2bf56
+      size: 596931
+    - path: nodes/grace/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: eb934dceaeed8e77f89c3c239f824a5e
+      size: 64
+    - path: nodes/grace/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: 77f3b7d91f5df4ac8b76044c4c1af872
+      size: 4916
+  mace_agnesi_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_agnesi_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        mace_agnesi_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MACECalculator
+            device: auto
+            kwargs:
+              dtype: float64
+              model_paths: /mnt/nfs/ml_training/pretrained_mace_models/mace_agnesi_medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_agnesi/StructureOptimization/frames.traj
+      hash: md5
+      md5: 87f3bf136f2dd7823511e016b85e56df
+      size: 858843
+    - path: nodes/mace_agnesi/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 306994ec314c0746651f0064ed178b3d
+      size: 64
+    - path: nodes/mace_agnesi/StructureOptimization/plots.csv
+      hash: md5
+      md5: b7c026bfcd33256be5bc71b078c64837
+      size: 7154
+  mace_agnesi_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_agnesi_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        mace_agnesi_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MACECalculator
+            device: auto
+            kwargs:
+              dtype: float64
+              model_paths: /mnt/nfs/ml_training/pretrained_mace_models/mace_agnesi_medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_agnesi/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: 505fbfa995f74efc2727d877c9744bfc
+      size: 662
+    - path: nodes/mace_agnesi/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: 878da3d2a400a056ea921ef6dad3cadd
+      size: 64
+    - path: nodes/mace_agnesi/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 98eadc3268104424fe29f2aef3d45bc7
+      size: 35
+  mace_agnesi_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_agnesi_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        mace_agnesi_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MACECalculator
+            device: auto
+            kwargs:
+              dtype: float64
+              model_paths: /mnt/nfs/ml_training/pretrained_mace_models/mace_agnesi_medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_agnesi/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: e4480c79567723db99521ed22e77aa8d
+      size: 662
+    - path: nodes/mace_agnesi/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: 0be9c9a099133a012286804f8ff7ba14
+      size: 64
+    - path: nodes/mace_agnesi/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: d8a9a4b49816b1ecfd0a7e264851f16f
+      size: 35
+  mace_agnesi_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_agnesi_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        mace_agnesi_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MACECalculator
+            device: auto
+            kwargs:
+              dtype: float64
+              model_paths: /mnt/nfs/ml_training/pretrained_mace_models/mace_agnesi_medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_agnesi/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: 379406dfaa2ccd186e9555ea3a50fe31
+      size: 662
+    - path: nodes/mace_agnesi/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: 24debebbe726c7c64868b8d968b62b58
+      size: 64
+    - path: nodes/mace_agnesi/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: a0d487e681ae8e55a62af6e01e0da34a
+      size: 35
+  mace_agnesi_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_agnesi_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        mace_agnesi_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MACECalculator
+            device: auto
+            kwargs:
+              dtype: float64
+              model_paths: /mnt/nfs/ml_training/pretrained_mace_models/mace_agnesi_medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_agnesi/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: fb7f8f8deb4709f3b41e082df7d8e2ae
+      size: 858411
+    - path: nodes/mace_agnesi/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 3a8345fb47d4c6a5a4f71701e427ff80
+      size: 64
+    - path: nodes/mace_agnesi/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: 0dfedda0f82cf3a1e5fbbb45d35ca75d
+      size: 7143
+  mace_matpes-omat_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_matpes-omat_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        mace_matpes-omat_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/MACE-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_matpes-omat/StructureOptimization/frames.traj
+      hash: md5
+      md5: 2dbea24a1ebc6f59b193a4cc8735622f
+      size: 512744
+    - path: nodes/mace_matpes-omat/StructureOptimization/node-meta.json
+      hash: md5
+      md5: d9dae567b7fe3f9eebcb3cda3d9b59f7
+      size: 64
+    - path: nodes/mace_matpes-omat/StructureOptimization/plots.csv
+      hash: md5
+      md5: df603eb2f6654d6aa16bd7a80dad833f
+      size: 4028
+  mace_matpes-omat_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_matpes-omat_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        mace_matpes-omat_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/MACE-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_matpes-omat/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: 552a78cf66bd708baab33c0c8ab02676
+      size: 664
+    - path: nodes/mace_matpes-omat/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: b1cdc4df5ebc2c6ec2414a67b578dd48
+      size: 64
+    - path: nodes/mace_matpes-omat/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 66e3f9c8af5f4735b9885a87cbc2f4c5
+      size: 42
+  mace_matpes-omat_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_matpes-omat_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        mace_matpes-omat_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/MACE-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_matpes-omat/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: 5327f42ee06ca8345c35cd234c452c05
+      size: 664
+    - path: nodes/mace_matpes-omat/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: 71c84efe15bd267bd4e5b122468e3fa0
+      size: 64
+    - path: nodes/mace_matpes-omat/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: 6404015a4b31ab87970a8c1bb38b3993
+      size: 42
+  mace_matpes-omat_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_matpes-omat_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        mace_matpes-omat_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/MACE-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_matpes-omat/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: 9110fcbc212fedfa855dfd1c02a82af8
+      size: 668
+    - path: nodes/mace_matpes-omat/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: c22c3a39beb68baf53035ce917f63563
+      size: 64
+    - path: nodes/mace_matpes-omat/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: 7acfabcf6954167165f2c02aa1d7521e
+      size: 44
+  mace_matpes-omat_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_matpes-omat_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        mace_matpes-omat_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/MACE-matpes-pbe-omat-ft.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_matpes-omat/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: b8c6f940cb9039aac1985c4a9e3a9023
+      size: 1067533
+    - path: nodes/mace_matpes-omat/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 5b9d57caa1bbc0e3ff2bf0507e0f5f44
+      size: 64
+    - path: nodes/mace_matpes-omat/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: 7c46b60ea206345f555fbc052f4efcf7
+      size: 8658
+  mace_mpa0_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_mpa0_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        mace_mpa0_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_mpa0/StructureOptimization/frames.traj
+      hash: md5
+      md5: f2e8e0da2425a819e85b219895ad3612
+      size: 873114
+    - path: nodes/mace_mpa0/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 16e0503d4ca754253629851ad87bb02b
+      size: 64
+    - path: nodes/mace_mpa0/StructureOptimization/plots.csv
+      hash: md5
+      md5: f19ae1c7e6df7ac4eb5af3008f640a4a
+      size: 7036
+  mace_mpa0_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_mpa0_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        mace_mpa0_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_mpa0/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: 93cba46bc7a0eaca6bca02f05c2a3a77
+      size: 664
+    - path: nodes/mace_mpa0/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: 99df6b0b40c688296ab2e0dadfc727fa
+      size: 64
+    - path: nodes/mace_mpa0/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 2549c1b82c6ec7869cfae4ccfe20565c
+      size: 42
+  mace_mpa0_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_mpa0_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        mace_mpa0_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_mpa0/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: 585a1bbb34c95385d0bb4b879ecce565
+      size: 664
+    - path: nodes/mace_mpa0/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: 41121e19eb7ad00e66f8985c56f31c1e
+      size: 64
+    - path: nodes/mace_mpa0/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: 2d4956146776c748f95ee1ada63ee852
+      size: 42
+  mace_mpa0_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_mpa0_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        mace_mpa0_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_mpa0/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: b1fa0c284478bfac249a923fd5b28e65
+      size: 664
+    - path: nodes/mace_mpa0/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: f865fc85c3ed6e535f2be72bad11269d
+      size: 64
+    - path: nodes/mace_mpa0/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: 7400854e4b28dc516b74d70cfc27055e
+      size: 42
+  mace_mpa0_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mace_mpa0_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        mace_mpa0_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: mace_mp
+            device: cpu
+            kwargs:
+              dtype: float64
+              model: /mnt/nfs/ml_training/pretrained_mace_models/mace-mpa-0-medium.model
+            module: mace.calculators
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mace_mpa0/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: bf0cfa82200b34b6e45f189f489c77b9
+      size: 752776
+    - path: nodes/mace_mpa0/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 6dc8deb4afc8c9618af9e8fb92115f81
+      size: 64
+    - path: nodes/mace_mpa0/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: 2062e7b07e5bdb93086e91ddc6c2e3b2
+      size: 6037
+  orb_v2_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        orb_v2_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v2/StructureOptimization/frames.traj
+      hash: md5
+      md5: e34cb538a8ba721f88a9c082a18f43ba
+      size: 1692959
+    - path: nodes/orb_v2/StructureOptimization/node-meta.json
+      hash: md5
+      md5: c98d508dfa0e58503057d2ab8fa195f4
+      size: 64
+    - path: nodes/orb_v2/StructureOptimization/plots.csv
+      hash: md5
+      md5: fde1d176899879c665fe94a315c211ba
+      size: 13906
+  orb_v2_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        orb_v2_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v2/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: 8ba0a9ce29a09aaf0ac71ee6bf4a5138
+      size: 751
+    - path: nodes/orb_v2/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: 82b47a7252b8d7e28e79737c83809817
+      size: 64
+    - path: nodes/orb_v2/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 457b6b36ca2579a160ed2e31a5c09fc2
+      size: 49
+  orb_v2_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        orb_v2_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v2/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: dd0283e6154ae6d21ee52c11b5e0e28d
+      size: 757
+    - path: nodes/orb_v2/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: ea0965c8e923956921a8652c60078cba
+      size: 64
+    - path: nodes/orb_v2/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: bb62d9c901ff4c863a52b5fe36df87ef
+      size: 53
+  orb_v2_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        orb_v2_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v2/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: cf4f5f3519b324e03db7f569ed6595aa
+      size: 757
+    - path: nodes/orb_v2/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: ddbe4ce46a90bb6fed44d6e2d5aa1ea3
+      size: 64
+    - path: nodes/orb_v2/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: cbc29f03d4d9bcebe1a0aa6db5ec296e
+      size: 53
+  sevennet-mf-ompa_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet-mf-ompa_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        sevennet-mf-ompa_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: cpu
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/sevennet-mf-ompa/StructureOptimization/frames.traj
+      hash: md5
+      md5: 8485c22c27b607c4ab8402b685719085
+      size: 500650
+    - path: nodes/sevennet-mf-ompa/StructureOptimization/node-meta.json
+      hash: md5
+      md5: f8ab554a194d12f8e4db407b91a44b14
+      size: 64
+    - path: nodes/sevennet-mf-ompa/StructureOptimization/plots.csv
+      hash: md5
+      md5: 8fe46bb2fd4edbd23aba8299d3867faf
+      size: 3658
+  sevennet-mf-ompa_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet-mf-ompa_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        sevennet-mf-ompa_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: cpu
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: e3ff08b0a48ccc939d7ab88f94644d95
+      size: 709
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: a2663b89d335896b2d9ad0b451aeae1a
+      size: 64
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: a7b70aacc73677b64a21ca07bd2d5a2c
+      size: 43
+  sevennet-mf-ompa_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet-mf-ompa_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        sevennet-mf-ompa_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: cpu
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: e95a3606da75fcb549202a1c128d613d
+      size: 709
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: 3334e720ead5128b4dfcd579ed38dc28
+      size: 64
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: bc4254f4112c9f9b1292569fb380a967
+      size: 43
+  sevennet-mf-ompa_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet-mf-ompa_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        sevennet-mf-ompa_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: cpu
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: ba4f68ce3096a399debe41fb94cff1b5
+      size: 709
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: c5ca5eae75b5de5e5c25156c1dcda74e
+      size: 64
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: db06055076f8ec2316d0726dcf57fbe4
+      size: 43
+  sevennet-mf-ompa_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      sevennet-mf-ompa_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        sevennet-mf-ompa_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: SevenNetCalculator
+            device: cpu
+            kwargs:
+              modal: mpa
+              model: 7net-mf-ompa
+            module: sevenn.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: e6b1be0b9da717b430c2f9325358313e
+      size: 500599
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 2b6cd4320f7a14c64af98609388f7026
+      size: 64
+    - path: nodes/sevennet-mf-ompa/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: 24f50239d08f434ce8d60b84f662e528
+      size: 3648
+  mattersim_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mattersim_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        mattersim_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MatterSimCalculator
+            device: cpu
+            kwargs:
+            module: mattersim.forcefield
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mattersim/StructureOptimization/frames.traj
+      hash: md5
+      md5: b7946eca722cdec534117f9b50c01121
+      size: 473562
+    - path: nodes/mattersim/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 63a7998eb4b1be704057856d51f12972
+      size: 64
+    - path: nodes/mattersim/StructureOptimization/plots.csv
+      hash: md5
+      md5: c55d5a42827758ba4a029b7b748b7c89
+      size: 2801
+  mattersim_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mattersim_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        mattersim_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MatterSimCalculator
+            device: cpu
+            kwargs:
+            module: mattersim.forcefield
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mattersim/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: 613160570dfc2d8fb9636dfa04ae896d
+      size: 653
+    - path: nodes/mattersim/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: 30733ac89236113d39f10b7458a9011b
+      size: 64
+    - path: nodes/mattersim/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 81e1bbec90bf3b95fa9394b8e1820152
+      size: 34
+  mattersim_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mattersim_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        mattersim_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MatterSimCalculator
+            device: cpu
+            kwargs:
+            module: mattersim.forcefield
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mattersim/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: 1bacabbf8c661ee7b7b51c3d83493b3b
+      size: 651
+    - path: nodes/mattersim/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: e384a8092478dba5755cbc2e21e4dd6d
+      size: 64
+    - path: nodes/mattersim/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: 54192f8eda5b9853bfd734749558b9ea
+      size: 33
+  mattersim_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mattersim_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        mattersim_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MatterSimCalculator
+            device: cpu
+            kwargs:
+            module: mattersim.forcefield
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mattersim/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: 965efd8c10613c3bcba9048dfc8640ba
+      size: 653
+    - path: nodes/mattersim/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: 98fdaf513327eed98d0b0633d56ac8ae
+      size: 64
+    - path: nodes/mattersim/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: 73693022d99b6588f56340be4dd53ba3
+      size: 34
+  mattersim_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      mattersim_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        mattersim_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: MatterSimCalculator
+            device: cpu
+            kwargs:
+            module: mattersim.forcefield
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/mattersim/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: c475f5f1a7793fc9e4c7f172a85b786d
+      size: 465332
+    - path: nodes/mattersim/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 1357c95e6146b4811262670dd70431f7
+      size: 64
+    - path: nodes/mattersim/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: ddc60cf05b8312b4a20e79f72801f889
+      size: 2769
+  PET_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      PET_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        PET_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device: cpu
+            kwargs:
+              version: latest
+            module: pet_mad.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/PET/StructureOptimization/frames.traj
+      hash: md5
+      md5: 3d0c15099443b4667a3a4498b6ad0337
+      size: 846301
+    - path: nodes/PET/StructureOptimization/node-meta.json
+      hash: md5
+      md5: d26def01860c1b996aa0b3241d33856e
+      size: 154
+    - path: nodes/PET/StructureOptimization/plots.csv
+      hash: md5
+      md5: dab0aa1277d4b3e43614e0b8dec8d52d
+      size: 6841
+  PET_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      PET_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        PET_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device: cpu
+            kwargs:
+              version: latest
+            module: pet_mad.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/PET/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: 808fee53e71ada3ef1804f99e163cfa6
+      size: 732
+    - path: nodes/PET/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: 647e0c18b8c5ed9b089e2051048aa57b
+      size: 154
+    - path: nodes/PET/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 80ab71544bb2176acf10d24c02394313
+      size: 43
+  PET_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      PET_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        PET_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device: cpu
+            kwargs:
+              version: latest
+            module: pet_mad.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/PET/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: 20cc724e82ef72af49706b4e4b04582b
+      size: 732
+    - path: nodes/PET/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: 52d0dcbed0029ec096531684ccfd80dc
+      size: 154
+    - path: nodes/PET/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: e8ae3dba6e5c241d77f67c9739fa7884
+      size: 43
+  PET_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      PET_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        PET_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device: cpu
+            kwargs:
+              version: latest
+            module: pet_mad.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/PET/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: 8bf10df54dbe5514a114c8ca5ff8c8f3
+      size: 733
+    - path: nodes/PET/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: de98bd171732d1781cf0cccb2db2e36b
+      size: 154
+    - path: nodes/PET/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: e4099a974e196cef11098c48f63a1170
+      size: 44
+  PET_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      PET_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        PET_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: PETMADCalculator
+            device: cpu
+            kwargs:
+              version: latest
+            module: pet_mad.calculator
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/PET/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: 75ee1f491ff5fe692a4341dbf1fa70a3
+      size: 846278
+    - path: nodes/PET/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 60aae16b6acf625ba69e727c90c17916
+      size: 155
+    - path: nodes/PET/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: a5705a871e9b140ff552e5c448183ae1
+      size: 6871
+  orb_v2_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v2_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        orb_v2_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v2
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v2/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: e34cb538a8ba721f88a9c082a18f43ba
+      size: 1692959
+    - path: nodes/orb_v2/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 697dc8ebb3ce5bb5edf9bce987b0c726
+      size: 64
+    - path: nodes/orb_v2/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: fde1d176899879c665fe94a315c211ba
+      size: 13906
+  orb_v3_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v3_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        orb_v3_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v3_conservative_inf_omat
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v3/StructureOptimization/frames.traj
+      hash: md5
+      md5: bb5d18ce60dc5031f1f85266f97caf57
+      size: 934294
+    - path: nodes/orb_v3/StructureOptimization/node-meta.json
+      hash: md5
+      md5: 426e3c9c40c71449cba7fa9b353fd5f7
+      size: 64
+    - path: nodes/orb_v3/StructureOptimization/plots.csv
+      hash: md5
+      md5: 0565d6a4d14ac4c7e458d6173785b7d1
+      size: 7626
+  orb_v3_StructureOptimization_1:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v3_StructureOptimization_1
+    deps:
+    - path: nodes/initialize/LoadDataFile_1/node-meta.json
+      hash: md5
+      md5: 9eb9fe3f2e47d841c849031559685c0e
+      size: 64
+    params:
+      params.yaml:
+        orb_v3_StructureOptimization_1:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v3_conservative_inf_omat
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v3/StructureOptimization_1/frames.traj
+      hash: md5
+      md5: a8c0714281260212d1ff230edd0a1564
+      size: 647
+    - path: nodes/orb_v3/StructureOptimization_1/node-meta.json
+      hash: md5
+      md5: 8838b05c9d2a029237ab5f37a56ecfdc
+      size: 64
+    - path: nodes/orb_v3/StructureOptimization_1/plots.csv
+      hash: md5
+      md5: 9afa31317dbe03dab9ca5e31007795ac
+      size: 43
+  orb_v3_StructureOptimization_2:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v3_StructureOptimization_2
+    deps:
+    - path: nodes/initialize/LoadDataFile_2/node-meta.json
+      hash: md5
+      md5: 70e7f74dc1528d8a7661895381d96395
+      size: 64
+    params:
+      params.yaml:
+        orb_v3_StructureOptimization_2:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v3_conservative_inf_omat
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v3/StructureOptimization_2/frames.traj
+      hash: md5
+      md5: 57ee01f0c28fdbe2749336691b5f4097
+      size: 645
+    - path: nodes/orb_v3/StructureOptimization_2/node-meta.json
+      hash: md5
+      md5: 3d1912d489f711316c7010ff1fb268f0
+      size: 64
+    - path: nodes/orb_v3/StructureOptimization_2/plots.csv
+      hash: md5
+      md5: 096c4d35e3f826ed1f1cb69e0628483c
+      size: 42
+  orb_v3_StructureOptimization_3:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v3_StructureOptimization_3
+    deps:
+    - path: nodes/initialize/LoadDataFile_3/node-meta.json
+      hash: md5
+      md5: 7f3f3dfd5164a65c43f6399c04c55559
+      size: 64
+    params:
+      params.yaml:
+        orb_v3_StructureOptimization_3:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v3_conservative_inf_omat
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v3/StructureOptimization_3/frames.traj
+      hash: md5
+      md5: de8021a76930f1fbd906d2dd3847a81f
+      size: 647
+    - path: nodes/orb_v3/StructureOptimization_3/node-meta.json
+      hash: md5
+      md5: fb50564a2d6c1ac3b6b05235b697c22f
+      size: 64
+    - path: nodes/orb_v3/StructureOptimization_3/plots.csv
+      hash: md5
+      md5: 3402864e511e05c88681ac2259df6286
+      size: 43
+  orb_v3_StructureOptimization_4:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      orb_v3_StructureOptimization_4
+    deps:
+    - path: nodes/initialize/LoadDataFile_4/node-meta.json
+      hash: md5
+      md5: 41b4c7ef81befde12f7dc374bc025e48
+      size: 64
+    params:
+      params.yaml:
+        orb_v3_StructureOptimization_4:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: models.OrbCalc
+            device: cpu
+            name: orb_v3_conservative_inf_omat
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/orb_v3/StructureOptimization_4/frames.traj
+      hash: md5
+      md5: ae80d669f5d21e8c59647b3bc5f044e0
+      size: 699403
+    - path: nodes/orb_v3/StructureOptimization_4/node-meta.json
+      hash: md5
+      md5: 1de6c2ff5d16392abb46a3746f8d383c
+      size: 64
+    - path: nodes/orb_v3/StructureOptimization_4/plots.csv
+      hash: md5
+      md5: 4ee8cdd729092ea0c8673356dc4d9f0f
+      size: 5641
+  eqV2_StructureOptimization:
+    cmd: zntrack run mlipx.nodes.structure_optimization.StructureOptimization --name
+      eqV2_StructureOptimization
+    deps:
+    - path: nodes/initialize/LoadDataFile/node-meta.json
+      hash: md5
+      md5: 1a9f65e94b47805ac210929205146f72
+      size: 64
+    params:
+      params.yaml:
+        eqV2_StructureOptimization:
+          data_id: -1
+          fmax: 0.01
+          model:
+            _cls: mlipx.nodes.generic_ase.GenericASECalculator
+            class_name: OCPCalculator
+            device:
+            kwargs:
+              checkpoint_path: /mnt/nfs/ml_training/pretrained_ocp_models/eqV2_31M_omat_mp_salex.pt
+              seed: 203
+            module: fairchem.core
+          optimizer: LBFGS
+          steps: 500
+    outs:
+    - path: nodes/eqV2/StructureOptimization/frames.traj
+      hash: md5
+      md5: c05bc7f30835b1621a2dc8a02901510e
+      size: 2101610
+    - path: nodes/eqV2/StructureOptimization/node-meta.json
+      hash: md5
+      md5: e3c7ec687e199f421dbdb6f4b43904e3
+      size: 64
+    - path: nodes/eqV2/StructureOptimization/plots.csv
+      hash: md5
+      md5: aae13646128a1c4ca8a467975f2e38c4
+      size: 17061
