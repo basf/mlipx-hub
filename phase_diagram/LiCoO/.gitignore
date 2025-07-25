@@ -1,0 +1,12 @@
+*.svg
+*.png
+nodes/
+*.cif
+*.xyz
+modified_phase_diagram.py   
+plot_potential_energies.py  
+read_json.py  
+test.py
+plot_formation_energies.py  
+query_data.py               
+sort_data.py
