@@ -1,0 +1,7 @@
+paraffin.db
+slurm/
+README
+nodes/
+__pycache__/
+submit.sh
+/dataset

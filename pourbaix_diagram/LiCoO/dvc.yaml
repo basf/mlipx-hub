@@ -1,0 +1,47 @@
+plots:
+- mace-matpes-pbe-0_0_PourbaixDiagram_results:
+    x:
+      nodes/mace-matpes-pbe-0/0/PourbaixDiagram/results.csv: data_id
+    y:
+      nodes/mace-matpes-pbe-0/0/PourbaixDiagram/results.csv: pourbaix_decomposition_energy
+- dft-qe_0_PourbaixDiagram_results:
+    x:
+      nodes/dft-qe/0/PourbaixDiagram/results.csv: data_id
+    y:
+      nodes/dft-qe/0/PourbaixDiagram/results.csv: pourbaix_decomposition_energy
+stages:
+  dft-qe_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name dft-qe_0_PourbaixDiagram
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/dft-qe/0/PourbaixDiagram/node-meta.json:
+        cache: false
+    outs:
+    - nodes/dft-qe/0/PourbaixDiagram/frames.xyz
+    - nodes/dft-qe/0/PourbaixDiagram/pourbaix_diagram.json
+    - nodes/dft-qe/0/PourbaixDiagram/results.csv
+    params:
+    - dft-qe_0_PourbaixDiagram
+  initialize_LoadDataFile:
+    cmd: zntrack run mlipx.nodes.io.LoadDataFile --name initialize_LoadDataFile
+    deps:
+    - LiCoO_schmidt_2021_mad_recomputed.xyz
+    metrics:
+    - nodes/initialize/LoadDataFile/node-meta.json:
+        cache: false
+    params:
+    - initialize_LoadDataFile
+  mace-matpes-pbe-0_0_PourbaixDiagram:
+    cmd: zntrack run mlipx.nodes.pourbaix_diagram.PourbaixDiagram --name mace-matpes-pbe-0_0_PourbaixDiagram
+    deps:
+    - nodes/initialize/LoadDataFile/node-meta.json
+    metrics:
+    - nodes/mace-matpes-pbe-0/0/PourbaixDiagram/node-meta.json:
+        cache: false
+    outs:
+    - nodes/mace-matpes-pbe-0/0/PourbaixDiagram/frames.xyz
+    - nodes/mace-matpes-pbe-0/0/PourbaixDiagram/pourbaix_diagram.json
+    - nodes/mace-matpes-pbe-0/0/PourbaixDiagram/results.csv
+    params:
+    - mace-matpes-pbe-0_0_PourbaixDiagram

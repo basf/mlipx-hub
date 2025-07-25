@@ -1,0 +1,133 @@
+PET_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: PETMADCalculator
+    device: cpu
+    kwargs:
+      version: latest
+    module: pet_mad.calculator
+  optimizer: LBFGS
+  steps: 500
+chgnet_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: CHGNetCalculator
+    device: null
+    kwargs: null
+    module: chgnet.model
+  optimizer: LBFGS
+  steps: 500
+eqV2_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: OCPCalculator
+    device: null
+    kwargs:
+      checkpoint_path: /mnt/nfs/ml_training/pretrained_ocp_models/eqV2_31M_omat_mp_salex.pt
+      seed: 203
+    module: fairchem.core
+  optimizer: LBFGS
+  steps: 500
+grace_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: grace_fm
+    device: null
+    kwargs:
+      model: GRACE-2L-OAM
+    module: tensorpotential.calculator
+  optimizer: LBFGS
+  steps: 500
+initialize_LoadDataFile:
+  start: 0
+  step: 1
+  stop: null
+mace_agnesi_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: MACECalculator
+    device: auto
+    kwargs:
+      dtype: float64
+      model_paths: /mnt/nfs/ml_training/pretrained_mace_models/mace_agnesi_medium.model
+    module: mace.calculators
+  optimizer: LBFGS
+  steps: 500
+mace_matpes-omat_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: cpu
+    kwargs:
+      dtype: float64
+      model: /mnt/nfs/ml_training/pretrained_mace_models/MACE-matpes-pbe-omat-ft.model
+    module: mace.calculators
+  optimizer: LBFGS
+  steps: 500
+mace_mpa0_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: mace_mp
+    device: cpu
+    kwargs:
+      dtype: float64
+      model: /mnt/nfs/ml_training/pretrained_mace_models/mace-mpa-0-medium.model
+    module: mace.calculators
+  optimizer: LBFGS
+  steps: 500
+mattersim_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: MatterSimCalculator
+    device: cpu
+    kwargs: null
+    module: mattersim.forcefield
+  optimizer: LBFGS
+  steps: 500
+orb_v2_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: models.OrbCalc
+    device: cpu
+    name: orb_v2
+  optimizer: LBFGS
+  steps: 500
+orb_v3_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: models.OrbCalc
+    device: cpu
+    name: orb_v3_conservative_inf_omat
+  optimizer: LBFGS
+  steps: 500
+sevennet-mf-ompa_StructureOptimization:
+  data_id: -1
+  fmax: 0.01
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: SevenNetCalculator
+    device: cpu
+    kwargs:
+      modal: mpa
+      model: 7net-mf-ompa
+    module: sevenn.calculator
+  optimizer: LBFGS
+  steps: 500

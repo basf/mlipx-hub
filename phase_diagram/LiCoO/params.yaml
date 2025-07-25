@@ -1,0 +1,13 @@
+dft-qe_0_PhaseDiagram:
+  chemsys: null
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: models.CustomCalc
+    device: null
+    name: dft-qe
+initialize_LoadDataFile:
+  start: 0
+  step: 1
+  stop: null

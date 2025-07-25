@@ -1,0 +1,30 @@
+dft-qe_0_PourbaixDiagram:
+  V: 1.6
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: models.CustomCalc
+    device: null
+    name: dft-qe
+  pH: 0
+  use_gibbs: false
+initialize_LoadDataFile:
+  start: 0
+  step: 1
+  stop: null
+mace-matpes-pbe-0_0_PourbaixDiagram:
+  V: 1.6
+  data_ids: null
+  fmax: 0.05
+  geo_opt: false
+  model:
+    _cls: mlipx.nodes.generic_ase.GenericASECalculator
+    class_name: MACECalculator
+    device: auto
+    kwargs:
+      dtype: float64
+      model_paths: /mnt/nfs/ml_training/pretrained_mace_models/MACE-matpes-pbe-omat-ft.model
+    module: mace.calculators
+  pH: 0
+  use_gibbs: false
